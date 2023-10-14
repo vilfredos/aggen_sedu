@@ -16,7 +16,9 @@
     <nav>
         <ul>
             <li><a href="{{ url('/inicio') }}">Inicio</a></li>
-            </ul> <ul> 
+            </ul>
+           <!-- <ul><li><a href="{{ url('/roles') }}">Roles</a></li></ul>-->
+             <ul> 
             <li><a href="{{ url('/eleccion') }}">Elección</a></li>
             </ul><ul> 
             <li><a href="{{ url('/usuarios') }}">Usuarios</a></li>

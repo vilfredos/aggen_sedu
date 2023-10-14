@@ -28,6 +28,9 @@ Route::get('/eleccion', function () {
 Route::get('/inicio', function () {
     return view('inicio');
 });
+Route::get('/roles', function () {
+    return view('roles');
+});
 Route::get('/usuarios', function () {
     return view('usuarios');
 });
@@ -54,3 +57,6 @@ Route::get('/jurado', function () {
 Route::get('/poblacion', function () {
     return view('poblacion');
 });
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
