@@ -17,10 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 /*para la primera fase*/
+
+
 Route::get('/', function () {
-    return view('home');
+    return view('Inicio');
 });
-Route::get('/home', 'App\Http\Controllers\HomeController@index');
 
 Route::get('/eleccion', function () {
     return view('elecciones');
@@ -28,8 +29,8 @@ Route::get('/eleccion', function () {
 Route::get('/inicio', function () {
     return view('inicio');
 });
-Route::get('/usuarios', function () {
-    return view('usuarios');
+Route::get('/roles', function () {
+    return view('roles');
 });
 Route::get('/resultados', function () {
     return view('resultados');
@@ -54,3 +55,11 @@ Route::get('/jurado', function () {
 Route::get('/poblacion', function () {
     return view('poblacion');
 });
+
+/*para los controladores*/
+
+
+/*para la base de datos */
+
+use App\Http\Controllers\JuradoController;
+Route::post('/jurado', [JuradoController::class, 'store'])->name('jurado.store');

@@ -1,0 +1,41 @@
+.sidebar {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    background: linear-gradient(to bottom, blue, red, black);
+    background: linear-gradient(to bottom, #000033, #330000, #000000);
+    background-color: #a30b0b;
+    color: #fff;
+    padding: 20px;
+
+}
+
+
+.sidebar button {
+    display: block;
+    color: #fff;
+    background-color: #4CAF50;
+    text-align: center;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.sidebar button:hover {
+    background-color: #000000;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    padding-bottom: 10px;
+}
+
+.sidebar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}

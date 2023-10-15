@@ -3,6 +3,7 @@
 @section('content')
 <head>
     <title>Formulario para Registrar Miembros del Comité</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/comite.css') }}">
 </head>
 <body>
     <div class="container">

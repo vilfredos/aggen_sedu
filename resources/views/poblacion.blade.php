@@ -2,8 +2,7 @@
 
 @section('content')
 <div class="container">
-    <!-- Aquí es donde puedes agregar tu contenido -->
-    <section>
+<p>Este es el lugar para subsir poblacion</p>    <section>
     </section>
 </div>
 @endsection
