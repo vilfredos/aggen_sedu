@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/usuarios', [UsuariosController::class, 'index']);
 class Controller extends BaseController
 {
