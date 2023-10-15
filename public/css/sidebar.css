@@ -2,29 +2,29 @@
     grid-row: 2 / 3;
     grid-column: 1 / 2;
     background: linear-gradient(to bottom, blue, red, black);
-    background: linear-gradient(to bottom, #000033, #330000, #000000);
+    background: linear-gradient(to bottom, #031c43,#162045, #a10d18, #c7050b);
     background-color: #a30b0b;
     color: #fff;
-    padding: 20px;
+   
+   height: 90vh;
 
 }
 
-
-.sidebar button {
-    display: block;
-    color: #fff;
-    background-color: #4CAF50;
-    text-align: center;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+.item{
+    display: flex;
+    align-items: center;
+    
+}
+.item:hover {
+    transform: scale(1.1); /* Aumentar el tamaño en un 10% */
+    transition: transform 0.2s; /* Agregar una transición suave */
+}
+.material-symbols-outlined{
+    padding-right: 5%;
 }
 
-.sidebar button:hover {
-    background-color: #000000;
-}
+
+
 
 .sidebar nav ul {
     list-style-type: none;
@@ -38,4 +38,7 @@
 .sidebar nav ul li a {
     color: #fff;
     text-decoration: none;
+}
+.menu-container{
+    margin: 10% 10% 15% 15%;
 }

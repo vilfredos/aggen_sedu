@@ -39,24 +39,31 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    justify-content: center; /* Alineación horizontal al centro */
+    align-items: center; ;
     overflow: hidden;
     background-color: transparent;
 }
 
 nav ul li {
+    display: flex;
+    justify-content: center; /* Alineación horizontal al centro */
+    align-items: center; /* Alineación vertical al centro */
     float: left;
+   
 }
-
 nav ul li a {
-    display: block;
+    display: flex;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    
+    
 }
 
 nav ul li a:hover {
-    background-color: #111;
+    background-color: #c41313;
 }
 
 main {
@@ -95,4 +102,8 @@ h11 {
     color: white; 
     font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun font */
     text-shadow: 2px 2px 4px #000000; /* Text shadow for depth */
+}
+.btn-menu {
+    justify-content: center; /* Alineación horizontal al centro */
+    align-items: center; 
 }
