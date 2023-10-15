@@ -30,4 +30,9 @@ formulario.addEventListener('submit', function(event) {
         errorMessage.textContent = "";
         errorMessage.style.color = "";
     }
+
+
 });
+function llevame_a_poblacion() {
+    window.location.href = '/poblacion';
+  }

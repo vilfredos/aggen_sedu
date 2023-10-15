@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <title>Universidad Mayor de San Simón</title>
     <!-- Aquí puedes agregar tus hojas de estilo CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/body.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/header.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/sidebar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/content.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/footer.css') }}">
 </head>
 <body>
 <div class="header">
-    <img src="{{ asset('img/Escudo-UMSS.jpg') }}" alt="Descripción de la imagen" class="imagen-umss">
-    <h11>SEDU</h11>
+    <div>
+        <p>parte1</p>
+    </div>
 </div>
     <div class="sidebar">
-    <button onclick="toggleNav()">Toggle Navigation</button>
     <nav>
         <ul>
             <li><a href="{{ url('/inicio') }}">Inicio</a></li>
@@ -31,14 +35,14 @@
     <div class="content">
     @yield('content')
     </div>
+    
     <div class="footer">
     <p>© 2023 Sistema Electoral Democratico Universitario, UMSS</p>
-    <img src="{{ asset('img/logo.jpg') }}" alt="Descripción de la imagen" class="imagen-logo">
-    
+    <img src="{{ asset('img/logo.jpg') }}" alt="Descripción de la imagen" >
 
     </div>
-    
-    <script src="{{ asset('js/home.js') }}"></script>
+
     <!-- Aquí puedes agregar tus scripts JS -->
+    <script src="{{ asset('js/home.js') }}"></script>
 </body>
 </html>

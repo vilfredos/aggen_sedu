@@ -1,11 +1,8 @@
 @extends('Home')
 
 @section('content')
-<div class="container">
-    <!-- Aquí es donde puedes agregar tu contenido -->
-    <section>
+
+<link rel="stylesheet" type="text/css" href="{{ asset('css/roles.css') }}">
     <img src="{{ asset('img/mantenimiento.jpg') }}" alt="Descripción de la imagen" class="imagen-estilo">
-        
-    </section>
-</div>
+
 @endsection

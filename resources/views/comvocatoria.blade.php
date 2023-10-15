@@ -4,7 +4,7 @@
 <head>
 
     <title>Formulario de Convocatoria</title>
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/comvocatoria.css') }}">
 </head>
 <body>
     <div class="container">
@@ -25,8 +25,10 @@
             <input type="date" id="fechaFin" name="fechaFin">
         </div>
         <button class="submit-btn">Publicar convocatoria</button>
+        <button type="button" onclick="llevame_a_poblacion()" class="btn">siguiete</button>
+
     </div>
     <script src="{{ asset('js/comvocatoria.js') }}"></script>
-
+    
 </body>
 @endsection
