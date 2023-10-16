@@ -46,7 +46,7 @@
                 <span class="material-symbols-outlined">
                     person
                     </span>
-                <a href="{{ url('/usuarios') }}">Usuarios</a>
+                <a href="{{ url('/user') }}">Usuarios</a>
             </li>
         </ul>
         <ul class="container"> 

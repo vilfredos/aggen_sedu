@@ -1,4 +1,7 @@
-
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
 
 .container {
     margin-top: 50px;
@@ -65,3 +68,4 @@ img {
     font-size: 18px;
     cursor: pointer;
 }
+
