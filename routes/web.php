@@ -29,8 +29,8 @@ Route::get('/eleccion', function () {
 Route::get('/inicio', function () {
     return view('inicio');
 });
-Route::get('/roles', function () {
-    return view('roles');
+Route::get('/user', function () {
+    return view('user');
 });
 Route::get('/resultados', function () {
     return view('resultados');
