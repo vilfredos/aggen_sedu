@@ -1,0 +1,14 @@
+.seleccion{
+    margin-left: 50px;
+    margin-top: 30px;
+}
+.table{
+   padding-left: 1px;
+    margin-top: 10px;
+}
+
+.btn-footer{
+    display: flex;
+    justify-content: space-around;
+    
+}
