@@ -16,12 +16,16 @@
     margin-left: 4%;
    
 }
-.app-title h1{
+.app-title h1 {
     color: #ffff;
     margin: 0;
 }
 .nombres{
     display: block;
+    
+}
+.nombres p{
+    color: #ffff;
     
 }
 
