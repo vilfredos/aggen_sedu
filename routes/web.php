@@ -55,7 +55,12 @@ Route::get('/jurado', function () {
 Route::get('/poblacion', function () {
     return view('poblacion');
 });
-
+Route::get('/mesa', function () {
+    return view('mesa');
+});
+Route::get('/frente', function () {
+    return view('frente');
+});
 /*para los controladores*/
 
 
