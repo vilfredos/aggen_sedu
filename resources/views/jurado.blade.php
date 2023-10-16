@@ -43,8 +43,9 @@
           <option value="estudiante">Estudiante</option>
         </select>
       </div>
-      <button type="submit">Enviar</button>
+      <button type="submit">Registrar Jurado</button>
     </form>
+    <button class="save-button" onclick="limpiarCampos()">Cancelar</button>
     <button class="save-button" onclick="terimar_proceso()">Siguiente</button>
   </div>
 

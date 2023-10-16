@@ -28,3 +28,11 @@ function terimar_proceso() {
 function llevame_a_papeleta() {
   window.location.href = '/papeleta';
 }
+function limpiarCampos() {
+  if (confirm("¿Estás seguro de que deseas cancelar?")) {
+      var campos = ["nombre", "mesa", "rol", "cargo" ,"turno"];
+      for (var i = 0; i < campos.length; i++) {
+          document.getElementById(campos[i]).value = "";
+      }
+  }
+}

@@ -36,3 +36,10 @@ document.getElementById("miFormulario").onsubmit = function(event) {
         
     }
 };
+   function terimar_proceso() {
+    alert("Saliendo de Registrar frente");
+    llevame_a_mesa();
+  }
+  function llevame_a_mesa() {
+    window.location.href = '/mesa';
+  }

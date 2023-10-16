@@ -1,5 +1,13 @@
 body {
-    text-align: center;
+    display: grid;
+    height: 100vh;
+    margin: 0;
+    grid-template-rows: 10% 80% 10%;
+    grid-template-columns: 25% 75%;
+}
+p {
+    color: #999;
+    line-height: 1.6;
 }
 
 .container {
@@ -7,19 +15,21 @@ body {
     margin-top: 0px;
     text-align: center;
 }
+
 .superior {
     margin-top: 10px;
     background: linear-gradient(to bottom, #CF2E2E, #003770);
 }
-.titulo{
+
+.titulo {
     font-size: 24px;
     margin-top: 20px;
     color: #ffffff;
-
 }
-img {
-    width:307px ;
-    height: 130px;
+
+.imagen-registro {
+    width: 200px; 
+    height: auto; 
     object-fit: cover;
     border-radius: 2%;
 }
@@ -30,17 +40,18 @@ h1 {
 
 .form-group {
     margin: 10px 0;
-    margin-top: 30px;
-    margin-right: 20px; 
 }
 
 input[type="text"] {
     width: 300px;
 }
 
+/* Añadir estilo para el campo de archivo */
+input[type="file"] {
+    width: 300px;
+}
+
+
 button {
     margin-top: 20px;
-}
-.designarAleatoriamente{
-    margin-left: 105px;
 }

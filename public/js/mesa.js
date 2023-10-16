@@ -34,3 +34,10 @@ document.getElementById("mesaForm").onsubmit = function(event) {
         alert("Formulario de mesa enviado correctamente.");
     }
 };
+function terimar_proceso(){
+    alert("Saliendo de Registrar Mesa");
+    llevame_a_jurado() 
+  }
+  function llevame_a_jurado() {
+    window.location.href = '/jurado';
+  }

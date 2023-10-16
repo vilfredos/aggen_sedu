@@ -49,8 +49,7 @@
             <div class="buttons">
                 <button type="submit" name="action" value="save">Guardar y Registrar Nuevo Frente</button>
                 <button type="button" onclick="limpiarCampos()">Cancelar</button>
-                <button type="submit" name="action" value="saveNext">Guardar y Siguiente</button>
-            </div>
+                <button class="save-button" onclick="terimar_proceso()">siguiente</button>
         </form>
         <p id="error-message" style="color: red;"></p>
     </div>

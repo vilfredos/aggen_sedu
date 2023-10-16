@@ -45,3 +45,13 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+        .save-button {
+            display: block;
+            margin: 20px auto;
+            background-color: blue;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+        }

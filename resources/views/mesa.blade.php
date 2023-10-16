@@ -33,8 +33,8 @@
             <button type="submit">Registrar Mesa</button>
             <p id="error-message" style="color: red;"></p>
         </form>
+        <button class="save-button" onclick="terimar_proceso()">siguiente</button>
     </div>
-
     <!-- Agrega tus scripts JavaScript -->
     <script src="{{ asset('js/mesa.js') }}"></script>
 </body>
