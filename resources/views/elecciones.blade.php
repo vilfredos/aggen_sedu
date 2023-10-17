@@ -11,5 +11,5 @@
             <button type="button"  class="btn btn-modificar">Modificar una Eleccion</button>
         </div>
     </div>
-    <script src="{{ mix('js/eleccion.js') }}"></script>
+    <script src="{{ asset('js/elecciones.js') }}"></script>
 @endsection
