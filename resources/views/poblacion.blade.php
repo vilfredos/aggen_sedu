@@ -3,9 +3,10 @@
 @section('content')
 <head>
     <title>Gestion de roles</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/poblacion.css') }}">
-    <link  href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" type="text/css" href="{{ mix('css/poblacion.css') }}">
+
   </head>
 <div>
     <h1 class="m-3">Registrar poblacion</h1>

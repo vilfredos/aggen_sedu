@@ -3,7 +3,7 @@
 @section('content')
 <head>
   <title>Formulario</title>
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/jurado.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ mix('css/jurado.css') }}">
 
 </head>
 <body>

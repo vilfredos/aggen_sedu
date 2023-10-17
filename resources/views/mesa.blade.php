@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Registro de Mesas</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/mesa.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/mesa.css') }}">
 </head>
 <body>
     <div class="container">
