@@ -1,14 +1,65 @@
-.seleccion{
-    margin-left: 50px;
-    margin-top: 30px;
-}
-.table{
-   padding-left: 1px;
-    margin-top: 10px;
+body {
+    font-family: Arial, sans-serif;
 }
 
-.btn-footer{
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-header {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.miFormulario {
     display: flex;
-    justify-content: space-around;
-    
+    justify-content: center;
+}
+
+.seleccion {
+    display: flex;
+    justify-content: space-between;
+}
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
