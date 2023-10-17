@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 
 Route::get('/', function () {
-    return view('Inicio');
+    return view('inicio');
 });
 
 Route::get('/eleccion', function () {
