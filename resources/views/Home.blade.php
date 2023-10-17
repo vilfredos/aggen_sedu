@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Universidad Mayor de San Simón</title>
     <!-- Aquí puedes agregar tus hojas de estilo CSS -->
 

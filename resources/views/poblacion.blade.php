@@ -2,6 +2,7 @@
 
 @section('content')
 <head>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Gestion de roles</title>
     <link href="{{ asset('css/poblacion.css') }}" rel="stylesheet">
 </head>

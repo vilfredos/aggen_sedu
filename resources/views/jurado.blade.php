@@ -2,6 +2,7 @@
 
 @section('content')
 <head>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <title>Formulario</title>
   <link href="{{ asset('css/jurado.css') }}" rel="stylesheet">
 

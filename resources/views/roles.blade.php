@@ -5,7 +5,7 @@
     <head>
         <title>Gestion de roles</title>
         <link href="{{ asset('css/roles.css') }}" rel="stylesheet">
-
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
       </head>
         <h1 class="m-3">Gestión de Roles</h1>
         <div class="card mx-3">

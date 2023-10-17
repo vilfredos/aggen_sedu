@@ -3,7 +3,7 @@
 @section('content')
 <head>
 <link href="{{ asset('css/papeleta.css') }}" rel="stylesheet">
-
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 </head>
 <body>
 
