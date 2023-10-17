@@ -7,9 +7,11 @@
 
 </head>
 <body>
-<img src="{{ asset('img/umss1.png') }}" alt="logo" class="imagen-estilo">
-  <div class="container_jurado">
-    <h2>Registrar jurado Manualmente</h2>
+    <div class="container_jurado">
+    <div class="container_jurado_a">
+  <img src="{{ asset('img/umss1.png') }}" alt="logo" class="imagen-estilo">
+  <h1 class="titulo ">Registrar jurado Manualmente</h2>
+</div>
     <form id="myForm">
       <div class="form-group">
         <label for="nombre">Nombre:</label>

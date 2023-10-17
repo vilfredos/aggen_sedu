@@ -26,9 +26,11 @@ p {
   justify-content: center;
 }
 
-.superior {
+.container_jurado_a{
   margin-top: 10px;
   background: linear-gradient(to bottom, #CF2E2E, #003770);
+  width: 100%; /* Ocupa todo el ancho disponible */
+  height: 30%; /* Ocupa todo el alto disponible */
 }
 
 .titulo {
@@ -56,4 +58,15 @@ input[type="file"] {
 .button-container {
   display: flex;
   justify-content: space-between; /* Adjust as needed */
+}
+.titulo {
+  font-size: 24px;
+  margin-top: 20px;
+  color: #ffffff;
+}
+.imagen-registro {
+  width: 200px; 
+  height: auto; 
+  object-fit: cover;
+  border-radius: 2%;
 }
