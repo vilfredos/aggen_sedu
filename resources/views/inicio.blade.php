@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Aquí puedes agregar el contenido principal de tu página -->
-    <link rel="stylesheet" type="text/css" href="{{ mix('css/inicio.css') }}">
+    <link href="{{ asset('css/inicio.css') }}" rel="stylesheet">
     <section>
         <h1>Bienvenido al Sistema Electoral Universitario</h1>
     </section>

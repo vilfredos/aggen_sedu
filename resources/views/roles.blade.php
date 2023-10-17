@@ -4,8 +4,8 @@
     <!-- Aquí va el contenido específico de esta plantilla -->
     <head>
         <title>Gestion de roles</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-<link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/roles.css') }}" rel="stylesheet">
+
       </head>
         <h1 class="m-3">Gestión de Roles</h1>
         <div class="card mx-3">

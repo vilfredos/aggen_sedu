@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <title>Universidad Mayor de San Simón</title>
     <!-- Aquí puedes agregar tus hojas de estilo CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ mix('css/body.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ mix('css/header.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ mix('css/sidebar.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ mix('css/content.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ mix('css/footer.css') }}">
+
+<link href="{{ asset('css/body.css') }}" rel="stylesheet">   
+<link href="{{ asset('css/header.css') }}" rel="stylesheet">   
+<link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">   
+<link href="{{ asset('css/content.css') }}" rel="stylesheet">   
+<link href="{{ asset('css/footer.css') }}" rel="stylesheet"> 
+
 
     <link  href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />

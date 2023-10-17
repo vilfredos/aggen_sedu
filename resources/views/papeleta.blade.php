@@ -2,7 +2,7 @@
 
 @section('content')
 <head>
-<link rel="stylesheet" type="text/css" href="{{ mix('css/papeleta.css') }}">
+<link href="{{ asset('css/papeleta.css') }}" rel="stylesheet">
 
 </head>
 <body>

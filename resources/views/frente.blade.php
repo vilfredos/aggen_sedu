@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario para Registrar frente</title>
-    <link rel="stylesheet" type="text/css" href="{{ mix('css/frente.css') }}">
-</head>
+    <link href="{{ asset('css/frente.css') }}" rel="stylesheet">
+    </head>
 <body>
     <div class="container">
         <div class="superior">

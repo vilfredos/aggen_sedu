@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Aquí va el contenido específico de esta plantilla -->
-    <link href="{{ asset('css/elecciones.css') }}" rel="stylesheet">    
+    <link href="{{ asset('css/elecciones.css') }}" rel="stylesheet">
     <div class="content">
         <div class="btn-container">
             <button type="button" onclick="myFunction_c()" class="btn btn-crear">Crear una nueva Eleccion</button>
