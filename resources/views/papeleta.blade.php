@@ -2,33 +2,8 @@
 
 @section('content')
 <head>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 15px;
-            text-align: center;
-        }
-        .vote-box {
-            width: 50px;
-            height: 50px;
-            border: 2px solid black;
-            display: inline-block;
-        }
-        .save-button {
-            display: block;
-            margin: 20px auto;
-            background-color: blue;
-            color: white;
-            text-align: center;
-            line-height: 50px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-    </style>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/papeleta.css') }}">
+
 </head>
 <body>
 
@@ -51,8 +26,9 @@
     <td><div class="vote-box"></div></td>
   </tr>
 </table>
-
+<div class="contenedor">
 <button class="save-button" onclick="terimar_proceso()">terminar registro de eleccion</button>
+</div>
 <script src="{{ asset('js/papeleta.js') }}"></script>
 </body>
 @endsection

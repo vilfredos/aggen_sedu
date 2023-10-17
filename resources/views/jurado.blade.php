@@ -7,7 +7,8 @@
 
 </head>
 <body>
-  <div class="form-container">
+<img src="{{ asset('img/umss1.png') }}" alt="logo" class="imagen-estilo">
+  <div class="container_jurado">
     <h2>Registrar jurado Manualmente</h2>
     <form id="myForm">
       <div class="form-group">
@@ -45,8 +46,10 @@
       </div>
       <button type="submit">Registrar Jurado</button>
     </form>
-    <button class="save-button" onclick="limpiarCampos()">Cancelar</button>
-    <button class="save-button" onclick="terimar_proceso()">Siguiente</button>
+    <div class="button-container">
+  <button class="save-button" onclick="limpiarCampos()">Cancelar</button>
+  <button class="save-button" onclick="terimar_proceso()">Siguiente</button>
+</div>
   </div>
 
   <script src="{{ asset('js/jurado.js') }}"></script>

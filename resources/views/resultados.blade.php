@@ -1,10 +1,10 @@
 @extends('Home')
 
 @section('content')
-<head>
-    <meta charset="UTF-8">
-    <title>Universidad Mayor de San Simón</title>
-    <!-- Aquí puedes agregar tus hojas de estilo CSS -->
-    <img src="{{ asset('img/mantenimiento.jpg') }}" alt="Descripción de la imagen" class="imagen-estilo">
-</head>
+
+<link rel="stylesheet" type="text/css" href="{{ asset('css/user.css') }}">
+    <div style="width: 100%; height: 100%; overflow: hidden;">
+        <img src="{{ asset('img/mantenimiento.jpg') }}" alt="Descripción de la imagen" class="imagen-estilo" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+
 @endsection

@@ -1,6 +1,6 @@
 
 function terimar_proceso() {
-    alert("Papeleta guardada exitosamente");
+    alert("Usted a Registrado exitosamente la Eleccion");
     llevame_a_eleccion();
   }
   function llevame_a_eleccion() {

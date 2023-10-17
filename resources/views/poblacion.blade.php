@@ -85,7 +85,5 @@
         
     </div>
     <button class="save-button" onclick="terimar_proceso()">terminar registro de eleccion</button>
-<script src="{{ asset('js/'poblacion'.js') }}"></script>
 </div>
-<script src="{{ asset('js/poblacion.js') }}"></script>
-@endsection
+<script src="{{ asset('js/poblacion.js') }}"></script>@endsection

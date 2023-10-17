@@ -12,7 +12,8 @@
     <div class="algo">
         <form id="formulario">
         <div class="superior">
-        <img src="{{ asset('img/umss1.png') }}" alt="logo" class="imagen-estilo">            <div class="titulo">Generar convocatoria</div>
+        <img src="{{ asset('img/umss1.png') }}" alt="logo" class="imagen-estilo">           
+         <div class="titulo">Generar convocatoria</div>
             
         </div>
     </div>
@@ -35,10 +36,13 @@
             <label for="fechaFin">Fecha final de recepción de documentos:</label>
             <input type="date" id="fechaFin" name="fechaFin">
         </div>
-        <button class="submit-btn">Publicar convocatoria</button>
+        <div class="button-container">
+  <button class="submit-btn">Publicar convocatoria</button>
+  <button class="save-button" onclick="terimar_proceso()">Siguiente</button>
+</div>
         <div id="error-message" class="advertencia"></div>
+        
     </form>
-    <button class="save-button" onclick="terimar_proceso()">Siguiente</button>
     </div>
     <script src="{{ asset('js/comvocatoria.js') }}"></script>
 </body>
