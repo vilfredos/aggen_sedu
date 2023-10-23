@@ -15,9 +15,9 @@ class CreateVotantesTable extends Migration
     {
         Schema::create('votantes', function (Blueprint $table) {
             $table->id();
-            $table->string ('name');
-            $table->string ('facultad');
-            $table->string ('tipo');
+            $table->string('name')->nullable();
+            $table->string('facultad')->nullable();
+            $table->string('tipo')->nullable();
             $table->timestamps();
         });
     }

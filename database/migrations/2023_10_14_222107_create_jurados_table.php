@@ -14,12 +14,13 @@ class CreateJuradosTable extends Migration
     public function up()
     {
         Schema::create('jurados', function (Blueprint $table) {
-            $table->id();
+            $table->engine="InnoDB";
+            $table->bigIncrements("id");
             $table->string('nombre');
             $table->string('turno');
             $table->string('cargo');
             $table->integer('numeroMesa');
-            $table->text('observacion')->nullable();
+            $table->string('observacion');
             $table->timestamps();
         });
     }

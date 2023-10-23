@@ -12,3 +12,61 @@
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
+        <ul class="container"> 
+            <li class="item">
+                <span class="material-symbols-outlined">
+                    library_books
+                    </span>
+                <a href="http://aggensedu-production.up.railway.app/resultados">Resultados Posteriores</a>
+            </li>
+        </ul>
+
+    </nav>
+    </div>
+    <div class="content">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro de Mesas</title>
+    <link href="http://aggensedu-production.up.railway.app/css/mesa.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="superior">
+            <img src="img/umss1.png" alt="Logo">
+            <h1 class="titulo">Registro de Mesas</h1>
+        </div>
+        <form id="mesaForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="numeroMesa">Número de Mesa (solo números):</label>
+                <input type="text" id="numeroMesa" name="numeroMesa" pattern="[0-9]+" required>
+            </div>
+            <div class="form-group">
+                <label for="recintoVotacion">Recinto de Votación (solo letras):</label>
+                <input type="text" id="recintoVotacion" name="recintoVotacion" pattern="[A-Za-z ]+" required>
+            </div>
+            <div class="form-group">
+                <label for="aulaVotacion">Aula de Votación:</label>
+                <input type="text" id="aulaVotacion" name="aulaVotacion" required>
+            </div>
+            <div class="form-group">
+                <label for="fotoLugar">Subir Foto del Lugar:</label>
+                <input type="file" id="fotoLugar" name="fotoLugar" accept="image/*" required>
+            </div>
+            <button type="submit">Registrar Mesa</button>
+            <p id="error-message" style="color: red;"></p>
+        </form>
+        <button class="save-button" onclick="terimar_proceso()">siguiente</button>
+    </div>
+    <!-- Agrega tus scripts JavaScript -->
+    <script src="http://aggensedu-production.up.railway.app/js/mesa.js"></script>
+</body>
+    </div>
+    
+    <div class="footer">
+    <p class="derechos">DERECHOS RESERVADOS &copy; 2023 - UNIVERSIDAD MAYOR DE SAN SIMON</p>
+    
+
+    </div>
+
+    <!-- Aquí puedes agregar tus scripts JS -->
