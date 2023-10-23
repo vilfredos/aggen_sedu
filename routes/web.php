@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\VotanteController;
+use App\Models\Votante;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,13 +14,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});*/
-/*para la primera fase*/
+Route::get('/poblacion',[VotanteController::class,'index']);
+Route::post('votante',[VotanteController::class,'import'])->name('votante.import');
+
+Route::get('/',[VotanteController::class,'pdf']);
+
+Route::get('poblacion/pdf' ,[VotanteController::class,'pdf'])->name('poblacion.pdf');
 
 
+
+Route::get('/cierreActa', function () {
+    return view('cierreActa');
+});
 Route::get('/', function () {
     return view('elecciones');
 });
@@ -52,9 +59,7 @@ Route::get('/papeleta', function () {
 Route::get('/jurado', function () {
     return view('jurado');
 });
-Route::get('/poblacion', function () {
-    return view('poblacion');
-});
+
 Route::get('/mesa', function () {
     return view('mesa');
 });
