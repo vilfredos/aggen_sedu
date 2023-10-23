@@ -11,6 +11,9 @@ h1 {
     color: #333;
     text-align: center;
 }
+.title-poblacion{
+    text-align: left;
+}
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -54,11 +57,14 @@ h1 {
 }
 
 .save-button {
+   margin-top: 20px;
     background-color: #4CAF50; /* Green */
-    border: none;
+    border : none;
+   border-radius: 10px;
     color: white;
+    font-weight: bold;
     padding: 15px 32px;
-    text-align: center;
+    margin-left: 63%;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
