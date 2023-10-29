@@ -1,0 +1,32 @@
+.footer {
+    max-width: 75%;
+  
+    
+    margin-left: 25%;
+    grid-row: 3 / -1;
+    grid-column: 1 / -1;
+   background: #012746;
+    text-align: center;
+  
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex; /* Añadido */
+    text-align: center;
+    justify-content: center; /* Añadido */
+    align-items: center; /* Añadido */
+}
+
+.derechos {
+    display: flex;
+    color: #ffffff;
+    font-size: 14px;
+    margin-right: 20px; /* Añadido */
+    font-size: 16px;
+    text-align: center;
+    padding-top: 15px;
+    font-weight: bold;
+    
+}
+
