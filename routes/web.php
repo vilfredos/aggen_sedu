@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\VotanteController;
+use App\Models\Votante;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,15 +14,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});*/
-/*para la primera fase*/
-Route::get('/', function () {
-    return view('home');
+Route::get('/poblacion',[VotanteController::class,'index']);
+Route::post('votante',[VotanteController::class,'import'])->name('votante.import');
+
+Route::get('/',[VotanteController::class,'pdf']);
+
+Route::get('poblacion/pdf' ,[VotanteController::class,'pdf'])->name('poblacion.pdf');
+
+
+
+Route::get('/cierreActa', function () {
+    return view('cierreActa');
 });
-Route::get('/home', 'App\Http\Controllers\HomeController@index');
+Route::get('/', function () {
+    return view('elecciones');
+});
 
 Route::get('/eleccion', function () {
     return view('elecciones');
@@ -28,8 +36,8 @@ Route::get('/eleccion', function () {
 Route::get('/inicio', function () {
     return view('inicio');
 });
-Route::get('/usuarios', function () {
-    return view('usuarios');
+Route::get('/user', function () {
+    return view('user');
 });
 Route::get('/resultados', function () {
     return view('resultados');
@@ -51,6 +59,17 @@ Route::get('/papeleta', function () {
 Route::get('/jurado', function () {
     return view('jurado');
 });
-Route::get('/poblacion', function () {
-    return view('poblacion');
+
+Route::get('/mesa', function () {
+    return view('mesa');
 });
+Route::get('/frente', function () {
+    return view('frente');
+});
+/*para los controladores*/
+
+
+/*para la base de datos */
+
+use App\Http\Controllers\JuradoController;
+Route::post('/jurado', [JuradoController::class, 'store'])->name('jurado.store');

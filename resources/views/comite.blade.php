@@ -2,18 +2,28 @@
 
 @section('content')
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Formulario para Registrar Miembros del Comité</title>
+    <link href="{{ asset('css/comite.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div class="container">
 
         <div class="superior">
-        <img src="img/umss1.png" alt="Logo">
+        <img src="{{ asset('img/umss1.png') }}" alt="logo" class="imagen-estilo">
+
         <h1 class="titulo">Registrar Miembros del Comité</h1>
         </div>
+
+        <form id="formulario">
+
+
         <div class="form-group">
             <label for="rector">Registrar Rector:</label>
-            <input type="text" id="rector" name="rector">
+            <input type="text" id="rector" name="rector" value="Ing. Julio Medina Gamboa" readonly>
         </div>
         
         <div class="form-group">
@@ -40,11 +50,11 @@
             <input type="text" id="vocalEstudiante2" name="vocalEstudiante2" pattern="[A-Za-z ]+" required>
         </div>
         
-        <button type="button" onclick="validarFormulario()">Registrar Miembros del Comité</button>
+        <button type="button" id="asignarAleatoriamenteButton">Asignar Aleatoriamente</button>        <button type="submit" id="submitButton">Registrar Miembros del Comité</button>
         <p id="error-message" style="color: red;"></p>
     
+    </form>
     </div>
     <script src="{{ asset('js/comite.js') }}"></script>
-
 </body>
 @endsection

@@ -1,5 +1,19 @@
-button {
-    background-color: #1b1ee0; /* Green */
+.content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-crear {
+    background-color: #4CAF50; /* Verde */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -8,10 +22,28 @@ button {
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    cursor: pointer;
     transition-duration: 0.4s;
+    cursor: pointer;
 }
 
-button:hover {
-    background-color: #5c0b15;
+.btn-crear:hover {
+    background-color: #45a049;
+}
+
+.btn-modificar {
+    background-color: #008CBA; /* Azul */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.btn-modificar:hover {
+    background-color: #007B9A;
 }
