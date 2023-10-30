@@ -9,6 +9,7 @@
 </head>
     <section>
         <h1>Bienvenido al Sistema Electoral Universitario</h1>
+        
     </section>
 
     <section>

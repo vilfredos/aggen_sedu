@@ -17,15 +17,33 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
-<div class="header">
-    <div class="app-title">
-        <img class="logo-umss" src="{{ asset('img/logo-umss.png') }}" alt="">
-       <div class="nombres">
-            <h1>SEDU</h1>
     
-        <p>Sistema Electoral Universitario</p>
-    </div>
-    </div>
+<div class="header d-inline">
+
+        
+          <div class="float-right">
+            @guest
+                <a href="{{ route('login') }}">Login</a>
+            @else
+                
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button class="btn btn-danger" type="submit">Logout</button>
+                    </form>
+                
+            @endguest
+        </div> 
+    
+   
+    
+        <div class="app-title">
+            <img class="logo-umss" src="{{ asset('img/logo-umss.png') }}" alt="">
+            <div class="nombres">
+               <h1>SEDU</h1>
+               <p>Sistema Electoral Universitario</p>
+            </div>
+        </div>
+    
 </div>
     <div class="sidebar">
     <nav class="menu-container">
@@ -50,7 +68,15 @@
                 <span class="material-symbols-outlined">
                     person
                     </span>
-                <a href="{{ url('/user') }}">Usuarios</a>
+                <a href="{{ url('/usuarios') }}">Usuarios</a>
+            </li>
+        </ul>
+        <ul class="container"> 
+            <li class="item">
+                <span class="material-symbols-outlined">
+                    person
+                    </span>
+                <a href="{{ url('/roles') }}">Roles</a>
             </li>
         </ul>
         <ul class="container"> 

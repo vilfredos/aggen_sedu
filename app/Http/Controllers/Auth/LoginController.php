@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Logout;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
+use illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -18,7 +22,21 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
+    
 
+    public function logout(Request $request, Redirector $redirect)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return $redirect->to('/');
+    }
+    public function showLoginForm()
+    {
+        return view('auth.login'); // Vista del formulario de inicio de sesión
+    }
     use AuthenticatesUsers;
 
     /**
