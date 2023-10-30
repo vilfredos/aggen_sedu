@@ -2,14 +2,17 @@
 
 @section('content')
 <head>
+<link href="{{ asset('css/votosPorMesa.css') }}" rel="stylesheet">
 
 </head>
 <div>
+<h1>Registro votos</h1>
 <table>
         <tr>
             <th>Numeo Mesa</th>
             <th>Votos FR</th>
             <th>Votos UXSS</th>
+            <th>Votos PSS</th>
             <th>Votos blancos</th>
             <th>Votos nulos</th>
             <th>Votos totales</th>

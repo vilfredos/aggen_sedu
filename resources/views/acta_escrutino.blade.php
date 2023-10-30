@@ -2,9 +2,11 @@
 
 @section('content')
 <head>
-
+<link href="{{ asset('css/acta_escrutinio.css') }}" rel="stylesheet">
+<title>Acta de Escrutinio</title>
 </head>
 <body>
+<h1>Acta de Escrutinio</h1>
 <form action="/acta_escrutino" method="post">
 @csrf
     <label for="num_mesa">Número de Mesa:</label><br>
