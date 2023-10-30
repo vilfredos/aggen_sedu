@@ -25,42 +25,9 @@
 </div>
   
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Frentes</th>
-        <th>Total de votos</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Frente</td>
-        <td>
-          <input type="number" class="form-control w-10">
-        </td>
-      </tr>
-      <tr>
-        <td>Votos Nulos</td>
-        <td>
-          <input type="number" class="form-control">
-        </td>
-      </tr>
-      <tr>
-        <td>Votos Blancos</td>
-        <td>
-          <input type="number" class="form-control">
-        </td>
-      </tr>
-      <tr>
-        <td>Total</td>
-        <td>
-          <input type="number" class="form-control">
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  
   <label class="form-label" for="observaciones">Observaciones:</label>
-  <textarea  class="form-control" name="observaciones"></textarea>
+  <textarea  class="form-control mb-4" name="observaciones"></textarea>
 
   <button type="submit" class="btn btn-primary">Guardar Acta de Cierre</button>
 </form>
