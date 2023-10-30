@@ -53,6 +53,13 @@ Route::get('/frente', function () {
 Route::get('/comite', function () {
     return view('comite');
 });
+
+Route::get('/modificacionComite', function () {
+    return view('modificacionComite');
+});
+
+
+
 Route::get('/papeleta', function () {
     return view('papeleta');
 });
