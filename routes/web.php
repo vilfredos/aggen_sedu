@@ -59,9 +59,7 @@ Route::get('/inicio', function () {
 Route::get('/user', function () {
     return view('user');
 });
-Route::get('/resultados', function () {
-    return view('resultados');
-});
+
 
 /*para la segunda fase*/
 Route::get('/comvocatoria', function () {
@@ -92,6 +90,7 @@ Route::get('/frente', function () {
 /*para la base de datos */
 
 use App\Http\Controllers\JuradoController;
+
 Route::post('/jurado', [JuradoController::class, 'store'])->name('jurado.store');
 
 
@@ -100,3 +99,24 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login',[LoginController::class,'login']);
 Route::post('logout',[LoginController::class,'logout'])->name('logout');
+
+
+Route::get('/resultados', [JuradoController::class, 'store']);
+
+Route::get('/resultados', function () {
+    return view('resultados');
+});
+
+use App\Http\Controllers\VotosMesaController;
+
+Route::get('/acta_escrutino', function () {
+    return view('acta_escrutino');
+});
+
+Route::post('/acta_escrutino', 'App\Http\Controllers\VotosMesaController@store');
+
+Route::get('/votosPorMesa', function () {
+    return view('votosPorMesa');
+});
+Route::get('/votosPorMesa', 'App\Http\Controllers\VotosMesaController@mostrar');
+

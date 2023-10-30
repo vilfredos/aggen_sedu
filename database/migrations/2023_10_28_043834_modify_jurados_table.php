@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJuradosTable extends Migration
+class ModifyJuradosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateJuradosTable extends Migration
      */
     public function up()
     {
-        Schema::create('jurados', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('turno');
-            $table->string('cargo');
-            $table->integer('numeroMesa');
+        Schema::table('jurados', function (Blueprint $table) {
+            $table->dropColumn('observacion');
             $table->string('gremio');
-            $table->timestamps();
         });
     }
 
@@ -31,6 +26,9 @@ class CreateJuradosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jurados');
+        Schema::table('jurados', function (Blueprint $table) {
+            $table->string('observacion');
+            $table->dropColumn('gremio');
+        });
     }
 }

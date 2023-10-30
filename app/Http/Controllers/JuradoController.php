@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jurado;
+use App\Models\jurados;
 use App\Http\Requests\StoreJuradoRequest;
 use App\Http\Requests\UpdateJuradoRequest;
 
@@ -38,14 +38,14 @@ class JuradoController extends Controller
     {
         dd($request->all());
     
-        $jurado = new Jurado;
-        $jurado->nombre = $request->nombre;
-        $jurado->turno = $request->turno;
-        $jurado->cargo = $request->cargo;
-        $jurado->numeroMesa = $request->numeroMesa;
+        $jurados = new Jurados;
+        $jurados->nombre = $request->nombre;
+        $jurados->turno = $request->turno;
+        $jurados->cargo = $request->cargo;
+        $jurados->numeroMesa = $request->numeroMesa;
         // Asegúrate de que los nombres de los campos coincidan con los nombres en tu base de datos
         // ...
-        $jurado->save();
+        $jurados->save();
     
         return back()->with('success', 'Jurado registrado exitosamente');
     }
@@ -56,11 +56,11 @@ class JuradoController extends Controller
      * @param  \App\Models\Jurado  $jurado
      * @return \Illuminate\Http\Response
      */
-    public function show(Jurado $jurado)
+    public function show()
     {
-        //
+        $jurados = jurados::find(1);
+        return view('resultados')->with('jurados', $jurados);
     }
-
     /**
      * Show the form for editing the specified resource.
      *

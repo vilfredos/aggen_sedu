@@ -2,8 +2,10 @@
 
 @section('content')
     <!-- Aquí va el contenido específico de esta plantilla -->
+    <head>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link href="{{ asset('css/elecciones.css') }}" rel="stylesheet">
+    </head>
     <div class="content">
         
         <div class="btn-container">
