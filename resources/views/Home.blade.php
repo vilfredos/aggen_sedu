@@ -18,6 +18,9 @@
 </head>
 <body>
 <div class="header">
+
+</div>
+    <div class="sidebar">
     <div class="app-title">
         <img class="logo-umss" src="{{ asset('img/logo-umss.png') }}" alt="">
        <div class="nombres">
@@ -26,9 +29,6 @@
         <p>Sistema Electoral Universitario</p>
     </div>
     </div>
-</div>
-    <div class="sidebar">
-    <nav class="menu-container">
         <ul class="container">
             <li class="item">
                 <span class="material-symbols-outlined">

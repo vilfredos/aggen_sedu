@@ -1,4 +1,4 @@
-.sidebar {
+/*.sidebar {
     grid-row: 2 / 3;
     grid-column: 1 / 2;
     background: linear-gradient(to bottom, blue, red, black);
@@ -8,6 +8,13 @@
    
    height: 90vh;
 
+}
+*/
+.sidebar {
+    grid-row: 1 / -1;
+    grid-column: 1 / 2;
+    background: linear-gradient(to bottom, #031c43,#162045, #a10d18, #c7050b);
+    color: #ffffff;
 }
 
 .item{
@@ -36,7 +43,7 @@
 }
 
 .sidebar nav ul li a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
 }
 .menu-container{
