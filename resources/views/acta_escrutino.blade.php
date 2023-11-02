@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Acta de Escrutinio</h1>
-<form action="/acta_escrutino" method="post">
+<form class="acta" action="/acta_escrutino" method="post">
 @csrf
     <label for="num_mesa">Número de Mesa:</label><br>
     <input type="number" id="num_mesa" name="num_mesa" min="1" max="300" step="1"><br>

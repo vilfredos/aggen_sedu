@@ -7,6 +7,7 @@
     <link href="{{ asset('css/elecciones.css') }}" rel="stylesheet">
     </head>
     <div class="content">
+        
         <div class="btn-container">
             <button type="button" onclick="myFunction_c()" class="btn btn-crear">Crear una nueva Eleccion</button>
         </div>
