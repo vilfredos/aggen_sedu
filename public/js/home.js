@@ -1,3 +1,12 @@
+$(document).ready(function() {
+    $('#toggleSidebar').click(function() {
+        $('#sidebar').toggleClass('active');
+    });
+});
+
+
+
+
 function toggleNav() {
     var nav = document.querySelector('nav');
     var content = document.querySelector('#content');
@@ -8,4 +17,7 @@ function toggleNav() {
         nav.style.display = 'none';
         content.style.marginLeft = '0';
     }
+
 }
+
+
