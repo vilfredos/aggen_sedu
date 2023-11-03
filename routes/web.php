@@ -41,8 +41,6 @@ Route::get('/',[VotanteController::class,'pdf']);
 
 Route::get('poblacion/pdf' ,[VotanteController::class,'pdf'])->name('poblacion.pdf');
 
-
-
 Route::get('/cierreActa', function () {
     return view('cierreActa');
 });
@@ -59,7 +57,9 @@ Route::get('/inicio', function () {
 Route::get('/user', function () {
     return view('user');
 });
-
+Route::get('/inicioActa', function () {
+    return view('inicioActa');
+});
 
 /*para la segunda fase*/
 Route::get('/comvocatoria', function () {
