@@ -18,7 +18,6 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     alert('Por favor corrija los siguientes errores:\n\n' + errorMessages);
   } else {
     alert('Jurado registrado exitosamente');
-    limpiarCampos();
   }
 });
 

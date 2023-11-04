@@ -1,11 +1,21 @@
-.header {
+/*.header {
     grid-row: 1 / 2;
     grid-column: 1 / -1;
     display: grid;
     background: #021d3e;
     width: 100vw;
     
-    /*grid-template-columns: 25% 55% 20%;*/
+    
+}*/
+/*grid-template-columns: 25% 55% 20%;*/
+.header {
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+    background: #021d3e;
+    left: 0;
+    z-index: 1;
+   
+  
 }
 .app-title{
     display: flex;
