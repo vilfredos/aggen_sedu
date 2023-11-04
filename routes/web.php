@@ -120,3 +120,6 @@ Route::get('/votosPorMesa', function () {
 });
 Route::get('/votosPorMesa', 'App\Http\Controllers\VotosMesaController@mostrar');
 
+Route::get('/actaFinal', function () {
+    return view('actaFinal');
+});
