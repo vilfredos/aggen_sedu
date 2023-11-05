@@ -47,7 +47,8 @@
 
         <label class="form-label" for="observaciones">Observaciones:</label>
         <textarea class="form-control mb-4" name="observaciones"></textarea>
-        <button type="submit" class="btn btn-primary" style="margin-top: -100px;">Guardar Acta de Cierre</button>
+        <button type="submit" class="btn btn-primary guardar-acta-btn">Guardar Acta de Cierre</button>
+
     </form>
 </body>
 <script>
