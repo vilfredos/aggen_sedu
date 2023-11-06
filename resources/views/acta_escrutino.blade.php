@@ -23,7 +23,8 @@
     <input type="number" id="votos_nulos" name="votos_nulos" min="0" max="300" step="1" oninput="calculateTotal()"><br>
     <label for="votos_totales">Votos Totales:</label><br>
     <input type="number" id="votos_totales" name="votos_totales" min="0" max="3000" step="1" readonly><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Acta de Cierre">
+
 </form>
 </body>
 <script>
@@ -37,6 +38,13 @@ function calculateTotal() {
     var total = votos_FR + votos_UXSS + votos_PSS + votos_blancos + votos_nulos;
 
     document.getElementById('votos_totales').value = total;
+
+    function terimar_proceso() {
+    llevame_a_cierre_acta();
+  }
+  function llevame_a_cierre_acta() {
+    window.location.href = '/actaFinal';
+  }
 }
 </script>
 

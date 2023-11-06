@@ -52,8 +52,10 @@ class VotosMesaController extends Controller
 
         $voto->save();
 
-        return response()->json(['success' => 'Datos guardados exitosamente!']);    }
-
+        /*return response()->json(['success' => 'Datos guardados exitosamente!']);    }
+        */
+        return redirect('/cierreActa');
+    }
     /**
      * Display the specified resource.
      *
