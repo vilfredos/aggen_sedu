@@ -46,9 +46,39 @@ document.addEventListener("DOMContentLoaded", function() {
             llevame_a_generar_pepeleta();
         }
     }
-});
+
+    //parte nueva
+ 
+
+    document.getElementById("modificarButton").addEventListener("click", function() {
+        mostrarMotivoModificacion();
+    });
+
+
+    document.getElementById("motivo").addEventListener("change", function() {
+        var motivoSeleccionado = document.getElementById("motivo").value;
+        if (motivoSeleccionado !== "") {
+            llevame_a_modificar_comite();
+        }
+    });
+
+    function mostrarMotivoModificacion() {
+        console.log("Mostrando motivo de modificación");
+        document.getElementById("motivoModificacion").style.display = "block";
+    }
+
+
+function llevame_a_modificar_comite() {
+    window.location.href = '/modificacionComite';
+  }
+
+
+//hasta aca
+
 function llevame_a_generar_pepeleta() {
     window.location.href = '/papeleta';
   }
+
+});
 
 

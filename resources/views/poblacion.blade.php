@@ -12,9 +12,9 @@
    
     <div class="px-4 mt-3 mb-3 text-center">
        
-        <h6 class="display-6 fw-bold title-poblacion">Poblacion </h6>
+        <h6 class="display-6 fw-bold title-poblacion">Población </h6>
         <div class="col-lg-6 mx-auto">
-          <p class="lead mb-4 fw-bold">Importar Poblacion</p>
+          <p class="lead mb-4 fw-bold">Importar población</p>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <button type="button" class="btn btn-success btn-lg px-4 gap-3" data-bs-toggle="modal" data-bs-target="#importModal">Import</button>
            
