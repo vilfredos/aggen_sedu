@@ -14,7 +14,7 @@ class ComiteController extends Controller
      */
     public function index()
     {
-        //
+        return view('comite');
     }
 
     /**
@@ -24,7 +24,7 @@ class ComiteController extends Controller
      */
     public function create()
     {
-        //
+        return view('comite'); 
     }
 
     /**
@@ -57,7 +57,7 @@ class ComiteController extends Controller
      */
     public function edit(Comite $comite)
     {
-        //
+        return view('modificacionComite');
     }
 
     /**

@@ -11,6 +11,9 @@ use App\Models\Eleccion;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\ComiteController;
+
+
 
 
 /*
@@ -127,3 +130,21 @@ Route::get('/votosPorMesa', function () {
 });
 Route::get('/votosPorMesa', 'App\Http\Controllers\VotosMesaController@mostrar');
 
+//desde aca modificado
+
+use App\Http\Controllers\ConvocatoriaController;
+
+Route::post('/convocatoria', [ConvocatoriaController::class, 'store'])->name('convocatoria.store');
+
+/*Route::get('/resultados', [JuradoController::class, 'store']);
+
+Route::get('/resultados', function () {
+    return view('resultados');
+});*/
+
+//Comite
+
+Route::get('/miembroscomite', [ComiteController::class, 'index'])->name('comite.index');
+
+Route::get('/comite', [ComiteController::class, 'create'])->name('comite.create');
+Route::get('/modificacionComite', [ComiteController::class, 'edit'])->name('comite.edit');

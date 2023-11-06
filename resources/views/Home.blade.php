@@ -94,6 +94,18 @@
                 </li>
             </ul>
 
+            <ul class="container"> 
+                <li class="item">
+                    
+                    <a href="{{ url('/comite') }}">
+                        <i class="fa-solid fa-users" style="color: #ffffff;"></i><span class="nombres">Miembros del comite</span>
+                    </a>
+                </li>
+            </ul>
+
+
+
+
         </nav>
     </div>
     <div class="content">
