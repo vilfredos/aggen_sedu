@@ -137,12 +137,6 @@ use App\Http\Controllers\ConvocatoriaController;
 
 Route::post('/convocatoria', [ConvocatoriaController::class, 'store'])->name('convocatoria.store');
 
-/*Route::get('/resultados', [JuradoController::class, 'store']);
-
-Route::get('/resultados', function () {
-    return view('resultados');
-});*/
-
 //Comite
 
 Route::get('/miembroscomite', [ComiteController::class, 'index'])->name('comite.index');
