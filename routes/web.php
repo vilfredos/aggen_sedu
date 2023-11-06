@@ -130,6 +130,7 @@ Route::get('/votosPorMesa', function () {
 });
 Route::get('/votosPorMesa', 'App\Http\Controllers\VotosMesaController@mostrar');
 
+Route::get('/ver_lista_jurados', 'App\Http\Controllers\JuradoController@mostrar');
 
 //desde aca modificado
 

@@ -94,4 +94,9 @@ class JuradoController extends Controller
     {
         //
     }
+    public function mostrar()
+    {
+        $datos = Jurados::all();
+        return view('ver_lista_jurados')->with('datos', $datos);
+    }
 }
