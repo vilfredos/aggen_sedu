@@ -27,7 +27,7 @@
   </tr>
 </table>
 <div class="contenedor">
-<button class="save-button" onclick="terimar_proceso()">terminar registro de eleccion</button>
+<button class="save-button" onclick="terimar_proceso()">Terminar Registro de Eleccion</button>
 </div>
 <script src="{{ asset('js/papeleta.js') }}"></script>
 </body>

@@ -95,6 +95,15 @@
                         <i class="fa-solid fa-square-poll-horizontal" style="color: #ffffff;"></i><span class="nombres">Resultados posteriores</span>
                     </a>
                 </li>
+            </ul>
+
+
+            <ul class="container"> 
+                <li class="item">
+                    
+                    <a href="{{ url('/comite') }}">
+                        <i class="fa-solid fa-users" style="color: #ffffff;"></i><span class="nombres">Miembros del comite</span>
+                    </a>
             
     <!-- Menú Actas con un identificador "actas-menu" -->
     <li class="item" id="actas-menu">
@@ -118,6 +127,32 @@
     </li>
 </ul>
                 </li>
+            </ul>
+
+            <ul class="container">
+                <!-- Menú Actas con un identificador "actas-menu" -->
+                <li class="item" id="actas-menu">
+                    <a href="#">
+                        <i class="fa-solid fa-file" style="color: #ffffff;"></i><span class="nombres">Actas</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <!-- Submenú Inicio de Acta -->
+                        <li class="sub-item">
+                            <a href="{{ url('/inicioActa') }}">
+                                Inicio de Acta
+                            </a>
+                        </li>
+                        <!-- Submenú Escrutinio y Cierre de Acta -->
+                        <li class="sub-item">
+                            <a href="{{ url('/actaFinal') }}">
+                                Escrutinio y Cierre de Acta
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+                </li>
+
         </nav>
     </div>
     <div class="content">

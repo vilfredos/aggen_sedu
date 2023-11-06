@@ -28,7 +28,7 @@
                 <input type="text" id="candVicerector" name="candVicerector" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" required>
             </div>
             <div class="form-group">
-                <label for="sigla">SIGLA:</label>
+                <label for="sigla">Sigla:</label>
                 <input type="text" id="sigla" name="sigla" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" required>
             </div>
             <div class="form-group">

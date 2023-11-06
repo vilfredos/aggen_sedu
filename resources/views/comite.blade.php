@@ -52,6 +52,18 @@
         
         <button type="button" id="asignarAleatoriamenteButton">Asignar Aleatoriamente</button>        <button type="submit" id="submitButton">Registrar Miembros del Comité</button>
         <p id="error-message" style="color: red;"></p>
+
+        <button type="button" id="modificarButton">Modificar</button>
+
+        <div id="motivoModificacion" style="display: none;">
+            <label for="motivo">Motivo por el cual desea modificar a los miembros del comité:</label>
+            <select id="motivo" name="motivo">
+                <option value="1">Por despido</option>
+                <option value="2">Por Salud</option>
+                <option value="3">Por otra causa</option>
+             </select>
+    
+
     
     </form>
     </div>
