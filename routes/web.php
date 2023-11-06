@@ -130,6 +130,7 @@ Route::get('/votosPorMesa', function () {
 });
 Route::get('/votosPorMesa', 'App\Http\Controllers\VotosMesaController@mostrar');
 
+
 //desde aca modificado
 
 use App\Http\Controllers\ConvocatoriaController;
@@ -148,3 +149,7 @@ Route::get('/miembroscomite', [ComiteController::class, 'index'])->name('comite.
 
 Route::get('/comite', [ComiteController::class, 'create'])->name('comite.create');
 Route::get('/modificacionComite', [ComiteController::class, 'edit'])->name('comite.edit');
+
+Route::get('/actaFinal', function () {
+    return view('actaFinal');
+});

@@ -94,6 +94,7 @@
                 </li>
             </ul>
 
+
             <ul class="container"> 
                 <li class="item">
                     
@@ -103,8 +104,29 @@
                 </li>
             </ul>
 
-
-
+            <ul class="container">
+                <!-- Menú Actas con un identificador "actas-menu" -->
+                <li class="item" id="actas-menu">
+                    <a href="#">
+                        <i class="fa-solid fa-file" style="color: #ffffff;"></i><span class="nombres">Actas</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <!-- Submenú Inicio de Acta -->
+                        <li class="sub-item">
+                            <a href="{{ url('/inicioActa') }}">
+                                Inicio de Acta
+                            </a>
+                        </li>
+                        <!-- Submenú Escrutinio y Cierre de Acta -->
+                        <li class="sub-item">
+                            <a href="{{ url('/actaFinal') }}">
+                                Escrutinio y Cierre de Acta
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+                </li>
 
         </nav>
     </div>
@@ -124,6 +146,25 @@
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const actasMenu = document.getElementById("actas-menu");
+    const subMenu = actasMenu.querySelector(".sub-menu");
+
+    // Ocultar el submenú inicialmente
+    subMenu.style.display = "none";
+
+    // Agregar un evento de clic al elemento "Actas" para mostrar/ocultar el submenú
+    actasMenu.addEventListener("click", function() {
+        if (subMenu.style.display === "none") {
+            subMenu.style.display = "block";
+        } else {
+            subMenu.style.display = "none";
+        }
+    });
+});
+</script>
   
 </body>
 
