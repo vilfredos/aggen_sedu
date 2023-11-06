@@ -1,23 +1,54 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
+
+
+h1 {
+    color: #ff6347;
+    text-align: center;
+    animation: color-change 2s infinite;
 }
 
 .acta {
-    max-width: 90%;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-sizing: border-box;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #ff4747;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
 }
-h1 {
-    color: #ff6347; /* Tomato color */
-    font-size: 2em; /* 2 times the current font size */
-    text-align: center; /* Center align */
+
+.acta label {
+    font-weight: bold;
+    color: #080808;
 }
-.guardar-acta-btn {
-    margin-bottom: 60px; /* Ajusta el valor según sea necesario */
+
+.acta input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.acta input[type="submit"] {
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+  margin: 0; 
+}
+
+.acta input[type="submit"]:hover {
+    background-color: #ff4500;
+}
+
+@keyframes color-change {
+    0% { color: #ec9d8f; }
+    50% { color: #ec7f57; }
+    100% { color: #ff2600; }
 }

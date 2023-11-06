@@ -21,8 +21,13 @@
    
     
 <div class="header d-flex">
-    
-        <div  style="display:flex; align-items:center;justify-content:center; margin-left:65%;" >
+    <div class="custom-menu" style="display:flex;margin-left: 290px; align-items:center;justify-content:center;">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+  <i class="fa fa-bars"></i>
+  <span class="sr-only">Toggle Menu</span>
+</button>
+</div>
+        <div  style="display:flex; align-items:center;justify-content:center; margin-left:70%;" >
             
             @guest
                 <a  class="btn btn-danger "   href="{{ route('login') }}">Login</a>
@@ -41,7 +46,7 @@
 </div>
 
 
-    <div class="sidebar">
+    <div  id="sidebar" class="sidebar">
                  <div class="app-title">
                         <img class="logo-umss" src="{{ asset('img/logo-umss.png') }}" alt="">
                     <div class="nombres">
@@ -57,25 +62,24 @@
                     </a>
                     
                  </li>
-            </ul>
+            
            
-            <ul class="container"> 
+             
                  <li class="item">
                     
                      <a href="{{ url('/eleccion') }}">
                         <i class="fa-solid fa-user-check" style="color: #ffffff;"></i><span class="nombres">Eleccion</span>
                     </a>
                 </li>
-            </ul>
-            <ul class="container"> 
+            
+        
                 <li class="item">
                     
                     <a href="{{ url('/usuarios') }}">
                         <i class="fa-solid fa-user" style="color: #ffffff;"></i><span class="nombres">Usuarios</span>
                     </a>
                 </li>
-            </ul>
-            <ul class="container"> 
+        
                 <li class="item">
                    
                     <a href="{{ url('/roles') }}">
@@ -84,8 +88,7 @@
                         
                     
                 </li>
-            </ul>
-            <ul class="container"> 
+           
                 <li class="item">
                     
                     <a href="{{ url('/resultados') }}">
@@ -101,6 +104,28 @@
                     <a href="{{ url('/comite') }}">
                         <i class="fa-solid fa-users" style="color: #ffffff;"></i><span class="nombres">Miembros del comite</span>
                     </a>
+            
+    <!-- Menú Actas con un identificador "actas-menu" -->
+    <li class="item" id="actas-menu">
+        <a href="#">
+            <i class="fa-solid fa-file" style="color: #ffffff;"></i><span class="nombres">Actas</span>
+        </a>
+        <ul class="sub-menu">
+            <!-- Submenú Inicio de Acta -->
+            <li class="sub-item">
+                <a href="{{ url('/inicioActa') }}">
+                    Inicio de Acta
+                </a>
+            </li>
+            <!-- Submenú Escrutinio y Cierre de Acta -->
+            <li class="sub-item">
+                <a href="{{ url('/actaFinal') }}">
+                    Escrutinio y Cierre de Acta
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
                 </li>
             </ul>
 
@@ -165,7 +190,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
-  
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 
 </html>

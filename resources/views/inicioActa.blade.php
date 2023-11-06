@@ -10,23 +10,22 @@
 
 <body>
 <h4>Iniciar Acta</h4>
-<form class="row g-3 p-4">
+<form class="row g-3 p-4" action="{{ url('/actaFinal') }}" method="get">
     <div class="col-md-6">
-      <label for="fecha" class="form-label">Fecha</label>
-      <input type="datetime-local" class="form-control" id="fecha" name="fecha">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input type="datetime-local" class="form-control" id="fecha" name="fecha">
     </div>
     <div class="col-md-6">
-      <label for="facultad" class="form-label">Facultad</label>
-      <input type="text" class="form-control" id="facultad" name="facultad">
+        <label for="facultad" class="form-label">Facultad</label>
+        <input type="text" class="form-control" id="facultad" name="facultad">
     </div>
     <div class="col-md-6">
-      <label for="mesa" class="form-label">N° Mesa</label>
-      <input type="number" class="form-control" id="mesa" name="mesa" min="1">
+        <label for="mesa" class="form-label">N° Mesa</label>
+        <input type="number" class="form-control" id="mesa" name="mesa" min="1">
     </div>
     <div class="col-12">
-      <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
     </div>
-    
 </form>
 <!-- Script -->
 <script src="{{ asset('js/poblacion.js') }}"></script>
