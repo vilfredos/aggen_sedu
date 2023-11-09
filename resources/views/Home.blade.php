@@ -139,6 +139,7 @@
     </div>
     <div class="content">
         @yield('content')
+        @livewireScripts
     </div>
     
     <div class="footer">
