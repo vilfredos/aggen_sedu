@@ -108,7 +108,7 @@ logo-umss{
         display: none; /* Oculta el texto en los enlaces */
       }
       #sidebar.active ul li a {
-        margin-left:140px;/* Oculta el texto en los enlaces */
+        margin-left:160px;/* Oculta el texto en los enlaces */
       }
      
       #sidebar.active .custom-menu {
@@ -131,7 +131,8 @@ logo-umss{
         #sidebar ul li > ul li {
           font-size: 14px; }
       #sidebar ul li a {
-        padding: 15px 30px;
+        font-size: 15px;
+        padding: 4px 10px;
         display: block;
         color: rgba(255, 255, 255, 0.6);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1); }

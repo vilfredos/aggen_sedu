@@ -17,9 +17,12 @@ class VotanteImport implements ToModel
     public function model(array $row)
     {
         return new Votante([
-            'name' => $row[0],
-            'facultad' => $row[1],
-            'tipo' => $row[2],
+            'sis' => $row[0],
+            'name' => $row[1],
+            'facultad' => $row[2],
+            'carrera' => $row[3],
+            'ci' => $row[4],
+            'tipo' => $row[5],
         ]);
     }
 }

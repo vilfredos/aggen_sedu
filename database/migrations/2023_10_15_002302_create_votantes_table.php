@@ -14,9 +14,11 @@ class CreateVotantesTable extends Migration
     public function up()
     {
         Schema::create('votantes', function (Blueprint $table) {
-            $table->id();
+            $table->integer('sis')->nullable();
             $table->string('name')->nullable();
             $table->string('facultad')->nullable();
+            $table->string('carrera')->nullable();
+            $table->integer('ci')->nullable();
             $table->string('tipo')->nullable();
             $table->timestamps();
         });
