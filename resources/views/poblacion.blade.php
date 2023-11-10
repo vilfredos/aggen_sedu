@@ -22,6 +22,14 @@
           </div>
         </div>
     </div>
+    <div class="d-md-flex justify-content-md-end">
+        <form action="{{ route('poblacion.index')}}" method="GET">
+            <div class="btn-group">
+                <input type="text" name="busqueda" class="form-control">
+                <input type="submit" value="Enviar" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
     <!-- DATOS TABLA -->
    <div class="col-lg-6 mx-auto">
     {{---mesagge success--}}
@@ -39,7 +47,9 @@
                             
                             <th scope="col">Id</th>
                             <th scope="col">Nombre</th>
+                            <th scope="col">C.I.</th>
                             <th scope="col">Facultad</th>
+                            <th scope="col">Carrera</th>
                             <th scope="col">Tipo</th>
                            
                         </tr>
@@ -49,9 +59,11 @@
                         @foreach ($barangs as $item)
                                 <tr>
                                   
-                                     <td>{{ $item->id}}</td>
+                                     <td>{{ $item->sis}}</td>
                                     <td>{{ $item->name}}</td>
+                                    <td>{{ $item->ci}}</td>
                                     <td>{{ $item->facultad}}</td>
+                                    <td>{{ $item->carrera}}</td>
                                     <td>{{ $item->tipo}}</td>
                                    
                                 </tr>

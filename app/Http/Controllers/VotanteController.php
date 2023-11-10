@@ -12,11 +12,16 @@ use Illuminate\Http\Request;
 
 class VotanteController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('poblacion', [
-            'barangs' =>Votante::all()
-        ]);
+        $busqueda = $request->busqueda;
+        $votantes = Votante::where('name','LIKE','%'.$busqueda.'%')
+        ->orWhere('sis','LIKE','%'.$busqueda.'%')
+        ->latest('sis')
+        
+        ->get();
+        
+        return view('poblacion', ['barangs' => $votantes]);
     }
     public function pdf()
     {
