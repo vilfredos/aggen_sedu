@@ -37,7 +37,7 @@ Route::group(['middleware' =>['auth']], function(){
 
 Route::resource('cierreActa', 'ActaController');
 
-Route::get('/poblacion',[VotanteController::class,'index'])->name('poblacion.index');
+Route::get('poblacion',[VotanteController::class,'index'])->name('poblacion.index');
 Route::post('votante',[VotanteController::class,'import'])->name('votante.import');
 
 Route::get('/',[VotanteController::class,'pdf']);

@@ -96,6 +96,9 @@ logo-umss{
     transition: all 0.3s;
     
   }
+  #sidebarCollapse.active{
+    margin-left:-120px ;
+  }
     #sidebar .h6 {
       color: #fff; }
     #sidebar.active {

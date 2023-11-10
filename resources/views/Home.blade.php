@@ -21,7 +21,7 @@
    
     
 <div class="header d-flex">
-    <div class="custom-menu" style="display:flex;margin-left: 290px; align-items:center;justify-content:center;">
+    <div id="buttonContainer" class="custom-menu" style="display:flex;margin-left: 290px; align-items:center;justify-content:center;">
         <button type="button" id="sidebarCollapse" class="btn btn-primary">
   <i class="fa fa-bars"></i>
   <span class="sr-only">Toggle Menu</span>
@@ -139,7 +139,7 @@
     </div>
     <div class="content">
         @yield('content')
-        @livewireScripts
+       
     </div>
     
     <div class="footer">
@@ -177,6 +177,8 @@ document.addEventListener("DOMContentLoaded", function() {
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
+
+
 </body>
 
 </html>

@@ -19,9 +19,10 @@ class VotanteController extends Controller
         ->orWhere('sis','LIKE','%'.$busqueda.'%')
         ->latest('sis')
         
-        ->get();
+        ->paginate(5);
+       
         
-        return view('poblacion', ['barangs' => $votantes]);
+        return view('poblacion.index', ['barangs' => $votantes]);
     }
     public function pdf()
     {
