@@ -47,9 +47,9 @@
                     <thead>
                         <tr>
                             
-                            <th scope="col">Id</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">C.I.</th>
+                            <th scope="col">Codigo SIS</th>
+                            <th scope="col">Nombre Completo</th>
+                            <th scope="col">Carnet</th>
                             <th scope="col">Facultad</th>
                             <th scope="col">Carrera</th>
                             <th scope="col">Tipo</th>

@@ -39,6 +39,7 @@ class VotanteController extends Controller
 
     public function import(Request $request)
     {
+        set_time_limit(120);
         $file = $request->file('file')->store('public/import');
 
         $import = new VotanteImport;
