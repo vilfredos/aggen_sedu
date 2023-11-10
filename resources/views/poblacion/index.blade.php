@@ -33,7 +33,7 @@
         </form>
     </div>
     <!-- DATOS TABLA -->
-   <div class="col-lg-6 mx-auto">
+   <div class="">
     {{---mesagge success--}}
         @if(session()->has('success'))
             <div class="alert alert-success" role="alert">
