@@ -25,8 +25,10 @@
     <div class="d-md-flex justify-content-md-end">
         <form action="{{ route('poblacion.index')}}" method="GET">
             <div class="btn-group">
-                <input type="text" name="busqueda" class="form-control">
-                <input type="submit" value="Enviar" class="btn btn-primary">
+                <input type="text" name="busqueda" class="form-control" placeholder="Buscar">
+               
+                <button class="btn btn-primary"> <i class="fa-solid fa-magnifying-glass" style="color: #e2e5e9;"></i></button>
+               
             </div>
         </form>
     </div>
@@ -39,9 +41,9 @@
             </div>
         @endif
 
-        <div class="bg-white shadow p-4">
-            <div class="table-responsive">
-                <table class="table">
+     
+           
+                <table  class="table table-striped">
                     <thead>
                         <tr>
                             
@@ -70,8 +72,10 @@
                             @endforeach
                     </tbody>
                 </table>
-            </div>
-        </div>
+           <div class="d-flex justify-content-end">
+            {{ $barangs->links() }}
+           </div>
+        
    </div>
 
    <!-- Modal Import -->
@@ -100,6 +104,5 @@
 
     <!-- Script -->
     <script src="{{ asset('js/poblacion.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 @endsection

@@ -29,9 +29,11 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>Codigo SIS</th>
                         <th>Nombre Completo</th>
                         <th>Facultad</th>
+                        <th>Carrera</th>
+                        <th>Carnet</th>
                         <th>Tipo</th>
                         
                        
@@ -40,9 +42,11 @@
                 <tbody>
                     @foreach ($votantes as $item)
                             <tr>
-                                 <td>{{ $item->id}}</td>
+                                 <td>{{ $item->sis}}</td>
                                 <td>{{ $item->name}}</td>
                                 <td>{{ $item->facultad}}</td>
+                                <td>{{ $item->carrera}}</td>
+                                <td>{{ $item->ci}}</td>
                                 <td>{{ $item->tipo}}</td>
                                 
                                

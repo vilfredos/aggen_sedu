@@ -34,3 +34,4 @@ class CreateVotantesTable extends Migration
         Schema::dropIfExists('votantes');
     }
 }
+

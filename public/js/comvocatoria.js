@@ -98,6 +98,6 @@ function terimar_proceso() {
     llevame_a_poblacion_votante();
   }
   function llevame_a_poblacion_votante() {
-    window.location.href = '/poblacion';
+    window.location.href = 'poblacion';
   }
 
