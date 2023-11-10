@@ -117,6 +117,12 @@ Route::get('/resultados', function () {
     return view('resultados');
 });
 
+Route::get('/jurado_aleatorio', function () {
+    return view('/jurado_aleatorio');
+});
+
+Route::get('/jurado_aleatorio', 'App\Http\Controllers\JuradoController@seleccionarJurados');
+
 use App\Http\Controllers\VotosMesaController;
 
 Route::get('/acta_escrutino', function () {
@@ -145,6 +151,14 @@ Route::get('/miembroscomite', [ComiteController::class, 'index'])->name('comite.
 Route::get('/comite', [ComiteController::class, 'create'])->name('comite.create');
 Route::get('/modificacionComite', [ComiteController::class, 'edit'])->name('comite.edit');
 
+
+
 Route::get('/actaFinal', function () {
     return view('actaFinal');
-});
+
+    
+}
+
+
+
+);

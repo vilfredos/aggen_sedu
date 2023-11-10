@@ -22,7 +22,6 @@
                 <td>{{ $datos->cargo }}</td>
                 <td>{{ $datos->numeroMesa }}</td>
                 <td>{{ $datos->gremio }}</td>
-
             </tr>
         @endforeach
     </table>

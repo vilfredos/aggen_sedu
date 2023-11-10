@@ -105,4 +105,9 @@ class VotosMesaController extends Controller
         $datos = votos_mesa::all();
         return view('votosPorMesa')->with('datos', $datos);
     }
+    /*
+    los metodos de franz
+    
+    */
+    
 }
