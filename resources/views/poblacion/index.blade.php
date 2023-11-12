@@ -33,7 +33,7 @@
         </form>
     </div>
     <!-- DATOS TABLA -->
-   <div class="col-lg-6 mx-auto">
+   <div class="">
     {{---mesagge success--}}
         @if(session()->has('success'))
             <div class="alert alert-success" role="alert">
@@ -43,11 +43,11 @@
 
      
            
-                <table  class="table table-striped">
+                <table  class="table table-striped ">
                     <thead>
                         <tr>
                             
-                            <th scope="col">Id</th>
+                            <th scope="col">Sis</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">C.I.</th>
                             <th scope="col">Facultad</th>
