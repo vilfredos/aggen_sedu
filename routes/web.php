@@ -26,23 +26,23 @@ use App\Http\Controllers\ComiteController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 
-Route::group(['middleware' =>['auth']], function(){
+Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('elecciones', EleccionController::class);
-
 });
 
 Route::resource('cierreActa', 'ActaController');
 
-Route::get('poblacion',[VotanteController::class,'index'])->name('poblacion.index');
-Route::post('votante',[VotanteController::class,'import'])->name('votante.import');
+Route::get('poblacion', [VotanteController::class, 'index'])->name('poblacion.index');
+Route::post('votante', [VotanteController::class, 'import'])->name('votante.import');
 
-Route::get('/',[VotanteController::class,'pdf']);
+Route::get('/', [VotanteController::class, 'pdf']);
 
-Route::get('poblacion/pdf' ,[VotanteController::class,'pdf'])->name('poblacion.pdf');
+Route::get('poblacion/pdf', [VotanteController::class, 'pdf'])->name('poblacion.pdf');
 
 Route::get('/cierreActa', function () {
     return view('cierreActa');
@@ -107,8 +107,8 @@ Route::post('/jurado', [JuradoController::class, 'store'])->name('jurado.store')
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('login',[LoginController::class,'login']);
-Route::post('logout',[LoginController::class,'logout'])->name('logout');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::get('/resultados', [JuradoController::class, 'store']);
@@ -153,12 +153,15 @@ Route::get('/modificacionComite', [ComiteController::class, 'edit'])->name('comi
 
 
 
-Route::get('/actaFinal', function () {
-    return view('actaFinal');
-
-    
-}
-
-
-
+Route::get(
+    '/actaFinal',
+    function () {
+        return view('actaFinal');
+    }
+);
+Route::get(
+    '/jurado-aleatorio',
+    function () {
+        return view('jurado-aleatorio');
+    }
 );

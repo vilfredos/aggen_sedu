@@ -106,7 +106,7 @@ class JuradoController extends Controller
 
     public function seleccionarJurados()
     {
-        $facultad = 'CIENCIAS ECONOMICAS'; // Reemplace esto con la facultad deseada
+        $facultad = 'medicina'; // Reemplace esto con la facultad deseada
 
         // Seleccionar 1 presidente
         $presidente = Votante::where('facultad', $facultad)
@@ -128,7 +128,7 @@ class JuradoController extends Controller
         // Seleccionar 2 docentes suplentes
         $docentesSuplentes = Votante::where('facultad', $facultad)
             ->where('tipo', 'DOCENTE')
-            ->whereNotIn('id', $docentesTitulares->pluck('id'))
+            ->whereNotIn('sis', $docentesTitulares->pluck('sis'))
             ->inRandomOrder()
             ->take(2)
             ->get();
@@ -148,7 +148,7 @@ class JuradoController extends Controller
         // Seleccionar 2 estudiantes suplentes
         $estudiantesSuplentes = Votante::where('facultad', $facultad)
             ->where('tipo', 'ESTUDIANTE')
-            ->whereNotIn('id', $estudiantesTitulares->pluck('id'))
+            ->whereNotIn('sis', $estudiantesTitulares->pluck('sis'))
             ->inRandomOrder()
             ->take(2)
             ->get();
