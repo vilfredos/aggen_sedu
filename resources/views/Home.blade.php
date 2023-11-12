@@ -27,22 +27,51 @@
   <span class="sr-only">Toggle Menu</span>
 </button>
 </div>
-        <div  style="display:flex; align-items:center;justify-content:center; margin-left:70%;" >
-            
-            @guest
-                <a  class="btn btn-danger "   href="{{ route('login') }}">Login</a>
-            @else
-                
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button class="btn btn-danger" type="submit">Logout</button>
-                    </form>
-                
-            @endguest
+<ul class="navbar-nav navbar-right" style="color: white;margin-left:68%;">
+
+    @if(\Illuminate\Support\Facades\Auth::user())
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown"
+               class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                <!--<img alt="image" src="{{ asset('img/logo.png') }}"
+                     class="rounded-circle mr-1 thumbnail-rounded user-thumbnail ">-->
+                <div class="d-sm-none d-lg-inline-block">
+                    {{\Illuminate\Support\Facades\Auth::user()->name}}
+                </div>
+              
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-title">
+                    Bienvenido</div>
+                <a class="dropdown-item has-icon edit-profile" href="#" data-id="{{ \Auth::id() }}">
+                    <i class="fa fa-user"></i>Editar Perfil</a>
+                <a class="dropdown-item has-icon" data-toggle="modal" data-target="#changePasswordModal" href="#" data-id="{{ \Auth::id() }}"><i
+                            class="fa fa-lock"> </i>Cambiar Password</a>
+                <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"
+                   onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+                <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
+                    {{ csrf_field() }}
+                </form>
+            </div>
+        </li>
+    @else
+        <li class="dropdown"><a href="#" data-toggle="dropdown"
+                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                {{--                <img alt="image" src="#" class="rounded-circle mr-1">--}}
+               
+            </a>
            
-        </div> 
-        
-    
+                <a href="{{ route('login') }}" class="btn btn-danger">
+                    Login
+                </a>
+               
+        </li>
+    @endif
+</ul>
+
 </div>
 
 
