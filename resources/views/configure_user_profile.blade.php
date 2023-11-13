@@ -24,7 +24,8 @@
                           </span>
                       @enderror
                   </div>
-              </div>    
+              </div>   
+              
             <div class="row mb-3">
               <div class="form-group mt-3">
                   <label for="password_actual">Clave Actual</label>
