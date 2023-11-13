@@ -27,51 +27,41 @@
   <span class="sr-only">Toggle Menu</span>
 </button>
 </div>
-<ul class="navbar-nav navbar-right" style="color: white;margin-left:68%;">
+<ul class="navbar-nav navbar-right" style="color: white;margin-left:70%;">
 
-    @if(\Illuminate\Support\Facades\Auth::user())
-        <li class="dropdown">
-            <a href="#" data-toggle="dropdown"
-               class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <!--<img alt="image" src="{{ asset('img/logo.png') }}"
-                     class="rounded-circle mr-1 thumbnail-rounded user-thumbnail ">-->
-                <div class="d-sm-none d-lg-inline-block">
-                    {{\Illuminate\Support\Facades\Auth::user()->name}}
-                </div>
-              
-            </a>
+    <ul class="navbar-nav ms-auto">
+        @guest
+            @if (Route::has('login'))
+                <li class="nav-item">
+                  
+                    <a  class="btn btn-danger "   href="{{ route('login') }}">Login</a>
+                </li>
+            @endif
 
-            <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-title">
-                    Bienvenido</div>
-                <a class="dropdown-item has-icon edit-profile" href="#" data-id="{{ \Auth::id() }}">
-                    <i class="fa fa-user"></i>Editar Perfil</a>
-                <a class="dropdown-item has-icon" data-toggle="modal" data-target="#changePasswordModal" href="#" data-id="{{ \Auth::id() }}"><i
-                            class="fa fa-lock"> </i>Cambiar Password</a>
-                <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"
-                   onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </a>
-                <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
-                    {{ csrf_field() }}
-                </form>
-            </div>
-        </li>
-    @else
-        <li class="dropdown"><a href="#" data-toggle="dropdown"
-                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                {{--                <img alt="image" src="#" class="rounded-circle mr-1">--}}
-               
-            </a>
            
-                <a href="{{ route('login') }}" class="btn btn-danger">
-                    Login
+        @else
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="padding: 20px">
+                    {{ Auth::user()->name }}
                 </a>
-               
-        </li>
-    @endif
-</ul>
 
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Salir') }}
+                    </a>
+                    <a class="dropdown-item" href="{{ route('NewPassword') }}">
+                        {{ __('Perfil') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+        @endguest
+    </ul>
 </div>
 
 
