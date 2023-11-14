@@ -10,7 +10,7 @@ use App\Http\Controllers\EleccionController;
 use App\Models\Eleccion;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\UserSettingsController;
 use App\Http\Controllers\ComiteController;
 
 
@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('elecciones', EleccionController::class);
 });
 
+Route::get('/NewPassword',  [UserSettingsController::class,'NewPassword'])->name('NewPassword')->middleware('auth');
+Route::post('/change/password',  [UserSettingsController::class,'changePassword'])->name('changePassword');
 Route::resource('cierreActa', 'ActaController');
 
 Route::get('poblacion', [VotanteController::class, 'index'])->name('poblacion.index');
