@@ -24,12 +24,12 @@ class StoreConvocatoriaRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo' => 'required|string|max:255',
+           /* 'titulo' => 'required|string|max:255',
             'archivo_pdf' => 'required|file|mimes:pdf|max:2048', // Validar que el archivo sea PDF y tenga un tamaño máximo de 2MB
             'fecha_inicio' => 'required|date',
             'fecha_fin' => 'required|date|after_or_equal:fecha_inicio', // Validar que la fecha de fin sea posterior o igual a la fecha de inicio
         // Añadir más reglas de validación según tus necesidades para otros campos del formulario
-        
+        */
         ];
     }
 }

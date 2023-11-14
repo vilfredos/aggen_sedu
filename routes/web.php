@@ -11,7 +11,6 @@ use App\Models\Eleccion;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Auth;
 
-use App\Http\Controllers\ComiteController;
 
 
 
@@ -65,19 +64,21 @@ Route::get('/inicioActa', function () {
 });
 
 /*para la segunda fase*/
-Route::get('/comvocatoria', function () {
+/*Route::get('/comvocatoria', function () {
     return view('comvocatoria');
-});
+});*/
+
 Route::get('/frente', function () {
     return view('frente');
 });
-Route::get('/comite', function () {
-    return view('comite');
-});
 
-Route::get('/modificacionComite', function () {
+/*Route::get('/comite', function () {
+    return view('comite');
+});*/
+
+/*Route::get('/modificacionComite', function () {
     return view('modificacionComite');
-});
+});*/
 
 
 
@@ -136,14 +137,27 @@ Route::get('/ver_lista_jurados', 'App\Http\Controllers\JuradoController@mostrar'
 
 use App\Http\Controllers\ConvocatoriaController;
 
-Route::post('/convocatoria', [ConvocatoriaController::class, 'store'])->name('convocatoria.store');
+Route::middleware(['web'])->group(function () {
+
+    Route::get('/convocatoria', [ConvocatoriaController::class, 'create']);
+    Route::post('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@store');
+});
 
 //Comite
 
-Route::get('/miembroscomite', [ComiteController::class, 'index'])->name('comite.index');
 
-Route::get('/comite', [ComiteController::class, 'create'])->name('comite.create');
-Route::get('/modificacionComite', [ComiteController::class, 'edit'])->name('comite.edit');
+use App\Http\Controllers\ComiteController;
+
+Route::middleware(['web'])->group(function () {
+    Route::get('/comite/create', [ComiteController::class, 'create']);
+    Route::post('/comite/store', [ComiteController::class, 'store']);
+
+
+});
+
+//Route::get('/modificacionComite', [ComiteController::class, 'edit']);//->name('comite.edit');
+
+
 
 Route::get('/actaFinal', function () {
     return view('actaFinal');

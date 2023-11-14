@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Convocatoria;
-
-use App\Http\Requests\StoreJuradoRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreConvocatoriaRequest;
 use App\Http\Requests\UpdateConvocatoriaRequest;
+use Illuminate\Support\Facades\Validator; // Importa la clase Validator aquí
+
 
 //use Illuminate\Http\Request;
 
@@ -23,7 +25,8 @@ class ConvocatoriaController extends Controller
 
     public function create()
     {
-        //
+        return view('comvocatoria'); 
+
     }
 
     /**
@@ -34,28 +37,23 @@ class ConvocatoriaController extends Controller
      */
     public function store(StoreConvocatoriaRequest $request)
     {
-        dd($request->all());
 
-        $convocatoria = new Convocatoria;
-        $convocatoria->titulo = $request->titulo;
+        $convocatoriadb = new Convocatoria;
 
-        $convocatoria->archivo_pdf = $rutaPdf;
-        
-        $convocatoria->fecha_inicio = $request->fecha_inicio;
-        $convocatoria->fecha_fin = $request->fecha_fin;
-        // Asegúrate de que los nombres de los campos coincidan con los nombres en tu base de datos
-        // ...
-        $convocatoria->save();
+        $convocatoriadb->titulo = $request->titulo;
     
-        return back()->with('success', 'Convocatoria relizada exitosamente');
+        // Cambia 'archivo_pdf' por 'documento'
+        $archivoPdfPath = $request->file('documento')->store('pdfs', 'public');
+        $convocatoriadb->archivo_pdf = $archivoPdfPath;
+    
+        $convocatoriadb->fecha_inicio = $request->fechaInicio;
+        $convocatoriadb->fecha_fin = $request->fechaFin;
+        $convocatoriadb->save();
+    
+        return back()->with('success', 'Convocatoria realizada exitosamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Convocatoria  $convocatoria
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Convocatoria $convocatoria)
     {
         //
