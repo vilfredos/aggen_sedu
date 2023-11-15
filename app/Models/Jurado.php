@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class jurados extends Model
+class Jurado extends Model
 {
+    use HasFactory;
     protected $table = 'jurados';
-    protected $fillable = ['nombre', 'turno', 'cargo', 'numeroMesa', 'gremio'];
+    protected $primaryKey = 'sis';
+    protected $fillable = ['sis', 'name', 'facultad', 'Carrera', 'ci', 'cargo', 'numeroMesa', 'tipo'];
     public $timestamps = false;
 }

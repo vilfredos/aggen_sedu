@@ -86,9 +86,6 @@ Route::get('/modificacionComite', function () {
 Route::get('/papeleta', function () {
     return view('papeleta');
 });
-Route::get('/jurado', function () {
-    return view('jurado');
-});
 
 Route::get('/mesa', function () {
     return view('mesa');
@@ -100,10 +97,6 @@ Route::get('/frente', function () {
 
 
 /*para la base de datos */
-
-use App\Http\Controllers\JuradoController;
-
-Route::post('/jurado', [JuradoController::class, 'store'])->name('jurado.store');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -119,12 +112,9 @@ Route::get('/resultados', function () {
     return view('resultados');
 });
 
-Route::get('/jurado_aleatorio', function () {
-    return view('/jurado_aleatorio');
-});
 
-Route::get('/jurado_aleatorio', 'App\Http\Controllers\JuradoController@seleccionarJurados');
-
+/*Route::get('/jurado_aleatorio', 'App\Http\Controllers\JuradoController@seleccionarJurados');
+*/
 use App\Http\Controllers\VotosMesaController;
 
 Route::get('/acta_escrutino', function () {
@@ -139,6 +129,7 @@ Route::get('/votosPorMesa', function () {
 Route::get('/votosPorMesa', 'App\Http\Controllers\VotosMesaController@mostrar');
 
 Route::get('/ver_lista_jurados', 'App\Http\Controllers\JuradoController@mostrar');
+
 
 //desde aca modificado
 
@@ -161,9 +152,20 @@ Route::get(
         return view('actaFinal');
     }
 );
-Route::get(
-    '/jurado-aleatorio',
-    function () {
-        return view('jurado-aleatorio');
-    }
-);
+Route::get('/jurado_aleatorio', function () {
+    return view('/jurado_aleatorio');
+});
+
+
+use App\Http\Controllers\JuradoController;
+
+Route::get('/jurado_aleatorio', 'App\Http\Controllers\JuradoController@seleccionarJurados');
+Route::post('/jurado_aleatorio', [JuradoController::class, 'guardar_lista'])->name('jurado_aleatorio.guardar_lista');
+
+//Route::post('/guardar-jurados', 'App\Http\Controllers\JuradoController@guardar_lista');
+
+Route::post('/jurado', [JuradoController::class, 'store'])->name('jurado.store');
+
+Route::get('/jurado', function () {
+    return view('jurado');
+});
