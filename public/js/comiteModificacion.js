@@ -57,8 +57,8 @@ document.addEventListener("DOMContentLoaded", function() {
         var letras = /^[A-Za-z]+$/;
 
         if (nuevoMiembroValue.length >= 5 && nuevoMiembroValue.length <= 30 && nuevoMiembroValue.match(letras)) {
-            // Aquí puedes agregar el código para manejar el envío del formulario y los datos ingresados.
-            // Ejemplo: enviarFormulario();
+           
+            
             console.log("Formulario válido, se puede enviar.");
         } else {
             // Mostrar un mensaje de error o realizar alguna acción si el formulario no es válido.
