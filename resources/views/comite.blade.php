@@ -58,7 +58,7 @@
             
             <button type="button" id="asignarAleatoriamenteButton">Asignar Aleatoriamente</button>
             
-            <button type="submit" class="submit-btn">Publicar Miembros Comite</button>
+            <button class="submit-btn">Publicar Miembros Comite</button>
         
             <button type="button" class="save-button" onclick="Acabar_proceso()">Continuar con el Registro</button>
 
@@ -79,6 +79,6 @@
     
     </form>
     </div>
-    <script src="{{ asset('js/comite.js') }}"></script>
+        <script src="{{ asset('js/comite.js') }}"></script>
 </body>
 @endsection

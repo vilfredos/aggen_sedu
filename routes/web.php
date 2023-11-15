@@ -8,7 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\EleccionController;
 use App\Models\Eleccion;
-//use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Auth;
 
 
