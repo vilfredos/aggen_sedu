@@ -146,8 +146,6 @@ Route::middleware(['web'])->group(function () {
 //Comite
 
 
-use App\Http\Controllers\ComiteController;
-
 Route::middleware(['web'])->group(function () {
     Route::get('/comite/create', [ComiteController::class, 'create']);
     Route::post('/comite/store', [ComiteController::class, 'store']);
@@ -183,4 +181,14 @@ Route::post('/jurado', [JuradoController::class, 'store'])->name('jurado.store')
 
 Route::get('/jurado', function () {
     return view('jurado');
+});
+
+Route::get('/jurado_remplazar', function () {
+    return view('jurado_remplazar');
+});
+
+Route::post('/jurado_remplazar', [JuradoController::class, 'remplazar']);
+
+Route::get('/remplazar', function () {
+    return view('remplazar');
 });

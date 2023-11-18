@@ -10,6 +10,6 @@ class Jurado extends Model
     use HasFactory;
     protected $table = 'jurados';
     protected $primaryKey = 'sis';
-    protected $fillable = ['sis', 'name', 'facultad', 'Carrera', 'ci', 'cargo', 'numeroMesa', 'tipo'];
+    protected $fillable = ['sis', 'name', 'facultad', 'carrera', 'ci', 'cargo', 'numeroMesa', 'tipo'];
     public $timestamps = false;
 }
