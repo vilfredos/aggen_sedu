@@ -35,21 +35,24 @@ class ConvocatoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreConvocatoriaRequest $request)
+    public function store(Request $request)
     {
-
+        $request->validate([
+            'titulo' => 'required|in:Consejeros de Carrera,Consejeros Facultativos,Consejeros Universitarios,Directores de Carrera,Autoridades Facultativas,Autoridades Universitarias',
+            'documento' => 'required|mimes:pdf',
+            'fechaInicio' => 'required|date',
+            'fechaFin' => 'required|date',    
+        ]);
+    
         $convocatoriadb = new Convocatoria;
-
-        $convocatoriadb->titulo = $request->titulo;
-    
-        // Cambia 'archivo_pdf' por 'documento'
+        $convocatoriadb->Titulo = $request->titulo;
         $archivoPdfPath = $request->file('documento')->store('pdfs', 'public');
-        $convocatoriadb->archivo_pdf = $archivoPdfPath;
-    
+        $convocatoriadb->archivo_pdf = $archivoPdfPath;   
         $convocatoriadb->fecha_inicio = $request->fechaInicio;
-        $convocatoriadb->fecha_fin = $request->fechaFin;
-        $convocatoriadb->save();
+        $convocatoriadb->fecha_final = $request->fechaFin;
     
+        $convocatoriadb->save();
+
         return back()->with('success', 'Convocatoria realizada exitosamente');
     }
 
