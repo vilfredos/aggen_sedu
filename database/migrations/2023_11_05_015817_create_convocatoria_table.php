@@ -16,10 +16,10 @@ class CreateConvocatoriaTable extends Migration
         Schema::create('convocatoria', function (Blueprint $table) {
             $table->id();
 
-            $table->string('titulo');
+            $table->string('Titulo');
             $table->string('archivo_pdf')->nullable();
             $table->date('fecha_inicio');
-            $table->date('fecha_fin');
+            $table->date('fecha_final');
             $table->timestamps();
         });
     }

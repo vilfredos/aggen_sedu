@@ -21,13 +21,17 @@
                     
                 </div>
             </div>
-                <div class="form-group" >
-                    <label for="titulo">Título:</label>
-                    <input type="text" id="titulo" name="titulo">
+                
+                <label for="titulo">Titulo:</label>
+                <select name="titulo" required>
+                    <option value="Consejeros de Carrera">Consejeros de Carrera</option>
+                    <option value="Consejeros Facultativos">Consejeros Facultativos</option>
+                    <option value="Consejeros Universitarios">Consejeros Universitarios</option>
+                    <option value="Directores de Carrera">Directores de Carrera</option>
+                    <option value="Autoridades Facultativas">Autoridades Facultativas(Decano y Director Academico)</option>
+                    <option value="Autoridades Universitarias">Autoridades Universitarias (Rector, Vice rectores)</option>
+                </select>
 
-                    <div id="advertencia" class="advertencia"></div>
-
-                </div>
                 <div class="form-group">
                     <label for="documento">Subir documento (solo archivos PDF)</label>
                     <input type="file" id="documento" name="documento" accept=".pdf">
@@ -46,7 +50,7 @@
                 </div>
                 <div id="error-message" class="advertencia"></div>
         
-         </form>
+        </form>
     </div>
         <script src="{{ asset('js/comvocatoria.js') }}"></script>
 </body>
