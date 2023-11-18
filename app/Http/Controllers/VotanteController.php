@@ -50,4 +50,32 @@ class VotanteController extends Controller
     public function export(){
         return (new VotanteExport)->download('base_votantes.xls');       
     }
+    
+
+    public function seleccionarTipo()
+    {
+        return view('poblacion.seleccionar');
+    }
+
+    public function obtenerVotantes(Request $request)
+    {
+        $tiposSeleccionados = $request->input('tipos', []);
+        $facultad = $request->input('facultad');
+        $carrera = $request->input('carrera');
+
+        $query = Votante::whereIn('tipo', $tiposSeleccionados);
+
+        if (!empty($facultad)) {
+            $query->where('facultad', $facultad);
+        }
+
+        if (!empty($carrera)) {
+            $query->where('carrera', $carrera);
+        }
+
+        $votantes = $query->get();
+
+        return view('poblacion.mostrar', compact('votantes'));
+    }
+
 }
