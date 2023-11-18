@@ -27,7 +27,7 @@
   <span class="sr-only">Toggle Menu</span>
 </button>
 </div>
-<ul class="navbar-nav navbar-right" style="color: white;margin-left:70%;">
+<ul class="navbar-nav navbar-right" style="color: white;margin-left:65%;">
 
     <ul class="navbar-nav ms-auto">
         @guest
@@ -118,7 +118,7 @@
                 <li class="item">
                     
                     <a href="{{ url('/ver_lista_jurados') }}">
-                        <i class="fa-solid fa-user" style="color: #ffffff;"></i><span class="nombres">Lista Jurados</span>
+                        <i class="fa-solid fa-list" style="color: #ffffff;"></i><span class="nombres">Lista Jurados</span>
                     </a>
                 </li>
                     
