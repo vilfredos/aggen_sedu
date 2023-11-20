@@ -28,7 +28,7 @@
   <span class="sr-only">Toggle Menu</span>
 </button>
 </div>
-<ul class="navbar-nav navbar-right" style="color: white;margin-left:65%;">
+<ul class="navbar-nav navbar-right" style="color: white;margin-left:68%;">
 
     <ul class="navbar-nav ms-auto">
         @guest
@@ -43,10 +43,22 @@
         @else
             <li class="nav-item dropdown">
                
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="padding: 20px">
-                    <img class="logo-umss" src="{{ asset('img/user.png') }}" alt="">
-                    {{ Auth::user()->name }}
+                <a id="navbarDropdown" class="nav-link d-flex" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <div class="user-info">
+                        <img class="logo-umss" src="{{ asset('img/user.png') }}" alt="">
+                        <div class="info-text">
+                            <span class="username">{{ Auth::user()->name }}</span>
+                            @if(!empty(Auth::user()->getRoleNames()))
+                                <ul class="roles-list">
+                                    @foreach(Auth::user()->getRoleNames() as $rolNombre)
+                                        <li><strong>{{ $rolNombre }}</strong></li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+                    </div>
                 </a>
+                
 
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     

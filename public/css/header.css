@@ -40,9 +40,32 @@
 }
 
 
-logo-umss{
-  
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.logo-umss {
+    width: 40px; /* Ajusta el ancho según tus necesidades */
+    height: auto; /* Mantén la proporción de la imagen */
+    margin-right: 10px; /* Espaciado entre la imagen y el texto */
+}
+
+.info-text {
+    text-align: center; /* Centra el texto verticalmente */
+}
+
+.username {
+    display: block; /* Para que el texto aparezca en una nueva línea */
+    font-weight: bold;
+}
+
+.roles-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.roles-list li {
+    font-weight: bold;
 }
