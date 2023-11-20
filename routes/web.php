@@ -67,18 +67,15 @@ Route::get('/inicioActa', function () {
     return view('inicioActa');
 });
 
-/*para la segunda fase*/
-/*Route::get('/comvocatoria', function () {
-    return view('comvocatoria');
-});*/
-
 Route::get('/frente', function () {
     return view('frente');
 });
 
-/*Route::get('/comite', function () {
-    return view('comite');
-});*/
+
+Route::get('/historicoResultados', function () {
+    return view('historicoResultados');
+});
+
 
 /*Route::get('/modificacionComite', function () {
     return view('modificacionComite');
@@ -147,12 +144,14 @@ Route::middleware(['web'])->group(function () {
 //Comite
 
 
-Route::middleware(['web'])->group(function () {
-    Route::get('/comite/create', [ComiteController::class, 'create']);
-    Route::post('/comite/store', [ComiteController::class, 'store']);
 
+Route::middleware(['web'])->group(function () {
+
+    Route::get('/comite', [ComiteController::class, 'create']);
+    Route::post('/comite', 'App\Http\Controllers\ComiteController@store');
 
 });
+
 
 //Route::get('/modificacionComite', [ComiteController::class, 'edit']);//->name('comite.edit');
 
