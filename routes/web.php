@@ -11,6 +11,7 @@ use App\Models\Eleccion;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserSettingsController;
+use App\Http\Controllers\ComiteController;
 
 
 
@@ -151,7 +152,6 @@ Route::middleware(['web'])->group(function () {
 //Comite
 
 
-use App\Http\Controllers\ComiteController;
 
 Route::middleware(['web'])->group(function () {
 
