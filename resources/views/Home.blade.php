@@ -68,99 +68,95 @@
 
 
     <div  id="sidebar" class="sidebar">
-                 <div class="app-title">
+                
+                <div class="app-title">
                         <img class="logo-umss" src="{{ asset('img/logo-umss.png') }}" alt="">
                     <div class="nombres">
                         <h1>SEDU</h1>
                         <p>Sistema Electoral Universitario</p>
                     </div>
                 </div>
+
         <nav class="menu-container">
             <ul class="container">
-                 <li class="item">
+                
+                <li class="item">
                     <a  href="{{ url('/inicio') }}">
                         <i class="fa-solid fa-house" style="color: #ffffff;"></i><span class="nombres" >Inicio</span>
-                    </a>
-                    
-                 </li>
-            
-           
-             
-                 <li class="item">
-                    
-                     <a href="{{ url('/eleccion') }}">
+                    </a>   
+                </li>
+
+                <li class="item"> 
+                    <a href="{{ url('/eleccion') }}">
                         <i class="fa-solid fa-user-check" style="color: #ffffff;"></i><span class="nombres">Eleccion</span>
                     </a>
                 </li>
             
-        
                 <li class="item">
-                    
                     <a href="{{ url('/usuarios') }}">
                         <i class="fa-solid fa-user" style="color: #ffffff;"></i><span class="nombres">Usuarios</span>
                     </a>
                 </li>
         
                 <li class="item">
-                   
                     <a href="{{ url('/roles') }}">
                         <i class="fa-solid fa-user-shield" style="color: #ffffff;"></i><span class="nombres">Roles</span>
                     </a>
-                        
-                    
                 </li>
+                
                 <li class="item">
-                    
                     <a href="{{ url('/inicioActa') }}">
                         <i class="fa-solid fa-user" style="color: #ffffff;"></i><span class="nombres">Actas</span>
                     </a>
                 </li>
+
                 <li class="item">
-                    
                     <a href="{{ url('/ver_lista_jurados') }}">
                         <i class="fa-solid fa-user" style="color: #ffffff;"></i><span class="nombres">Lista Jurados</span>
                     </a>
                 </li>
                     
                 <li class="item">
-                    
                     <a href="{{ url('/votosPorMesa') }}">
                         <i class="fa-solid fa-square-poll-horizontal" style="color: #ffffff;"></i><span class="nombres">Ver Votos</span>
                     </a>
                 </li>
-           
-                <li class="item">
-                    
+
+                <li class="item"> 
                     <a href="{{ url('/resultados') }}">
                         <i class="fa-solid fa-square-poll-horizontal" style="color: #ffffff;"></i><span class="nombres">Resultados Anteriores </span>
                     </a>
                 </li>
-            </ul>
 
 
-            <ul class="container"> 
                 <li class="item">
                     
                     <a href="{{ url('/comite') }}">
                         <i class="fa-solid fa-users" style="color: #ffffff;"></i><span class="nombres">Miembros del comite</span>
                     </a>
-            
-        </ul>
-    </li>
-</ul>
                 </li>
+
+                <li class="item">
+                    
+                    <a href="{{ url('/historicoResultados') }}">
+                        <i class="fa-solid fa-timeline"></i>                   
+                        <span class="nombres">Historico de Resultados</span>
+                    </a>
+                </li>
+
             </ul>
+
+</ul>
 
             <ul class="container">
                 <!-- Menú Actas con un identificador "actas-menu" -->
             </ul>
-                </li>
 
         </nav>
     </div>
+    
     <div class="content">
         @yield('content')
-       
     </div>
     
     <div class="footer">

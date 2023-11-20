@@ -1,0 +1,28 @@
+.container {
+    border-top: 0px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+
+.superior {
+    margin-top: 10px;
+    background: linear-gradient(to bottom, #CF2E2E, #003770);
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}

@@ -11,7 +11,6 @@ use App\Models\Eleccion;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserSettingsController;
-use App\Http\Controllers\ComiteController;
 
 
 
@@ -66,18 +65,15 @@ Route::get('/inicioActa', function () {
     return view('inicioActa');
 });
 
-/*para la segunda fase*/
-/*Route::get('/comvocatoria', function () {
-    return view('comvocatoria');
-});*/
-
 Route::get('/frente', function () {
     return view('frente');
 });
 
-/*Route::get('/comite', function () {
-    return view('comite');
-});*/
+
+Route::get('/historicoResultados', function () {
+    return view('historicoResultados');
+});
+
 
 /*Route::get('/modificacionComite', function () {
     return view('modificacionComite');
@@ -158,11 +154,12 @@ Route::middleware(['web'])->group(function () {
 use App\Http\Controllers\ComiteController;
 
 Route::middleware(['web'])->group(function () {
-    Route::get('/comite/create', [ComiteController::class, 'create']);
-    Route::post('/comite/store', [ComiteController::class, 'store']);
 
+    Route::get('/comite', [ComiteController::class, 'create']);
+    Route::post('/comite', 'App\Http\Controllers\ComiteController@store');
 
 });
+
 
 //Route::get('/modificacionComite', [ComiteController::class, 'edit']);//->name('comite.edit');
 
