@@ -20,16 +20,12 @@
                 <input type="text" id="representante" name="representante" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" required>
             </div>
             <div class="form-group">
-                <label for="candRector">Candidato a rector:</label>
-                <input type="text" id="candRector" name="candRector" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" required>
-            </div>
-            <div class="form-group">
-                <label for="candVicerector">Candidato a vicerrector:</label>
-                <input type="text" id="candVicerector" name="candVicerector" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" required>
-            </div>
-            <div class="form-group">
                 <label for="sigla">Sigla:</label>
                 <input type="text" id="sigla" name="sigla" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" required>
+            </div>
+            <div class="form-group" id="nuevosCampos">
+                <label for="candVicerector">Candidatos</label>
+                <button type="button" id="agregarCampoBtn">Agregar Nuevo candidato</button>
             </div>
             <div class="form-group">
                 <label for="coloresPrimarios">Colores primarios:</label>
@@ -47,13 +43,15 @@
                     <option value="verde">Verde</option>
                 </select>
             </div>
-            <div class="buttons">
+            
                 <button type="submit" name="action" value="save">Guardar y Registrar Nuevo Frente</button>
                 <button type="button" onclick="limpiarCampos()">Cancelar</button>
                 <button class="save-button" onclick="terimar_proceso()">siguiente</button>
         </form>
         <p id="error-message" style="color: red;"></p>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <script src="{{ asset('js/frente.js') }}"></script>
 </body>
 @endsection

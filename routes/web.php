@@ -192,3 +192,9 @@ Route::post('/jurado_remplazar', [JuradoController::class, 'remplazar']);
 Route::get('/remplazar', function () {
     return view('remplazar');
 });
+use App\Http\Controllers\ListamesasController;
+//Route::get('/listamesas', function () {
+ //   return view('listamesas');
+//});
+//Route::get('/listamesas', [ListamesasController::class, 'mostrarListadoMesas']);
+Route::get('/listamesas', 'App\Http\Controllers\ListamesasController@mostrarListadoMesas');
