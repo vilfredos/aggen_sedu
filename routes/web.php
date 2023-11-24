@@ -192,9 +192,9 @@ Route::post('/jurado_remplazar', [JuradoController::class, 'remplazar']);
 Route::get('/remplazar', function () {
     return view('remplazar');
 });
-
-Route::get('/votantes_por_mesa', [VotosMesaController::class, 'votante_mesa']);
-
-Route::get('/prueba_papeleta', function () {
-    return view('prueba_papeleta');
-});
+use App\Http\Controllers\ListamesasController;
+//Route::get('/listamesas', function () {
+ //   return view('listamesas');
+//});
+//Route::get('/listamesas', [ListamesasController::class, 'mostrarListadoMesas']);
+Route::get('/listamesas', 'App\Http\Controllers\ListamesasController@mostrarListadoMesas');
