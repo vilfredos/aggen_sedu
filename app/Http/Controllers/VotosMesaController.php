@@ -8,6 +8,7 @@ use App\Http\Requests\Storevotos_mesaRequest;
 use App\Http\Requests\Updatevotos_mesaRequest;
 use Illuminate\Support\Facades\Validator; // Importa la clase Validator aquí
 
+use Illuminate\Support\Facades\DB;
 
 class VotosMesaController extends Controller
 {
@@ -109,5 +110,29 @@ class VotosMesaController extends Controller
     los metodos de franz
     
     */
-    
+    // Obtén los docentes de la tabla votantes
+    public function votante_mesa()
+    {
+        $docentes = DB::table('votantes')->where('tipo', 'docente')->get();
+
+        // Prepara los datos para la tabla votantes_por_mesa
+        $datos = [];
+        foreach ($docentes as $docente) {
+            $datos[] = [
+                'sis' => $docente->sis,
+                'name' => $docente->name,
+                'numeroMesa' => 1, // Asigna a la mesa 1
+            ];
+        }
+
+        // Inserta los datos en la tabla votantes_por_mesa
+        DB::table('votantes_por_mesa')->insert($datos);
+
+        return view('votantes_por_mesa', ['datos' => $datos]);
+    }
+    public function enviar_datos(){
+
+
+    }
+
 }

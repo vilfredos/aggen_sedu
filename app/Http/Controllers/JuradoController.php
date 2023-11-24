@@ -115,7 +115,7 @@ class JuradoController extends Controller
     }
     public function seleccionarJurados()
     {
-        $facultad = 'medicina'; // Reemplace esto con la facultad deseada
+        $facultad = 'economia'; // Reemplace esto con la facultad deseada
 
         // Obtener todos los votantes y jurados
         $votantes = Votante::all()->pluck('sis')->toArray();

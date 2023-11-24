@@ -25,4 +25,5 @@ class VotanteImport implements ToModel
             'tipo' => $row[5],
         ]);
     }
+    
 }

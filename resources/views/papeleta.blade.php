@@ -4,6 +4,8 @@
 <head>
 <link href="{{ asset('css/papeleta.css') }}" rel="stylesheet">
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -27,8 +29,9 @@
   </tr>
 </table>
 <div class="contenedor">
-<button class="save-button" onclick="terimar_proceso()">Terminar Registro de Eleccion</button>
+<button class="save-button" onclick="mezclar()">mezclar</button>
 </div>
+
 <script src="{{ asset('js/papeleta.js') }}"></script>
 </body>
 @endsection
