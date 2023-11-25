@@ -4,7 +4,6 @@
 
 <head>
     <link href="{{ asset('css/votosPorMesa.css') }}" rel="stylesheet">
-
 </head>
 <div>
     <h1>lista de Jurados</h1>
@@ -14,6 +13,11 @@
                 <th>SIS</th>
                 <th>Nombre</th>
                 <th>Número de Mesa</th>
+                <th>informacion</th>
+                <th>comite</th>
+                <th>frentes y candidatos</th>
+                <th>mesa</th>
+                <th>papeleta</th>
             </tr>
         </thead>
         <tbody>
@@ -22,9 +26,23 @@
                 <td>{{ $dato['sis'] }}</td>
                 <td>{{ $dato['name'] }}</td>
                 <td>{{ $dato['numeroMesa'] }}</td>
+                <td><button class="btn btn-primary">Agregar</button></td>
+                <td><button class="btn btn-primary">Agregar</button></td>
+                <td><button class="btn btn-danger">Eliminar</button></td>
+                <td><button class="btn btn-danger">Editar</button></td>
+                <td><button class="btn-secondary">otros</button></td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".btn-secondary").click(function() {
+            var sis = $(this).closest('tr').find('td:eq(0)').text();
+            window.location.href = '/papeleta/' + sis;
+        });
+    });
+</script>
 @endsection

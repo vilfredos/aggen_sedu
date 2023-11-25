@@ -134,5 +134,26 @@ class VotosMesaController extends Controller
 
 
     }
+    // En tu controlador
+public function agregar(Request $request)
+{
+    // Aquí va tu código para agregar
+}
 
+public function eliminar(Request $request)
+{
+    // Aquí va tu código para eliminar
+}
+
+public function otros(Request $request)
+{
+    $sis = $request->sis;
+    // Aquí va tu código para otros
+    return response()->json(['redirect' => '/ruta-a-votosPorMesa']);
+}
+public function papeleta($sis)
+{
+    // Aquí puedes hacer algo con $sis si es necesario
+    return view('papeleta', ['sis' => $sis]);
+}
 }

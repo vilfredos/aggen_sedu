@@ -198,3 +198,17 @@ use App\Http\Controllers\ListamesasController;
 //});
 //Route::get('/listamesas', [ListamesasController::class, 'mostrarListadoMesas']);
 Route::get('/listamesas', 'App\Http\Controllers\ListamesasController@mostrarListadoMesas');
+
+Route::get('/elecciones_ofi', function () {
+    return view('elecciones_ofi');
+});
+
+Route::get('/votantes_por_mesa', 'App\Http\Controllers\VotosMesaController@votante_mesa');
+
+
+// En tu archivo de rutas (web.php)
+Route::post('/agregar', 'TuControlador@agregar');
+Route::post('/eliminar', 'TuControlador@eliminar');
+Route::post('/votantes_por_mesa', 'App\Http\Controllers\VotosMesaController@otros');
+
+Route::get('/papeleta/{sis}', 'App\Http\Controllers\VotosMesaController@papeleta');
