@@ -24,8 +24,20 @@
             <label for="facultad">Facultad</label>
             <select class="form-control" name="facultad" id="facultad">
                 <option value="">Seleccione una facultad</option>
-                <option value="economia">Economia</option>
-                <option value="tecnologia">Tecnologia</option>
+                <option value="Facultad de Economia">Facultad de Economia</option>
+                <option value="Facultad de Tecnologia">Facultad de Tecnologia</option>
+                <option value="Facultad de Humanidades">Facultad de Humanidades</option>
+                <option value="Facultad de Arquitectura">Facultad de Arquitectura</option>
+                <option value="Facultad de Ciencias Agrícolas">Facultad de Ciencias Agrícolas</option>
+                <option value="Facultad de Medicina">Facultad de Medicina</option>
+                <option value="Facultad de Odontología">Facultad de Odontología</option>
+                <option value="Facultad de Ciencias Bioquímicas y Farmacéuticas">Facultad de Ciencias Bioquímicas y Farmacéuticas</option>
+                <option value="Facultad Politécnica del Valle Alto">Facultad Politécnica del Valle Alto</option>
+                <option value="Facultad de Ciencias Sociales">Facultad de Ciencias Sociales</option>
+                <option value="Facultad de Desarrollo Rural y Territorial">Facultad de Desarrollo Rural y Territorial</option>
+                <option value="Facultad Ciencias Juridicas y Politicas">Facultad Ciencias Juridicas y Politicas</option>
+                <option value="Enfermeria">Facultad de Enfermeria</option>
+                <option value="Facultad de Veterinaria">Facultad de Veterinaria</option>
                 <!-- Agrega más opciones según tus necesidades -->
             </select>
         </div>
