@@ -33,8 +33,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('elecciones', EleccionController::class);
 });
 
-Route::get('/NewPassword',  [UserSettingsController::class,'NewPassword'])->name('NewPassword')->middleware('auth');
-Route::post('/change/password',  [UserSettingsController::class,'changePassword'])->name('changePassword');
+Route::get('/NewPassword',  [UserSettingsController::class, 'NewPassword'])->name('NewPassword')->middleware('auth');
+Route::post('/change/password',  [UserSettingsController::class, 'changePassword'])->name('changePassword');
 Route::resource('cierreActa', 'ActaController');
 
 Route::get('poblacion', [VotanteController::class, 'index'])->name('poblacion.index');
@@ -43,7 +43,7 @@ Route::post('votante', [VotanteController::class, 'import'])->name('votante.impo
 Route::get('/', [VotanteController::class, 'pdf']);
 Route::get('poblacion/pdf', [VotanteController::class, 'pdf'])->name('poblacion.pdf');
 
-Route::get('poblacion/seleccionar',[VotanteController::class, 'seleccionarTipo']);
+Route::get('poblacion/seleccionar', [VotanteController::class, 'seleccionarTipo']);
 Route::post('/buscar-votantes', [VotanteController::class, 'obtenerVotantes'])->name('votantes.buscar');
 
 
@@ -67,10 +67,6 @@ Route::get('/inicioActa', function () {
     return view('inicioActa');
 });
 
-Route::get('/frente', function () {
-    return view('frente');
-});
-
 
 Route::get('/historicoResultados', function () {
     return view('historicoResultados');
@@ -89,9 +85,6 @@ Route::get('/papeleta', function () {
 
 Route::get('/mesa', function () {
     return view('mesa');
-});
-Route::get('/frente', function () {
-    return view('frente');
 });
 /*para los controladores*/
 
@@ -115,6 +108,7 @@ Route::get('/resultados', function () {
 
 /*Route::get('/jurado_aleatorio', 'App\Http\Controllers\JuradoController@seleccionarJurados');
 */
+
 use App\Http\Controllers\VotosMesaController;
 
 Route::get('/acta_escrutino', function () {
@@ -149,7 +143,6 @@ Route::middleware(['web'])->group(function () {
 
     Route::get('/comite', [ComiteController::class, 'create']);
     Route::post('/comite', 'App\Http\Controllers\ComiteController@store');
-
 });
 
 
@@ -192,9 +185,10 @@ Route::post('/jurado_remplazar', [JuradoController::class, 'remplazar']);
 Route::get('/remplazar', function () {
     return view('remplazar');
 });
+
 use App\Http\Controllers\ListamesasController;
 //Route::get('/listamesas', function () {
- //   return view('listamesas');
+//   return view('listamesas');
 //});
 //Route::get('/listamesas', [ListamesasController::class, 'mostrarListadoMesas']);
 Route::get('/listamesas', 'App\Http\Controllers\ListamesasController@mostrarListadoMesas');
@@ -211,4 +205,9 @@ Route::post('/agregar', 'TuControlador@agregar');
 Route::post('/eliminar', 'TuControlador@eliminar');
 Route::post('/votantes_por_mesa', 'App\Http\Controllers\VotosMesaController@otros');
 
-Route::get('/papeleta/{sis}', 'App\Http\Controllers\VotosMesaController@papeleta');
+Route::get('/papeleta/{id_eleccion}', 'App\Http\Controllers\VotosMesaController@papeleta');
+
+Route::get('/frente/{id_eleccion}', 'App\Http\Controllers\FrenteController@frente');
+
+Route::post('/frente', 'App\Http\Controllers\FrenteController@store')->name('frente.store');
+//Route::post('/frente', 'App\Http\Controllers\FrenteController@store');

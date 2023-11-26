@@ -19,6 +19,7 @@
     <select id="facultades_carreras" name="facultades_carreras">
         <!-- Aquí puedes agregar las opciones de facultades y carreras -->
     </select><br>
+    
     <label for="cargo">Cargo a postular:</label><br>
     <input type="text" id="cargo" name="cargo"><br>
     <input type="submit" value="Enviar">

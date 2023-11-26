@@ -9,6 +9,7 @@
     <h1>lista de Jurados</h1>
     <table class="table">
         <thead>
+        
             <tr>
                 <th>SIS</th>
                 <th>Nombre</th>
@@ -28,7 +29,7 @@
                 <td>{{ $dato['numeroMesa'] }}</td>
                 <td><button class="btn btn-primary">Agregar</button></td>
                 <td><button class="btn btn-primary">Agregar</button></td>
-                <td><button class="btn btn-danger">Eliminar</button></td>
+                <td><button class="btn_frente">Frente</button></td>
                 <td><button class="btn btn-danger">Editar</button></td>
                 <td><button class="btn-secondary">otros</button></td>
             </tr>
@@ -42,6 +43,12 @@
         $(".btn-secondary").click(function() {
             var sis = $(this).closest('tr').find('td:eq(0)').text();
             window.location.href = '/papeleta/' + sis;
+        });
+    });
+    $(document).ready(function() {
+        $(".btn_frente").click(function() {
+            var sis = $(this).closest('tr').find('td:eq(0)').text();
+            window.location.href = '/frente/' + sis;
         });
     });
 </script>
