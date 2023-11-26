@@ -72,13 +72,6 @@ Route::get('/historicoResultados', function () {
     return view('historicoResultados');
 });
 
-
-/*Route::get('/modificacionComite', function () {
-    return view('modificacionComite');
-});*/
-
-
-
 Route::get('/papeleta', function () {
     return view('papeleta');
 });
@@ -143,10 +136,11 @@ Route::middleware(['web'])->group(function () {
 
     Route::get('/comite', [ComiteController::class, 'create']);
     Route::post('/comite', 'App\Http\Controllers\ComiteController@store');
+
+    Route::get('/modificacionComite', [ComiteController::class, 'edit'])->name('comite.edit');
+
+
 });
-
-
-//Route::get('/modificacionComite', [ComiteController::class, 'edit']);//->name('comite.edit');
 
 
 
