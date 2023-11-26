@@ -20,8 +20,7 @@ class VotanteController extends Controller
         ->latest('sis')
         
         ->paginate(5);
-       
-        
+  
         return view('poblacion.index', ['barangs' => $votantes]);
     }
     public function pdf()
@@ -30,9 +29,7 @@ class VotanteController extends Controller
         $votantes =Votante::all();
         $pdf = PDF::loadView('poblacion.pdf',['votantes'=>$votantes])->setOptions(['defaultFont' => 'sans-serif']);
         //return $pdf->stream('votantes.pdf');
-        return $pdf->download('__votantes.pdf');
-      
-       
+        return $pdf->download('__votantes.pdf');   
     }
     
 

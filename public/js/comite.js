@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+/*document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("formulario").onsubmit = function(event) {
         event.preventDefault();
         validarFormulario();
@@ -48,7 +48,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     //parte nueva
- 
+ */
+
+
+
+    function asignarAleatoriamente() {
+
+        location.reload(true);
+    }
 
     document.getElementById("modificarButton").addEventListener("click", function() {
         mostrarMotivoModificacion();
@@ -70,15 +77,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function llevame_a_modificar_comite() {
     window.location.href = '/modificacionComite';
-  }
+
+    /*window.location.href = '{{ route('comite.edit', $comite->id) }}';*/
+
+}
 
 
 //hasta aca
 
 function llevame_a_generar_pepeleta() {
     window.location.href = '/papeleta';
-  }
-
-});
-
-
+}
