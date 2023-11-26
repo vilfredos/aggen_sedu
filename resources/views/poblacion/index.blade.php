@@ -33,73 +33,71 @@
         </form>
     </div>
     <!-- DATOS TABLA -->
-   <div class="">
-    {{---mesagge success--}}
+    <div class="">
+        {{-- Mensaje de éxito --}}
         @if(session()->has('success'))
             <div class="alert alert-success" role="alert">
                 {{ session('success')}}
             </div>
         @endif
-
-     
-           
-                <table  class="table table-striped ">
-                    <thead>
-                        <tr>
-                            
-                            <th scope="col"> Codigo sis</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Carnet</th>
-                            <th scope="col">Facultad</th>
-                            <th scope="col">Carrera</th>
-                            <th scope="col">Tipo</th>
-                           
-                        </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
+    
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Código sis</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">email</th>
+                    <th scope="col">Carnet</th>
+                    <th scope="col">Facultad</th>
+                    <th scope="col">Carrera</th>
+                  
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                @foreach ($barangs as $item)
+                    <tr>
+                        <td>{{ $item->sis }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->email }}</td>
+                        <td>{{ $item->ci }}</td>
+                        <td>{{ $item->facultad }}</td>
+                        <td>{{ $item->carrera }}</td>
                         
-                        @foreach ($barangs as $item)
-                                <tr>
-                                  
-                                     <td>{{ $item->sis}}</td>
-                                    <td>{{ $item->name}}</td>
-                                    <td>{{ $item->ci}}</td>
-                                    <td>{{ $item->facultad}}</td>
-                                    <td>{{ $item->carrera}}</td>
-                                    <td>{{ $item->tipo}}</td>
-                                   
-                                </tr>
-                            @endforeach
-                    </tbody>
-                </table>
-           <div class="d-flex justify-content-end">
-            {{ $barangs->links() }}
-           </div>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    
         
-   </div>
+    </div>
+    
 
    <!-- Modal Import -->
-   <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModal" aria-hidden="true">
+<div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title" id="importModalLabel">Importar poblacion</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="importModalLabel">Importar población</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group mb-3">
+                        <label for="">Archivo excel para estudiantes</label>
+                        <input type="file" class="form-control" name="file_estudiantes">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="">Archivo excel para docentes</label>
+                        <input type="file" class="form-control" name="file_docentes">
+                    </div>
+                    <button class="btn btn-success" type="submit">Importar</button>
+                </form>
+            </div>
         </div>
-        <div class="modal-body">
-            <form action="{{route('votante.import')}}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group mb-3">
-                    <label for="">Archivo excel</label>
-                    <input type="file" class="form-control" name="file">
-                </div>
-                <button class="btn btn-success" type="submit">Import</button>
-            </form>
-            
-        </div>
-      </div>
     </div>
-  </div>
+</div>
+
   <button class="btn btn-success btn-lg px-4 gap-3 save-button" onclick="terimar_proceso()">Siguiente</button>
 
     <!-- Script -->

@@ -38,7 +38,7 @@ Route::post('/change/password',  [UserSettingsController::class, 'changePassword
 Route::resource('cierreActa', 'ActaController');
 
 Route::get('poblacion', [VotanteController::class, 'index'])->name('poblacion.index');
-Route::post('votante', [VotanteController::class, 'import'])->name('votante.import');
+Route::post('/import', [VotanteController::class, 'import'])->name('import');
 
 Route::get('/', [VotanteController::class, 'pdf']);
 Route::get('poblacion/pdf', [VotanteController::class, 'pdf'])->name('poblacion.pdf');

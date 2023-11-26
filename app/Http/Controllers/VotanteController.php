@@ -6,6 +6,10 @@ use App\Exports\VotanteExport;
 use App\Imports\VotanteImport;
 use App\Models\Votante;
 use Illuminate\Http\Request;
+use App\Models\Estudiante;
+use App\Models\Docente;
+use App\Imports\EstudianteImport;
+use App\Imports\DocenteImport;
 
 
 
@@ -15,14 +19,19 @@ class VotanteController extends Controller
     public function index(Request $request)
     {
         $busqueda = $request->busqueda;
-        $votantes = Votante::where('name','LIKE','%'.$busqueda.'%')
-        ->orWhere('sis','LIKE','%'.$busqueda.'%')
-        ->latest('sis')
-        
-        ->paginate(5);
-       
-        
-        return view('poblacion.index', ['barangs' => $votantes]);
+
+        // Obtener estudiantes y docentes directamente usando union
+        $barangs = Estudiante::where('name', 'LIKE', "%$busqueda%")
+            ->orWhere('sis', 'LIKE', "%$busqueda%")
+            ->latest('sis')
+            ->union(
+                Docente::where('name', 'LIKE', "%$busqueda%")
+                    ->orWhere('sis', 'LIKE', "%$busqueda%")
+                    ->latest('sis')
+            )
+            ->get();
+    
+        return view('poblacion.index', compact('barangs'));
     }
     public function pdf()
     {
@@ -39,12 +48,17 @@ class VotanteController extends Controller
 
     public function import(Request $request)
     {
-        $file = $request->file('file')->store('public/import');
-
-        $import = new VotanteImport;
-        $import->import($file);
-
-        return redirect('/poblacion')->with('success','Datos importados');
+        $fileEstudiantes = $request->file('file_estudiantes')->store('public/import');
+        $fileDocentes = $request->file('file_docentes')->store('public/import');
+        
+        $importEstudiante = new EstudianteImport;
+        $importEstudiante->import($fileEstudiantes);
+        
+        $importDocente = new DocenteImport;
+        $importDocente->import($fileDocentes);
+        
+        return redirect('/poblacion')->with('success', 'Datos importados');
+        
     }
 
     public function export(){
@@ -59,23 +73,33 @@ class VotanteController extends Controller
 
     public function obtenerVotantes(Request $request)
     {
-        $tiposSeleccionados = $request->input('tipos', []);
         $facultad = $request->input('facultad');
         $carrera = $request->input('carrera');
-
-        $query = Votante::whereIn('tipo', $tiposSeleccionados);
-
+    
+        // Obtener votantes de la tabla de estudiantes
+        $votantesEstudiantes = Estudiante::query();
+    
         if (!empty($facultad)) {
-            $query->where('facultad', $facultad);
+            $votantesEstudiantes->where('facultad', $facultad);
         }
-
+    
         if (!empty($carrera)) {
-            $query->where('carrera', $carrera);
+            $votantesEstudiantes->where('carrera', $carrera);
         }
-
-        $votantes = $query->get();
-
+    
+        // Obtener votantes de la tabla de docentes
+        $votantesDocentes = Docente::query();
+    
+        if (!empty($facultad)) {
+            $votantesDocentes->where('facultad', $facultad);
+        }
+    
+        if (!empty($carrera)) {
+            $votantesDocentes->where('carrera', $carrera);
+        }
+    
+        // Unir las colecciones de votantes de estudiantes y docentes
+        $votantes = $votantesEstudiantes->union($votantesDocentes)->get();
+    
         return view('poblacion.mostrar', compact('votantes'));
-    }
-
-}
+}}
