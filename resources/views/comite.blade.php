@@ -100,6 +100,6 @@
                     
 </form>
     </div>
-
+    <script src="{{ asset('js/comite.js') }}"></script>
 </body>
 @endsection
