@@ -194,7 +194,7 @@ Route::get('/elecciones_ofi', function () {
     return view('elecciones_ofi');
 });
 
-Route::get('/votantes_por_mesa', 'App\Http\Controllers\VotosMesaController@votante_mesa');
+Route::get('/votantes_por_mesa', 'App\Http\Controllers\VotosMesaController@mostrarEleccion');
 
 Route::post('/agregar', 'TuControlador@agregar');
 Route::post('/eliminar', 'TuControlador@eliminar');

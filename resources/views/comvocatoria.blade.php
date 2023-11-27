@@ -14,13 +14,6 @@
     <div class="algo">
         <form id="formulario" action="/convocatoria" method="post" enctype="multipart/form-data">
         @csrf
-
-                <div class="superior">
-                <img src="{{ asset('img/umss1.png') }}" alt="logo" class="imagen-estilo">           
-                <div class="titulo">Generar convocatoria</div>
-                    
-                </div>
-            </div>
                 
                 <label for="titulo">Titulo:</label>
                 <select name="titulo" required>

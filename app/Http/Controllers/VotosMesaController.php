@@ -156,4 +156,10 @@ public function papeleta($sis)
     // Aquí puedes hacer algo con $sis si es necesario
     return view('papeleta', ['sis' => $sis]);
 }
+public function mostrarEleccion()
+{
+    $datos = DB::table('eleccion')->get();
+    return view('votantes_por_mesa')->with('datos', $datos);
 }
+}
+

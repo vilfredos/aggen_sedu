@@ -49,9 +49,8 @@ class FrenteController extends Controller
 
 public function frente($sis)
 {
-    $id=1;
-    $cargos = DB::table('eleccion_cargo')->where('id_eleccion', $id)->get();
-    return view('frente', ['id' => $id, 'cargos' => $cargos]);
+    $cargos = DB::table('eleccion_cargo')->where('id_eleccion', $sis)->get();
+    return view('frente', ['id' => $sis, 'cargos' => $cargos]);
 }
     
 }
