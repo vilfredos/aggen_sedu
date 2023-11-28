@@ -128,12 +128,12 @@ Route::get('/ver_lista_jurados', 'App\Http\Controllers\JuradoController@mostrar'
 //desde aca modificado
 
 use App\Http\Controllers\ConvocatoriaController;
-
+/*
 Route::middleware(['web'])->group(function () {
 
     Route::get('/convocatoria', [ConvocatoriaController::class, 'create']);
     Route::post('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@store');
-});
+});*/
 
 //Comite
 
@@ -217,3 +217,8 @@ Route::get('/listamesas', [MesaController::class, 'mostrarListadoMesas'])->name(
 Route::get('/ActaDeInicio', function () {
     return view('ActaDeInicio');
 });
+
+Route::get('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@create');
+
+
+Route::post('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@store')->name('convocatoria.store');
