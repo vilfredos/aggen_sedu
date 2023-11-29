@@ -152,12 +152,6 @@ Route::middleware(['web'])->group(function () {
 
 
 
-Route::get(
-    '/actaFinal',
-    function () {
-        return view('actaFinal');
-    }
-);
 Route::get('/jurado_aleatorio', function () {
     return view('/jurado_aleatorio');
 });

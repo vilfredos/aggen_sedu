@@ -49,10 +49,11 @@ class ConvocatoriaController extends Controller
         ]);*/
     
         $input = $request->all();
+        /*
         if ($archivo = $request->file('pdf')) {
             $nombre = $archivo->getClientOriginalName();
             $archivo->storeAs('public/pdf', $nombre);
-        }
+        }*/
     
         // Crear una nueva elección
         $id_eleccion = DB::table('eleccion')->insertGetId([
@@ -60,6 +61,7 @@ class ConvocatoriaController extends Controller
             'descripcion' => $input['descripcion'],
             'fecha_ini' => $input['fecha_ini'],
             'ficha_fin' => $input['ficha_fin'],
+            'convocatoria' => $input['pdf'],
         ]);
     
         // Crear los cargos para la elección
@@ -106,7 +108,7 @@ class ConvocatoriaController extends Controller
             'carrera' => $votante->carrera,
         ]);
     }
-    
+
     return view('poblacion.mostrar', compact('votantes'));
 
         //return back()->with('success', 'Formulario enviado exitosamente!');
