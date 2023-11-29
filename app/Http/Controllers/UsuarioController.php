@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Spatie\Activitylog\Models\Activity;
+use Spatie\Activitylog\Traits\LogsActivity;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -89,6 +90,18 @@ class UsuarioController extends Controller
         //
     }
 
+    use LogsActivity;
+
+    public function someAction()
+    {
+        // Tu lógica aquí...
+
+        activity()
+            ->causedBy(auth()->user()) // Opcional: Quién causó la actividad
+            ->log('Some action was performed.');
+
+        // Más lógica aquí...
+    }
     /**
      * Show the form for editing the specified resource.
      *
