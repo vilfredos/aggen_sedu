@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserSettingsController;
 use App\Http\Controllers\ComiteController;
 use App\Http\Controllers\VotacionController;
+use App\Http\Controllers\pages\Backups;
+use App\Http\Controllers\ActivityLogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -211,3 +213,13 @@ Route::get('/frente/{id_eleccion}', 'App\Http\Controllers\FrenteController@frent
 
 Route::post('/frente', 'App\Http\Controllers\FrenteController@store')->name('frente.store');
 //Route::post('/frente', 'App\Http\Controllers\FrenteController@store');
+
+
+//panel
+Route::get('panel/', function () {
+    return view('panel.index');
+});
+//backups
+Route::get('panel/backups', [Backups::class, 'index'])->name('pages-backups');
+Route::post('panel/backups/create', [Backups::class, 'create'])->name('pages-backups-create');
+Route::get('panel/bitacora', [ActivityLogController::class, 'index'])->name('bitacora-index');

@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.panel {
+    
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.button {
+    width: 150px;
+    height: 100px;
+    margin: 10px;
+  
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.square-button:hover {
+    background-color: #2980b9;
+}
