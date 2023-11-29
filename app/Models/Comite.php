@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comite extends Model
 {
     use HasFactory;
+    protected $table = 'comite';
+    public $timestamps = false; 
+
 }

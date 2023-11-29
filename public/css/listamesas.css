@@ -1,0 +1,27 @@
+/* Estilos generales para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 80px; /* Agrega un margen inferior de 80px (o el valor que prefieras) */
+}
+
+/* Estilos para las celdas de la tabla */
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+/* Estilos para las celdas de encabezado */
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: hsl(251, 90%, 12%);
+    color: white;
+}
+
+h1 {
+    color: #ff6347; /* Tomato color */
+    font-size: 2em; /* 2 times the current font size */
+    text-align: center; /* Center align */
+}

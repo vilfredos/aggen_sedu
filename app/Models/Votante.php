@@ -9,4 +9,8 @@ class Votante extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    public function mesas()
+{
+    return $this->belongsToMany(Mesa::class);
+}
     }

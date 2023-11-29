@@ -40,7 +40,7 @@ Route::post('/change/password',  [UserSettingsController::class, 'changePassword
 Route::resource('cierreActa', 'ActaController');
 
 Route::get('poblacion', [VotanteController::class, 'index'])->name('poblacion.index');
-Route::post('/import', [VotanteController::class, 'import'])->name('import');
+Route::post('votante', [VotanteController::class, 'import'])->name('votante.import');
 
 Route::get('/', [VotanteController::class, 'pdf']);
 Route::get('poblacion/pdf', [VotanteController::class, 'pdf'])->name('poblacion.pdf');
@@ -130,12 +130,12 @@ Route::get('/ver_lista_jurados', 'App\Http\Controllers\JuradoController@mostrar'
 //desde aca modificado
 
 use App\Http\Controllers\ConvocatoriaController;
-
+/*
 Route::middleware(['web'])->group(function () {
 
     Route::get('/convocatoria', [ConvocatoriaController::class, 'create']);
     Route::post('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@store');
-});
+});*/
 
 //Comite
 
@@ -154,12 +154,6 @@ Route::middleware(['web'])->group(function () {
 
 
 
-Route::get(
-    '/actaFinal',
-    function () {
-        return view('actaFinal');
-    }
-);
 Route::get('/jurado_aleatorio', function () {
     return view('/jurado_aleatorio');
 });
@@ -188,21 +182,16 @@ Route::get('/remplazar', function () {
     return view('remplazar');
 });
 
-use App\Http\Controllers\ListamesasController;
-//Route::get('/listamesas', function () {
-//   return view('listamesas');
-//});
-//Route::get('/listamesas', [ListamesasController::class, 'mostrarListadoMesas']);
-Route::get('/listamesas', 'App\Http\Controllers\ListamesasController@mostrarListadoMesas');
+//use App\Http\Controllers\ListamesasController;
+
+//Route::get('/listamesas', 'App\Http\Controllers\ListamesasController@mostrarListadoMesas');
 
 Route::get('/elecciones_ofi', function () {
     return view('elecciones_ofi');
 });
 
-Route::get('/votantes_por_mesa', 'App\Http\Controllers\VotosMesaController@votante_mesa');
+Route::get('/votantes_por_mesa', 'App\Http\Controllers\VotosMesaController@mostrarEleccion');
 
-
-// En tu archivo de rutas (web.php)
 Route::post('/agregar', 'TuControlador@agregar');
 Route::post('/eliminar', 'TuControlador@eliminar');
 Route::post('/votantes_por_mesa', 'App\Http\Controllers\VotosMesaController@otros');
@@ -212,6 +201,7 @@ Route::get('/papeleta/{id_eleccion}', 'App\Http\Controllers\VotosMesaController@
 Route::get('/frente/{id_eleccion}', 'App\Http\Controllers\FrenteController@frente');
 
 Route::post('/frente', 'App\Http\Controllers\FrenteController@store')->name('frente.store');
+
 //Route::post('/frente', 'App\Http\Controllers\FrenteController@store');
 
 
@@ -223,3 +213,22 @@ Route::get('panel/', function () {
 Route::get('panel/backups', [Backups::class, 'index'])->name('pages-backups');
 Route::post('panel/backups/create', [Backups::class, 'create'])->name('pages-backups-create');
 Route::get('panel/bitacora', [ActivityLogController::class, 'index'])->name('bitacora-index');
+
+use App\Http\Controllers\MesaController;
+
+Route::post('/registrar-mesa', [MesaController::class, 'registrar'])->name('registrarMesa');
+
+// Ruta para adjuntar votantes a mesas
+Route::post('/adjuntar-votantes', [MesaController::class, 'adjuntarVotantes'])->name('adjuntarVotantes');
+
+// Ruta para mostrar el listado de mesas
+Route::get('/listamesas', [MesaController::class, 'mostrarListadoMesas'])->name('listamesas');
+Route::get('/ActaDeInicio', function () {
+    return view('ActaDeInicio');
+});
+
+Route::get('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@create');
+
+
+Route::post('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@store')->name('convocatoria.store');
+

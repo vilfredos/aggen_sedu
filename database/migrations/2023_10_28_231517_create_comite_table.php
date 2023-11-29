@@ -16,13 +16,29 @@ class CreateComiteTable extends Migration
         Schema::create('comite', function (Blueprint $table) {
             $table->id();
             $table->string('Rector');
-            $table->string('vocalFud');
-            $table->string('vocalFul');
-            $table->string('vocalDocente1');
-            $table->string('vocalEstudiante1');
-            $table->string('vocalDocente2');
-            $table->string('vocalEstudiante2');
-            $table->timestamps();
+            $table->string('VocalDocenteTitular1');
+            $table->string('VocalDocenteTitular2');
+            $table->string('VocalDocenteTitular3');
+            $table->string('VocalDocenteSuplente1');
+            $table->string('VocalDocenteSuplente2');
+            $table->string('VocalDocenteSuplente3');
+            $table->string('VocalEstudianteTitular1');
+            $table->string('VocalEstudianteTitular2');
+            $table->string('VocalEstudianteSuplente1');
+            $table->string('VocalEstudianteSuplente2');
+
+
+
+            
+            /*
+            $table->index('ci');
+            $table->integer('ci')->primary(); // Definir 'Ci' como clave primaria
+            $table->string('Nombre');
+            $table->string('Facultad');
+            $table->string('Gremio');
+            $table->string('Estado');
+            //$table->timestamps();
+            */
         });
     }
 

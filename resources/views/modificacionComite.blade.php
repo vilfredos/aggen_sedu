@@ -18,6 +18,12 @@
         <h1 class="titulo">Modificar Miembro del Comité</h1>
         </div>
 
+        <div class="form-group">
+                <label for="vocalDocenteTitular1">Vocal Docente Titular 1:</label>
+                <input type="text" id="vocalDocenteTitular1" name="vocalDocenteTitular1" value="{{ $comite->VocalDocenteTitular1 }}">
+            
+        </div>
+        
         <div class="contenido">
             <p>Miembro del comité que se modificará:</p>
             <select id="miembroComite" name="miembroComite">

@@ -23,48 +23,70 @@
         <h1 class="titulo">Registrar Miembros del Comité</h1>
         </div>
 
-        <form id="formulario"  action="{{ url('/comite/store') }}" method="post" enctype="multipart/form-data">
+        <form id="formulario"  action="/comite" method="post" enctype="multipart/form-data">
         @csrf
 
 
             <div class="form-group">
                 <label for="rector">Registrar Rector:</label>
-                <input type="text" id="rector" name="rector" pattern="[A-Za-z ]+" required > <!--value="Ing. Julio Medina Gamboa" readonly -->
+                <input type="text" id="rector" name="rector" pattern="[A-Za-z ]+" required value="Ing. Julio Medina Gamboa" readonly > <!--value="Ing. Julio Medina Gamboa" readonly -->
             </div>
-            
+
             <div class="form-group">
-                <label for="fud">Vocal designado por la Fud:</label>
-                <input type="text" id="fud" name="fud"   pattern="[A-Za-z ]+" required>
+                <label for="docenteTitular1">Vocal Docente titular 1:</label>
+                <input type="text" id="docenteTitular1" name="docenteTitular1" pattern="[A-Za-z ]+" required value="{{ $vocalesTitularesDocentes[0] ?? '' }}" readonly>
             </div>
-            
+
             <div class="form-group">
-                <label for="ful">Vocal designado por la Ful:</label>
-                <input type="text" id="ful" name="ful"   pattern="[A-Za-z ]+" required>
+                <label for="docenteTitular2">Vocal Docente titular 2:</label>
+                <input type="text" id="docenteTitular2" name="docenteTitular2" pattern="[A-Za-z ]+" required value="{{ $vocalesTitularesDocentes[1] ?? '' }}" readonly>
             </div>
-            
+
             <div class="form-group">
-                <label for="vocalDocente1">Vocal docente:</label>
-                <input type="text" id="vocalDocente1" name="vocalDocente1" pattern="[A-Za-z ]+" required>
-                <label for="vocalEstudiante1">Vocal estudiante:</label>
-                <input type="text" id="vocalEstudiante1" name="vocalEstudiante1" pattern="[A-Za-z ]+" required>
+                <label for="docenteTitular3">Vocal Docente titular 3:</label>
+                <input type="text" id="docenteTitular3" name="docenteTitular3" pattern="[A-Za-z ]+" required value="{{ $vocalesTitularesDocentes[2] ?? '' }}" readonly>
             </div>
-            
+
             <div class="form-group">
-                <label for="vocalDocente2">Vocal docente:</label>
-                <input type="text" id="vocalDocente2" name="vocalDocente2" pattern="[A-Za-z ]+" required>
-                <label for="vocalEstudiante2">Vocal estudiante:</label>
-                <input type="text" id="vocalEstudiante2" name="vocalEstudiante2" pattern="[A-Za-z ]+" required>
+                <label for="docenteSuplente1">Vocal Docente Suplente 1:</label>
+                <input type="text" id="docenteSuplente1" name="docenteSuplente1"   pattern="[A-Za-z ]+" required value="{{ $vocalesSuplentesDocentes[0] ?? '' }}" readonly>
             </div>
-            
-            <button type="button" id="asignarAleatoriamenteButton">Asignar Aleatoriamente</button>
+
+            <div class="form-group">
+                <label for="docenteSuplente2">Vocal Docente Suplente 2:</label>
+                <input type="text" id="docenteSuplente2" name="docenteSuplente2"   pattern="[A-Za-z ]+" required value="{{ $vocalesSuplentesDocentes[1] ?? '' }}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="docenteSuplente3">Vocal Docente Suplente 3:</label>
+                <input type="text" id="docenteSuplente3" name="docenteSuplente3"   pattern="[A-Za-z ]+" required value="{{ $vocalesSuplentesDocentes[2] ?? '' }}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="estudianteTitular1">Vocal Estudiante Titular 1:</label>
+                <input type="text" id="estudianteTitular1" name="estudianteTitular1"   pattern="[A-Za-z ]+" required value="{{ $vocalesTitularesEstudiantes[0] ?? '' }}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="estudianteTitular2">Vocal Estudiante Titular 2:</label>
+                <input type="text" id="estudianteTitular2" name="estudianteTitular2"   pattern="[A-Za-z ]+" required value="{{ $vocalesTitularesEstudiantes[1] ?? '' }}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="estudianteSuplente1">Vocal Estudiante Suplente 1:</label>
+                <input type="text" id="estudianteSuplente1" name="estudianteSuplente1"   pattern="[A-Za-z ]+" required value="{{ $vocalesSuplentesEstudiantes[0] ?? '' }}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="estudianteSuplente2">Vocal Estudiante Suplente 2:</label>
+                <input type="text" id="estudianteSuplente2" name="estudianteSuplente2"   pattern="[A-Za-z ]+" required value="{{ $vocalesSuplentesEstudiantes[1] ?? '' }}" readonly>
+            </div>
+
+
+             <button type="button" onclick="asignarAleatoriamente()">Asignar Aleatoriamente</button>
             
             <button class="submit-btn">Publicar Miembros Comite</button>
         
-            <button type="button" class="save-button" onclick="Acabar_proceso()">Continuar con el Registro</button>
-
-            <!--<button type="submit" id="submitButton">Registrar Miembros del Comité</button -->
-            <p id="error-message" style="color: red;"></p>
-
             <button type="button" id="modificarButton">Modificar</button>
 
             <div id="motivoModificacion" style="display: none;">
@@ -75,10 +97,9 @@
                         <option value="3">Por otra causa</option>
                     </select>
     
-
-    
-    </form>
+                    
+</form>
     </div>
-        <script src="{{ asset('js/comite.js') }}"></script>
+
 </body>
 @endsection
