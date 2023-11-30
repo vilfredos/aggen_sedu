@@ -21,7 +21,7 @@
                 <th>tipo</th>
                 <th>ubicacion</th>
                 <th>cap. maxima</th>
-                <th>Habilitada</th> <!-- Agregado para la columna Habilitada -->
+                 <!-- Agregado para la columna Habilitada -->
             </tr>
         </thead>
         
@@ -30,20 +30,18 @@
                 <td>{{ $mesa->numeroMesa }}</td>
                 <td>{{ $mesa->recinto }}</td>
                 <td>{{ $mesa->aula }}</td>
-                <td>{{ $mesa->facultad }}</td>
-                <td>{{ $mesa->carrera }}</td>
-                <td>{{ $mesa->tipo }}</td>
-                <td>{{ $mesa->ubicacion }}</td>
-                <td>{{ $mesa->capMaxima }}</td>
-                <td>
-                <input type="checkbox" name="mesas_seleccionadas[]" value="{{ $mesa->facultad . '-' . $mesa->carrera . '-' . $mesa->tipo }}" {{ $mesa->habilitada ? 'checked' : '' }}>
-                </td>
+                <td><button class="btn-info">informacion</button></td>
+                <td><button class="btn-jurados">jurados</button></td>
+                <td><button class="btn_actas">actaInicio</button></td>
+                <td><button class="btn_lista">votantes</button></td>
+                <td><button class="btn-acta2">actafinal</button></td>
             </tr>
         @endforeach
     </table>
-
+    
     <!-- Agrega un contenedor para el botón y aplica un margen inferior -->
     <button type="submit" class="btn btn-primary" style="margin-bottom: 80px;">aplicar</button>
+    <a href="/mesa" class="btn btn-secondary" style="margin-bottom: 80px;">+</a>
     </form>
 
 </body>
