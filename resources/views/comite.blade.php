@@ -83,8 +83,8 @@
             </div>
 
 
-            <button type="button" onclick="asignarAleatoriamente()">Asignar Aleatoriamente</button>
-
+             <button type="button" onclick="asignarAleatoriamente()">Asignar Aleatoriamente</button>
+            
             <button class="submit-btn">Publicar Miembros Comite</button>
         
             <button type="button" id="modificarButton">Modificar</button>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UserSettings;
 use Illuminate\Http\Request;
-
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Support\Facades\Auth; //Necesario
 use Illuminate\Support\Facades\Hash; //Necesario
 use Illuminate\Support\Facades\DB; //Necesario

@@ -22,6 +22,7 @@
         "webpack-cli": "^5.1.4"
     },
     "dependencies": {
-        "jquery": "^3.7.1"
+        "jquery": "^3.7.1",
+        "mysqldump": "^3.2.0"
     }
 }

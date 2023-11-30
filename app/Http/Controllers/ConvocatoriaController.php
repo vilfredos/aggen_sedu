@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreConvocatoriaRequest;
 use App\Http\Requests\UpdateConvocatoriaRequest;
 use Illuminate\Support\Facades\Validator; // Importa la clase Validator aquí
-
+use Illuminate\Support\Facades\DB;
 
 //use Illuminate\Http\Request;
 
@@ -25,7 +25,7 @@ class ConvocatoriaController extends Controller
 
     public function create()
     {
-        return view('comvocatoria'); 
+        return view('convocatoria'); 
 
     }
 
@@ -37,23 +37,81 @@ class ConvocatoriaController extends Controller
      */
     public function store(Request $request)
     {
+        /*
         $request->validate([
-            'titulo' => 'required|in:Consejeros de Carrera,Consejeros Facultativos,Consejeros Universitarios,Directores de Carrera,Autoridades Facultativas,Autoridades Universitarias',
-            'documento' => 'required|mimes:pdf',
-            'fechaInicio' => 'required|date',
-            'fechaFin' => 'required|date',    
+            'titulo' => 'required',
+            'descripcion' => 'required',
+            'fecha_ini' => 'required|date',
+            'ficha_fin' => 'required|date',
+            'convocatoria' => 'required|mimes:pdf|max:2048',
+            'cargos' => 'required|array',
+            'cargos.*' => 'required|string',
+        ]);*/
+    
+        $input = $request->all();
+        /*
+        if ($archivo = $request->file('pdf')) {
+            $nombre = $archivo->getClientOriginalName();
+            $archivo->storeAs('public/pdf', $nombre);
+        }*/
+    
+        // Crear una nueva elección
+        $id_eleccion = DB::table('eleccion')->insertGetId([
+            'titulo' => $input['titulo'],
+            'descripcion' => $input['descripcion'],
+            'fecha_ini' => $input['fecha_ini'],
+            'ficha_fin' => $input['ficha_fin'],
+            'convocatoria' => $input['pdf'],
         ]);
     
-        $convocatoriadb = new Convocatoria;
-        $convocatoriadb->Titulo = $request->titulo;
-        $archivoPdfPath = $request->file('documento')->store('pdfs', 'public');
-        $convocatoriadb->archivo_pdf = $archivoPdfPath;   
-        $convocatoriadb->fecha_inicio = $request->fechaInicio;
-        $convocatoriadb->fecha_final = $request->fechaFin;
-    
-        $convocatoriadb->save();
+        // Crear los cargos para la elección
+        foreach ($input['cargos'] as $cargo) {
+            DB::table('eleccion_cargo')->insert([
+                'id_eleccion' => $id_eleccion,
+                'cargo_postular' => $cargo,
+            ]);
+        }
+    ///
+    $facultad = $request->input('facultad');
+    $carrera = $request->input('carrera');
 
-        return back()->with('success', 'Convocatoria realizada exitosamente');
+    // Obtener votantes de la tabla de estudiantes
+    $votantesEstudiantes = DB::table('estudiantes');
+
+    if (!empty($facultad)) {
+        $votantesEstudiantes->where('facultad', $facultad);
+    }
+    
+    if (!empty($carrera)) {
+        $votantesEstudiantes->where('carrera', $carrera);
+    }
+    
+    // Obtener votantes de la tabla de docentes
+    $votantesDocentes = DB::table('docentes');
+    
+    if (!empty($facultad)) {
+        $votantesDocentes->where('facultad', $facultad);
+    }
+    
+    if (!empty($carrera)) {
+        $votantesDocentes->where('carrera', $carrera);
+    }
+    
+    // Unir las consultas de votantes de estudiantes y docentes
+    $votantes = $votantesEstudiantes->union($votantesDocentes)->get();
+    
+    foreach ($votantes as $votante) {
+        DB::table('eleccion_sis')->insert([
+            'id_eleccion' => $id_eleccion,
+            'sis' => $votante->sis,
+            'facultad' => $votante->facultad,
+            'carrera' => $votante->carrera,
+        ]);
+    }
+
+    return view('poblacion.mostrar', compact('votantes'));
+
+        //return back()->with('success', 'Formulario enviado exitosamente!');
     }
 
     

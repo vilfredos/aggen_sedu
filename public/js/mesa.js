@@ -1,9 +1,14 @@
+// mesa.js
+
+// Definir la función para validar el formulario
 function validarFormulario() {
     var campos = ["numeroMesa", "recintoVotacion", "aulaVotacion", "fotoLugar"];
+
+    // Iterar sobre los campos y verificar si están completos
     for (var i = 0; i < campos.length; i++) {
         var valorCampo = document.getElementById(campos[i]).value;
         if (valorCampo.trim() === "") {
-            document.getElementById("error-message").textContent = "Error: Todos los campos deben estar completos.";
+            mostrarError("Error: Todos los campos deben estar completos.");
             return false;
         }
     }
@@ -11,22 +16,33 @@ function validarFormulario() {
     // Comprobar si se ha seleccionado un archivo
     var fileInput = document.getElementById("fotoLugar");
     if (fileInput.files.length === 0) {
-        document.getElementById("error-message").textContent = "Error: Debes subir una foto del lugar.";
+        mostrarError("Error: Debes subir una foto del lugar.");
         return false;
     }
 
     // Resto de validaciones (si es necesario)
 
     // Limpiar mensaje de error
-    document.getElementById("error-message").textContent = "";
+    limpiarError();
 
     return true;
 }
 
-document.getElementById("mesaForm").onsubmit = function(event) {
+// Definir la función para mostrar mensajes de error
+function mostrarError(mensaje) {
+    var errorMessage = document.getElementById("error-message");
+    errorMessage.textContent = mensaje;
+}
+
+// Definir la función para limpiar el mensaje de error
+function limpiarError() {
     var errorMessage = document.getElementById("error-message");
     errorMessage.textContent = "";
+}
 
+// Asignar el evento onSubmit al formulario
+document.getElementById("mesaForm").onsubmit = function(event) {
+    limpiarError();
     event.preventDefault();
     if (validarFormulario()) {
         // Aquí puedes enviar el formulario al servidor si todos los campos son válidos
@@ -34,10 +50,25 @@ document.getElementById("mesaForm").onsubmit = function(event) {
         alert("Formulario de mesa enviado correctamente.");
     }
 };
-function terimar_proceso(){
+
+// Definir la función para manejar el cambio en la selección de facultad
+$(document).ready(function () {
+    $("#facultad").change(function () {
+        var selectedFacultad = $(this).val();
+        $("#carrera option").hide();
+        $("#carrera option[data-facultad='" + selectedFacultad + "']").show();
+        if (selectedFacultad === "todos") {
+            $("#carrera option").show();
+        }
+    });
+});
+
+// Definir las funciones adicionales
+function terminarProceso() {
     alert("Saliendo de Registrar Mesa");
-    llevame_a_jurado() 
-  }
-  function llevame_a_jurado() {
+    llevarmeAJurado();
+}
+
+function llevarmeAJurado() {
     window.location.href = '/jurado';
-  }
+}
