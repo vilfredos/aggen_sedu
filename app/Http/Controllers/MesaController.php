@@ -11,25 +11,21 @@ use Illuminate\Support\Facades\DB;
 
 class MesaController extends Controller
 {
-    public function mostrarListadoMesas($id_eleccion)
+    public function listamesas($id_eleccion)
     {
-        // Obtén la información de la elección desde la tabla eleccion_sis
-        $eleccionInfo = DB::table('eleccion_sis')->where('id_eleccion', $id_eleccion)->first();
-
-        // Obtén las mesas de la tabla mesas que coincidan con la facultad y carrera de la elección
-        $mesas = DB::table('mesas')
-            ->where('facultad', $eleccionInfo->facultad)
-            ->where('carrera', $eleccionInfo->carrera)
-            ->get();
-
-        // Pasa las mesas a la vista listamesas.blade.php
-        return view('listamesas', ['mesas' => $mesas]);
+        $mesas = DB::table('mesas')->where('id_eleccion', $id_eleccion)->get();
+        return view('listamesas', ['mesas' => $mesas, 'id_eleccion' => $id_eleccion]);
     }
-    public function mostrarListadoMesa()
+    public function ver_votantes($num_mesa)
     {
-        $mesas = Mesa::all();
-        return view('listamesas', compact('mesas'));
+        $eleccionId = request()->query('eleccionId');
+        $datos = DB::table('eleccion_votante_mesa')
+    ->where('id_eleccion', $eleccionId)
+    ->where('id_mesa', $num_mesa)
+    ->get();
+        return view('votante_mesa', ['data' => $datos]);
     }
+
     public function mostrarVistaAsignacion()
     {
         // Obtener las mesas desde tu modelo o cualquier lógica que necesites
@@ -106,6 +102,7 @@ class MesaController extends Controller
     // Puedes redirigir a la vista o hacer cualquier otra acción después de la inserción
     return redirect()->back()->with('success', 'Votantes adjuntados exitosamente.');
 }
+/*
 public function guardarAsignacion(Request $request)
 {
     try {
@@ -162,5 +159,5 @@ public function guardarAsignacion(Request $request)
         return redirect()->back()->with('error', 'Hubo un error al asignar las mesas.');
     }
 }
-
+*/
 }
