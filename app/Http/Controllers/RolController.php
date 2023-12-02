@@ -6,9 +6,14 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
+use Spatie\Activitylog\Models\Activity;
 
 class RolController extends Controller
+
 {
+    
+   
+
     function __construct()
     {
         $this->middleware('permission:ver-rol|crear-rol|editar-rol|borrar-rol', ['only'=>['index']]);
