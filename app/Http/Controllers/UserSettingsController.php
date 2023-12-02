@@ -8,10 +8,10 @@ use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Support\Facades\Auth; //Necesario
 use Illuminate\Support\Facades\Hash; //Necesario
 use Illuminate\Support\Facades\DB; //Necesario
-
+use Spatie\Activitylog\Models\Activity;
 class UserSettingsController extends Controller
 {
-
+    use LogsActivity;
     public function NewPassword(){
         return view('configure_user_profile');
     }
@@ -19,6 +19,7 @@ class UserSettingsController extends Controller
     
     public function changePassword(Request $request){    
         
+        $lastActivity = Activity::all()->last();
         $user           = Auth::user();
         $userId         = $user->id;
         $userEmail      = $user->email;
@@ -37,6 +38,11 @@ class UserSettingsController extends Controller
                         //Valido que la clave no sea Menor a 6 digitos
                         if(strlen($NuewPass) >= 6){
                             $user->password = Hash::make($request->password);
+                            // Log de actividad
+                            activity()
+                            ->causedBy($user)
+                            ->log('Cambio de contraseña');
+                           
                             $sqlBD = DB::table('users')
                                   ->where('id', $user->id)
                                   ->update(['password' => $user->password], ['name' => $user->name]);
@@ -56,10 +62,15 @@ class UserSettingsController extends Controller
 
 
         }else{
+             
             $name       = $request->name;
             $sqlBDUpdateName = DB::table('users')
                             ->where('id', $user->id)
                             ->update(['name' => $name]);
+                              // Log de actividad con información del usuario
+        activity()
+        ->causedBy($user)
+        ->log('Cambio de nombre');
             return redirect()->back()->with('name','El nombre fue cambiado correctamente.');;
 
         }
