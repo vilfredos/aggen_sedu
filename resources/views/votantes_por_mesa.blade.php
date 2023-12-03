@@ -30,7 +30,7 @@
                 <td><button class="btn btn-primary">informacion</button></td>
                 <td><button class="btn btn-primary">comite</button></td>
                 <td><button class="btn_frente">Frente</button></td>
-                <td><button class="btn btn-danger">mesas</button></td>
+                <td><button class="btn_mesas" data-id="{{ $dato->id }}">mesas</button></td>
                 <td><button class="btn-secondary">papeleta</button></td>
             </tr>
             @endforeach
@@ -49,6 +49,12 @@
         $(".btn_frente").click(function() {
             var sis = $(this).closest('tr').find('td:eq(0)').text();
             window.location.href = '/frente/' + sis;
+        });
+    });
+    $(document).ready(function() {
+        $(".btn_mesas").click(function() {
+            var eleccionId = $(this).data('id');
+            window.location.href = '/listamesas/' + eleccionId;
         });
     });
 </script>

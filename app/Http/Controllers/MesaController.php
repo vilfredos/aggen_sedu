@@ -7,15 +7,33 @@ use App\Http\Controllers\Controller;
 use App\Models\Mesa;
 use App\Models\Votante;
 use App\Models\MesaVotante; 
+use Illuminate\Support\Facades\DB;
 
 class MesaController extends Controller
 {
-    public function mostrarListadoMesas()
+    public function listamesas($id_eleccion)
     {
-        $mesas = Mesa::all();
-        return view('listamesas', compact('mesas'));
+        $mesas = DB::table('mesas')->where('id_eleccion', $id_eleccion)->get();
+        return view('listamesas', ['mesas' => $mesas, 'id_eleccion' => $id_eleccion]);
+    }
+    public function ver_votantes($num_mesa)
+    {
+        $eleccionId = request()->query('eleccionId');
+        $datos = DB::table('eleccion_votante_mesa')
+    ->where('id_eleccion', $eleccionId)
+    ->where('id_mesa', $num_mesa)
+    ->get();
+        return view('votante_mesa', ['data' => $datos]);
     }
 
+    public function mostrarVistaAsignacion()
+    {
+        // Obtener las mesas desde tu modelo o cualquier lógica que necesites
+        $mesas = Mesa::all();
+
+        // Renderizar la vista asignacion.blade.php y pasar las mesas como variable
+        return view('asignacion', compact('mesas'));
+    }
     public function registrar(Request $request)
     {
         // Validar los datos del formulario según tus necesidades
@@ -84,4 +102,62 @@ class MesaController extends Controller
     // Puedes redirigir a la vista o hacer cualquier otra acción después de la inserción
     return redirect()->back()->with('success', 'Votantes adjuntados exitosamente.');
 }
+/*
+public function guardarAsignacion(Request $request)
+{
+    try {
+        // Obtener las mesas seleccionadas
+        $mesasSeleccionadas = $request->input('mesas', []);
+
+        // Verificar que hay mesas seleccionadas
+        if (count($mesasSeleccionadas) > 0) {
+            DB::transaction(function () use ($mesasSeleccionadas) {
+                foreach ($mesasSeleccionadas as $numeroMesa) {
+                    // Obtener la mesa seleccionada
+                    $mesa = Mesa::where('numeroMesa', $numeroMesa)->first();
+
+                    // Verificar si ya existe una asignación para esta mesa y votante
+                    $existingAssignment = MesaVotante::where('mesa_id', $mesa->numeroMesa)
+                        ->whereIn('votante_id', Votante::where('facultad', $mesa->facultad)
+                            ->where('carrera', $mesa->carrera)
+                            ->pluck('sis'))
+                        ->exists();
+
+                    if (!$existingAssignment) {
+                        // Obtener los votantes que cumplen con los criterios
+                        $votantes = Votante::where('facultad', $mesa->facultad)
+                            ->where('carrera', $mesa->carrera)
+                            ->get();
+
+                        // Iterar sobre los votantes y asignarlos a la mesa
+                        foreach ($votantes as $votante) {
+                            // Crear la asignación solo si no existe
+                            MesaVotante::create([
+                                'mesa_id' => $mesa->numeroMesa,
+                                'votante_id' => $votante->sis,
+                            ]);
+                        }
+                    } else {
+                        // Manejar la situación donde ya existe una asignación
+                        // Puedes informar al usuario o registrar un mensaje de advertencia
+                        \Log::warning("Intento de asignar votantes a la misma mesa {$mesa->numeroMesa} más de una vez.");
+                    }
+                }
+            });
+
+            // Puedes redirigir a una vista de éxito o realizar alguna otra acción
+            return redirect()->back()->with('success', 'Mesas asignadas correctamente.');
+        }
+
+        // Si no hay mesas seleccionadas, puedes redirigir o mostrar un mensaje de error
+        return redirect()->back()->with('error', 'No hay mesas seleccionadas.');
+    } catch (\Exception $e) {
+        // Registrar el error
+        \Log::error('Error al asignar mesas: ' . $e->getMessage());
+
+        // Mostrar un mensaje de error al usuario
+        return redirect()->back()->with('error', 'Hubo un error al asignar las mesas.');
+    }
+}
+*/
 }

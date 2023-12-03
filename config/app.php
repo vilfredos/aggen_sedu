@@ -163,7 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Laravel\Sanctum\SanctumServiceProvider::class,
-        
+        Spatie\Backup\BackupServiceProvider::class,
 
         /*
          * Package Service Providers...

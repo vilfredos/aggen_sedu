@@ -214,6 +214,8 @@ Route::get('panel/backups', [Backups::class, 'index'])->name('pages-backups');
 Route::post('panel/backups/create', [Backups::class, 'create'])->name('pages-backups-create');
 Route::get('panel/bitacora', [ActivityLogController::class, 'index'])->name('bitacora-index');
 
+
+
 use App\Http\Controllers\MesaController;
 
 Route::post('/registrar-mesa', [MesaController::class, 'registrar'])->name('registrarMesa');
@@ -222,13 +224,15 @@ Route::post('/registrar-mesa', [MesaController::class, 'registrar'])->name('regi
 Route::post('/adjuntar-votantes', [MesaController::class, 'adjuntarVotantes'])->name('adjuntarVotantes');
 
 // Ruta para mostrar el listado de mesas
-Route::get('/listamesas', [MesaController::class, 'mostrarListadoMesas'])->name('listamesas');
+//Route::get('/listamesas', [MesaController::class, 'mostrarListadoMesa'])->name('listamesas');
 Route::get('/ActaDeInicio', function () {
     return view('ActaDeInicio');
 });
+Route::get('/listamesas/{id_eleccion}', 'App\Http\Controllers\MesaController@listamesas');
 
 Route::get('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@create');
-
-
 Route::post('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@store')->name('convocatoria.store');
+Route::get('/asignacion', [MesaController::class, 'mostrarVistaAsignacion'])->name('mostrarVistaAsignacion');
+Route::post('/guardar-asignacion', [MesaController::class, 'guardarAsignacion'])->name('guardarAsignacion');
 
+Route::get('/votante_mesa/{num_mesa}', 'App\Http\Controllers\MesaController@ver_votantes');
