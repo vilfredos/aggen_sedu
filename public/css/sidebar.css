@@ -1,15 +1,3 @@
-/*.sidebar {
-    grid-row: 2 / 3;
-    grid-column: 1 / 2;
-    background: linear-gradient(to bottom, blue, red, black);
-    background: linear-gradient(to bottom, #031c43,#162045, #a10d18, #c7050b);
-    background-color: #a30b0b;
-    color: #fff;
-   
-   height: 90vh;
-
-}
-*/
 .sidebar {
     grid-row: 1 / -1;
     grid-column: 1 / 2;
@@ -19,30 +7,27 @@
    
       width: 300px;
 }
+
 .app-title{
     display: flex;
     text-align: center;
     align-items: center;
-    margin-left: 2%;
+    /*margin-left: 2%;*/
     margin-top: 1px;
-    margin-left: 4%;
-   
+    margin-left: 6%;
 }
+
 .app-title h1 {
-    color: #ffff;
-    margin: 0;
+    color: #fff;
+    margin-bottom: 0;
 }
 .nombres{
+    margin-top: 15px;
     margin-left: 15px;
-    display: inline
-}
-
-.nombres p{
+    margin-right: 10px;
+    display: inline;
     color: #ffff;
-   
-    
 }
-
 
 logo-umss{
   
@@ -73,12 +58,17 @@ logo-umss{
 }
 
 .sidebar nav ul li {
-    padding-bottom: 10px;
+    padding-bottom: 30px;
 }
 
 .sidebar nav ul li a {
+
+    font-size: 15px;
+    padding: 15px 15px;
     color: #ffffff;
     text-decoration: none;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .menu-container{
     margin: 10% 10% 15% 15%;

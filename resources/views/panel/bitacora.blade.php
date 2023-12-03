@@ -1,22 +1,38 @@
 @extends('Home')
 
 @section('content')
-<head>
-
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <!-- Aquí puedes agregar el contenido principal de tu página -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="{{ asset('css/panel.css') }}" rel="stylesheet">
-</head>
-<h1>Activity Log</h1>
-
-<ul>
-    @foreach($activities as $activity)
-        <li>
-            <strong>{{ $activity->causer_type }}:</strong>
-            {{ $activity->description }}
-            ({{ $activity->created_at->diffForHumans() }})
-        </li>
-    @endforeach
-</ul>
+    <head>
+        <!-- ... -->
+    </head>
+    <div>
+        <h1>Activity Log</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Descripción</th>
+                    <th>Fecha y hora</th>
+                    <th>Realizado por</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($activities as $activity)
+                    <tr>
+                        <td>{{ $activity->description }}</td>
+                        <td>{{ $activity->created_at }}</td>
+                        <td>{{ $activity->causer->name }} ({{ $activity->causer->email }})</td>
+                        <td>
+                            @if($activity->description === 'Cambio de contraseña')
+                                <!-- Detalles adicionales del cambio de contraseña -->
+                                ...
+                            @elseif($activity->description === 'Cambio de nombre')
+                                <!-- Detalles adicionales del cambio de nombre -->
+                               
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection

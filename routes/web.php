@@ -214,7 +214,6 @@ Route::get('panel/backups', [Backups::class, 'index'])->name('pages-backups');
 Route::post('panel/backups/create', [Backups::class, 'create'])->name('pages-backups-create');
 Route::get('panel/bitacora', [ActivityLogController::class, 'index'])->name('bitacora-index');
 
-Route::get('panel/backups', 'BackupController@index')->name('panel.backups.index');
 
 
 use App\Http\Controllers\MesaController;

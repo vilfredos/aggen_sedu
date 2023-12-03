@@ -1,13 +1,25 @@
-.content {
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f1e4;
+    margin: 0;
+    padding: 0;
+}
+
+.contenedorElecciones {
+    margin-left: 30%;
+    margin-top: 150px;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    max-width: 500px; /* Ajusta según sea necesario */
+    width: 100%;
 }
 
 .btn-container {
+    margin: 20px;
     display: flex;
     justify-content: center;
 }

@@ -8,6 +8,15 @@
 .superior {
     margin-top: 10px;
     background: linear-gradient(to bottom, #CF2E2E, #003770);
+
+}
+.titulo {
+    color: #ffffffff; /* Puedes usar cualquier valor de color, ya sea nombre, hexadecimal o RGB */
+    /* Otros estilos opcionales */
+    font-size: 44px; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita */
+    /* Otros estilos según tus necesidades */
+    margin-top: 30px;
 }
 
 
