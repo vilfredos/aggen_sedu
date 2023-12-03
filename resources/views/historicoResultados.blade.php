@@ -24,16 +24,18 @@
                         <th>Año</th>
                         <th>Candidato Ganador</th>
                         <th>Partido Politico</th>
-                        <th>Resultado</th>
                         <th>Miembros del Comite</th>
+                        <th>Jurados</th>
+                        <th>Resultado</th>
                         <th>Detalles</th>
                     </tr>
                     <tr>
                         <td>2020</td>
                         <td>Nombre del Candidato</td>
                         <td>Partido XYZ</td>
-                        <td>Ganador</td>
                         <td>Nombre1, Nombre2, Nombre3</td>
+                        <td>Nombre1, Nombre2, Nombre3</td>
+                        <td>Ganador</td>
                         <td><a href="#">Ver detalles</a></td>
                     </tr>
                 </table>

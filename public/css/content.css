@@ -1,6 +1,9 @@
 .content {
     grid-row: 2 / 3;
     grid-column: 2 / -1;
-    background-color: rgb(255, 255, 255);
-    
+    /*background-color: rgb(255, 255, 255);*/
+    background-color: #fff;
+
+    margin-bottom: 100px; /* Ajusta según sea necesario */
+    margin-top: 20px; /* Agrega un margen superior */
 }
