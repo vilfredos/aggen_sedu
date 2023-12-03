@@ -13,7 +13,7 @@ class FrenteController extends Controller
     {
         try {
             // tu código
-        
+            $eleccionId = $request->input('id');
         $sis_representante = $request->input('sis_representante');
         $nombre_frente = $request->input('nombre_frente');
         $sigla_frente = $request->input('sigla_frente');
@@ -26,6 +26,7 @@ class FrenteController extends Controller
             'sigla_frente' => $sigla_frente,
             'color_primario' => $color_primario,
             'color_secundario' => $color_secundario,
+            'id_eleccion' => $eleccionId,
         ]);
     
         $cargos = DB::table('eleccion_cargo')->where('id_eleccion', $request->input('id'))->get();
