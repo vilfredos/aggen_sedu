@@ -9,11 +9,12 @@ class FrenteController extends Controller
 {
     
 
+
     public function store(Request $request)
     {
         try {
             // tu código
-            $eleccionId = $request->input('id');
+        
         $sis_representante = $request->input('sis_representante');
         $nombre_frente = $request->input('nombre_frente');
         $sigla_frente = $request->input('sigla_frente');
@@ -26,13 +27,13 @@ class FrenteController extends Controller
             'sigla_frente' => $sigla_frente,
             'color_primario' => $color_primario,
             'color_secundario' => $color_secundario,
-            'id_eleccion' => $eleccionId,
+            'id_eleccion' => $request->input('id_eleccion'),
         ]);
     
-        $cargos = DB::table('eleccion_cargo')->where('id_eleccion', $request->input('id'))->get();
+        $cargos = DB::table('eleccion_cargo')->where('id_eleccion', $request->input('id_eleccion'))->get();
         foreach ($cargos as $cargo) {
-            $id_eleccion = $request->input('id');
-            $sis_candidato = $request->input($cargo->cargo_postular);
+            $id_eleccion = $request->input('id_eleccion');
+            $sis_candidato = $request->input(str_replace(' ', '_', $cargo->cargo_postular));
         
             DB::table('candidato')->insert([
                 'id_eleccion' => $id_eleccion,
@@ -43,10 +44,11 @@ class FrenteController extends Controller
         }
     } catch (\Exception $e) {
         dd($e->getMessage());
-    }
+
     
         return redirect()->back();
     }
+}
 
 public function frente($sis)
 {
