@@ -1,5 +1,5 @@
 /* Estilos generales para la tabla */
-table {
+.table {
     width: 100%;
     border-collapse: collapse;
 }
