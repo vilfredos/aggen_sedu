@@ -35,7 +35,7 @@
                 <a href="{{ route('agregarInfo', ['numeroMesa' => $mesa->numeroMesa]) }}" class="btn-info">Agregar Información</a>
             </td>
             <td><button class="btn-votante_mesa" data-id_eleccion="{{ $id_eleccion }}">Poblacion votante</button></td>
-            <td><button class="btn-jurados">jurados</button></td>
+            <td><button class="btn_jurados" data-id_eleccion="{{ $id_eleccion }}">jurados</button></td>
             <td><button class="btn_descargar_acta">descargar acta</button></td>
             <td><button class="btn-Registrar acta acta">Registrar acta acta</button></td>
         </tr>
@@ -54,6 +54,13 @@
                 var num_mesa = $(this).closest('tr').find('td:eq(0)').text();
                 var id_eleccion = $(this).data('id_eleccion');
                 window.location.href = '/votante_mesa/' + num_mesa + '?eleccionId=' + id_eleccion;
+            });
+        });
+        $(document).ready(function() {
+            $(".btn_jurados").click(function() {
+                var num_mesa = $(this).closest('tr').find('td:eq(0)').text();
+                var id_eleccion = $(this).data('id_eleccion');
+                window.location.href = '/lista_jurados/' + num_mesa + '?eleccionId=' + id_eleccion;
             });
         });
         $(document).ready(function() {

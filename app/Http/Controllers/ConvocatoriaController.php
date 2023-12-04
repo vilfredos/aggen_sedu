@@ -254,44 +254,49 @@ class ConvocatoriaController extends Controller
                     'cargo' => $cargosEstudiantes[$index],
                 ]);
             }
-            /*jurados*/
+        }
+        /*jurados*/
+        // Obtén todas las mesas para la elección dada
+        $mesas = DB::table('mesas')->where('id_eleccion', $id_eleccion)->get();
 
-            // Primero, obtenemos los datos de las mesas y elecciones
-            $mesas = DB::table('mesas')->where('id_eleccion', $id_eleccion)->get();
-            $eleccion_sis = DB::table('eleccion_sis')->where('id_eleccion', $id_eleccion)->get();
+        // Itera sobre cada mesa
+        foreach ($mesas as $mesa) {
+            // Selecciona 5 docentes al azar de eleccion_sis
+            $docentes = DB::table('eleccion_sis')
+                ->where('id_eleccion', $id_eleccion)
+                ->where('gremio', 'docente')
+                ->inRandomOrder()
+                ->take(5)
+                ->get();
 
-            // Luego, iteramos sobre cada mesa
-            foreach ($mesas as $mesa) {
-                // Obtenemos los docentes y estudiantes de eleccion_sis que no están en eleccion_comite
-                $docentes = $eleccion_sis->where('cargo', 'docente')->whereNotIn('sis', function ($query) {
-                    $query->select('sis')->from('eleccion_comite');
-                })->take(5);
+            // Asigna los cargos a los docentes
+            $cargosDocentes = ['Presidente', 'Titular', 'Titular', 'Suplente', 'Suplente'];
+            foreach ($docentes as $index => $docente) {
+                DB::table('eleccion_jurados')->insert([
+                    'id_eleccion' => $id_eleccion,
+                    'sis' => $docente->sis,
+                    'cargo' => $cargosDocentes[$index],
+                    'id_mesa' => $mesa->numeroMesa,
+                ]);
+            }
 
-                $estudiantes = $eleccion_sis->where('cargo', 'estudiante')->whereNotIn('sis', function ($query) {
-                    $query->select('sis')->from('eleccion_comite');
-                })->take(4);
+            // Selecciona 4 estudiantes al azar de eleccion_sis
+            $estudiantes = DB::table('eleccion_sis')
+                ->where('id_eleccion', $id_eleccion)
+                ->where('gremio', 'estudiante')
+                ->inRandomOrder()
+                ->take(4)
+                ->get();
 
-                // Asignamos los cargos a los docentes
-                $cargos_docentes = ['Presidente', 'Titular', 'Titular Suplente', 'Suplente'];
-                foreach ($docentes as $index => $docente) {
-                    DB::table('eleccion_jurados')->insert([
-                        'id_eleccion' => $id_eleccion,
-                        'sis' => $docente->sis,
-                        'cargo' => $cargos_docentes[$index],
-                        'id_mesa' => $mesa->id,
-                    ]);
-                }
-
-                // Asignamos los cargos a los estudiantes
-                $cargos_estudiantes = ['Titular', 'Titular Suplente', 'Suplente'];
-                foreach ($estudiantes as $index => $estudiante) {
-                    DB::table('eleccion_jurados')->insert([
-                        'id_eleccion' => $id_eleccion,
-                        'sis' => $estudiante->sis,
-                        'cargo' => $cargos_estudiantes[$index],
-                        'id_mesa' => $mesa->id,
-                    ]);
-                }
+            // Asigna los cargos a los estudiantes
+            $cargosEstudiantes = ['Titular', 'Titular', 'Suplente', 'Suplente'];
+            foreach ($estudiantes as $index => $estudiante) {
+                DB::table('eleccion_jurados')->insert([
+                    'id_eleccion' => $id_eleccion,
+                    'sis' => $estudiante->sis,
+                    'cargo' => $cargosEstudiantes[$index],
+                    'id_mesa' => $mesa->numeroMesa,
+                ]);
             }
         }
         return back()->with('success', 'Formulario enviado exitosamente!');
