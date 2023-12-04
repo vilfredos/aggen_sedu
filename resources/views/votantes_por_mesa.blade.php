@@ -27,11 +27,11 @@
                 <td>{{ $dato->id }}</td>
                 <td>{{ $dato->titulo }}</td>
                 <td>{{ $dato->descripcion }}</td>
-                <td><button class="btn btn-primary">informacion</button></td>
-                <td><button class="btn btn-primary">comite</button></td>
+                <td><button class="btn_informacion">informacion</button></td>
+                <td><button class="btn_comite">comite</button></td>
                 <td><button class="btn_frente">Frente</button></td>
                 <td><button class="btn_mesas" data-id="{{ $dato->id }}">mesas</button></td>
-                <td><button class="btn-secondary">papeleta</button></td>
+                <td><button class="btn_pepeleta">papeleta</button></td>
             </tr>
             @endforeach
         </tbody>
@@ -40,9 +40,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        $(".btn-secondary").click(function() {
-            var sis = $(this).closest('tr').find('td:eq(0)').text();
-            window.location.href = '/papeleta/' + sis;
+        $(".btn_informacion").click(function() {
+            var id = $(this).closest('tr').find('td:eq(0)').text();
+            window.location.href = '/informacion/' + id;
+        });
+    });
+    $(document).ready(function() {
+        $(".btn_comite").click(function() {
+            var eleccionId = $(this).closest('tr').find('td:eq(0)').text();
+            window.location.href = '/lista_comite/' + eleccionId;
         });
     });
     $(document).ready(function() {
