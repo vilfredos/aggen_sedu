@@ -99,13 +99,13 @@
             <nav class="menu-container">
                 
                 <ul class="container">
-                    
+                    @if(auth()->check() && auth()->user()->hasRole('Administrador'))
                     <li class="item">
                         <a  href="{{ url('panel/')}}">
                             <i class="fa-solid fa-gauge" style="color: #ffffff;"></i><span class="nombres" >Panel de Control</span>
                         </a>   
                     </li>
-
+                    @endif
                     <li class="item">
                         <a  href="{{ url('/inicio') }}">
                             <i class="fa-solid fa-house" style="color: #ffffff;"></i><span class="nombres" >Inicio</span>

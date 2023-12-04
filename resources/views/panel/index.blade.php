@@ -16,9 +16,10 @@
     <div class="container mt-5">
         <div class="row">
             <div class="panel">
-                <a href="{{ route('pages-backups') }}" class="btn btn-danger button">Backups</a>
+                <a href="{{ url('panel/backup') }}" class="btn btn-danger button">Backups</a>
 
                 <a href="{{ route('bitacora-index') }}" class="btn btn-success button">Bitacora</a>
+                <a href="{{ route('poblacion.index') }}" class="btn btn-success button">Alimentar Base</a>
             </div>
         </div>
     </div>
