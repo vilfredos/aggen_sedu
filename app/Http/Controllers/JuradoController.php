@@ -10,6 +10,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use App\Models\remplazar_jurado;
+use Illuminate\Support\Facades\DB;
 
 class JuradoController extends Controller
 {
@@ -113,6 +114,37 @@ class JuradoController extends Controller
     {
         Jurado::insert($jurados);
     }
+    public function ver_jurado($num_mesa)
+    {
+        $eleccionId = request()->query('eleccionId');
+        $datos = DB::table('eleccion_jurados')
+            ->where('id_eleccion', $eleccionId)
+            ->where('id_mesa', $num_mesa)
+            ->get()
+            ->map(function ($item) {
+                $estudiante = DB::table('estudiantes')->where('sis', $item->sis)->first();
+                $docente = DB::table('docentes')->where('sis', $item->sis)->first();
+    
+                $item->name = $estudiante ? $estudiante->name : ($docente ? $docente->name : null);
+                $item->email = $estudiante ? $estudiante->email : ($docente ? $docente->email : null);
+                $item->facultad = $estudiante ? $estudiante->facultad : ($docente ? $docente->facultad : null);
+                $item->carrera = $estudiante ? $estudiante->carrera : null;
+                $item->ci = $estudiante ? $estudiante->ci : ($docente ? $docente->ci : null);
+    
+                return $item;
+            });
+    
+        return view('lista_jurados', ['data' => $datos]);
+    }
+
+
+
+
+
+
+
+
+
     public function seleccionarJurados()
     {
         $facultad = 'economia'; // Reemplace esto con la facultad deseada
@@ -261,8 +293,8 @@ class JuradoController extends Controller
         if (!$votante) {
             return back()->withErrors(['sis' => 'No se encontró un votante adecuado para reemplazar al jurado']);
         }
-        $guardarSys = $jurado->sis; 
-        $guardarCi = $jurado->ci; 
+        $guardarSys = $jurado->sis;
+        $guardarCi = $jurado->ci;
         $guardarName =  $jurado->name;
         // Reemplazar el sis y el ci en la tabla de jurados
         $jurado->sis = $votante->sis;
@@ -284,7 +316,7 @@ class JuradoController extends Controller
             'tipo' => $votante->tipo,
             'nuevo_sys' => $votante->sis,
         ]);
-       //['antiguo_sis', 'razon', 'Descripcion', 'archivo', 'nuevo_sys'];
+        //['antiguo_sis', 'razon', 'Descripcion', 'archivo', 'nuevo_sys'];
 
         // Mostrar los datos
         return view('remplazar', compact('jurado', 'votante'));

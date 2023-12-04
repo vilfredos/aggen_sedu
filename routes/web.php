@@ -243,3 +243,5 @@ Route::get('/agregarInfo', function () {
 Route::get('/agregarInfo/{numeroMesa}', 'App\Http\Controllers\MesaController@agregarInfo')->name('agregarInfo');
 Route::patch('/guardar-informacion/{numeroMesa}', 'App\Http\Controllers\MesaController@guardarInformacion')->name('guardarInformacion');
 Route::get('/ActaDeInicio/{numeroMesa}', 'App\Http\Controllers\MesaController@mostrarActaDeInicio');
+
+Route::get('/lista_jurados/{num_mesa}', 'App\Http\Controllers\JuradoController@ver_jurado');
