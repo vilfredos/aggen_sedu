@@ -24,22 +24,25 @@
             </div>
 
                 <div id="seccion1">
-                    <label for="titulo">Titulo:</label><br>
+                    <label for="titulo">Titulo:</label>
                     <input type="text" id="titulo" name="titulo" required><br>
 
-                    <label for="descripcion">Descripción:</label><br>
+                    <label for="descripcion">Descripción:</label>
                     <input type="text" id="descripcion" name="descripcion" required><br>
 
-                    <label for="fecha_ini">Fecha de inicio:</label><br>
+                    <label for="fecha_ini">Fecha de inicio:</label>
                     <input type="date" id="fecha_ini" name="fecha_ini" required><br>
 
-                    <label for="ficha_fin">Fecha de finalización:</label><br>
+                    <label for="ficha_fin">Fecha de finalización:</label>
                     <input type="date" id="ficha_fin" name="ficha_fin" required><br>
 
-                    <label for="pdf">Archivo PDF:</label><br>
+                    <label for="pdf">Archivo PDF:</label>
                     <input type="file" id="pdf" name="pdf" accept=".pdf" required><br>
 
-                    <button type="button" onclick="siguienteSeccion('seccion1', 'seccion2')">Siguiente</button><br>
+                    <button type="button" onclick="siguienteSeccion('seccion1', 'seccion2')">Siguiente</button>
+                    <br>
+                    <br>
+
 
                 </div>
 
