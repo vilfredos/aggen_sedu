@@ -19,8 +19,12 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <div>
-    <h1>Registro votos</h1>
-    <table id="myTable">
+
+<div class="contenerVm">
+    <div class="superiorVm">
+        <h1 class="tituloVm">Registro votos</h1>
+    </div>
+    <table id="myTable" class="miTablaMesa">
         <tr>
             <th>Número Mesa</th>
             <th>Votos FR</th>
@@ -48,13 +52,11 @@
 
         @endforeach
     </table>
-    <button id="agregarColumna">Transponer Tabla</button>
+    <button id="agregarColumna" class="botonVerdeVm">Transponer Tabla</button>
     <div id="nuevaTabla"></div>
-        <div class="grafico-title" id="bar-chart-title"></div>
-        <canvas class="grafico" id="bar-chart"></canvas>
-        <div class="grafico-title" id="pie-chart-title"></div>
-        <canvas class="grafico" id="pie-chart"></canvas>
+</div>
     </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {

@@ -1,13 +1,75 @@
 /* Estilos generales para la tabla */
-table {
+.contenerVm{
+    background-color: #fff;
+    max-width: 1100px;
     width: 100%;
+    margin-top: 50px;
+    margin-left: 90px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.contenerLj{
+    background-color: #fff;
+    max-width: 1100px;
+    width: 100%;
+    margin-top: 50px;
+    margin-left: 90px;
+    text-align: center;
+    border-radius: 20px;
+    height: 50vh;
+}
+
+.contenerVPM{
+    background-color: #fff;
+    max-width: 1100px;
+    width: 100%;
+    margin-top: 50px;
+    margin-left: 90px;
+    text-align: center;
+    border-radius: 20px;
+    height: 70vh;
+}
+
+.superiorVm {
+    margin-top: 30px;
+    padding-top: 0px;
+    align-items: center;
+}
+
+.tituloVm {
+    margin-top: 30px;
+
+    font-size: 60px; 
+    font-weight: bold;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    color: #000;
+    text-align: center;
+
+
+}
+
+
+body{
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f1e4;
+    margin: 0;
+    padding: 0;
+}
+
+.miTablaMesa {
+    width: 95%;
     border-collapse: collapse;
+    margin-left: 30px;
 }
 
 /* Estilos para las celdas de la tabla */
 td, th {
     border: 1px solid #ddd;
     padding: 8px;
+    background-color: #fff;
+
 }
 
 /* Estilos para las celdas de encabezado */
@@ -17,29 +79,81 @@ th {
     text-align: left;
     background-color: hsl(251, 90%, 12%);
     color: white;
+    text-align: center;
+
 }
-h1 {
-    color: #ff6347; /* Tomato color */
-    font-size: 2em; /* 2 times the current font size */
-    text-align: center; /* Center align */
+.botonVerdeVm{
+    background-color: #4CAF50; /* Puedes cambiar "green" por cualquier color que desees */
+    color: white;
+    border-radius: 12px;
+    margin: 20px;
+    padding: 20px 40px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    
 }
 
-.grafico-container {
-    display: flex;
-    flex-direction: column; /* Cambiado a columna para apilar gráficos y títulos */
-    align-items: center; /* Centrar elementos en el eje horizontal */
-    padding: 20px;
-    width: 500px; /* o el ancho deseado */
-    max-height: 500px; /* Establece un máximo alto para el contenedor */
-    min-height: 300px; /* Establece un mínimo alto para el contenedor si es necesario */
-    overflow: auto; /* Agrega una barra de desplazamiento si el contenido es demasiado grande */
+.btn-primary {
+    color: #6f6f6f; 
+    border: none; 
+    background-color: transparent;
 }
 
-.grafico-title {
-    margin-top: 20px; /* Espacio entre gráfico y título */
+.btn-primary .fas.fa-info {
+    font-size: 34px;
+    background-color: transparent; 
+    border: none; 
 }
-.grafico {
-    width: auto; /* Configurado a 'auto' para ajustarse al contenido */
-    max-height: 300px; /* Establece un máximo alto para la gráfica */
-    min-height: 100px; /* Establece un mínimo alto para la gráfica si es necesario */
+
+.btn-primary .fa-users {
+    font-size: 28px;
+    background-color: transparent; 
+    border: none; 
+}
+
+.btn-secondary {
+    color: #6f6f6f; 
+    border: none; 
+    background-color: transparent; 
+}
+.btn-secondary:hover {
+    background-color: #0d6efd; /* Cambia a tu color de destacado deseado al pasar el puntero */
+}
+
+.btn-secondary .fa-sheet-plastic {
+    font-size: 34px;
+    background-color: transparent; 
+    border: none; 
+}
+
+.btn_mesas {
+    color: #6f6f6f; 
+    border: none; 
+    background-color: transparent; 
+}
+
+.btn_mesas .fa-person-booth {
+    font-size: 34px;
+    background-color: transparent; 
+    border: none; 
+}
+.btn_mesas:hover {
+    background-color: #0d6efd; /* Cambia a tu color de destacado deseado al pasar el puntero */
+}
+
+.btn_frente {
+    color: #6f6f6f; 
+    border: none; 
+    background-color: transparent; 
+}
+
+.btn_frente .fa-users-viewfinder {
+    font-size: 34px;
+    background-color: transparent; 
+    border: none; 
+}
+.btn_frente:hover {
+    background-color: #0d6efd; /* Cambia a tu color de destacado deseado al pasar el puntero */
 }

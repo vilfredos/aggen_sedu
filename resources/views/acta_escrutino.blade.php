@@ -6,30 +6,36 @@
 <title>Acta de Escrutinio</title>
 </head>
 <body>
-  <form class="acta" action="/acta_escrutino" method="post">
-    @csrf
+    <div class="form-containerActa">
 
-        <div class="superior">
-          <h1 class="titulo">Acta de Escrutinio</h1>
-        </div>
+    <form class="formularioActa">
 
-        <label for="num_mesa">Número de Mesa:</label><br>
-        <input type="number" id="num_mesa" name="num_mesa" min="1" max="300" step="1"><br>
-        <label for="votos_FR">Votos FR:</label><br>
-        <input type="number" id="votos_FR" name="votos_FR" min="0" max="300" step="1" oninput="calculateTotal()"><br>
-        <label for="votos_UXSS">Votos UXSS:</label><br>
-        <input type="number" id="votos_UXSS" name="votos_UXSS" min="0" max="300" step="1" oninput="calculateTotal()"><br>
-        <label for="votos_PSS">Votos PSS:</label><br>
-        <input type="number" id="votos_PSS" name="votos_PSS" min="0" max="300" step="1" oninput="calculateTotal()"><br>
-        <label for="votos_blancos">Votos Blancos:</label><br>
-        <input type="number" id="votos_blancos" name="votos_blancos" min="0" max="300" step="1" oninput="calculateTotal()"><br>    
-        <label for="votos_nulos">Votos Nulos:</label><br>
-        <input type="number" id="votos_nulos" name="votos_nulos" min="0" max="300" step="1" oninput="calculateTotal()"><br>
-        <label for="votos_totales">Votos Totales:</label><br>
-        <input type="number" id="votos_totales" name="votos_totales" min="0" max="3000" step="1" readonly><br>
-        <input type="submit" value="Acta de Cierre">
+      <form class="acta" action="/acta_escrutino" method="post">
+        @csrf
 
-  </form>
+            <div class="superior">
+              <h1 class="titulo">Acta de Escrutinio</h1>
+            </div>
+
+            <label for="num_mesa">Número de Mesa:</label>
+            <input type="number" id="num_mesa" name="num_mesa" min="1" max="300" step="1"><br>
+            <label for="votos_FR">Votos FR:</label>
+            <input type="number" id="votos_FR" name="votos_FR" min="0" max="300" step="1" oninput="calculateTotal()"><br>
+            <label for="votos_UXSS">Votos UXSS:</label>
+            <input type="number" id="votos_UXSS" name="votos_UXSS" min="0" max="300" step="1" oninput="calculateTotal()"><br>
+            <label for="votos_PSS">Votos PSS:</label>
+            <input type="number" id="votos_PSS" name="votos_PSS" min="0" max="300" step="1" oninput="calculateTotal()"><br>
+            <label for="votos_blancos">Votos Blancos:</label>
+            <input type="number" id="votos_blancos" name="votos_blancos" min="0" max="300" step="1" oninput="calculateTotal()"><br>    
+            <label for="votos_nulos">Votos Nulos:</label>
+            <input type="number" id="votos_nulos" name="votos_nulos" min="0" max="300" step="1" oninput="calculateTotal()"><br>
+            <label for="votos_totales">Votos Totales:</label>
+            <input type="number" id="votos_totales" name="votos_totales" min="0" max="3000" step="1" readonly><BR>
+            <input type="submit" class="botonVerde" value="Acta de Cierre">
+
+      </form>
+    <form>
+    </div>
 </body>
   <script>
     function calculateTotal() {
