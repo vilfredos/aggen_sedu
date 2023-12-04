@@ -69,9 +69,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        $(".btn-secondary").click(function() {
-            var sis = $(this).closest('tr').find('td:eq(0)').text();
-            window.location.href = '/papeleta/' + sis;
+        $(".btn_informacion").click(function() {
+            var id = $(this).closest('tr').find('td:eq(0)').text();
+            window.location.href = '/informacion/' + id;
+        });
+    });
+    $(document).ready(function() {
+        $(".btn_comite").click(function() {
+            var eleccionId = $(this).closest('tr').find('td:eq(0)').text();
+            window.location.href = '/lista_comite/' + eleccionId;
         });
     });
     $(document).ready(function() {

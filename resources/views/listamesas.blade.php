@@ -5,6 +5,7 @@
 <head>
     <title>Listado de Mesas</title>
     <link href="{{ asset('css/votosPorMesa.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -30,7 +31,9 @@
             <td>{{ $mesa->numeroMesa }}</td>
             <td>{{ $mesa->recinto }}</td>
             <td>{{ $mesa->aula }}</td>
-            <td><button class="btn-info">agregar informacion</button></td>
+            <td>
+                <a href="{{ route('agregarInfo', ['numeroMesa' => $mesa->numeroMesa]) }}" class="btn-info">Agregar Información</a>
+            </td>
             <td><button class="btn-votante_mesa" data-id_eleccion="{{ $id_eleccion }}">Poblacion votante</button></td>
             <td><button class="btn-jurados">jurados</button></td>
             <td><button class="btn_descargar_acta">descargar acta</button></td>
@@ -58,6 +61,14 @@
                 var eleccionId = $(this).data('id');
                 window.location.href = '/listamesas/' + eleccionId;
             });
+        });
+        $(document).ready(function() {
+            $(".btn_descargar_acta").click(function() {
+        var numeroMesa = $(this).closest('tr').find('td:eq(0)').text();
+            if (numeroMesa) {
+                window.location.href = '/ActaDeInicio/' + numeroMesa;
+            }
+        });
         });
     </script>
 </body>

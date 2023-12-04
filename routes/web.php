@@ -229,6 +229,7 @@ Route::get('/ActaDeInicio', function () {
     return view('ActaDeInicio');
 });
 Route::get('/listamesas/{id_eleccion}', 'App\Http\Controllers\MesaController@listamesas');
+Route::get('/lista_comite/{id_eleccion}', 'App\Http\Controllers\ComiteController@mostrar');
 
 Route::get('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@create');
 Route::post('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@store')->name('convocatoria.store');
@@ -236,3 +237,9 @@ Route::get('/asignacion', [MesaController::class, 'mostrarVistaAsignacion'])->na
 Route::post('/guardar-asignacion', [MesaController::class, 'guardarAsignacion'])->name('guardarAsignacion');
 
 Route::get('/votante_mesa/{num_mesa}', 'App\Http\Controllers\MesaController@ver_votantes');
+Route::get('/agregarInfo', function () {
+    return view('agregarInfo');
+});
+Route::get('/agregarInfo/{numeroMesa}', 'App\Http\Controllers\MesaController@agregarInfo')->name('agregarInfo');
+Route::patch('/guardar-informacion/{numeroMesa}', 'App\Http\Controllers\MesaController@guardarInformacion')->name('guardarInformacion');
+Route::get('/ActaDeInicio/{numeroMesa}', 'App\Http\Controllers\MesaController@mostrarActaDeInicio');
