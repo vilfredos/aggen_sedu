@@ -14,7 +14,7 @@ class FrenteController extends Controller
     {
         try {
             // tu código
-        
+            $eleccionId = $request->input('id');
         $sis_representante = $request->input('sis_representante');
         $nombre_frente = $request->input('nombre_frente');
         $sigla_frente = $request->input('sigla_frente');

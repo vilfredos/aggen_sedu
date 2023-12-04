@@ -1,8 +1,56 @@
+.superioJ {
+  padding-top: 0px;
+  margin-top: 0px;
+  align-items: center;
+}
+
+.tituloJ{
+  font-size: 60px; 
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  color: #000;
+  text-align: center;
+
+}
 body {
-  display: grid; /* Add this line */
-  height: 100vh; /* Add this line */
-  grid-template-rows: 10% 80% 10%; /* Add this line */
-  grid-template-columns: 25% 75%; /* Add this line */
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f1e4;
+  margin: 0;
+  padding: 0;
+}
+
+.form-containerActaJ {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  height: 120vh; /* Esto asegura que ocupe el 100% del alto de la ventana */
+  padding-bottom: 40px;
+}
+
+.formularioActaJ{
+  font-family: 'Arial', sans-serif;
+  /*background-color: #f4f4f4;*/
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px; /* Ajusta según sea necesario */
+  width: 90%; /* Para ocupar el 100% del ancho del contenedor */
+  padding: 20px;
+  border-radius: 28px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.botonVerdeJ{
+  background-color: #4CAF50; /* Puedes cambiar "green" por cualquier color que desees */
+  color: white;
+  border-radius: 12px;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 /* Add these new styles */

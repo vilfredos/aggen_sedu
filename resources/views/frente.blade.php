@@ -31,8 +31,7 @@
         </select><br>
 
         <input type="hidden" id="id_eleccion" name="id_eleccion" value="{{ $id }}">
-
-        <label for="color_secundario">Color Secundario:</label><br>
+        <label for="color_secundario">Color Secundario:</label>
         <select id="color_secundario" name="color_secundario" required>
             <option value="rojo">Rojo</option>
             <option value="amarillo">Amarillo</option>
