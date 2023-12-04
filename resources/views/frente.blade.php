@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<h2 style="text-align:center;">Registrar frentes cons sus candidatos</h2>
+<h2 style="text-align:center;">Registrar frentes con sus candidatos</h2>
     <form action="{{ route('frente.store') }}" method="post">
         @csrf
         <label for="sis_representante">SIS Representante:</label>
