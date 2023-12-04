@@ -48,7 +48,7 @@ body {
     justify-content: center;
     align-items: center;
     /*height: 100vh;*/
-    margin-left: 90px;
+    margin-left: 10px;
 }
 .button-container {
     display: flex;
@@ -83,3 +83,5 @@ body {
 .square-button:hover {
     background-color: #2980b9;
 }
+
+
