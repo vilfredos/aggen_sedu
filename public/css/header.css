@@ -69,3 +69,12 @@
 .roles-list li {
     font-weight: bold;
 }
+
+
+.navbar-right .btn-danger {
+    margin-top: 15px;
+    color: #fff; 
+    border: none; 
+    padding: 8px 16px; 
+    border-radius: 5px; 
+}

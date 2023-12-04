@@ -20,6 +20,7 @@
         "laravelcollective/html": "^6.4",
         "livewire/livewire": "^2.12",
         "maatwebsite/excel": "^3.1",
+        "pavel-mironchik/laravel-backup-panel": "^2.2",
         "phpoffice/phpspreadsheet": "^1.29",
         "spatie/laravel-activitylog": "^3.17",
         "spatie/laravel-backup": "^6.16",
