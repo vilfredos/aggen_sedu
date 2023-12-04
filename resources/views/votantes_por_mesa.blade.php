@@ -19,7 +19,6 @@
                     <th>ID</th>
                     <th>Titulo</th>
                     <th>Descripcion</th>
-                    <th>Informacion</th>
                     <th>Comite</th>
                     <th>Frentes y Candidatos</th>
                     <th>Mesas</th>
@@ -32,11 +31,6 @@
                     <td>{{ $dato->id }}</td>
                     <td>{{ $dato->titulo }}</td>
                     <td>{{ $dato->descripcion }}</td>
-                    <td>
-                        <button class="btn btn-primary">
-                            <i class="fas fa-info"></i>
-                        </button>
-                    </td>
                     <td>
                         <button class="btn_comite">
                             <i class="fa-solid fa-users"></i>

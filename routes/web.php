@@ -247,3 +247,9 @@ Route::get('/ActaDeInicio/{numeroMesa}', 'App\Http\Controllers\MesaController@mo
 Route::get('/lista_jurados/{num_mesa}', 'App\Http\Controllers\JuradoController@ver_jurado');
 
 Route::get('/papeleta/{id_eleccion}', 'App\Http\Controllers\JuradoController@ver_papeleta');
+
+Route::get('/remplazar_comite/{sis}', 'App\Http\Controllers\ComiteController@remplazar_comite');
+
+Route::post('/remplazar_comite', 'App\Http\Controllers\ComiteController@remplazar');
+Route::post('/remplazar_jurado', 'App\Http\Controllers\JuradoController@remplazar');
+Route::get('/remplazar_jurado/{sis}', 'App\Http\Controllers\JuradoController@remplazar_jurado');

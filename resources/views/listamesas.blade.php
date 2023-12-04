@@ -10,7 +10,6 @@
 
 <body>
     <h1>Listado de Mesas</h1>
-    <p>{{ $id_eleccion }}</p>
     <table>
         <thead>
             <tr>
