@@ -10,7 +10,7 @@
     <div class="contenerVPM">
         <div class="superiorVm">
             <h1 class="tituloVm">Lista de Eleccion</h1>
-            <a href="{{ url('/convocatoria') }}" class="btn btn-primary">Registrar Eleccion</a>
+            
         </div>
         <table class="miTablaMesa">
             <thead>
@@ -59,9 +59,13 @@
                         </button>
                     </td>
                 </tr>
+                
                 @endforeach
             </tbody>
         </table>
+        <div class="btnRegistro">
+            <a href="{{ url('/convocatoria') }}" class="btnConvocatoria"> Registrar Eleccion </a>
+        </div>    
     </div>
 </div>
 

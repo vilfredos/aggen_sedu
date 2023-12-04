@@ -157,3 +157,20 @@ th {
 .btn_frente:hover {
     background-color: #0d6efd; /* Cambia a tu color de destacado deseado al pasar el puntero */
 }
+
+.btnConvocatoria{
+    background-color: #4CAF50; /* Puedes cambiar "green" por cualquier color que desees */
+    color: white;
+    border-radius: 12px;
+    margin-top: 30px;
+    padding: 20px 40px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+.btnConvocatoria:hover {
+    transform: scale(1.1); /* Escala el botón al 110% cuando se pasa el mouse sobre él */
+}
