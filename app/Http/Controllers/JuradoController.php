@@ -136,6 +136,24 @@ class JuradoController extends Controller
     
         return view('lista_jurados', ['data' => $datos]);
     }
+    public function ver_papeleta($id_eleccion)
+    {
+        // Obtén todos los frentes para la elección dada
+        $frentes = DB::table('frentes')->where('id_eleccion', $id_eleccion)->get();
+    
+        // Itera sobre cada frente
+        foreach ($frentes as $frente) {
+            // Obtén todos los candidatos para el frente dado
+            $candidatos = DB::table('candidato')
+                ->where('id_eleccion', $id_eleccion)
+                ->where('id_frente', $frente->id_frente)
+                ->get();
+    
+            // Añade los candidatos al frente
+            $frente->candidatos = $candidatos;
+        }  
+        return view('papeleta', ['data' => $frentes]);
+    }
 
 
 

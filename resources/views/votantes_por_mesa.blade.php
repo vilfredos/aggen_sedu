@@ -7,61 +7,62 @@
 </head>
 <div>
 
-<div class="contenerVPM">
-    <div class="superiorVm">
-        <h1 class="tituloVm">Lista de Eleccion</h1>
-    </div>
-    <table class="miTablaMesa">
-        <thead>
-        
-            <tr>
-                <th>ID</th>
-                <th>Titulo</th>
-                <th>Descripcion</th>
-                <th>Informacion</th>
-                <th>Comite</th>
-                <th>Frentes y Candidatos</th>
-                <th>Mesas</th>
-                <th>Papeleta</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($datos as $dato)
-            <tr>
-                <td>{{ $dato->id }}</td>
-                <td>{{ $dato->titulo }}</td>
-                <td>{{ $dato->descripcion }}</td>
-                <td>
-                    <button class="btn btn-primary">
-                        <i class="fas fa-info"></i> 
-                    </button>
-                </td>
-                <td>
-                    <button class="btn btn-primary">
-                        <i class="fa-solid fa-users"></i>
-                    </button>
-                </td>
-                <td>
-                    <button class="btn_frente">
-                        <i class="fa-solid fa-users-viewfinder"></i>
-                    </button>
-                </td>
+    <div class="contenerVPM">
+        <div class="superiorVm">
+            <h1 class="tituloVm">Lista de Eleccion</h1>
+            <a href="{{ url('/convocatoria') }}" class="btn btn-primary">Registrar Eleccion</a>
+        </div>
+        <table class="miTablaMesa">
+            <thead>
 
-                <td>
-                    <button class="btn_mesas" data-id="{{ $dato->id }}">
-                        <i class="fa-solid fa-person-booth"></i>
-                    </button>
-                </td>
-                <td>
-                    <button class="btn-secondary">
-                        <i class="fa-solid fa-sheet-plastic"></i>
-                    </button>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+                <tr>
+                    <th>ID</th>
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Informacion</th>
+                    <th>Comite</th>
+                    <th>Frentes y Candidatos</th>
+                    <th>Mesas</th>
+                    <th>Papeleta</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($datos as $dato)
+                <tr>
+                    <td>{{ $dato->id }}</td>
+                    <td>{{ $dato->titulo }}</td>
+                    <td>{{ $dato->descripcion }}</td>
+                    <td>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-info"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn_comite">
+                            <i class="fa-solid fa-users"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn_frente">
+                            <i class="fa-solid fa-users-viewfinder"></i>
+                        </button>
+                    </td>
+
+                    <td>
+                        <button class="btn_mesas" data-id="{{ $dato->id }}">
+                            <i class="fa-solid fa-person-booth"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn_papeleta" data-id="{{ $dato->id }}">
+                            <i class="fa-solid fa-sheet-plastic"></i>
+                        </button>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 
 
@@ -92,5 +93,13 @@
             window.location.href = '/listamesas/' + eleccionId;
         });
     });
+    $(document).ready(function() {
+        $(".btn_papeleta").click(function() {
+            var eleccionId = $(this).data('id');
+            window.location.href = '/papeleta/' + eleccionId;
+        });
+    });
+
+    btn_papeleta
 </script>
 @endsection
