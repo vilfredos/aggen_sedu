@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Exports\VotanteExport;
 use App\Imports\VotanteImport;
 use App\Models\Votante;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Validator; // Importa la clase Validator aquí
 
@@ -19,6 +20,7 @@ class ComiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         return view('comite');
@@ -183,10 +185,27 @@ class ComiteController extends Controller
 */
 }
 
-    public function show(Comite $comite)
-    {
-        //
-    }
+public function mostrar($id_eleccion)
+{
+    $comite = DB::table('eleccion_comite')
+        ->where('id_eleccion', $id_eleccion)
+        ->get()
+        ->map(function ($item) {
+            $estudiante = DB::table('estudiantes')->where('sis', $item->sis)->first();
+            $docente = DB::table('docentes')->where('sis', $item->sis)->first();
+
+            $item->name = $estudiante ? $estudiante->name : ($docente ? $docente->name : null);
+            $item->email = $estudiante ? $estudiante->email : ($docente ? $docente->email : null);
+            $item->facultad = $estudiante ? $estudiante->facultad : ($docente ? $docente->facultad : null);
+            $item->carrera = $estudiante ? $estudiante->carrera : null;
+            $item->ci = $estudiante ? $estudiante->ci : ($docente ? $docente->ci : null);
+            $item->gremio = $estudiante ? 'estudiante' : ($docente ? 'docente' : null);
+
+            return $item;
+        });
+
+    return view('lista_comite', ['id_eleccion' => $id_eleccion, 'comite' => $comite]);
+}
 
     /**
      * Show the form for editing the specified resource.
