@@ -8,7 +8,7 @@ use App\Models\Mesa;
 use App\Models\Votante;
 use App\Models\MesaVotante; 
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 class MesaController extends Controller
 {
     public function listamesas($id_eleccion)
@@ -102,6 +102,59 @@ class MesaController extends Controller
     // Puedes redirigir a la vista o hacer cualquier otra acción después de la inserción
     return redirect()->back()->with('success', 'Votantes adjuntados exitosamente.');
 }
+public function agregarInfo($numeroMesa)
+{
+    // Recupera la información de la mesa
+    $mesa = Mesa::where('numeroMesa', $numeroMesa)->first();
+
+    // Verifica si la mesa existe
+    if (!$mesa) {
+        abort(404); // O maneja la situación de manera diferente (redirección, mensaje de error, etc.)
+    }
+
+    // Pasa la variable de mesa a la vista
+    return view('agregarInfo')->with('mesa', $mesa);
+}
+public function guardarInformacion(Request $request, $numeroMesa)
+{
+    // Validar los datos según tus necesidades
+    $request->validate([
+        'recinto' => 'required|string',
+        'aula' => 'required|string',
+    ]);
+
+    // Obtener la mesa correspondiente
+    $mesa = Mesa::where('numeroMesa', $numeroMesa)->firstOrFail();
+
+    // Actualizar los campos recinto y aula
+    $mesa->recinto = $request->input('recinto');
+    $mesa->aula = $request->input('aula');
+
+    // Guardar los cambios
+    $mesa->save();
+
+    // Puedes redirigir a una página de éxito o realizar alguna otra acción
+   // Puedes redirigir a la vista de la información de la mesa
+    return redirect()->route('agregarInfo', ['numeroMesa' => $numeroMesa])->with('success', 'Información de la mesa actualizada exitosamente');
+
+}
+
+public function mostrarActaDeInicio($numeroMesa) {
+    // Obtener la mesa y su elección asociada
+    $mesa = Mesa::where('numeroMesa', $numeroMesa)->with('eleccion')->first();
+
+    // Verificar si la mesa y la elección existen
+    if (!$mesa || !$mesa->eleccion) {
+        abort(404); // O maneja la situación de manera diferente
+    }
+
+    // Obtener la fecha de fecha_fin de la elección y restar dos días
+    $fechaInicioEleccion = Carbon::parse($mesa->eleccion->fecha_fin)->subDays(2)->format('l j \\d\\e F \\d\\e Y');
+
+    // Pasar la variable a la vista
+    return view('ActaDeInicio', ['numeroMesa' => $numeroMesa, 'fechaInicioEleccion' => $fechaInicioEleccion]);
+}
+
 /*
 public function guardarAsignacion(Request $request)
 {

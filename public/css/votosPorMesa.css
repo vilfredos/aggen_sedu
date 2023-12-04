@@ -1,5 +1,5 @@
 /* Estilos generales para la tabla */
-.table {
+table {
     width: 100%;
     border-collapse: collapse;
 }
@@ -22,4 +22,24 @@ h1 {
     color: #ff6347; /* Tomato color */
     font-size: 2em; /* 2 times the current font size */
     text-align: center; /* Center align */
+}
+
+.grafico-container {
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para apilar gráficos y títulos */
+    align-items: center; /* Centrar elementos en el eje horizontal */
+    padding: 20px;
+    width: 500px; /* o el ancho deseado */
+    max-height: 500px; /* Establece un máximo alto para el contenedor */
+    min-height: 300px; /* Establece un mínimo alto para el contenedor si es necesario */
+    overflow: auto; /* Agrega una barra de desplazamiento si el contenido es demasiado grande */
+}
+
+.grafico-title {
+    margin-top: 20px; /* Espacio entre gráfico y título */
+}
+.grafico {
+    width: auto; /* Configurado a 'auto' para ajustarse al contenido */
+    max-height: 300px; /* Establece un máximo alto para la gráfica */
+    min-height: 100px; /* Establece un mínimo alto para la gráfica si es necesario */
 }
