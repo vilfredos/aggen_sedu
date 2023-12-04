@@ -40,9 +40,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
-            $(".btn-info").click(function() {
+            $(".btn_remplazar_comite").click(function() {
                 var sis = $(this).closest('tr').find('td:eq(0)').text();
-                window.location.href = '/papeleta/' + sis;
+                window.location.href = '/remplazar_comite/' + sis;
             });
         });
     </script>

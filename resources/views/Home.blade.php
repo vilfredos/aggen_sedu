@@ -99,7 +99,7 @@
             <nav class="menu-container">
                 
                 <ul class="container">
-                    @if(auth()->check() && auth()->user()->hasRole('Administrador'))
+                    @if(auth()->check() && auth()->user()->hasRole('administrador'))
                     <li class="item">
                         <a  href="{{ url('panel/')}}">
                             <i class="fa-solid fa-gauge" style="color: #ffffff;"></i><span class="nombres" >Panel de Control</span>
@@ -113,7 +113,7 @@
                     </li>
 
                     <li class="item"> 
-                        <a href="{{ url('/eleccion') }}">
+                        <a href="{{ url('/votantes_por_mesa') }}">
                             <i class="fa-solid fa-user-check" style="color: #ffffff;"></i><span class="nombres">Eleccion</span>
                         </a>
                     </li>

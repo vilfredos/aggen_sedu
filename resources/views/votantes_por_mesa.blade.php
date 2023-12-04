@@ -10,6 +10,7 @@
     <div class="contenerVPM">
         <div class="superiorVm">
             <h1 class="tituloVm">Lista de Eleccion</h1>
+            <a href="{{ url('/convocatoria') }}" class="btn btn-primary">Registrar Eleccion</a>
         </div>
         <table class="miTablaMesa">
             <thead>
@@ -53,7 +54,7 @@
                         </button>
                     </td>
                     <td>
-                        <button class="btn_papeleta">
+                        <button class="btn_papeleta" data-id="{{ $dato->id }}">
                             <i class="fa-solid fa-sheet-plastic"></i>
                         </button>
                     </td>

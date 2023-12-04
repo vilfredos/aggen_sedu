@@ -39,15 +39,15 @@ Route::get('/NewPassword',  [UserSettingsController::class, 'NewPassword'])->nam
 Route::post('/change/password',  [UserSettingsController::class, 'changePassword'])->name('changePassword');
 Route::resource('cierreActa', 'ActaController');
 
-Route::prefix('panel/poblacion')->group(function () {
-    Route::get('/', [VotanteController::class, 'index'])->name('poblacion.index');
-    Route::post('/votante', [VotanteController::class, 'import'])->name('votante.import');
-    Route::get('/pdf', [VotanteController::class, 'pdf'])->name('poblacion.pdf');
-    Route::get('/seleccionar', [VotanteController::class, 'seleccionarTipo'])->name('poblacion.seleccionar');
-    Route::post('/buscar-votantes', [VotanteController::class, 'obtenerVotantes'])->name('votantes.buscar');
-});
+Route::get('poblacion', [VotanteController::class, 'index'])->name('poblacion.index');
+Route::post('votante', [VotanteController::class, 'import'])->name('votante.import');
 
-Route::redirect('/', '/panel/poblacion'); // Redirigir '/' a la ruta principal en panel/poblacion
+Route::get('/', [VotanteController::class, 'pdf']);
+Route::get('poblacion/pdf', [VotanteController::class, 'pdf'])->name('poblacion.pdf');
+
+Route::get('poblacion/seleccionar', [VotanteController::class, 'seleccionarTipo']);
+Route::post('/buscar-votantes', [VotanteController::class, 'obtenerVotantes'])->name('votantes.buscar');
+
 
 Route::get('/cierreActa', function () {
     return view('cierreActa');
@@ -245,3 +245,5 @@ Route::patch('/guardar-informacion/{numeroMesa}', 'App\Http\Controllers\MesaCont
 Route::get('/ActaDeInicio/{numeroMesa}', 'App\Http\Controllers\MesaController@mostrarActaDeInicio');
 
 Route::get('/lista_jurados/{num_mesa}', 'App\Http\Controllers\JuradoController@ver_jurado');
+
+Route::get('/papeleta/{id_eleccion}', 'App\Http\Controllers\JuradoController@ver_papeleta');
