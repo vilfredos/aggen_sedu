@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <p>{{ $id }}</p>
+<h2 style="text-align:center;">Registrar frentes cons sus candidatos</h2>
     <form action="{{ route('frente.store') }}" method="post">
         @csrf
         <label for="sis_representante">SIS Representante:</label>
@@ -25,6 +25,16 @@
 
         <label for="color_primario">Color Primario:</label>
         <select id="color_primario" name="color_primario" required>
+            <option value="verde">Verde</option>
+            <option value="naranja">Naranja</option>
+            <option value="morado">Morado</option>
+            <option value="rosa">Rosa</option>
+            <option value="negro">Negro</option>
+            <option value="blanco">Blanco</option>
+            <option value="gris">Gris</option>
+            <option value="marron">Marrón</option>
+            <option value="turquesa">Turquesa</option>
+            <option value="violeta">Violeta</option>
             <option value="rojo">Rojo</option>
             <option value="amarillo">Amarillo</option>
             <option value="azul">Azul</option>
@@ -36,10 +46,20 @@
             <option value="rojo">Rojo</option>
             <option value="amarillo">Amarillo</option>
             <option value="azul">Azul</option>
+            <option value="verde">Verde</option>
+            <option value="naranja">Naranja</option>
+            <option value="morado">Morado</option>
+            <option value="rosa">Rosa</option>
+            <option value="negro">Negro</option>
+            <option value="blanco">Blanco</option>
+            <option value="gris">Gris</option>
+            <option value="marron">Marrón</option>
+            <option value="turquesa">Turquesa</option>
+            <option value="violeta">Violeta</option>
         </select><br>
 
         @foreach ($cargos as $cargo)
-        <label for="{{ $cargo->cargo_postular }}">{{ $cargo->cargo_postular }}:</label>
+        <label for="{{ $cargo->cargo_postular }}">Sis del candidato al {{ $cargo->cargo_postular }}:</label>
         <input type="number" min="1" step="1" id="{{ $cargo->cargo_postular }}" name="{{ $cargo->cargo_postular }}"><br>
         @endforeach
 

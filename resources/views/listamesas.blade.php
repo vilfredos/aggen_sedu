@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Listado de Mesas</h1>
+<h2 style="text-align:center;">Listado de Mesas</h2>
     <table>
         <thead>
             <tr>

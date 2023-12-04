@@ -8,7 +8,7 @@
 </head>
 
 <div class="container">
-    <h1>Comité de la elección {{ $id_eleccion }}</h1>
+    <h2 style="text-align:center;">Comité de la elección {{ $id_eleccion }}</h2>
     <table class="table table-striped">
         <thead>
             <tr>
