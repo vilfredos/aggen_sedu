@@ -6,8 +6,11 @@
 
 </head>
 <div>
-<h1>lista de Jurados</h1>
-<table>
+<div class="contenerLj">
+    <div class="superiorVm">
+        <h1 class="tituloVm">lista de Jurados</h1>
+    </div>
+<table class="miTablaMesa">
         <tr>
             <th>Nombre_Completo</th>
             <th>turno</th>
@@ -26,4 +29,5 @@
         @endforeach
     </table>
     </div>
+</div>
     @endsection

@@ -15,8 +15,12 @@
     </style>
 </head>
 <div>
-    <h1>Registro votos</h1>
-    <table id="myTable">
+
+<div class="contenerVm">
+    <div class="superiorVm">
+        <h1 class="tituloVm">Registro votos</h1>
+    </div>
+    <table id="myTable" class="miTablaMesa">
         <tr>
             <th>Número Mesa</th>
             <th>Votos FR</th>
@@ -38,9 +42,11 @@
             </tr>
         @endforeach
     </table>
-    <button id="agregarColumna">Transponer Tabla</button>
+    <button id="agregarColumna" class="botonVerdeVm">Transponer Tabla</button>
     <div id="nuevaTabla"></div>
 </div>
+    </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {

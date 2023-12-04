@@ -6,8 +6,12 @@
     <link href="{{ asset('css/votosPorMesa.css') }}" rel="stylesheet">
 </head>
 <div>
-    <h1>Lista de Eleccion</h1>
-    <table class="table">
+
+<div class="contenerVPM">
+    <div class="superiorVm">
+        <h1 class="tituloVm">Lista de Eleccion</h1>
+    </div>
+    <table class="miTablaMesa">
         <thead>
         
             <tr>
@@ -15,8 +19,8 @@
                 <th>Titulo</th>
                 <th>Descripcion</th>
                 <th>Informacion</th>
-                <th>comite</th>
-                <th>frentes y candidatos</th>
+                <th>Comite</th>
+                <th>Frentes y Candidatos</th>
                 <th>Mesas</th>
                 <th>Papeleta</th>
             </tr>
@@ -27,16 +31,41 @@
                 <td>{{ $dato->id }}</td>
                 <td>{{ $dato->titulo }}</td>
                 <td>{{ $dato->descripcion }}</td>
-                <td><button class="btn btn-primary">informacion</button></td>
-                <td><button class="btn btn-primary">comite</button></td>
-                <td><button class="btn_frente">Frente</button></td>
-                <td><button class="btn_mesas" data-id="{{ $dato->id }}">mesas</button></td>
-                <td><button class="btn-secondary">papeleta</button></td>
+                <td>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-info"></i> 
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-primary">
+                        <i class="fa-solid fa-users"></i>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn_frente">
+                        <i class="fa-solid fa-users-viewfinder"></i>
+                    </button>
+                </td>
+
+                <td>
+                    <button class="btn_mesas" data-id="{{ $dato->id }}">
+                        <i class="fa-solid fa-person-booth"></i>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn-secondary">
+                        <i class="fa-solid fa-sheet-plastic"></i>
+                    </button>
+                </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+</div>
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {

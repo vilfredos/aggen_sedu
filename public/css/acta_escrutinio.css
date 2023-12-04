@@ -8,10 +8,40 @@
     font-size: 60px; 
     font-weight: bold;
     margin-top: 0px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     color: #000;
     text-align: center;
 
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f1e4;
+    margin: 0;
+    padding: 0;
+}
+
+.form-containerActa {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    height: 105vh; /* Esto asegura que ocupe el 100% del alto de la ventana */
+    padding-bottom: 40px;
+}
+
+.formularioActa {
+    font-family: 'Arial', sans-serif;
+    /*background-color: #f4f4f4;*/
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px; /* Ajusta según sea necesario */
+    width: 90%; /* Para ocupar el 100% del ancho del contenedor */
+    padding: 20px;
+    border-radius: 28px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -51,7 +81,18 @@ h1 {
     transition: background-color 0.3s ease;
     text-align: center;
 }
-input[type="number"]::-webkit-inner-spin-button, 
+
+.botonVerde{
+    background-color: #4CAF50; /* Puedes cambiar "green" por cualquier color que desees */
+    color: white;
+    border-radius: 12px;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/*input[type="number"]::-webkit-inner-spin-button, 
 input[type="number"]::-webkit-outer-spin-button { 
   -webkit-appearance: none;
   margin: 0; 
@@ -65,4 +106,4 @@ input[type="number"]::-webkit-outer-spin-button {
     0% { color: #ec9d8f; }
     50% { color: #ec7f57; }
     100% { color: #ff2600; }
-}
+}*/
