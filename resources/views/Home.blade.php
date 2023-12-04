@@ -193,9 +193,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-document.addEventListener("DOMContentLoaded", function() {
+/*document.addEventListener("DOMContentLoaded", function() {
     const actasMenu = document.getElementById("actas-menu");
-    const subMenu = actasMenu.querySelector(".sub-menu");
+    const subMenu = actasMenu.querySelector("sub-menu");
 
     // Ocultar el submenú inicialmente
     subMenu.style.display = "none";
@@ -208,13 +208,13 @@ document.addEventListener("DOMContentLoaded", function() {
             subMenu.style.display = "none";
         }
     });
-});
+});*/
 </script>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-
 
 </body>
 

@@ -39,14 +39,6 @@ Route::get('/NewPassword',  [UserSettingsController::class, 'NewPassword'])->nam
 Route::post('/change/password',  [UserSettingsController::class, 'changePassword'])->name('changePassword');
 Route::resource('cierreActa', 'ActaController');
 
-Route::get('poblacion', [VotanteController::class, 'index'])->name('poblacion.index');
-Route::post('votante', [VotanteController::class, 'import'])->name('votante.import');
-
-Route::get('/', [VotanteController::class, 'pdf']);
-Route::get('poblacion/pdf', [VotanteController::class, 'pdf'])->name('poblacion.pdf');
-
-Route::get('poblacion/seleccionar', [VotanteController::class, 'seleccionarTipo']);
-Route::post('/buscar-votantes', [VotanteController::class, 'obtenerVotantes'])->name('votantes.buscar');
 
 
 Route::get('/cierreActa', function () {
@@ -213,6 +205,8 @@ Route::get('panel/', function () {
 Route::get('panel/backups', [Backups::class, 'index'])->name('pages-backups');
 Route::post('panel/backups/create', [Backups::class, 'create'])->name('pages-backups-create');
 Route::get('panel/bitacora', [ActivityLogController::class, 'index'])->name('bitacora-index');
+
+
 
 
 

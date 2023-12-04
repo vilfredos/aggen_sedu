@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
 use Spatie\Activitylog\Traits\LogsActivity;
 use App\Http\Controllers\Controller;
+use App\Mail\ContactanosMailable;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+
+use App\Mail\NombreDeTuMailable;
+use Illuminate\Support\Facades\Mail;
 
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
@@ -162,4 +166,14 @@ class UsuarioController extends Controller
         User::find($id)->delete();
         return redirect()->route('usuarios.index');
     }
+    public function enviarCorreo()
+{
+    $nombre = 'Usuario'; // Puedes pasar datos a la vista del correo
+
+    $correo = new ContactanosMailable(['nombre' => $nombre]);
+
+    Mail::to('gabraider@gmail.com')->send($correo);
+
+    return "Correo electrónico enviado correctamente.";
+}
 }

@@ -31,7 +31,7 @@ class VotanteController extends Controller
             )
             ->get();
     
-        return view('poblacion.index', compact('barangs'));
+        return view('panel.poblacion.index', compact('barangs'));
     }
     public function pdf()
     {
