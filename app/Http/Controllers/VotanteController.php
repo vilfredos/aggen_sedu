@@ -36,7 +36,7 @@ class VotanteController extends Controller
     public function pdf()
     {
         
-        $votantes =Votante::all();
+        $votantes =Docente::all();
         $pdf = PDF::loadView('panel.poblacion.pdf', ['votantes' => $votantes])->setOptions(['defaultFont' => 'sans-serif']);
         //return $pdf->stream('votantes.pdf');
         return $pdf->download('__votantes.pdf');   

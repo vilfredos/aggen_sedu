@@ -12,7 +12,7 @@
                     <th>Descripción</th>
                     <th>Fecha y hora</th>
                     <th>Realizado por</th>
-                    <th>Detalles</th>
+                    
                 </tr>
             </thead>
             <tbody>
