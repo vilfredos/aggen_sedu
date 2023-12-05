@@ -63,7 +63,7 @@
         <input type="number" min="1" step="1" id="{{ $cargo->cargo_postular }}" name="{{ $cargo->cargo_postular }}"><br>
         @endforeach
 
-        <input type="submit" value="Submit">
+        <input type="submit" value="Registrar">
     </form>
     <p id="error-message" style="color: red;"></p>
 

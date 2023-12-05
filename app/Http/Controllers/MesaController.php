@@ -15,7 +15,7 @@ class MesaController extends Controller
     {
         $mesas = DB::table('mesas')->where('id_eleccion', $id_eleccion)->get();
         return view('listamesas', ['mesas' => $mesas, 'id_eleccion' => $id_eleccion]);
-    }
+    }/*
     public function ver_votantes($num_mesa)
     {
         $eleccionId = request()->query('eleccionId');
@@ -24,7 +24,46 @@ class MesaController extends Controller
     ->where('id_mesa', $num_mesa)
     ->get();
         return view('votante_mesa', ['data' => $datos]);
+    }*/
+    public function ver_votantes($num_mesa)
+{
+    $eleccionId = request()->query('eleccionId');
+    $datos = DB::table('eleccion_votante_mesa')
+        ->where('id_eleccion', $eleccionId)
+        ->where('id_mesa', $num_mesa)
+        ->get();
+
+    // Recorrer cada votante y buscar sus datos en las tablas docentes y estudiantes
+    foreach ($datos as $votante) {
+        $sis = $votante->sis;
+
+        // Buscar en la tabla docentes
+        $docente = DB::table('docentes')->where('sis', $sis)->first();
+        if ($docente) {
+            $votante->name = $docente->name;
+            $votante->email = $docente->email;
+            $votante->facultad = $docente->facultad;
+            $votante->carrera = $docente->carrera;
+            $votante->ci = $docente->ci;
+            $votante->created_at = $docente->created_at;
+            $votante->updated_at = $docente->updated_at;
+        } else {
+            // Si no se encuentra en docentes, buscar en la tabla estudiantes
+            $estudiante = DB::table('estudiantes')->where('sis', $sis)->first();
+            if ($estudiante) {
+                $votante->name = $estudiante->name;
+                $votante->email = $estudiante->email;
+                $votante->facultad = $estudiante->facultad;
+                $votante->carrera = $estudiante->carrera;
+                $votante->ci = $estudiante->ci;
+                $votante->created_at = $estudiante->created_at;
+                $votante->updated_at = $estudiante->updated_at;
+            }
+        }
     }
+
+    return view('votante_mesa', ['data' => $datos]);
+}
 
     public function mostrarVistaAsignacion()
     {
