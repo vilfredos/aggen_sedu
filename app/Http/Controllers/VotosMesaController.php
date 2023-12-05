@@ -1,5 +1,5 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
 
 use App\Models\votos_mesa;
@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Storevotos_mesaRequest;
 use App\Http\Requests\Updatevotos_mesaRequest;
 use Illuminate\Support\Facades\Validator; // Importa la clase Validator aquí
-
+use App\Models\Mesa;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Frente;
 class VotosMesaController extends Controller
 {
     /**
@@ -161,5 +161,31 @@ public function mostrarEleccion()
     $datos = DB::table('eleccion')->get();
     return view('votantes_por_mesa')->with('datos', $datos);
 }
+public function mostrarActaEscrutinio($numeroMesa) {
+    // Obtener la mesa por su número
+    $mesa = Mesa::where('numeroMesa', $numeroMesa)->first();
+
+    // Verificar si la mesa existe
+    if (!$mesa) {
+        abort(404); // Puedes personalizar esto según tus necesidades
+    }
+
+    // Obtener la elección asociada a la mesa
+    $eleccion = $mesa->eleccion;
+
+    // Verificar si la elección existe
+    if (!$eleccion) {
+        abort(404); // Puedes personalizar esto según tus necesidades
+    }
+
+    // Obtener los frentes asociados a la elección
+    $frentes = Frente::where('id_eleccion', $eleccion->id)->get();
+
+    return view('acta_escrutino', [
+        'frentes' => $frentes,
+        'numeroMesa' => $numeroMesa,
+    ]);
+}
+
 }
 

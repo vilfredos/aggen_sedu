@@ -15,7 +15,7 @@ use App\Http\Controllers\ComiteController;
 use App\Http\Controllers\VotacionController;
 use App\Http\Controllers\pages\Backups;
 use App\Http\Controllers\ActivityLogController;
-
+use App\Http\Controllers\VotosMesaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -111,7 +111,7 @@ Route::get('/resultados', function () {
 /*Route::get('/jurado_aleatorio', 'App\Http\Controllers\JuradoController@seleccionarJurados');
 */
 
-use App\Http\Controllers\VotosMesaController;
+//use App\Http\Controllers\VotosMesaController;
 
 Route::get('/acta_escrutino', function () {
     return view('acta_escrutino');
@@ -253,3 +253,6 @@ Route::get('/remplazar_comite/{sis}', 'App\Http\Controllers\ComiteController@rem
 Route::post('/remplazar_comite', 'App\Http\Controllers\ComiteController@remplazar');
 Route::post('/remplazar_jurado', 'App\Http\Controllers\JuradoController@remplazar');
 Route::get('/remplazar_jurado/{sis}', 'App\Http\Controllers\JuradoController@remplazar_jurado');
+//Route::get('/acta_escrutino/{num_mesa}', 'NombreDelControlador@metodoQueMuestraActa')->name('acta_escrutino');
+//Route::get('/acta_escrutino/{num_mesa}', 'VotosMesaController@mostrarActaEscrutinio')->name('acta_escrutino');
+Route::get('/acta_escrutino/{num_mesa}', 'App\Http\Controllers\VotosMesaController@mostrarActaEscrutinio')->name('acta_escrutino');
