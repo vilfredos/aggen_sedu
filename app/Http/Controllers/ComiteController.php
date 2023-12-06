@@ -22,257 +22,64 @@ class ComiteController extends Controller
      */
 
 
-     public function remplazar_comite($sis)
-     {
-         return view('remplazar_comite', ['sis' => $sis]);
-     }
-     public function remplazar(Request $request)
-     {
-         $validatedData = $request->validate([
-             'new_sis' => 'required|integer',
-             'menu' => 'required|string',
-             'descripcion' => 'required|string',
-             'file' => 'required|mimes:pdf',
-             // Add more validations as needed
-         ]);
-         $newMembrer =  DB::table('eleccion_sis')->where('sis', $request->new_sis)->first();
-         $oldMembrer =  DB::table('eleccion_sis')->where('sis', $request->sis)->first();
-
-         if (!$newMembrer) {
-             return back()->withErrors(['sis' => 'No se encontró al remplazo']);
-         }
-         // Replace the committee member in the eleccion_comite table
-         DB::table('eleccion_comite')
-             ->where('sis', $request->sis)
-             ->update(['sis' => $request->new_sis]);
-     
-         // Insert the replacement details into the remplazo_jurados table
-         DB::table('remplazo_jurados_comite')->insert([
-             'antiguo_sis' => $request->sis,
-             'razon' => $request->menu,
-             'descripcion' => $request->descripcion,
-             'archivo' => $request->file->store('pdfs'), // This will store the PDF in the 'pdfs' directory
-             'tipo' => 'comite',
-             'nuevo_sys' => $request->new_sis,
-         ]);
-     
-         return redirect('/lista_comite/' . $oldMembrer->id_eleccion);
-     }
-
-    public function create()
+    public function remplazar_comite($sis)
     {
+        return view('remplazar_comite', ['sis' => $sis]);
+    }
+    public function remplazar(Request $request)
+    {
+        $validatedData = $request->validate([
+            'new_sis' => 'required|integer',
+            'menu' => 'required|string',
+            'descripcion' => 'required|string',
+            'file' => 'required|mimes:pdf',
+            // Add more validations as needed
+        ]);
+        $newMembrer =  DB::table('eleccion_sis')->where('sis', $request->new_sis)->first();
+        $oldMembrer =  DB::table('eleccion_sis')->where('sis', $request->sis)->first();
 
+        if (!$newMembrer) {
+            return back()->withErrors(['sis' => 'No se encontró al remplazo']);
+        }
+        // Replace the committee member in the eleccion_comite table
+        DB::table('eleccion_comite')
+            ->where('sis', $request->sis)
+            ->update(['sis' => $request->new_sis]);
 
-        $vocalesTitularesDocentes = Votante::where('tipo', 'DOCENTE')->inRandomOrder()->take(3)->pluck('name');
-        $vocalesSuplentesDocentes = Votante::where('tipo', 'DOCENTE')->inRandomOrder()->take(3)->pluck('name');
-        $vocalesTitularesEstudiantes = Votante::where('tipo', 'ESTUDIANTE')->inRandomOrder()->take(2)->pluck('name');
-        $vocalesSuplentesEstudiantes = Votante::where('tipo', 'ESTUDIANTE')->inRandomOrder()->take(2)->pluck('name');
-    
-        return view('comite', [
-            'vocalesTitularesDocentes' => $vocalesTitularesDocentes,
-            'vocalesSuplentesDocentes' => $vocalesSuplentesDocentes,
-            'vocalesTitularesEstudiantes' => $vocalesTitularesEstudiantes,
-            'vocalesSuplentesEstudiantes' => $vocalesSuplentesEstudiantes,
+        // Insert the replacement details into the remplazo_jurados table
+        DB::table('remplazo_jurados_comite')->insert([
+            'antiguo_sis' => $request->sis,
+            'razon' => $request->menu,
+            'descripcion' => $request->descripcion,
+            'archivo' => $request->file->store('pdfs'), // This will store the PDF in the 'pdfs' directory
+            'tipo' => 'comite',
+            'nuevo_sys' => $request->new_sis,
         ]);
 
-
-
-    
+        return redirect('/lista_comite/' . $oldMembrer->id_eleccion);
     }
 
-    public function store(Request $request)
-{
 
 
-
-    $request->validate([
-
-        'rector' => 'required|string', 
-        'docenteTitular1' => 'required|string',
-        'docenteTitular2' => 'required|string',
-        'docenteTitular3' => 'required|string',
-        'docenteSuplente1' => 'required|string',
-        'docenteSuplente2' => 'required|string',
-        'docenteSuplente3' => 'required|string',
-        'estudianteTitular1' => 'required|string',
-        'estudianteTitular2' => 'required|string',
-        'estudianteSuplente1' => 'required|string',
-        'estudianteSuplente2' => 'required|string',
-
-    ]);
-
-    $comite = new Comite;
-    $comite->Rector = $request->rector;
-    $comite->VocalDocenteTitular1 = $request->docenteTitular1;
-    $comite->VocalDocenteTitular2 = $request->docenteTitular2;
-    $comite->VocalDocenteTitular3 = $request->docenteTitular3;
-    $comite->VocalDocenteSuplente1 = $request->docenteSuplente1;
-    $comite->VocalDocenteSuplente2 = $request->docenteSuplente2;
-    $comite->VocalDocenteSuplente3 = $request->docenteSuplente3;
-    $comite->VocalEstudianteTitular1 = $request->estudianteTitular1;
-    $comite->VocalEstudianteTitular2 = $request->estudianteTitular2;
-    $comite->VocalEstudianteSuplente1 = $request->estudianteSuplente1;
-    $comite->VocalEstudianteSuplente2 = $request->estudianteSuplente2;
-
-    $comite->save();
-
-    return redirect('/papeleta')->with('success', 'Miembros del Comite Registrado exitosamente');
-
-    /* ANTERIOR
-    // Validar los datos recibidos del formulario
-    $validator = Validator::make($request->all(), [
-        'rector' => 'required|string',
-        'docenteTitular1' => 'required|string',
-        'docenteTitular2' => 'required|string',
-        'docenteTitular3' => 'required|string',
-        'docenteSuplente1' => 'required|string',
-        'docenteSuplente2' => 'required|string',
-        'docenteSuplente3' => 'required|string',
-        'estudianteTitular1' => 'required|string',
-        'estudianteTitular2' => 'required|string',
-        'estudianteSuplente1' => 'required|string',
-        'estudianteSuplente2' => 'required|string',
-        // Agrega las validaciones para los demás campos
-    ]);
-
-    // Si la validación falla, redirige de nuevo al formulario con un mensaje de error
-    if ($validator->fails()) {
-        return redirect('/comite')
-            ->withErrors($validator)
-            ->withInput();
-    }
-
-    // Crear una nueva instancia del modelo Comite y asignar el nombre del rector
-    $comite = new Comite();
-    $comite->Nombre = $request->input('rector');
-    $comite->save();
-
-    // Obtener los datos restantes de la tabla votantes y guardarlos en la tabla comite
-    $this->guardarDatosComite($request->input('docenteTitular1'), $comite);
-    $this->guardarDatosComite($request->input('docenteTitular2'), $comite);
-    $this->guardarDatosComite($request->input('docenteTitular3'), $comite);
-    $this->guardarDatosComite($request->input('docenteSuplente1'), $comite);
-    $this->guardarDatosComite($request->input('docenteSuplente2'), $comite);
-    $this->guardarDatosComite($request->input('docenteSuplente3'), $comite);
-    $this->guardarDatosComite($request->input('estudianteTitular1'), $comite);
-    $this->guardarDatosComite($request->input('estudianteTitular2'), $comite);
-    $this->guardarDatosComite($request->input('estudianteSuplente1'), $comite);
-    $this->guardarDatosComite($request->input('estudianteSuplente2'), $comite);
-
-    // Repite este proceso para los demás campos (docenteTitular2, docenteTitular3, ...)
-    // ...
-
-    // Redirigir a la página de papeleta con un mensaje de éxito
-    return redirect('/papeleta')->with('success', 'Miembros del Comite Registrado exitosamente');
-    }
-
-    // Método para guardar los datos restantes en la tabla comite
-    private function guardarDatosComite($nombreVotante, $comite)
+    public function mostrar($id_eleccion)
     {
-    // Buscar el votante en la tabla votantes por el nombre
-    $votante = Votante::where('name', $nombreVotante)->first();
+        $comite = DB::table('eleccion_comite')
+            ->where('id_eleccion', $id_eleccion)
+            ->get()
+            ->map(function ($item) {
+                $estudiante = DB::table('estudiantes')->where('sis', $item->sis)->first();
+                $docente = DB::table('docentes')->where('sis', $item->sis)->first();
 
-    // Verificar si el votante existe antes de intentar acceder a sus propiedades
-    if ($votante) {
-        $comite->Ci = (int) $votante->ci; // Convertir a entero si es necesario
-        $comite->Facultad = $votante->facultad;
-        $comite->Gremio = $votante->tipo;
-        $comite->save();
-    }
+                $item->name = $estudiante ? $estudiante->name : ($docente ? $docente->name : null);
+                $item->email = $estudiante ? $estudiante->email : ($docente ? $docente->email : null);
+                $item->facultad = $estudiante ? $estudiante->facultad : ($docente ? $docente->facultad : null);
+                $item->carrera = $estudiante ? $estudiante->carrera : null;
+                $item->ci = $estudiante ? $estudiante->ci : ($docente ? $docente->ci : null);
+                $item->gremio = $estudiante ? 'estudiante' : ($docente ? 'docente' : null);
 
-/* EL QUE FUNCIONA
+                return $item;
+            });
 
-    $request->validate([
-
-        'rector' => 'required|string', 
-        'docenteTitular1' => 'required|string',
-        'docenteTitular2' => 'required|string',
-        'docenteTitular3' => 'required|string',
-        'docenteSuplente1' => 'required|string',
-        'docenteSuplente2' => 'required|string',
-        'docenteSuplente3' => 'required|string',
-        'estudianteTitular1' => 'required|string',
-        'estudianteTitular2' => 'required|string',
-        'estudianteSuplente1' => 'required|string',
-        'estudianteSuplente2' => 'required|string',
-
-    ]);
-
-    $comite = new Comite;
-    $comite->Rector = $request->rector;
-    $comite->VocalDocenteTitular1 = $request->docenteTitular1;
-    $comite->VocalDocenteTitular2 = $request->docenteTitular2;
-    $comite->VocalDocenteTitular3 = $request->docenteTitular3;
-    $comite->VocalDocenteSuplente1 = $request->docenteSuplente1;
-    $comite->VocalDocenteSuplente2 = $request->docenteSuplente2;
-    $comite->VocalDocenteSuplente3 = $request->docenteSuplente3;
-    $comite->VocalEstudianteTitular1 = $request->estudianteTitular1;
-    $comite->VocalEstudianteTitular2 = $request->estudianteTitular2;
-    $comite->VocalEstudianteSuplente1 = $request->estudianteSuplente1;
-    $comite->VocalEstudianteSuplente2 = $request->estudianteSuplente2;
-
-    $comite->save();
-
-    return redirect('/papeleta')->with('success', 'Miembros del Comite Registrado exitosamente');
-*/
-}
-
-public function mostrar($id_eleccion)
-{
-    $comite = DB::table('eleccion_comite')
-        ->where('id_eleccion', $id_eleccion)
-        ->get()
-        ->map(function ($item) {
-            $estudiante = DB::table('estudiantes')->where('sis', $item->sis)->first();
-            $docente = DB::table('docentes')->where('sis', $item->sis)->first();
-
-            $item->name = $estudiante ? $estudiante->name : ($docente ? $docente->name : null);
-            $item->email = $estudiante ? $estudiante->email : ($docente ? $docente->email : null);
-            $item->facultad = $estudiante ? $estudiante->facultad : ($docente ? $docente->facultad : null);
-            $item->carrera = $estudiante ? $estudiante->carrera : null;
-            $item->ci = $estudiante ? $estudiante->ci : ($docente ? $docente->ci : null);
-            $item->gremio = $estudiante ? 'estudiante' : ($docente ? 'docente' : null);
-
-            return $item;
-        });
-
-    return view('lista_comite', ['id_eleccion' => $id_eleccion, 'comite' => $comite]);
-}
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Comite  $comite
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Comite $comite)
-    {
-
-        return view('modificacionComite', compact('comite'));
-
-        /*return view('modificacionComite');*/
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comite  $comite
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Comite $comite)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Comite  $comite
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Comite $comite)
-    {
-        //
+        return view('lista_comite', ['id_eleccion' => $id_eleccion, 'comite' => $comite]);
     }
 }

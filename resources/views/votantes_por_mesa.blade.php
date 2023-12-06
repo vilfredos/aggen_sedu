@@ -5,6 +5,11 @@
 <head>
     <link href="{{ asset('css/votosPorMesa.css') }}" rel="stylesheet">
 </head>
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <div>
 
     <div class="contenerVPM">
