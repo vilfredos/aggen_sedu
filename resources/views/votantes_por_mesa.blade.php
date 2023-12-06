@@ -23,6 +23,7 @@
                     <th>Frentes y Candidatos</th>
                     <th>Mesas</th>
                     <th>Papeleta</th>
+                    <th>Resultados Totales</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,6 +53,9 @@
                             <i class="fa-solid fa-sheet-plastic"></i>
                         </button>
                     </td>
+                    <td>                        <button class="btn_papeleta" data-id="{{ $dato->id }}">
+                            <i class="fa-solid fa-sheet-plastic"></i>
+                        </button></td>
                 </tr>
                 
                 @endforeach
