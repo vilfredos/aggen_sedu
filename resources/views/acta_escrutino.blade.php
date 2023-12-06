@@ -8,8 +8,8 @@
 
 <body>
     <div class="form-containerActa">
-        <form class="formularioActa" action="/acta_escrutino" method="post">
-            @csrf
+    <form action="{{ route('acta_escrutino', ['num_mesa' => $numeroMesa]) }}" method="post">
+    @csrf
 
             <div class="superior">
                 <h1 class="titulo">Acta de Escrutinio</h1>
@@ -18,11 +18,12 @@
 
             <!-- Obtener los frentes asociados a la elección -->
             @foreach($frentes as $frente)
-              <div>
-                <label for="frente_{{ $frente->id_frente }}">{{ $frente->sigla_frente }}</label>
-                <input type="number" id="frente_{{ $frente->id_frente }}" name="frente_{{ $frente->id_frente }}" min="0" step="1" oninput="calculateTotal()">
-              </div>
+                <div>
+                    <label for="frente_{{ $frente->id_frente }}">{{ $frente->sigla_frente }}</label>
+                    <input type="number" id="frente_{{ $frente->id_frente }}" name="votos_frentes[{{ $frente->id_frente }}]" min="0" step="1" oninput="calculateTotal()">
+                </div>
             @endforeach
+
 
             <!-- Campo para mostrar el total de votos -->
             

@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Frente extends Model
 {
     use HasFactory;
-    public function mesa()
-    {
-        return $this->belongsTo(Mesa::class, 'id_eleccion');
-    }
+    protected $primaryKey = 'id_frente';
+    public $timestamps = false;
     public function eleccion()
     {
         return $this->belongsTo(Eleccion::class, 'id_eleccion', 'id');
+    }
+    public function mesa()
+    {
+        return $this->belongsTo(Mesa::class, 'id_eleccion', 'id_eleccion');
     }
 }

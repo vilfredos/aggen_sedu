@@ -117,7 +117,7 @@ Route::get('/acta_escrutino', function () {
     return view('acta_escrutino');
 });
 
-Route::post('/acta_escrutino', 'App\Http\Controllers\VotosMesaController@store');
+//Route::post('/acta_escrutino', 'App\Http\Controllers\VotosMesaController@store');
 
 Route::get('/votosPorMesa', function () {
     return view('votosPorMesa');
@@ -228,7 +228,7 @@ Route::post('/adjuntar-votantes', [MesaController::class, 'adjuntarVotantes'])->
 Route::get('/ActaDeInicio', function () {
     return view('ActaDeInicio');
 });
-Route::get('/listamesas/{id_eleccion}', 'App\Http\Controllers\MesaController@listamesas');
+//Route::get('/listamesas/{id_eleccion}', 'App\Http\Controllers\MesaController@listamesas');
 Route::get('/lista_comite/{id_eleccion}', 'App\Http\Controllers\ComiteController@mostrar');
 
 Route::get('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@create');
@@ -256,3 +256,7 @@ Route::get('/remplazar_jurado/{sis}', 'App\Http\Controllers\JuradoController@rem
 //Route::get('/acta_escrutino/{num_mesa}', 'NombreDelControlador@metodoQueMuestraActa')->name('acta_escrutino');
 //Route::get('/acta_escrutino/{num_mesa}', 'VotosMesaController@mostrarActaEscrutinio')->name('acta_escrutino');
 Route::get('/acta_escrutino/{num_mesa}', 'App\Http\Controllers\VotosMesaController@mostrarActaEscrutinio')->name('acta_escrutino');
+Route::post('/acta_escrutino/{num_mesa}', 'App\Http\Controllers\VotosMesaController@store')->name('acta_escrutino');
+Route::post('/acta_escrutino/{num_mesa}', 'App\Http\Controllers\VotosMesaController@store')->name('acta_escrutino');
+// Ejemplo en web.php o routes.php
+Route::get('/listamesas/{id_eleccion}', 'App\Http\Controllers\MesaController@listamesas')->name('listamesas');

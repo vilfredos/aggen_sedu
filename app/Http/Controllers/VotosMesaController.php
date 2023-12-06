@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Validator; // Importa la clase Validator aquí
 use App\Models\Mesa;
 use Illuminate\Support\Facades\DB;
 use App\Models\Frente;
+use App\Models\VotosBlancosMesa;
+use App\Models\VotosFrenteMesa;
+use App\Models\VotosNulosMesa;
 class VotosMesaController extends Controller
 {
     /**
@@ -41,22 +44,57 @@ class VotosMesaController extends Controller
      */
     public function store(Request $request)
     {
-        $voto = new votos_mesa;
-
-        $voto->num_mesa = $request->num_mesa;
-        $voto->votos_FR = $request->votos_FR;
-        $voto->votos_UXSS = $request->votos_UXSS;
-        $voto->votos_PSS = $request->votos_PSS;
-        $voto->votos_blancos = $request->votos_blancos;
-        $voto->votos_nulos = $request->votos_nulos;
-        $voto->votos_totales = $request->votos_totales;
-
-        $voto->save();
-
-        /*return response()->json(['success' => 'Datos guardados exitosamente!']);    }
-        */
-        return redirect('/cierreActa');
+        // Obtener la mesa por su número
+        $mesa = Mesa::where('numeroMesa', $request->num_mesa)->first();
+    
+        // Verificar si la mesa existe
+        if (!$mesa) {
+            abort(404, "Mesa no encontrada");
+        }
+    
+        // Obtener la elección asociada a la mesa
+        $eleccion = $mesa->eleccion;
+    
+        // Verificar si la elección existe
+        if (!$eleccion) {
+            abort(404, "Elección no encontrada");
+        }
+    
+        // Guardar votos blancos
+        VotosBlancosMesa::create([
+            'id_eleccion' => $eleccion->id,
+            'votos_blancos' => $request->votos_blancos,
+            'id_mesa' => $request->num_mesa,
+        ]);
+        
+        // Guardar votos de frentes
+        foreach ((array)$request->votos_frentes as $id_frente => $votos) {
+            // Verifica si la clave 'id_frente' está presente en el elemento antes de acceder a ella
+            if (isset($id_frente) && isset($votos)) {
+                // Obtén la sigla del frente utilizando el ID
+                $frente = Frente::find($id_frente);
+        
+                // Crea votos por frente en la tabla eleccion_votosfrente_mesa
+                $votosFrente = new VotosFrenteMesa();
+                $votosFrente->id_mesa = $request->num_mesa;
+                $votosFrente->id_eleccion = $eleccion->id;
+                $votosFrente->sigla_frente = $frente->sigla_frente;
+                $votosFrente->votos_frente = $votos; // Puede que necesites ajustar esto según cómo estás recibiendo los votos
+                $votosFrente->save();
+            }
+        }
+    
+        // Guardar votos nulos
+        VotosNulosMesa::create([
+            'id_eleccion' => $eleccion->id,
+            'votos_nulos' => $request->votos_nulos,
+            'id_mesa' => $request->num_mesa,
+        ]);
+    
+        // Redirigir a la ruta deseada
+        return redirect()->route('listamesas', ['id_eleccion' => $eleccion->id]);
     }
+    
     /**
      * Display the specified resource.
      *
@@ -188,4 +226,3 @@ public function mostrarActaEscrutinio($numeroMesa) {
 }
 
 }
-

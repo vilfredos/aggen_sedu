@@ -14,7 +14,7 @@ class Mesa extends Model
         return $this->belongsTo(Eleccion::class, 'id_eleccion');
     }
     public function frentes()
-    {
-        return $this->hasMany(Frente::class, 'id_eleccion');
-    }
+{
+    return $this->hasMany(Frente::class, 'id_eleccion', 'id_eleccion');
+}
 }
