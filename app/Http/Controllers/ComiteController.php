@@ -35,17 +35,25 @@ class ComiteController extends Controller
             'file' => 'required|mimes:pdf',
             // Add more validations as needed
         ]);
-        $newMembrer =  DB::table('eleccion_sis')->where('sis', $request->new_sis)->first();
-        $oldMembrer =  DB::table('eleccion_sis')->where('sis', $request->sis)->first();
-
-        if (!$newMembrer) {
+    
+        $newMember =  DB::table('eleccion_sis')->where('sis', $request->new_sis)->first();
+        $oldMember =  DB::table('eleccion_sis')->where('sis', $request->sis)->first();
+    
+        if (!$newMember) {
             return back()->withErrors(['sis' => 'No se encontró al remplazo']);
         }
+    
+        // Verifica que new_sis pertenece a la misma id_eleccion, es del mismo gremio y no es parte del comité
+        $comite = DB::table('eleccion_comite')->where('sis', $request->new_sis)->first();
+        if ($newMember->id_eleccion != $oldMember->id_eleccion || $newMember->gremio != $oldMember->gremio || $comite) {
+            return back()->withErrors(['new_sis' => 'El nuevo miembro no cumple con los criterios']);
+        }
+    
         // Replace the committee member in the eleccion_comite table
         DB::table('eleccion_comite')
             ->where('sis', $request->sis)
             ->update(['sis' => $request->new_sis]);
-
+    
         // Insert the replacement details into the remplazo_jurados table
         DB::table('remplazo_jurados_comite')->insert([
             'antiguo_sis' => $request->sis,
@@ -55,8 +63,8 @@ class ComiteController extends Controller
             'tipo' => 'comite',
             'nuevo_sys' => $request->new_sis,
         ]);
-
-        return redirect('/lista_comite/' . $oldMembrer->id_eleccion);
+        return redirect()->route('lista_comite', ['id_eleccion' => $oldMember->id_eleccion])->with('success', '¡Remplazo realizado correctamente!');
+        //return redirect('/lista_comite/' . $oldMember->id_eleccion)->with('success', '¡Remplazo realizado correctamente!');
     }
 
 

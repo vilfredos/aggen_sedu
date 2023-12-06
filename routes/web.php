@@ -229,8 +229,7 @@ Route::get('/ActaDeInicio', function () {
     return view('ActaDeInicio');
 });
 //Route::get('/listamesas/{id_eleccion}', 'App\Http\Controllers\MesaController@listamesas');
-Route::get('/lista_comite/{id_eleccion}', 'App\Http\Controllers\ComiteController@mostrar');
-
+Route::get('/lista_comite/{id_eleccion}', 'App\Http\Controllers\ComiteController@mostrar')->name('lista_comite');
 Route::get('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@create');
 Route::post('/convocatoria', 'App\Http\Controllers\ConvocatoriaController@store')->name('convocatoria.store');
 Route::get('/asignacion', [MesaController::class, 'mostrarVistaAsignacion'])->name('mostrarVistaAsignacion');

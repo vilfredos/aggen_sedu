@@ -66,50 +66,12 @@ class JuradoController extends Controller
 
         return back()->with('success', 'Jurado guardado exitosamente');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Jurado  $jurado
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-        $jurados = jurado::find(1);
-        return view('resultados')->with('jurados', $jurados);
-    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Jurado  $jurado
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateJuradoRequest  $request
-     * @param  \App\Models\Jurado  $jurado
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Jurado  $jurado
-     * @return \Illuminate\Http\Response
-     */
-    /*
-    public function destroy(Jurado $jurado)
-    {
-        //
-    }*/
     public function mostrar()
     {
         $datos = Jurado::all();
         return view('ver_lista_jurados')->with('datos', $datos);
     }
+    
     public function guardarJurados(array $jurados)
     {
         Jurado::insert($jurados);

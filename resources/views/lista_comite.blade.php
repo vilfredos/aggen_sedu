@@ -8,6 +8,11 @@
 </head>
 
 <div class="container">
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
     <h2 style="text-align:center;">Comité de la elección {{ $id_eleccion }}</h2>
     <table class="table table-striped">
         <thead>
