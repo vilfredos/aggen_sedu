@@ -36,7 +36,9 @@
             <td><button class="btn-votante_mesa" data-id_eleccion="{{ $id_eleccion }}">Poblacion votante</button></td>
             <td><button class="btn_jurados" data-id_eleccion="{{ $id_eleccion }}">jurados</button></td>
             <td><button class="btn_descargar_acta">descargar acta</button></td>
-            <td><button class="btn-Registrar acta acta">Registrar acta acta</button></td>
+            <td>
+                <a href="{{ route('acta_escrutino', ['num_mesa' => $mesa->numeroMesa]) }}" class="btn-Registrar acta acta">Registrar Acta Acta</a>
+            </td>
         </tr>
         @endforeach
     </table>

@@ -194,6 +194,7 @@ public function mostrarActaDeInicio($numeroMesa) {
     return view('ActaDeInicio', ['numeroMesa' => $numeroMesa, 'fechaInicioEleccion' => $fechaInicioEleccion]);
 }
 
+
 /*
 public function guardarAsignacion(Request $request)
 {
