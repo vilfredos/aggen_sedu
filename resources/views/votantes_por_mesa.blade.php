@@ -11,16 +11,16 @@
     </div>
 @endif
 
-<div>
+<div class=contMesaPrincipal>
 
     <div class="contenerVPM">
+        
         <div class="superiorVm">
             <h1 class="tituloVm">Lista de Eleccion</h1>
-            
         </div>
         <table class="miTablaMesa">
+            
             <thead>
-
                 <tr>
                     <th>ID</th>
                     <th>Titulo</th>
@@ -32,6 +32,7 @@
                     <th>Resultados Totales</th>
                 </tr>
             </thead>
+            
             <tbody>
                 @foreach ($datos as $dato)
                 <tr>
@@ -69,10 +70,13 @@
                 @endforeach
             </tbody>
         </table>
+        
         <div class="btnRegistro">
             <a href="{{ url('/convocatoria') }}" class="btnConvocatoria"> Registrar Eleccion </a>
         </div>    
+    
     </div>
+
 </div>
 
 
