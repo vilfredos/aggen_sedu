@@ -58,9 +58,11 @@
                             <i class="fa-solid fa-sheet-plastic"></i>
                         </button>
                     </td>
-                    <td>                        <button class="btn_papeleta" data-id="{{ $dato->id }}">
+                    <td>                        
+                        <button class="btn_VOTOS" data-id="{{ $dato->id }}">
                             <i class="fa-solid fa-sheet-plastic"></i>
-                        </button></td>
+                        </button>
+                    </td>
                 </tr>
                 
                 @endforeach
@@ -106,7 +108,12 @@
             window.location.href = '/papeleta/' + eleccionId;
         });
     });
-
+    $(document).ready(function() {
+        $(".btn_VOTOS").click(function() {
+            var eleccionId = $(this).data('id');
+            window.location.href = '/tabla_votos/' + eleccionId;
+        });
+    });
     btn_papeleta
 </script>
 @endsection

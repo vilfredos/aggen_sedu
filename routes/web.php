@@ -259,3 +259,4 @@ Route::post('/acta_escrutino/{num_mesa}', 'App\Http\Controllers\VotosMesaControl
 Route::post('/acta_escrutino/{num_mesa}', 'App\Http\Controllers\VotosMesaController@store')->name('acta_escrutino');
 // Ejemplo en web.php o routes.php
 Route::get('/listamesas/{id_eleccion}', 'App\Http\Controllers\MesaController@listamesas')->name('listamesas');
+Route::get('/tabla_votos/{id_eleccion}', 'App\Http\Controllers\MesaController@mostrarTablaDeVotos')->name('tabla_votos');

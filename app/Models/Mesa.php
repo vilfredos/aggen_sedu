@@ -17,4 +17,10 @@ class Mesa extends Model
 {
     return $this->hasMany(Frente::class, 'id_eleccion', 'id_eleccion');
 }
+// En el modelo Mesa
+public function votosFrente()
+{
+    return $this->hasMany(VotosFrenteMesa::class, 'id_mesa', 'numeroMesa');
+}
+
 }
