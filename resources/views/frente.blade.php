@@ -11,6 +11,16 @@
 </head>
 
 <body>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <h2 style="text-align:center;">Registrar frentes con sus candidatos</h2>
     <form action="{{ route('frente.store') }}" method="post">
         @csrf
