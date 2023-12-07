@@ -13,6 +13,25 @@ use Illuminate\Support\Facades\DB;
 
 class ConvocatoriaController extends Controller
 {
+
+   public function index()
+   {
+       //
+   }
+
+   public function create()
+   {
+       return view('convocatoria');
+   }
+
+   /**
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+
+
     public function store(Request $request)
     {
         /*
@@ -174,7 +193,7 @@ class ConvocatoriaController extends Controller
                 ->inRandomOrder()
                 ->take(6)
                 ->get();
-
+            
             // Asignar cargos a los docentes
             foreach ($docentes as $index => $docente) {
                 DB::table('eleccion_comite')->insert([

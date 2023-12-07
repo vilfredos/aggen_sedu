@@ -18,13 +18,13 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Nombre</th>
-                <th>Facultad</th>
+                <th>NOMBRE</th>
+                <th>FACULTAD</th>
                 <th>CI</th>
-                <th>sis</th>
-                <th>Gremio</th>
-                <th>Cargo</th>
-                <th>Remplazar Miembro Comite</th>
+                <th>SIS</th>
+                <th>GREMIO</th>
+                <th>ESTADO</th>
+                <th>REMPLAZAR MIEMBRO DEL COMITE</th>
             </tr>
         </thead>
         <tbody>
