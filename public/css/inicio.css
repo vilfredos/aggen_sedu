@@ -1,12 +1,64 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f1e4;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+
 }
 
+.contInicioPrincipal{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    height: 110vh;
+    text-align: center;
+}
+.contenerInicio{
+    margin-left: 1%;
+    padding: 20;
+    display: flex;
+    flex-direction: column;
+    max-width: 1100px; /* Ajusta según sea necesario */
+    width: 100%; /* Para ocupar el 100% del ancho del contenedor */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.misionvision{
+    color: #000;
+    font-size: 28px;
+
+}
+.ContenidomisionVision{
+    color: #000;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+.textoInferior li {
+    font-size: 16px; 
+    margin-bottom: 12px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.textoInferior strong {
+    font-size: 16px; 
+    margin-right: 4px; 
+    vertical-align: middle;
+}
+
+
+
 section {
-    margin: 20px;
+    margin-top: 0px;
 }
 
 h1 {
@@ -24,14 +76,21 @@ h3 {
     font-size: 1.5em;
 }
 
-p {
+/*p {
     color: #999;
     line-height: 1.6;
-}
+}*/
 
 article {
     background-color: #fff;
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+}
+.contentbox{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
