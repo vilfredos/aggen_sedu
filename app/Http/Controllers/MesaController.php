@@ -9,6 +9,10 @@ use App\Models\Votante;
 use App\Models\MesaVotante; 
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Models\VotosBlancosMesa;
+use App\Models\VotosFrenteMesa;
+use App\Models\VotosNulosMesa;
+use App\Models\Frente;
 class MesaController extends Controller
 {
     public function listamesas($id_eleccion)
@@ -16,6 +20,34 @@ class MesaController extends Controller
         $mesas = DB::table('mesas')->where('id_eleccion', $id_eleccion)->get();
         return view('listamesas', ['mesas' => $mesas, 'id_eleccion' => $id_eleccion]);
     }
+    public function mostrarTablaDeVotos($idEleccion)
+{
+    // Obtener mesas para la elección
+    $mesas = Mesa::where('id_eleccion', $idEleccion)->get();
+
+    // Obtener frentes para la elección
+    $frentes = Frente::where('id_eleccion', $idEleccion)->get();
+
+    // Inicializar arrays para almacenar los totales de votos nulos, blancos y por frente
+    $totalesNulos = $totalesBlancos = $votosFrentes = [];
+
+    foreach ($mesas as $mesa) {
+        // Obtener votos nulos y blancos para cada mesa
+        $votosNulos = VotosNulosMesa::where('id_mesa', $mesa->numeroMesa)->sum('votos_nulos');
+        $votosBlancos = VotosBlancosMesa::where('id_mesa', $mesa->numeroMesa)->sum('votos_blancos');
+
+        // Obtener votos por frente para cada mesa
+        $votosFrentes[$mesa->numeroMesa] = VotosFrenteMesa::where('id_mesa', $mesa->numeroMesa)->pluck('votos_frente')->toArray();
+
+        // Almacenar los totales en los arrays
+        $totalesNulos[$mesa->numeroMesa] = $votosNulos;
+        $totalesBlancos[$mesa->numeroMesa] = $votosBlancos;
+    }
+
+    // Pasar las variables a la vista
+    return view('tablaDeVotos', compact('mesas', 'totalesNulos', 'totalesBlancos', 'votosFrentes', 'frentes'));
+}
+    /*
     public function ver_votantes($num_mesa)
     {
         $eleccionId = request()->query('eleccionId');
@@ -24,7 +56,46 @@ class MesaController extends Controller
     ->where('id_mesa', $num_mesa)
     ->get();
         return view('votante_mesa', ['data' => $datos]);
+    }*/
+    public function ver_votantes($num_mesa)
+{
+    $eleccionId = request()->query('eleccionId');
+    $datos = DB::table('eleccion_votante_mesa')
+        ->where('id_eleccion', $eleccionId)
+        ->where('id_mesa', $num_mesa)
+        ->get();
+
+    // Recorrer cada votante y buscar sus datos en las tablas docentes y estudiantes
+    foreach ($datos as $votante) {
+        $sis = $votante->sis;
+
+        // Buscar en la tabla docentes
+        $docente = DB::table('docentes')->where('sis', $sis)->first();
+        if ($docente) {
+            $votante->name = $docente->name;
+            $votante->email = $docente->email;
+            $votante->facultad = $docente->facultad;
+            $votante->carrera = $docente->carrera;
+            $votante->ci = $docente->ci;
+            $votante->created_at = $docente->created_at;
+            $votante->updated_at = $docente->updated_at;
+        } else {
+            // Si no se encuentra en docentes, buscar en la tabla estudiantes
+            $estudiante = DB::table('estudiantes')->where('sis', $sis)->first();
+            if ($estudiante) {
+                $votante->name = $estudiante->name;
+                $votante->email = $estudiante->email;
+                $votante->facultad = $estudiante->facultad;
+                $votante->carrera = $estudiante->carrera;
+                $votante->ci = $estudiante->ci;
+                $votante->created_at = $estudiante->created_at;
+                $votante->updated_at = $estudiante->updated_at;
+            }
+        }
     }
+
+    return view('votante_mesa', ['data' => $datos]);
+}
 
     public function mostrarVistaAsignacion()
     {
@@ -154,6 +225,7 @@ public function mostrarActaDeInicio($numeroMesa) {
     // Pasar la variable a la vista
     return view('ActaDeInicio', ['numeroMesa' => $numeroMesa, 'fechaInicioEleccion' => $fechaInicioEleccion]);
 }
+
 
 /*
 public function guardarAsignacion(Request $request)

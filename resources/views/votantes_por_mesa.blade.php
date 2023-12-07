@@ -5,6 +5,12 @@
 <head>
     <link href="{{ asset('css/votosPorMesa.css') }}" rel="stylesheet">
 </head>
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div>
 
     <div class="contenerVPM">
@@ -19,11 +25,11 @@
                     <th>ID</th>
                     <th>Titulo</th>
                     <th>Descripcion</th>
-                    <th>Informacion</th>
                     <th>Comite</th>
                     <th>Frentes y Candidatos</th>
                     <th>Mesas</th>
                     <th>Papeleta</th>
+                    <th>Resultados Totales</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,11 +38,6 @@
                     <td>{{ $dato->id }}</td>
                     <td>{{ $dato->titulo }}</td>
                     <td>{{ $dato->descripcion }}</td>
-                    <td>
-                        <button class="btn btn-primary">
-                            <i class="fas fa-info"></i>
-                        </button>
-                    </td>
                     <td>
                         <button class="btn_comite">
                             <i class="fa-solid fa-users"></i>
@@ -55,6 +56,11 @@
                     </td>
                     <td>
                         <button class="btn_papeleta" data-id="{{ $dato->id }}">
+                            <i class="fa-solid fa-sheet-plastic"></i>
+                        </button>
+                    </td>
+                    <td>                        
+                        <button class="btn_VOTOS" data-id="{{ $dato->id }}">
                             <i class="fa-solid fa-sheet-plastic"></i>
                         </button>
                     </td>
@@ -103,7 +109,12 @@
             window.location.href = '/papeleta/' + eleccionId;
         });
     });
-
+    $(document).ready(function() {
+        $(".btn_VOTOS").click(function() {
+            var eleccionId = $(this).data('id');
+            window.location.href = '/tabla_votos/' + eleccionId;
+        });
+    });
     btn_papeleta
 </script>
 @endsection

@@ -8,26 +8,33 @@
 </head>
 
 <div class="container">
-    <h1>Comité de la elección {{ $id_eleccion }}</h1>
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+    <h2 style="text-align:center;">Comité de la elección {{ $id_eleccion }}</h2>
     <table class="table table-striped">
         <thead>
             <tr>
-            <th>#</th>
-                <th>Nombre</th>
-                <th>Facultad</th>
+                <th>#</th>
+                <th>NOMBRE</th>
+                <th>FACULTAD</th>
                 <th>CI</th>
-                <th>Gremio</th>
-                <th>Cargo</th>
-                <th>Remplazar Miembro Comite</th>
+                <th>SIS</th>
+                <th>GREMIO</th>
+                <th>ESTADO</th>
+                <th>REMPLAZAR MIEMBRO DEL COMITE</th>
             </tr>
         </thead>
         <tbody>
-        @foreach ($comite as $index => $miembro)
+            @foreach ($comite as $index => $miembro)
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $miembro->name }}</td>
                 <td>{{ $miembro->facultad }}</td>
                 <td>{{ $miembro->ci }}</td>
+                <td>{{ $miembro->sis }}</td>
                 <td>{{ $miembro->gremio }}</td>
                 <td>{{ $miembro->cargo }}</td>
                 <td><button class="btn_remplazar_comite" data-id_eleccion="{{ $id_eleccion }}">remplazar comite</button></td>
@@ -37,14 +44,14 @@
         </tbody>
     </table>
 </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".btn_remplazar_comite").click(function() {
-                var sis = $(this).closest('tr').find('td:eq(0)').text();
-                window.location.href = '/remplazar_comite/' + sis;
-            });
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".btn_remplazar_comite").click(function() {
+            var sis = $(this).closest('tr').find('td:eq(4)').text();
+            window.location.href = '/remplazar_comite/' + sis;
         });
-    </script>
+    });
+</script>
 </body>
 @endsection

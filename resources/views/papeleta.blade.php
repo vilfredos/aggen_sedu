@@ -7,29 +7,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
-@section('content')
 <div class="container">
-    <h2>ELECCIONES A RECTOR Y VICERRECTOR GESTION 2024-2028</h2>
-    <table>
+<h2 style="text-align:center;">Papeleta electoral</h2>
+    <table id="myTable">
+    <tr>
         @foreach ($data as $frente)
-        <tr>
-            <th>{{ $frente->nombre_frente }}</th>
-        </tr>
-        <tr>
-            <td>
+        <td>
+            <div>
+                <h3>{{ $frente->nombre_frente }}</h3>
                 @foreach ($frente->candidatos as $candidato)
-                {{ $candidato->cargo_postular }}<br>
-                {{ $candidato->sis_candidato }}<br>
+                <p>{{ $candidato->cargo_postular }}<br>
+                {{ $candidato->sis_candidato }}</p>
                 @endforeach
-            </td>
-        </tr>
-        <tr>
-            <td><div class="vote-box"></div></td>
-        </tr>
+                <div class="vote-box"></div>
+            </div>
+        </td>
         @endforeach
-    </table>
-    <div class="contenedor">
-        <button class="save-button" onclick="mezclar()">mezclar</button>
-    </div>
+    </tr>
+</table>
 </div>
+<script>
+</script>
 @endsection
