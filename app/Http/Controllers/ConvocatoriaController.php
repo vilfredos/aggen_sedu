@@ -232,7 +232,7 @@ class ConvocatoriaController extends Controller
         // Itera sobre cada mesa
         foreach ($mesas as $mesa) {
             // Asigna los cargos a los docentes
-            $cargosDocentes = ['Presidente', 'Titular', 'Titular', 'Suplente', 'Suplente'];
+            $cargosDocentes = ['Presidente', 'Titular', 'Suplente', 'Suplente'];
             foreach ($cargosDocentes as $cargo) {
                 // Selecciona un docente al azar que no sea jurado en otra mesa y no pertenezca al comité
                 $docente = DB::table('eleccion_sis')
@@ -281,9 +281,8 @@ class ConvocatoriaController extends Controller
                 ]);
             }
         }
-        return redirect()->route('votantes_por_mesa')->with('success', '¡Registro realizado correctamente!');    }
-
-
+        return redirect()->route('votantes_por_mesa')->with('success', '¡Registro realizado correctamente!');
+    }
     /**
      * Show the form for editing the specified resource.
      *

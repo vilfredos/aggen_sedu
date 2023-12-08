@@ -190,8 +190,7 @@ Route::get('/elecciones_ofi', function () {
     return view('elecciones_ofi');
 });
 
-Route::get('/votantes_por_mesa', 'App\Http\Controllers\VotosMesaController@mostrarEleccion');
-//Route::get('/votantes_por_mesa', 'App\Http\Controllers\VotosMesaController@mostrarEleccion')->name('votantes_por_mesa');
+Route::get('/votantes_por_mesa', 'App\Http\Controllers\VotosMesaController@mostrarEleccion')->name('votantes_por_mesa');//Route::get('/votantes_por_mesa', 'App\Http\Controllers\VotosMesaController@mostrarEleccion')->name('votantes_por_mesa');
 Route::post('/agregar', 'TuControlador@agregar');
 Route::post('/eliminar', 'TuControlador@eliminar');
 Route::post('/votantes_por_mesa', 'App\Http\Controllers\VotosMesaController@otros');
