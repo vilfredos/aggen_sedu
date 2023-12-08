@@ -18,106 +18,6 @@ use App\Models\FacultadUbicacion;
 
 class JuradoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreJuradoRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $sis = $request->sis;
-        $nombre = $request->nombre;
-        $facultad = $request->facultad;
-        $carrera = $request->carrera;
-        $ci = $request->ci;
-        $cargo = $request->cargo;
-        $numeroMesa = $request->numeroMesa;
-        $gremio = $request->gremio;
-
-        // ... Save the data to the database ...
-
-        $jurado = new Jurado();
-        $jurado->sis = $sis;
-        $jurado->nombre = $nombre;
-        $jurado->facultad = $facultad;
-        $jurado->carrera = $carrera;
-        $jurado->ci = $ci;
-        $jurado->cargo = $cargo;
-        $jurado->numeroMesa = $numeroMesa;
-        $jurado->gremio = $gremio;
-        $jurado->save();
-
-        return back()->with('success', 'Jurado guardado exitosamente');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Jurado  $jurado
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-        $jurados = jurado::find(1);
-        return view('resultados')->with('jurados', $jurados);
-    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Jurado  $jurado
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateJuradoRequest  $request
-     * @param  \App\Models\Jurado  $jurado
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Jurado  $jurado
-     * @return \Illuminate\Http\Response
-     */
-    /*
-    public function destroy(Jurado $jurado)
-    {
-        //
-    }*/
-    public function mostrar()
-    {
-        $datos = Jurado::all();
-        return view('ver_lista_jurados')->with('datos', $datos);
-    }
-    public function guardarJurados(array $jurados)
-    {
-        Jurado::insert($jurados);
-    }
     public function ver_jurado($num_mesa)
     {
         $eleccionId = request()->query('eleccionId');
@@ -179,6 +79,7 @@ class JuradoController extends Controller
         }  
         return view('papeleta', ['data' => $frentes]);
     }
+
 
 
 
@@ -365,6 +266,7 @@ class JuradoController extends Controller
         // Mostrar los datos
         return view('remplazar', compact('jurado', 'votante'));
     }
+
     public function remplazar(Request $request)
     {
         $validatedData = $request->validate([
@@ -376,10 +278,23 @@ class JuradoController extends Controller
         ]);
         $newMembrer =  DB::table('eleccion_sis')->where('sis', $request->new_sis)->first();
         $oldMembrer =  DB::table('eleccion_sis')->where('sis', $request->sis)->first();
-
+    
         if (!$newMembrer) {
             return back()->withErrors(['sis' => 'No se encontró al remplazo']);
         }
+    
+        // Verifica que el nuevo sis no sea parte de una mesa
+        $esJurado = DB::table('eleccion_jurados')->where('sis', $request->new_sis)->first();
+        if ($esJurado) {
+            return back()->withErrors(['new_sis' => 'El nuevo SIS ya es parte de una mesa']);
+        }
+    
+        // Verifica que el nuevo sis no sea miembro del comité
+        $esMiembroComite = DB::table('eleccion_comite')->where('sis', $request->new_sis)->first();
+        if ($esMiembroComite) {
+            return back()->withErrors(['new_sis' => 'El nuevo SIS ya es miembro del comité']);
+        }
+    
         // Replace the committee member in the eleccion_comite table
         DB::table('eleccion_comite')
             ->where('sis', $request->sis)
@@ -395,7 +310,7 @@ class JuradoController extends Controller
             'nuevo_sys' => $request->new_sis,
         ]);
     
-        return redirect('/lista_comite/' . $oldMembrer->id_eleccion);
+        return redirect()->route('lista_jurados', ['num_mesa' => $oldMembrer->id_eleccion]);
     }
     public function remplazar_jurado($sis)
     {

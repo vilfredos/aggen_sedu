@@ -5,9 +5,9 @@
 </head>
 <body>
 
-<h2>Formulario para remplazar Miembro del Comite</h2>
+<h2>Remplazar jurado electoral</h2>
 <p>Se va a reemplazar al jurado con SiS: {{ $sis }}</p>
-<form class="remplar_comite" action="/remplazar_comite" method="post" enctype="multipart/form-data">
+<form class="remplar_jurado" action="/remplazar_jurado" method="post" enctype="multipart/form-data">
 @csrf
 
   <label for="menu">Razon de excusa:</label><br>

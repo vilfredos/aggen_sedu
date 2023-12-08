@@ -5,16 +5,22 @@
 <head>
     <link href="{{ asset('css/votosPorMesa.css') }}" rel="stylesheet">
 </head>
-<div>
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+<div class=contMesaPrincipal>
 
     <div class="contenerVPM">
+        
         <div class="superiorVm">
             <h1 class="tituloVm">Lista de Eleccion</h1>
-            
         </div>
         <table class="miTablaMesa">
+            
             <thead>
-
                 <tr>
                     <th>ID</th>
                     <th>Titulo</th>
@@ -23,8 +29,10 @@
                     <th>Frentes y Candidatos</th>
                     <th>Mesas</th>
                     <th>Papeleta</th>
+                    <th>Resultados Totales</th>
                 </tr>
             </thead>
+            
             <tbody>
                 @foreach ($datos as $dato)
                 <tr>
@@ -52,15 +60,23 @@
                             <i class="fa-solid fa-sheet-plastic"></i>
                         </button>
                     </td>
+                    <td>                        
+                        <button class="btn_VOTOS" data-id="{{ $dato->id }}">
+                            <i class="fa-solid fa-sheet-plastic"></i>
+                        </button>
+                    </td>
                 </tr>
                 
                 @endforeach
             </tbody>
         </table>
+        
         <div class="btnRegistro">
             <a href="{{ url('/convocatoria') }}" class="btnConvocatoria"> Registrar Eleccion </a>
         </div>    
+    
     </div>
+
 </div>
 
 
@@ -97,7 +113,12 @@
             window.location.href = '/papeleta/' + eleccionId;
         });
     });
-
+    $(document).ready(function() {
+        $(".btn_VOTOS").click(function() {
+            var eleccionId = $(this).data('id');
+            window.location.href = '/tabla_votos/' + eleccionId;
+        });
+    });
     btn_papeleta
 </script>
 @endsection

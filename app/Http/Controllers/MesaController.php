@@ -9,13 +9,45 @@ use App\Models\Votante;
 use App\Models\MesaVotante; 
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Models\VotosBlancosMesa;
+use App\Models\VotosFrenteMesa;
+use App\Models\VotosNulosMesa;
+use App\Models\Frente;
 class MesaController extends Controller
 {
     public function listamesas($id_eleccion)
     {
         $mesas = DB::table('mesas')->where('id_eleccion', $id_eleccion)->get();
         return view('listamesas', ['mesas' => $mesas, 'id_eleccion' => $id_eleccion]);
-    }/*
+    }
+    public function mostrarTablaDeVotos($idEleccion)
+{
+    // Obtener mesas para la elección
+    $mesas = Mesa::where('id_eleccion', $idEleccion)->get();
+
+    // Obtener frentes para la elección
+    $frentes = Frente::where('id_eleccion', $idEleccion)->get();
+
+    // Inicializar arrays para almacenar los totales de votos nulos, blancos y por frente
+    $totalesNulos = $totalesBlancos = $votosFrentes = [];
+
+    foreach ($mesas as $mesa) {
+        // Obtener votos nulos y blancos para cada mesa
+        $votosNulos = VotosNulosMesa::where('id_mesa', $mesa->numeroMesa)->sum('votos_nulos');
+        $votosBlancos = VotosBlancosMesa::where('id_mesa', $mesa->numeroMesa)->sum('votos_blancos');
+
+        // Obtener votos por frente para cada mesa
+        $votosFrentes[$mesa->numeroMesa] = VotosFrenteMesa::where('id_mesa', $mesa->numeroMesa)->pluck('votos_frente')->toArray();
+
+        // Almacenar los totales en los arrays
+        $totalesNulos[$mesa->numeroMesa] = $votosNulos;
+        $totalesBlancos[$mesa->numeroMesa] = $votosBlancos;
+    }
+
+    // Pasar las variables a la vista
+    return view('tablaDeVotos', compact('mesas', 'totalesNulos', 'totalesBlancos', 'votosFrentes', 'frentes'));
+}
+    /*
     public function ver_votantes($num_mesa)
     {
         $eleccionId = request()->query('eleccionId');
@@ -193,6 +225,7 @@ public function mostrarActaDeInicio($numeroMesa) {
     // Pasar la variable a la vista
     return view('ActaDeInicio', ['numeroMesa' => $numeroMesa, 'fechaInicioEleccion' => $fechaInicioEleccion]);
 }
+
 
 /*
 public function guardarAsignacion(Request $request)

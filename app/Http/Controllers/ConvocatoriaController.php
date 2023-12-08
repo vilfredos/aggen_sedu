@@ -13,57 +13,25 @@ use Illuminate\Support\Facades\DB;
 
 class ConvocatoriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    public function create()
-    {
-        return view('convocatoria');
-    }
+   public function index()
+   {
+       //
+   }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    /*
-    public function store(Request $request)
-    {
-        $input = $request->all();
-        $id_eleccion = DB::table('eleccion')->insertGetId($input);
-        foreach ($input['cargos'] as $cargo) {
-            DB::table('eleccion_cargo')->insert(['id_eleccion' => $id_eleccion, 'cargo_postular' => $cargo]);
-        }
-        $facultad = $request->input('facultad');
-        $carrera = $request->input('carrera');
-        $votantes = ['estudiantes' => DB::table('estudiantes'), 'docentes' => DB::table('docentes')];
-        foreach ($votantes as $gremio => $votante) {
-            if (!empty($facultad)) $votante->where('facultad', $facultad);
-            if (!empty($carrera)) $votante->where('carrera', $carrera);
-            foreach ($votante->get() as $v) {
-                DB::table('eleccion_sis')->insert(['id_eleccion' => $id_eleccion, 'sis' => $v->sis, 'facultad' => $v->facultad, 'carrera' => $v->carrera, 'gremio' => $gremio]);
-            }
-        }
-        $mesas = ['docentes' => DB::table('mesas')->insertGetId(['numeroMesa' => DB::table('mesas')->max('numeroMesa') + 1, 'recinto' => ' ', 'aula' => ' ', 'facultad' => 'todos', 'carrera' => 'todos', 'gremio' => 'docente', 'id_eleccion' => $id_eleccion])];
-        $carreras = DB::table('eleccion_sis')->where('gremio', 'estudiante')->distinct()->pluck('carrera');
-        foreach ($carreras as $carrera) {
-            $mesas[$carrera] = DB::table('mesas')->insertGetId(['numeroMesa' => DB::table('mesas')->max('numeroMesa') + 1, 'recinto' => null, 'aula' => null, 'facultad' => 'todos', 'carrera' => $carrera, 'gremio' => 'estudiante', 'id_eleccion' => $id_eleccion]);
-        }
-        foreach ($votantes as $gremio => $votante) {
-            foreach ($votante->get() as $v) {
-                DB::table('eleccion_votante_mesa')->insert(['id_eleccion' => $id_eleccion, 'sis' => $v->sis, 'id_mesa' => $mesas[$gremio == 'docentes' ? 'docentes' : $v->carrera]]);
-            }
-        }
-        return back()->with('success', 'Formulario enviado exitosamente!');
-    }*/
+   public function create()
+   {
+       return view('convocatoria');
+   }
+
+   /**
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+
+
     public function store(Request $request)
     {
         /*
@@ -172,7 +140,7 @@ class ConvocatoriaController extends Controller
         /*asignacion mesas por estudiantes*/
         // ... código anterior ...
 
-        $capMaxVotantes = 5;
+        $capMaxVotantes = 28;
         $carreras = DB::table('eleccion_sis')
             ->where('gremio', 'estudiante')
             ->where('id_eleccion', $id_eleccion)
@@ -210,8 +178,8 @@ class ConvocatoriaController extends Controller
         /*asignar comite por facultad*////////////////
         // Definir los cargos
         // Definir los cargos
-        $cargosDocentes = ['Presidente', 'Vocal Titular', 'Vocal Titular', 'Vocal Suplente', 'Vocal Suplente', 'Vocal Suplente'];
-        $cargosEstudiantes = ['Vocal Titular', 'Vocal Titular', 'Vocal Suplente', 'Vocal Suplente'];
+        $cargosDocentes = ['Docente Presidente', 'Docente Vocal Titular', 'Docente Vocal Titular', 'Docente Vocal Suplente', 'Docente Vocal Suplente', 'Docente Vocal Suplente'];
+        $cargosEstudiantes = ['Estudiante Vocal Titular', 'Estudiante Vocal Titular', 'Estudiante Vocal Suplente', 'Estudiante Vocal Suplente'];
 
         // Obtener las facultades
         $facultades = DB::table('eleccion_sis')->where('id_eleccion', $id_eleccion)->distinct()->pluck('facultad');
@@ -225,7 +193,7 @@ class ConvocatoriaController extends Controller
                 ->inRandomOrder()
                 ->take(6)
                 ->get();
-
+            
             // Asignar cargos a los docentes
             foreach ($docentes as $index => $docente) {
                 DB::table('eleccion_comite')->insert([
@@ -258,49 +226,62 @@ class ConvocatoriaController extends Controller
         /*jurados*/
         // Obtén todas las mesas para la elección dada
         $mesas = DB::table('mesas')->where('id_eleccion', $id_eleccion)->get();
+        $cargosEstudiantes = ['Estudiante Titular', 'Estudiante Titular', 'Estudiante Suplente', 'Estudiante Suplente'];
+        $cargosDocentes = ['Docente Presidente', 'Docente Titular', 'Docente Titular', 'Docente Suplente', 'Docente Suplente'];
 
         // Itera sobre cada mesa
         foreach ($mesas as $mesa) {
-            // Selecciona 5 docentes al azar de eleccion_sis
-            $docentes = DB::table('eleccion_sis')
-                ->where('id_eleccion', $id_eleccion)
-                ->where('gremio', 'docente')
-                ->inRandomOrder()
-                ->take(5)
-                ->get();
-
             // Asigna los cargos a los docentes
             $cargosDocentes = ['Presidente', 'Titular', 'Titular', 'Suplente', 'Suplente'];
-            foreach ($docentes as $index => $docente) {
+            foreach ($cargosDocentes as $cargo) {
+                // Selecciona un docente al azar que no sea jurado en otra mesa y no pertenezca al comité
+                $docente = DB::table('eleccion_sis')
+                    ->where('id_eleccion', $id_eleccion)
+                    ->where('gremio', 'docente')
+                    ->whereNotIn('sis', function ($query) use ($id_eleccion) {
+                        $query->select('sis')->from('eleccion_jurados')->where('id_eleccion', $id_eleccion);
+                    })
+                    ->whereNotIn('sis', function ($query) use ($id_eleccion) {
+                        $query->select('sis')->from('eleccion_comite')->where('id_eleccion', $id_eleccion);
+                    })
+                    ->inRandomOrder()
+                    ->first();
+
+                // Inserta el docente en el jurado
                 DB::table('eleccion_jurados')->insert([
                     'id_eleccion' => $id_eleccion,
                     'sis' => $docente->sis,
-                    'cargo' => $cargosDocentes[$index],
+                    'cargo' => $cargo,
                     'id_mesa' => $mesa->numeroMesa,
                 ]);
             }
 
-            // Selecciona 4 estudiantes al azar de eleccion_sis
-            $estudiantes = DB::table('eleccion_sis')
-                ->where('id_eleccion', $id_eleccion)
-                ->where('gremio', 'estudiante')
-                ->inRandomOrder()
-                ->take(4)
-                ->get();
-
             // Asigna los cargos a los estudiantes
             $cargosEstudiantes = ['Titular', 'Titular', 'Suplente', 'Suplente'];
-            foreach ($estudiantes as $index => $estudiante) {
+            foreach ($cargosEstudiantes as $cargo) {
+                // Selecciona un estudiante al azar que no sea jurado en otra mesa y no pertenezca al comité
+                $estudiante = DB::table('eleccion_sis')
+                    ->where('id_eleccion', $id_eleccion)
+                    ->where('gremio', 'estudiante')
+                    ->whereNotIn('sis', function ($query) use ($id_eleccion) {
+                        $query->select('sis')->from('eleccion_jurados')->where('id_eleccion', $id_eleccion);
+                    })
+                    ->whereNotIn('sis', function ($query) use ($id_eleccion) {
+                        $query->select('sis')->from('eleccion_comite')->where('id_eleccion', $id_eleccion);
+                    })
+                    ->inRandomOrder()
+                    ->first();
+
+                // Inserta el estudiante en el jurado
                 DB::table('eleccion_jurados')->insert([
                     'id_eleccion' => $id_eleccion,
                     'sis' => $estudiante->sis,
-                    'cargo' => $cargosEstudiantes[$index],
+                    'cargo' => $cargo,
                     'id_mesa' => $mesa->numeroMesa,
                 ]);
             }
         }
-        return back()->with('success', 'Formulario enviado exitosamente!');
-    }
+        return redirect()->route('votantes_por_mesa')->with('success', '¡Registro realizado correctamente!');    }
 
 
     /**

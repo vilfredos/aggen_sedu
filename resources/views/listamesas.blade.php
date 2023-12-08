@@ -9,37 +9,48 @@
 </head>
 
 <body>
-<h2 style="text-align:center;">Listado de Mesas</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Numero de Mesa</th>
-                <th>Recinto</th>
-                <th>Aula</th>
-                <th>Agregar informacion</th>
-                <th>Poblacion votante</th>
-                <th>Jurados</th>
-                <th>Descargar Acta</th>
-                <th>Registrar Acta </th>
-                <!-- Agregado para la columna Habilitada -->
-            </tr>
-        </thead>
 
-        @foreach ($mesas as $mesa)
-        <tr>
-            <td>{{ $mesa->numeroMesa }}</td>
-            <td>{{ $mesa->recinto }}</td>
-            <td>{{ $mesa->aula }}</td>
-            <td>
-                <a href="{{ route('agregarInfo', ['numeroMesa' => $mesa->numeroMesa]) }}" class="btn-info">Agregar Información</a>
-            </td>
-            <td><button class="btn-votante_mesa" data-id_eleccion="{{ $id_eleccion }}">Poblacion votante</button></td>
-            <td><button class="btn_jurados" data-id_eleccion="{{ $id_eleccion }}">jurados</button></td>
-            <td><button class="btn_descargar_acta">descargar acta</button></td>
-            <td><button class="btn-Registrar acta acta">Registrar acta acta</button></td>
-        </tr>
-        @endforeach
-    </table>
+    <div class=contMesaPrincipal>
+
+        <div class="contenerVPM">
+                    <div class="superiorVm">
+                        <h1 class="tituloVm">Listado de Mesas</h1>
+                    </div>
+            <table class="miTablaMesa">
+                <thead>
+                    <tr>
+                        <th>Numero de Mesa</th>
+                        <th>Recinto</th>
+                        <th>Aula</th>
+                        <th>Agregar informacion</th>
+                        <th>Poblacion votante</th>
+                        <th>Jurados</th>
+                        <th>Descargar Acta</th>
+                        <th>Registrar Acta </th>
+                        <!-- Agregado para la columna Habilitada -->
+                    </tr>
+                </thead>
+
+                @foreach ($mesas as $mesa)
+                <tr>
+                    <td>{{ $mesa->numeroMesa }}</td>
+                    <td>{{ $mesa->recinto }}</td>
+                    <td>{{ $mesa->aula }}</td>
+                    <td>
+                        <a href="{{ route('agregarInfo', ['numeroMesa' => $mesa->numeroMesa]) }}" class="btn-info">Agregar Información</a>
+                    </td>
+                    <td><button class="btn-votante_mesa" data-id_eleccion="{{ $id_eleccion }}">Poblacion votante</button></td>
+                    <td><button class="btn_jurados" data-id_eleccion="{{ $id_eleccion }}">jurados</button></td>
+                    <td><button class="btn_descargar_acta">descargar acta</button></td>
+                    <td>
+                        <a href="{{ route('acta_escrutino', ['num_mesa' => $mesa->numeroMesa]) }}" class="btn-Registrar acta acta">Registrar Acta Acta</a>
+                    </td>
+                </tr>
+                @endforeach
+            </table>
+        </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
