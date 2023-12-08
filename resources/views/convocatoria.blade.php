@@ -39,7 +39,9 @@
                     <label for="pdf">Archivo PDF:</label>
                     <input type="file" id="pdf" name="pdf" accept=".pdf" required><br>
 
-                    <button type="button" onclick="siguienteSeccion('seccion1', 'seccion2')">Siguiente</button>
+                    <button type="button" onclick="verificarCamposSeccion1()">Siguiente</button>
+                    <!--button type="button" onclick="siguienteSeccion('seccion1', 'seccion2')">Siguiente</!--button-->
+
                     <br>
                     <br>
 
@@ -57,7 +59,7 @@
                     <button type="button" onclick="agregarCargo()">Agregar otro cargo</button><br>
 
                     <button type="button" onclick="anteriorSeccion('seccion2', 'seccion1')">Anterior</button>
-                    <button type="button" onclick="siguienteSeccion('seccion2', 'seccion3')">Siguiente</button><br>
+                    <button type="button" onclick="verificarCamposSeccion2()">Siguiente</button><br>
 
                 </div>
 
@@ -105,7 +107,11 @@
                     </div>
                         <button type="button" onclick="anteriorSeccion('seccion3', 'seccion2')">Anterior</button>
 
-                        <button type="submit">Registrar Eleccion</button><br>
+                        <button type="button" onclick="verificarCamposSeccion3YHabilitar()">Verificar Campos</button>
+
+                        <button type="submit" id="btnRegistrarEleccion" disabled>Registrar Eleccion</button><br>
+
+                        <!--button type="submit">Registrar Eleccion</-button--><br>
 
                 </div>
 
@@ -113,6 +119,17 @@
 </div>
 
     </div>
+    
+    <div id="aviso-container" class="aviso-container">
+        <div id="aviso" class="aviso">
+            <span id="aviso-mensaje"></span>
+            <button onclick="cerrarAviso()">Cerrar</button>
+        </div>
+    </div>
+
+
+
+
 </body>
 <script>
     let contadorCargos = 1;
@@ -138,6 +155,89 @@
         document.getElementById(seccionActual).style.display = 'none';
         document.getElementById(seccionAnterior).style.display = 'block';
     }
+
+
+    function verificarCamposSeccion1() {
+    const titulo = document.getElementById('titulo').value;
+    const descripcion = document.getElementById('descripcion').value;
+    const fechaInicio = document.getElementById('fecha_ini').value;
+    const fechaFin = document.getElementById('ficha_fin').value;
+    const pdf = document.getElementById('pdf').value;
+
+        if (!titulo || !descripcion || !fechaInicio || !fechaFin || !pdf) {
+            mostrarAviso("Todos los campos deben estar llenos para pasar a la siguiente parte.");
+        } else {
+            verificarFechas();
+        }
+    }
+    function verificarFechas() {
+    
+    const fechaInicio = document.getElementById('fecha_ini').value;
+    const fechaFin = document.getElementById('ficha_fin').value;
+
+    
+    const dateInicio = new Date(fechaInicio);
+    const dateFin = new Date(fechaFin);
+
+    
+    if (dateInicio > dateFin) {
+        mostrarAviso("La fecha de inicio no puede ser posterior a la fecha de finalización.");
+    } else {
+        
+        siguienteSeccion('seccion1', 'seccion2');
+    }
+}
+
+/*seccion 2 */
+
+function verificarCamposSeccion2() {
+    
+    const cargosInputs = document.querySelectorAll('#cargos input[name="cargos[]"]');
+
+   
+    if (cargosInputs.length === 0 || !cargosInputs[0].value) {
+        mostrarAviso("Debes ingresar al menos un cargo antes de pasar a la siguiente parte.");
+    } else {
+        
+        siguienteSeccion('seccion2', 'seccion3');
+    }
+}
+/*VERIFICACION SECCION 3 Y ENVIO DE DATOS SI RETORNA TRUE */
+function verificarCamposSeccion3YHabilitar() {
+    
+    const tiposCheckbox = document.querySelectorAll('input[name="tipos[]"]:checked');
+    const facultad = document.getElementById('facultad').value;
+    const carrera = document.getElementById('carrera').value;
+
+    
+    if (tiposCheckbox.length === 0 || !facultad || !carrera) {
+        mostrarAviso("Todos los campos deben estar llenos para registrar la elección.");
+        return false; 
+    } else {
+        mostrarAviso("Convocatoria realizada con exito puede proceder a Registrar Eleccion");
+
+      
+        document.getElementById('btnRegistrarEleccion').removeAttribute('disabled');
+        return true;
+    }
+}
+
+
+
+
+function mostrarAviso(mensaje) {
+    const avisoContainer = document.getElementById('aviso-container');
+    const avisoMensaje = document.getElementById('aviso-mensaje');
+
+    avisoMensaje.innerText = mensaje;
+    avisoContainer.style.display = 'flex';
+}
+
+function cerrarAviso() {
+    document.getElementById('aviso-container').style.display = 'none';
+}
+
+
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
