@@ -66,7 +66,6 @@
                 window.location.href = '/remplazar_comite/' + sis;
             });
         });
-    });
 </script>
 </body>
 @endsection
