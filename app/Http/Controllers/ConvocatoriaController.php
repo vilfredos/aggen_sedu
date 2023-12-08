@@ -207,7 +207,7 @@ class ConvocatoriaController extends Controller
                 }
             }
         }
-        /*asignar comite por facultad*/
+        /*asignar comite por facultad*////////////////
         // Definir los cargos
         // Definir los cargos
         $cargosDocentes = ['Presidente', 'Vocal Titular', 'Vocal Titular', 'Vocal Suplente', 'Vocal Suplente', 'Vocal Suplente'];

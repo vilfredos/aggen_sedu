@@ -17,7 +17,7 @@
           <p class="lead mb-4 fw-bold">Importar población</p>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <button type="button" class="btn btn-success btn-lg px-4 gap-3" data-bs-toggle="modal" data-bs-target="#importModal">Import</button>
-           
+            <button type="button" class="btn btn-success btn-lg px-4 gap-3" data-bs-toggle="modal" data-bs-target="#importFacultadModal">Importar Facultad</button>
             <a href="{{route('poblacion.pdf')}}" class="btn btn-outline-success btn-lg px-4" >Generar Pdf</a>
           </div>
         </div>
@@ -97,8 +97,32 @@
         </div>
     </div>
 </div>
+<!--  -->
 
-  <button class="btn btn-success btn-lg px-4 gap-3 save-button" onclick="terimar_proceso()">Siguiente</button>
+<div class="modal fade" id="importFacultadModal" tabindex="-1" aria-labelledby="importFacultadModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="importFacultadModalLabel">Importar Ubicaciones</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('ubicacion.import') }}"  method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group mb-3">
+                        <label for="file_ubicacion">Archivo excel para Ubicación de Facultades</label>
+                        <input type="file" class="form-control" name="file_ubicacion">
+                    </div>
+                    
+                    <button class="btn btn-success" type="submit">Importar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  
 
     <!-- Script -->
     <script src="{{ asset('js/poblacion.js') }}"></script>
