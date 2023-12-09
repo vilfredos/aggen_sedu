@@ -284,6 +284,7 @@ class ConvocatoriaController extends Controller
             }
         }
         $this->actualizarMesas();
+        $this->updateAllRecintos();
         return redirect()->route('votantes_por_mesa')->with('success', '¡Registro realizado correctamente!');
     }
     public function actualizarMesas() {
@@ -306,6 +307,14 @@ class ConvocatoriaController extends Controller
                 DB::table('mesas')->where('numeroMesa', $mesa->numeroMesa)->update(['recinto' => $facultadUbicacion->ubicacion]);
             }
         }
+    }
+    public function updateAllRecintos()
+    {
+        // Actualiza todas las mesas con recinto 'No asignado'
+        DB::table('mesas')
+            ->where('recinto', 'No asignado')
+            ->update(['recinto' => 'https://maps.app.goo.gl/uaUGUXdJZLmMqPbh8']);
+
     }
     /**
      * Show the form for editing the specified resource.
