@@ -14,22 +14,22 @@ use Illuminate\Support\Facades\DB;
 class ConvocatoriaController extends Controller
 {
 
-   public function index()
-   {
-       //
-   }
+    public function index()
+    {
+        //
+    }
 
-   public function create()
-   {
-       return view('convocatoria');
-   }
+    public function create()
+    {
+        return view('convocatoria');
+    }
 
-   /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 
 
     public function store(Request $request)
@@ -113,6 +113,7 @@ class ConvocatoriaController extends Controller
             ]);
         }
         /*MESAS*/
+
         /*asignacion mesas por docente*/
 
         $id_mesa_docentes = DB::table('mesas')->insertGetId([
@@ -173,6 +174,7 @@ class ConvocatoriaController extends Controller
                         'id_mesa' => $id_mesa,
                     ]);
                 }
+                DB::commit();
             }
         }
         /*asignar comite por facultad*/
@@ -193,7 +195,7 @@ class ConvocatoriaController extends Controller
                 ->inRandomOrder()
                 ->take(6)
                 ->get();
-            
+
             // Asignar cargos a los docentes
             foreach ($docentes as $index => $docente) {
                 DB::table('eleccion_comite')->insert([
@@ -232,7 +234,7 @@ class ConvocatoriaController extends Controller
         // Itera sobre cada mesa
         foreach ($mesas as $mesa) {
             // Asigna los cargos a los docentes
-            $cargosDocentes = ['Presidente', 'Titular', 'Titular', 'Suplente', 'Suplente'];
+            $cargosDocentes = ['Presidente', 'Titular', 'Suplente', 'Suplente'];
             foreach ($cargosDocentes as $cargo) {
                 // Selecciona un docente al azar que no sea jurado en otra mesa y no pertenezca al comité
                 $docente = DB::table('eleccion_sis')
@@ -281,9 +283,39 @@ class ConvocatoriaController extends Controller
                 ]);
             }
         }
-        return redirect()->route('votantes_por_mesa')->with('success', '¡Registro realizado correctamente!');    }
+        $this->actualizarMesas();
+        $this->updateAllRecintos();
+        return redirect()->route('votantes_por_mesa')->with('success', '¡Registro realizado correctamente!');
+    }
+    public function actualizarMesas() {
+        $mesas = DB::table('mesas')->get();
+            
+        foreach ($mesas as $mesa) {
+            // Busca el docente correspondiente
+            $docente = DB::table('docentes')->where('carrera', $mesa->carrera)->first();
+    
+            // Si encontramos un docente, actualizamos la facultad
+            if ($docente) {
+                DB::table('mesas')->where('numeroMesa', $mesa->numeroMesa)->update(['facultad' => $docente->facultad]);
+            }
+    
+            // Busca la ubicación de la facultad
+            $facultadUbicacion = DB::table('facultad_ubicacion')->where('facultad', $mesa->facultad)->first();
+    
+            // Si encontramos una ubicación, actualizamos el recinto
+            if ($facultadUbicacion) {
+                DB::table('mesas')->where('numeroMesa', $mesa->numeroMesa)->update(['recinto' => $facultadUbicacion->ubicacion]);
+            }
+        }
+    }
+    public function updateAllRecintos()
+    {
+        // Actualiza todas las mesas con recinto 'No asignado'
+        DB::table('mesas')
+            ->where('recinto', 'No asignado')
+            ->update(['recinto' => 'https://maps.app.goo.gl/uaUGUXdJZLmMqPbh8']);
 
-
+    }
     /**
      * Show the form for editing the specified resource.
      *

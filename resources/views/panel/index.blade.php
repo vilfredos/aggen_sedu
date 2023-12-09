@@ -24,7 +24,7 @@
 
                         <a href="{{ route('bitacora-index') }}" class="btn btn-success button">Bitacora</a>
                         <a href="{{ route('poblacion.index') }}" class="btn btn-success button">Alimentar Base</a>
-
+                      
                         </div>                
                     </div>
                 </div>

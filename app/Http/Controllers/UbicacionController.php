@@ -16,7 +16,9 @@ class UbicacionController extends Controller
     public function index()
     {
        
-        return  view('panel.ubicacion.index');
+
+        return view('panel.ubicacion.index');
+
     }
     
 
