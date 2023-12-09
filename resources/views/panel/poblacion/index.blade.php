@@ -17,7 +17,7 @@
           <p class="lead mb-4 fw-bold">Importar población</p>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <button type="button" class="btn btn-success btn-lg px-4 gap-3" data-bs-toggle="modal" data-bs-target="#importModal">Import</button>
-            <button type="button" class="btn btn-success btn-lg px-4 gap-3" data-bs-toggle="modal" data-bs-target="#importFacultadModal">Importar Ubicacion Facultades</button>
+            <button type="button" class="btn btn-success btn-lg px-4 gap-3" data-bs-toggle="modal" data-bs-target="#importFacultadModal">Importar Ubicaciones</button>
             <a href="{{route('poblacion.pdf')}}" class="btn btn-outline-success btn-lg px-4" >Generar Pdf</a>
           </div>
         </div>
