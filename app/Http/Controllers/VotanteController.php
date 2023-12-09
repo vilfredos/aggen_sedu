@@ -10,6 +10,8 @@ use App\Models\Estudiante;
 use App\Models\Docente;
 use App\Imports\EstudianteImport;
 use App\Imports\DocenteImport;
+use App\Models\FacultadUbicacion;
+use App\Imports\UbicacionImport;
 
 
 
@@ -36,7 +38,10 @@ class VotanteController extends Controller
     public function pdf()
     {
         
+
+
         $votantes =Estudiante::all();
+
         $pdf = PDF::loadView('panel.poblacion.pdf', ['votantes' => $votantes])->setOptions(['defaultFont' => 'sans-serif']);
         //return $pdf->stream('votantes.pdf');
         return $pdf->download('__votantes.pdf');   
@@ -100,4 +105,22 @@ class VotanteController extends Controller
         $votantes = $votantesEstudiantes->union($votantesDocentes)->get();
     
         return view('poblacion.mostrar', compact('votantes'));
-}}
+}
+
+public function importUbicacion(Request $request)
+{
+    try {
+        $fileUbicacion = $request->file('file_ubicacion')->store('public/import');
+        $importUbicacion = new UbicacionImport;
+        $importUbicacion->import($fileUbicacion);
+
+        return redirect()->route('poblacion.index')->with('success', 'Datos importados');
+    } catch (\Exception $e) {
+        dd($e->getMessage());
+
+        return back()->with('error', 'Error al importar: ' . $e->getMessage());
+    }
+}
+
+
+}
