@@ -13,7 +13,8 @@ class FacultadUbicacion extends Model
     protected $table = 'facultad_ubicacion';
 
     protected $fillable = [
-        'facultad',
+
+         'facultad',
         'ubicacion',
         'script',
         
