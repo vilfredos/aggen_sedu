@@ -174,33 +174,9 @@ class ConvocatoriaController extends Controller
                         'id_mesa' => $id_mesa,
                     ]);
                 }
+                DB::commit();
             }
         }
-        /*actualizacion mesas
-        
-        $mesas = DB::table('mesas')->get();
-
-foreach ($mesas as $mesa) {
-    // Busca el docente correspondiente
-    $docente = DB::table('docentes')->where('carrera', $mesa->carrera)->first();
-
-    // Si encontramos un docente, actualizamos la facultad
-    if ($docente) {
-        DB::table('mesas')->where('numeroMesa', $mesa->numeroMesa)->update(['facultad' => $docente->facultad]);
-    }
-
-    // Busca la ubicación de la facultad
-    $facultadUbicacion = DB::table('facultad_ubicacion')->where('facultad', $mesa->facultad)->first();
-
-    // Si encontramos una ubicación, actualizamos el recinto
-    if ($facultadUbicacion) {
-        DB::table('mesas')->where('numeroMesa', $mesa->numeroMesa)->update(['recinto' => $facultadUbicacion->ubicacion]);
-    }
-}
-
-        */
-
-
         /*asignar comite por facultad*/
         // Definir los cargos
         // Definir los cargos
@@ -307,7 +283,29 @@ foreach ($mesas as $mesa) {
                 ]);
             }
         }
+        $this->actualizarMesas();
         return redirect()->route('votantes_por_mesa')->with('success', '¡Registro realizado correctamente!');
+    }
+    public function actualizarMesas() {
+        $mesas = DB::table('mesas')->get();
+            
+        foreach ($mesas as $mesa) {
+            // Busca el docente correspondiente
+            $docente = DB::table('docentes')->where('carrera', $mesa->carrera)->first();
+    
+            // Si encontramos un docente, actualizamos la facultad
+            if ($docente) {
+                DB::table('mesas')->where('numeroMesa', $mesa->numeroMesa)->update(['facultad' => $docente->facultad]);
+            }
+    
+            // Busca la ubicación de la facultad
+            $facultadUbicacion = DB::table('facultad_ubicacion')->where('facultad', $mesa->facultad)->first();
+    
+            // Si encontramos una ubicación, actualizamos el recinto
+            if ($facultadUbicacion) {
+                DB::table('mesas')->where('numeroMesa', $mesa->numeroMesa)->update(['recinto' => $facultadUbicacion->ubicacion]);
+            }
+        }
     }
     /**
      * Show the form for editing the specified resource.
