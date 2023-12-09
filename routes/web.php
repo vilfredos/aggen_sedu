@@ -15,7 +15,11 @@ use App\Http\Controllers\ComiteController;
 use App\Http\Controllers\VotacionController;
 use App\Http\Controllers\pages\Backups;
 use App\Http\Controllers\ActivityLogController;
+
+
+
 use App\Http\Controllers\VotosMesaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,11 +46,16 @@ Route::resource('cierreActa', 'ActaController');
 Route::get('poblacion', [VotanteController::class, 'index'])->name('poblacion.index');
 Route::post('votante', [VotanteController::class, 'import'])->name('votante.import');
 
+Route::post('ubicacion/import', [VotanteController::class, 'importUbicacion'])->name('ubicacion.import');
+
 Route::get('/', [VotanteController::class, 'pdf']);
 Route::get('poblacion/pdf', [VotanteController::class, 'pdf'])->name('poblacion.pdf');
 
 Route::get('poblacion/seleccionar', [VotanteController::class, 'seleccionarTipo']);
 Route::post('/buscar-votantes', [VotanteController::class, 'obtenerVotantes'])->name('votantes.buscar');
+
+
+
 
 
 Route::get('/cierreActa', function () {
