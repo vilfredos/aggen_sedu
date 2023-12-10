@@ -219,13 +219,13 @@ public function mostrarActaDeInicio($numeroMesa) {
         abort(404); // O maneja la situación de manera diferente
     }
 
-    // Obtener la fecha de fecha_fin de la elección y restar dos días
-    $fechaInicioEleccion = Carbon::parse($mesa->eleccion->fecha_fin)->subDays(2)->format('l j \\d\\e F \\d\\e Y');
-
-    // Pasar la variable a la vista
-    return view('ActaDeInicio', ['numeroMesa' => $numeroMesa, 'fechaInicioEleccion' => $fechaInicioEleccion]);
+    // Pasar la información relevante a la vista
+    return view('ActaDeInicio', [
+        'numeroMesa' => $numeroMesa,
+        'fechaInicioEleccion' => Carbon::parse($mesa->eleccion->fecha_fin)->subDays(2)->format('l j \\d\\e F \\d\\e Y'),
+        'tituloEleccion' => $mesa->eleccion->titulo,
+    ]);
 }
-
 public function actualizarResultados()
     {
         // Ejecutar la consulta

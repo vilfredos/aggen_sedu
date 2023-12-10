@@ -58,7 +58,9 @@
     <img class="logo-umss" src="{{ asset('img/LOGO-TE-UMSS.png') }}" alt="">
 </div>
 <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;'><strong><span style='font-family:"Arial",sans-serif;'>Elecciones a</span></strong></p>
-<p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;'><strong><u><span style='font-size:19px;font-family:"Arial",sans-serif;'>DECANOS Y DIRECTORES ACADEMICOS GESTION 2023-2026</span></u></strong></p>
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;'>
+    <strong><u><span style='font-size:19px;font-family:"Arial",sans-serif;'>{{ $tituloEleccion }}</span></u></strong>
+</p>
 <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:center;'><span style='font-size:16px;font-family:"Engravers MT",serif;'>ACTA DE APERTURA</span></p>
 <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;text-align:justify;'><span style='font-size:13px;font-family:"Arial",sans-serif;'>En Cochabamba a horas&hellip;&hellip;del día {{$fechaInicioEleccion}}, de conformidad a lo establecido por la Convocatoria y el Reglamento Electoral Universitario, se dio inicio al funcionamiento de la MESA N°{{$numeroMesa}}</span></p>
 
