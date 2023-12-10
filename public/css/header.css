@@ -57,7 +57,7 @@
 
 .username {
     display: block; /* Para que el texto aparezca en una nueva línea */
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .roles-list {
@@ -67,7 +67,7 @@
 }
 
 .roles-list li {
-    font-weight: bold;
+    font-weight: lighter;
 }
 
 

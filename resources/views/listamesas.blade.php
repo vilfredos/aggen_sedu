@@ -36,12 +36,32 @@
                     <td>{{ $mesa->numeroMesa }}</td>
                     <td>{{ $mesa->recinto }}</td>
                     <td>{{ $mesa->aula }}</td>
+                    
                     <td>
-                        <a href="{{ route('agregarInfo', ['numeroMesa' => $mesa->numeroMesa]) }}" class="btn-info">Agregar Información</a>
+                        <a href="{{ route('agregarInfo', ['numeroMesa' => $mesa->numeroMesa]) }}" class="btn btn-info">
+                            <i class="fa-solid fa-plus"></i> Agregar Información
+                        </a>
                     </td>
-                    <td><button class="btn-votante_mesa" data-id_eleccion="{{ $id_eleccion }}">Poblacion votante</button></td>
-                    <td><button class="btn_jurados" data-id_eleccion="{{ $id_eleccion }}">jurados</button></td>
-                    <td><button class="btn_descargar_acta">descargar acta</button></td>
+
+
+                    <td>
+                        <button class="btn-votante_mesa" data-id_eleccion="{{ $id_eleccion }}">
+                            <i class="fa-solid fa-people-group"></i>
+                        </button>
+                    </td>
+                    
+                    <td>
+                        <button class="btn_jurados" data-id_eleccion="{{ $id_eleccion }}">
+                            <i class="fa-solid fa-users-between-lines"></i>
+                        </button>
+                    </td>
+                    
+                    <td>
+                        <button class="btn_descargar_acta">
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                    </td>
+                    
                     <td>
                         <a href="{{ route('acta_escrutino', ['num_mesa' => $mesa->numeroMesa]) }}" class="btn-Registrar acta acta">Registrar Acta Acta</a>
                     </td>
