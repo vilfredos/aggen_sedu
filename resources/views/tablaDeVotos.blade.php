@@ -87,6 +87,10 @@
                         </tr>
                     </tbody>
                 </table>
+                <form method="post" action="{{ route('actualizarResultados') }}">
+                    @csrf
+                    <button type="submit">Actualizar Resultados</button>
+                </form>
         </div>
     </div>
 

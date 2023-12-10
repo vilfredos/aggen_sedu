@@ -226,7 +226,47 @@ public function mostrarActaDeInicio($numeroMesa) {
     return view('ActaDeInicio', ['numeroMesa' => $numeroMesa, 'fechaInicioEleccion' => $fechaInicioEleccion]);
 }
 
+public function actualizarResultados()
+    {
+        // Ejecutar la consulta
+        $resultados = DB::select("
+            SELECT
+                id_eleccion,
+                sigla_frente AS sigla,
+                id_frente,
+                sis_candidato,
+                cargo_postular
+            FROM (
+                SELECT
+                    ev.id_eleccion,
+                    ev.sigla_frente,
+                    f.id_frente,
+                    c.sis_candidato,
+                    c.cargo_postular,
+                    DENSE_RANK() OVER (PARTITION BY ev.id_eleccion ORDER BY SUM(ev.votos_frente) DESC) AS rnk
+                FROM eleccion_votosfrente_mesa ev
+                JOIN frentes f ON ev.sigla_frente = f.sigla_frente AND ev.id_eleccion = f.id_eleccion
+                JOIN candidato c ON f.id_frente = c.id_frente AND ev.id_eleccion = c.id_eleccion
+                GROUP BY ev.id_eleccion, ev.sigla_frente, f.id_frente, c.sis_candidato, c.cargo_postular
+            ) AS ranked
+            WHERE rnk = 1
+            ORDER BY id_eleccion, sigla_frente, id_frente, sis_candidato
+        ");
 
+        // Insertar resultados en la tabla eleccion_resultado_total
+        foreach ($resultados as $resultado) {
+            DB::table('eleccion_resultado_total')->insert([
+                'id_eleccion' => $resultado->id_eleccion,
+                'sigla' => $resultado->sigla,
+                'id_frente' => $resultado->id_frente,
+                'sis_candidato' => $resultado->sis_candidato,
+                'cargo_postular' => $resultado->cargo_postular,
+            ]);
+        }
+
+        // Redirigir a la vista original
+        return redirect()->route('votantes_por_mesa');
+    }
 /*
 public function guardarAsignacion(Request $request)
 {

@@ -264,7 +264,8 @@ Route::get('/remplazar_jurado/{sis}', 'App\Http\Controllers\JuradoController@rem
 //Route::get('/acta_escrutino/{num_mesa}', 'VotosMesaController@mostrarActaEscrutinio')->name('acta_escrutino');
 Route::get('/acta_escrutino/{num_mesa}', 'App\Http\Controllers\VotosMesaController@mostrarActaEscrutinio')->name('acta_escrutino');
 Route::post('/acta_escrutino/{num_mesa}', 'App\Http\Controllers\VotosMesaController@store')->name('acta_escrutino');
-Route::post('/acta_escrutino/{num_mesa}', 'App\Http\Controllers\VotosMesaController@store')->name('acta_escrutino');
+//Route::post('/acta_escrutino/{num_mesa}', 'App\Http\Controllers\VotosMesaController@store')->name('acta_escrutino');
 // Ejemplo en web.php o routes.php
 Route::get('/listamesas/{id_eleccion}', 'App\Http\Controllers\MesaController@listamesas')->name('listamesas');
 Route::get('/tabla_votos/{id_eleccion}', 'App\Http\Controllers\MesaController@mostrarTablaDeVotos')->name('tabla_votos');
+Route::post('/actualizar-resultados','App\Http\Controllers\MesaController@actualizarResultados')->name('actualizarResultados');
