@@ -210,7 +210,7 @@ function verificarCamposSeccion3YHabilitar() {
     const carrera = document.getElementById('carrera').value;
 
     
-    if (tiposCheckbox.length === 0 || !facultad || !carrera) {
+    if (tiposCheckbox.length === 0 || !facultad ) {
         mostrarAviso("Todos los campos deben estar llenos para registrar la elección.");
         return false; 
     } else {
