@@ -86,13 +86,16 @@
                 window.location.href = '/votante_mesa/' + num_mesa + '?eleccionId=' + id_eleccion;
             });
         });
+      
+
         $(document).ready(function() {
-            $(".btn_jurados").click(function() {
-                var num_mesa = $(this).closest('tr').find('td:eq(0)').text();
-                var id_eleccion = $(this).data('id_eleccion');
-                window.location.href = '/lista_jurados/' + num_mesa + '?eleccionId=' + id_eleccion;
-            });
-        });
+    $(".btn_jurados").click(function() {
+        var num_mesa = $(this).closest('tr').find('td:eq(0)').text();
+        var id_eleccion = $(this).data('id_eleccion');
+        window.location.href = '/lista_jurados/' + num_mesa + '?eleccionId=' + id_eleccion;
+    });
+});
+
         $(document).ready(function() {
             $(".btn_mesas").click(function() {
                 var eleccionId = $(this).data('id');

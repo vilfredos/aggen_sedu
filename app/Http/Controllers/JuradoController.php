@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\NotificacionJurado;
 use App\Models\FacultadUbicacion;
 
+use App\Mail\ContactanosMailable;
+
 
 class JuradoController extends Controller
 {
@@ -37,30 +39,17 @@ class JuradoController extends Controller
     
                 return $item;
             });
+             // Obtener los correos electrónicos de la lista de jurados
+    $destinatarios = $datos->pluck('email')->toArray();
+
+    // Enviar el correo electrónico a la lista de jurados
+    Mail::to($destinatarios)->send(new ContactanosMailable());
+    
+
     
         return view('lista_jurados', ['data' => $datos]);  // para poder email 
     }
     
-    public function enviar_correos_a_jurados()
-{
-    $datos = DB::table('eleccion_jurados')->get();
-
-    foreach ($datos as $item) {
-        $estudiante = DB::table('estudiantes')->where('sis', $item->sis)->first();
-        $docente = DB::table('docentes')->where('sis', $item->sis)->first();
-
-        $item->name = $estudiante ? $estudiante->name : ($docente ? $docente->name : null);
-        $item->email = $estudiante ? $estudiante->email : ($docente ? $docente->email : null);
-        $item->facultad = $estudiante ? $estudiante->facultad : ($docente ? $docente->facultad : null);
-        $item->carrera = $estudiante ? $estudiante->carrera : null;
-        $item->ci = $estudiante ? $estudiante->ci : ($docente ? $docente->ci : null);
-
-        // Envía el correo electrónico a cada jurado
-        Mail::to($item->email)->send(new NotificacionJurado($item));
-    }
-
-    return "Correos electrónicos enviados a todos los jurados.";
-}
     public function ver_papeleta($id_eleccion)
     {
         // Obtén todos los frentes para la elección dada
