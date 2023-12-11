@@ -12,6 +12,8 @@ use App\Imports\EstudianteImport;
 use App\Imports\DocenteImport;
 use App\Models\FacultadUbicacion;
 use App\Imports\UbicacionImport;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactanosMailable;
 
 
 
@@ -114,6 +116,8 @@ public function importUbicacion(Request $request)
         $importUbicacion = new UbicacionImport;
         $importUbicacion->import($fileUbicacion);
 
+          // Aquí puedes agregar el código para enviar el correo después de importar
+          
         return redirect()->route('poblacion.index')->with('success', 'Datos importados');
     } catch (\Exception $e) {
         dd($e->getMessage());
@@ -121,6 +125,7 @@ public function importUbicacion(Request $request)
         return back()->with('error', 'Error al importar: ' . $e->getMessage());
     }
 }
+
 
 
 }

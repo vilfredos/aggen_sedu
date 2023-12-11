@@ -5,9 +5,10 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+
 use Illuminate\Queue\SerializesModels;
 
-class TestMail extends Mailable
+class ContactanosMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -26,8 +27,12 @@ class TestMail extends Mailable
      *
      * @return $this
      */
-    public function build()
-    {
-        return $this->view('view.name');
-    }
+
+    
+     public function build()
+     {
+         return $this->view('emails.contactanos');
+                 
+                     
+     }
 }

@@ -14,7 +14,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 500px; /* Ajusta según sea necesario */
+    max-width: 500px; 
     width: 100%;
 }
 

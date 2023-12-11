@@ -30,7 +30,7 @@ p {
     flex-direction: column; 
     align-items: center;
     justify-content: center;
-    height: 108vh; /* Esto asegura que ocupe el 100% del alto de la ventana */
+    height: 108vh; 
 
 }
 
@@ -42,8 +42,8 @@ p {
     padding: 0;
     display: flex;
     flex-direction: column;
-    max-width: 600px; /* Ajusta según sea necesario */
-    width: 100%; /* Para ocupar el 100% del ancho del contenedor */
+    max-width: 600px; 
+    width: 100%; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -63,7 +63,7 @@ p {
 
 
 .botonRegistrar{
-    background-color: #4CAF50; /* Puedes cambiar "green" por cualquier color que desees */
+    background-color: #4CAF50; 
     color: white;
     border-radius: 12px;
     padding: 10px 20px;
@@ -78,8 +78,8 @@ p {
 }
 .botonRegistrar:hover {
     background-color: #45a049;
-    transform: scale(1.1); /* Agrega esta línea para agrandar el botón */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Agrega transform a la transición */
+    transform: scale(1.1); 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
 

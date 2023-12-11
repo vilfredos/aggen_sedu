@@ -28,7 +28,7 @@
     margin-left: 90px;
     text-align: center;
     border-radius: 20px;
-    height: 120vh;
+    height: 170vh;
 }
 
 .superiorVm {
@@ -83,7 +83,7 @@ th {
 
 }
 .botonVerdeVm{
-    background-color: #4CAF50; /* Puedes cambiar "green" por cualquier color que desees */
+    background-color: #4CAF50; 
     color: white;
     border-radius: 12px;
     margin: 20px;
@@ -119,7 +119,7 @@ th {
     background-color: transparent; 
 }
 .btn-secondary:hover {
-    background-color: #0d6efd; /* Cambia a tu color de destacado deseado al pasar el puntero */
+    background-color: #0d6efd; 
 }
 
 .btn-secondary .fa-sheet-plastic {
@@ -140,7 +140,7 @@ th {
     border: none; 
 }
 .btn_mesas:hover {
-    background-color: #0d6efd; /* Cambia a tu color de destacado deseado al pasar el puntero */
+    background-color: #0d6efd; 
 }
 
 .btn_frente {
@@ -155,11 +155,11 @@ th {
     border: none; 
 }
 .btn_frente:hover {
-    background-color: #0d6efd; /* Cambia a tu color de destacado deseado al pasar el puntero */
+    background-color: #0d6efd; 
 }
 
 .btnConvocatoria{
-    background-color: #4CAF50; /* Puedes cambiar "green" por cualquier color que desees */
+    background-color: #4CAF50; 
     color: white;
     border-radius: 12px;
     margin-top: 30px;
@@ -172,5 +172,88 @@ th {
     transition: transform 0.3s;
 }
 .btnConvocatoria:hover {
-    transform: scale(1.1); /* Escala el botón al 110% cuando se pasa el mouse sobre él */
+    transform: scale(1.1); 
+}
+
+/*votones Listado de Mesas*/
+
+
+.btnagregarInformacion {
+    display: inline-block;
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: #003777; 
+    transition: all 0.3s ease; 
+    color: white;
+    width: 60px; 
+    text-align: center;
+}
+
+.btnagregarInformacion:hover {
+    transform: scale(1.1); 
+}
+
+
+.btnPoblacionVotante {
+    display: inline-block;
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: #003777; 
+    transition: all 0.3s ease; 
+    color: white;
+    width: 60px; 
+    text-align: center;
+    border: none;
+}
+
+.btnPoblacionVotante:hover {
+    transform: scale(1.1); 
+}
+
+.btn_jurados{
+    display: inline-block;
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: #003777; 
+    transition: all 0.3s ease; 
+    color: white;
+    width: 60px; 
+    text-align: center;
+    border: none;
+}
+
+.btn_jurados:hover {
+    transform: scale(1.1); 
+}
+
+.btn_descargar_acta{
+    display: inline-block;
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: #003777; 
+    transition: all 0.3s ease; 
+    color: white;
+    width: 60px; 
+    text-align: center;
+    border: none;
+}
+
+.btn_descargar_acta:hover {
+    transform: scale(1.1); 
+}
+
+.btn-RegistrarActa{
+    display: inline-block;
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: #EC0033; 
+    transition: all 0.3s ease; 
+    color: white;
+    width: 60px; 
+    text-align: center;
+    border: none;
+}
+
+.btn-RegistrarActa:hover {
+    transform: scale(1.1); 
 }

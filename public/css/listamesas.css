@@ -2,7 +2,7 @@
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 80px; /* Agrega un margen inferior de 80px (o el valor que prefieras) */
+    margin-bottom: 80px; 
 }
 
 /* Estilos para las celdas de la tabla */
@@ -21,7 +21,7 @@ th {
 }
 
 h1 {
-    color: #ff6347; /* Tomato color */
-    font-size: 2em; /* 2 times the current font size */
-    text-align: center; /* Center align */
+    color: #ff6347; 
+    font-size: 2em; 
+    text-align: center; 
 }
