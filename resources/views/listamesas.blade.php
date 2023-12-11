@@ -38,14 +38,14 @@
                     <td>{{ $mesa->aula }}</td>
                     
                     <td>
-                        <a href="{{ route('agregarInfo', ['numeroMesa' => $mesa->numeroMesa]) }}" class="btn btn-info">
-                            <i class="fa-solid fa-plus"></i> Agregar Información
+                        <a href="{{ route('agregarInfo', ['numeroMesa' => $mesa->numeroMesa]) }}" class="btnagregarInformacion">
+                            <i class="fa-solid fa-plus"></i> 
                         </a>
                     </td>
 
 
                     <td>
-                        <button class="btn-votante_mesa" data-id_eleccion="{{ $id_eleccion }}">
+                        <button class="btnPoblacionVotante" data-id_eleccion="{{ $id_eleccion }}">
                             <i class="fa-solid fa-people-group"></i>
                         </button>
                     </td>
@@ -63,7 +63,9 @@
                     </td>
                     
                     <td>
-                        <a href="{{ route('acta_escrutino', ['num_mesa' => $mesa->numeroMesa]) }}" class="btn-Registrar acta acta">Registrar Acta Acta</a>
+                        <a href="{{ route('acta_escrutino', ['num_mesa' => $mesa->numeroMesa]) }}" class="btn-RegistrarActa">
+                            <i class="fa-regular fa-circle-check"></i>
+                        </a>
                     </td>
                 </tr>
                 @endforeach

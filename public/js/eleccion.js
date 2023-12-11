@@ -1,6 +1,6 @@
 // public/js/main.js
 function myFunction_c() {
-    window.location.href = '/comvocatoria';
+    window.location.href = '/convocatoria';
   }
 function llevame_a_frente() {
     window.location.href = '/frente';
