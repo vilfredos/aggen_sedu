@@ -12,9 +12,9 @@
 
 <body>
 
-<div class="form-containerF">
+<div class="containerF">
 
-    <form class="formularioFrente">
+    <div class="contentFrente">
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -34,13 +34,19 @@
             <form action="{{ route('frente.store') }}" method="post">
                 @csrf
                 <label for="sis_representante">SIS Representante:</label>
-                <input type="number" min="1" step="1" id="sis_representante" name="sis_representante"><br>
+                <input type="number" min="1" step="1" id="sis_representante" name="sis_representante">
+                <br>
+                <br>
 
                 <label for="nombre_frente">Nombre del Frente:</label>
-                <input type="text" id="nombre_frente" name="nombre_frente"><br>
+                <input type="text" id="nombre_frente" name="nombre_frente">
+                <br>
+                <br>
 
                 <label for="sigla_frente">Sigla del Frente:</label>
-                <input type="text" id="sigla_frente" name="sigla_frente"><br>
+                <input type="text" id="sigla_frente" name="sigla_frente">
+                <br>
+                <br>
 
                 <label for="color_primario">Color Primario:</label>
                 <select id="color_primario" name="color_primario" required>
@@ -57,7 +63,9 @@
                     <option value="rojo">Rojo</option>
                     <option value="amarillo">Amarillo</option>
                     <option value="azul">Azul</option>
-                </select><br>
+                </select>
+                <br>
+                <br>
 
                 <input type="hidden" id="id_eleccion" name="id_eleccion" value="{{ $id }}">
                 <label for="color_secundario">Color Secundario:</label>
@@ -75,11 +83,15 @@
                     <option value="marron">Marrón</option>
                     <option value="turquesa">Turquesa</option>
                     <option value="violeta">Violeta</option>
-                </select><br>
+                </select>
+                <br>
+                <br>
 
                 @foreach ($cargos as $cargo)
                 <label for="{{ $cargo->cargo_postular }}">Sis del candidato al {{ $cargo->cargo_postular }}:</label>
-                <input type="number" min="1" step="1" id="{{ $cargo->cargo_postular }}" name="{{ $cargo->cargo_postular }}"><br>
+                <input type="number" min="1" step="1" id="{{ $cargo->cargo_postular }}" name="{{ $cargo->cargo_postular }}">
+                <br>
+                <br>
                 @endforeach
 
                 <input type="submit" value="Registrar" class="botonRegistrar">
@@ -88,7 +100,6 @@
 
             </div>
 
-        </formularioFrente>
     </div>
 </body>
 @endsection
