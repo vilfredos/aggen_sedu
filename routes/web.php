@@ -112,11 +112,11 @@ Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::get('/resultados', [JuradoController::class, 'store']);
+//Route::get('/resultados', [JuradoController::class, 'store']);
 
-Route::get('/resultados', function () {
+/*Route::get('/resultados', function () {
     return view('resultados');
-});
+});*/
 
 
 /*Route::get('/jurado_aleatorio', 'App\Http\Controllers\JuradoController@seleccionarJurados');
@@ -273,4 +273,9 @@ Route::post('/acta_escrutino/{num_mesa}', 'App\Http\Controllers\VotosMesaControl
 Route::get('/listamesas/{id_eleccion}', 'App\Http\Controllers\MesaController@listamesas')->name('listamesas');
 Route::get('/tabla_votos/{id_eleccion}', 'App\Http\Controllers\MesaController@mostrarTablaDeVotos')->name('tabla_votos');
 Route::post('/actualizar-resultados','App\Http\Controllers\MesaController@actualizarResultados')->name('actualizarResultados');
+
+
+
+Route::get('/historico', [VotosMesaController::class, 'verHistorico']);
+Route::get('/informacion/{id}', [VotosMesaController::class, 'verInformacion']);
 

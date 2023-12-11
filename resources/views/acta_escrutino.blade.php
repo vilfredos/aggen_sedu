@@ -8,7 +8,7 @@
 
 <body>
     <div class="form-containerActa">
-    <form action="{{ route('acta_escrutino', ['num_mesa' => $numeroMesa]) }}" method="post">
+    <form action="{{ route('acta_escrutino', ['num_mesa' => $numeroMesa]) }}" method="post" enctype="multipart/form-data">
     @csrf
 
             <div class="superior">
@@ -36,6 +36,8 @@
             <input type="number" id="votos_nulos" name="votos_nulos" min="0" max="300" step="1" oninput="calculateTotal()"><br>
             <label for="total_votos">Total Votos:</label>
             <input type="text" id="total_votos" name="total_votos" readonly>
+            <label for="documento_pdf">Adjuntar Acta en PDF:</label>
+            <input type="file" id="documento_pdf" name="documento_pdf" accept=".pdf">
             <!-- Botón de enviar -->
             <button type="submit">Guardar</button>
         </form>

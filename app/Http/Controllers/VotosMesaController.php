@@ -13,6 +13,7 @@ use App\Models\Frente;
 use App\Models\VotosBlancosMesa;
 use App\Models\VotosFrenteMesa;
 use App\Models\VotosNulosMesa;
+use App\Models\EleccionActaMesa;
 class VotosMesaController extends Controller
 {
     /**
@@ -43,57 +44,75 @@ class VotosMesaController extends Controller
      * App\Http\Controllers\Request1. Esto puede suceder por varias razones:
      */
     public function store(Request $request)
-    {
-        // Obtener la mesa por su número
-        $mesa = Mesa::where('numeroMesa', $request->num_mesa)->first();
-    
-        // Verificar si la mesa existe
-        if (!$mesa) {
-            abort(404, "Mesa no encontrada");
-        }
-    
-        // Obtener la elección asociada a la mesa
-        $eleccion = $mesa->eleccion;
-    
-        // Verificar si la elección existe
-        if (!$eleccion) {
-            abort(404, "Elección no encontrada");
-        }
-    
-        // Guardar votos blancos
-        VotosBlancosMesa::create([
-            'id_eleccion' => $eleccion->id,
-            'votos_blancos' => $request->votos_blancos,
-            'id_mesa' => $request->num_mesa,
-        ]);
-        
-        // Guardar votos de frentes
-        foreach ((array)$request->votos_frentes as $id_frente => $votos) {
-            // Verifica si la clave 'id_frente' está presente en el elemento antes de acceder a ella
-            if (isset($id_frente) && isset($votos)) {
-                // Obtén la sigla del frente utilizando el ID
-                $frente = Frente::find($id_frente);
-        
-                // Crea votos por frente en la tabla eleccion_votosfrente_mesa
-                $votosFrente = new VotosFrenteMesa();
-                $votosFrente->id_mesa = $request->num_mesa;
-                $votosFrente->id_eleccion = $eleccion->id;
-                $votosFrente->sigla_frente = $frente->sigla_frente;
-                $votosFrente->votos_frente = $votos; // Puede que necesites ajustar esto según cómo estás recibiendo los votos
-                $votosFrente->save();
-            }
-        }
-    
-        // Guardar votos nulos
-        VotosNulosMesa::create([
-            'id_eleccion' => $eleccion->id,
-            'votos_nulos' => $request->votos_nulos,
-            'id_mesa' => $request->num_mesa,
-        ]);
-    
-        // Redirigir a la ruta deseada
-        return redirect()->route('listamesas', ['id_eleccion' => $eleccion->id]);
+{
+    // Obtener la mesa por su número
+    $mesa = Mesa::where('numeroMesa', $request->num_mesa)->first();
+
+    // Verificar si la mesa existe
+    if (!$mesa) {
+        abort(404, "Mesa no encontrada");
     }
+
+    // Obtener la elección asociada a la mesa
+    $eleccion = $mesa->eleccion;
+
+    // Verificar si la elección existe
+    if (!$eleccion) {
+        abort(404, "Elección no encontrada");
+    }
+
+    // Guardar votos blancos
+    VotosBlancosMesa::create([
+        'id_eleccion' => $eleccion->id,
+        'votos_blancos' => $request->votos_blancos,
+        'id_mesa' => $request->num_mesa,
+    ]);
+
+    // Guardar votos de frentes
+    foreach ((array)$request->votos_frentes as $id_frente => $votos) {
+        // Verifica si la clave 'id_frente' está presente en el elemento antes de acceder a ella
+        if (isset($id_frente) && isset($votos)) {
+            // Obtén la sigla del frente utilizando el ID
+            $frente = Frente::find($id_frente);
+
+            // Crea votos por frente en la tabla eleccion_votosfrente_mesa
+            $votosFrente = new VotosFrenteMesa();
+            $votosFrente->id_mesa = $request->num_mesa;
+            $votosFrente->id_eleccion = $eleccion->id;
+            $votosFrente->sigla_frente = $frente->sigla_frente;
+            $votosFrente->votos_frente = $votos; // Puede que necesites ajustar esto según cómo estás recibiendo los votos
+            $votosFrente->save();
+        }
+    }
+
+    // Guardar votos nulos
+    VotosNulosMesa::create([
+        'id_eleccion' => $eleccion->id,
+        'votos_nulos' => $request->votos_nulos,
+        'id_mesa' => $request->num_mesa,
+    ]);
+
+    // Verificar si se proporcionó un archivo y es un PDF
+    
+        $file = $request->file('documento_pdf');
+
+        // Verificar si el archivo es un PDF
+        
+            $nombreArchivo = 'acta_' . time() . '.' . $file->getClientOriginalExtension();
+            $rutaArchivo = $file->storeAs('documentos', $nombreArchivo, 'public');
+
+            // Guardar en la tabla eleccion_acta_mesa
+            EleccionActaMesa::create([
+                'id_eleccion' => $eleccion->id,
+                'acta' => $rutaArchivo,
+                'id_mesa' => $request->num_mesa,
+            ]);
+        
+
+    // Redirigir a la ruta deseada
+    return redirect()->route('listamesas', ['id_eleccion' => $eleccion->id]);
+}
+
     
     /**
      * Display the specified resource.
@@ -223,6 +242,39 @@ public function mostrarActaEscrutinio($numeroMesa) {
         'frentes' => $frentes,
         'numeroMesa' => $numeroMesa,
     ]);
+}
+public function verHistorico(){
+    $elecciones = DB::table('eleccion')->get();
+    return view('historico', ['elecciones' => $elecciones]);
+}
+public function verInformacion($id){
+    $eleccion = DB::table('eleccion')->where('id', $id)->first();
+    $eleccion_sis = DB::table('eleccion_sis')->where('id_eleccion', $id)->get();
+    $candidatos = DB::table('candidato')->where('id_eleccion', $id)->get();
+    $eleccion_cargo = DB::table('eleccion_cargo')->where('id_eleccion', $id)->get();
+    $eleccion_comite = DB::table('eleccion_comite')->where('id_eleccion', $id)->get();
+    $eleccion_jurados = DB::table('eleccion_jurados')->where('id_eleccion', $id)->get();
+    $eleccion_resultado_total = DB::table('eleccion_resultado_total')->where('id_eleccion', $id)->get();
+    $eleccion_votante_mesa = DB::table('eleccion_votante_mesa')->where('id_eleccion', $id)->get();
+    $frentes = DB::table('frentes')->where('id_eleccion', $id)->get();
+    $mesas = DB::table('mesas')->where('id_eleccion', $id)->get();
+
+    if ($eleccion) {
+        return view('informacion', [
+            'eleccion' => $eleccion,
+            'eleccion_sis' => $eleccion_sis,
+            'candidatos' => $candidatos,
+            'eleccion_cargo' => $eleccion_cargo,
+            'eleccion_comite' => $eleccion_comite,
+            'eleccion_jurados' => $eleccion_jurados,
+            'eleccion_resultado_total' => $eleccion_resultado_total,
+            'eleccion_votante_mesa' => $eleccion_votante_mesa,
+            'frentes' => $frentes,
+            'mesas' => $mesas,
+        ]);
+    } else {
+        return redirect('/historico')->with('error', 'Eleccion no encontrada');
+    }
 }
 
 }

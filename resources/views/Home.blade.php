@@ -132,7 +132,7 @@
 
                     <li class="item">
                         
-                        <a href="{{ url('/historicoResultados') }}">
+                        <a href="{{ url('/historico') }}">
                             <i class="fa-solid fa-timeline"></i>                   
                             <span class="nombres">Historico de Resultados</span>
                         </a>
