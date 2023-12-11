@@ -244,8 +244,10 @@ public function mostrarActaEscrutinio($numeroMesa) {
     ]);
 }
 public function verHistorico(){
-    $elecciones = DB::table('eleccion')->get();
-    return view('historico', ['elecciones' => $elecciones]);
+    $resultados = DB::table('eleccion_resultado_total')->get();
+    $elecciones = DB::table('eleccion')->whereIn('id', $resultados->pluck('id_eleccion'))->get();
+
+    return view('historico', ['elecciones' => $elecciones, 'resultados' => $resultados]);
 }
 public function verInformacion($id){
     $eleccion = DB::table('eleccion')->where('id', $id)->first();
