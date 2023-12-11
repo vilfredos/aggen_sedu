@@ -60,7 +60,13 @@ class VotosMesaController extends Controller
     if (!$eleccion) {
         abort(404, "Elección no encontrada");
     }
-
+    $existenciaFilaBlancos = VotosBlancosMesa::where('id_eleccion', $eleccion->id)
+    ->where('id_mesa', $request->num_mesa)
+    ->exists();
+    if ($existenciaFilaBlancos) {
+        return redirect()->back()->with('error', 'Los votos no pueden ser registrados: los votos fueron registrados anteriormente');
+    }
+    
     // Guardar votos blancos
     VotosBlancosMesa::create([
         'id_eleccion' => $eleccion->id,
