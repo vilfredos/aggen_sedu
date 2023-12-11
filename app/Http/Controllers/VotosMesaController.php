@@ -247,5 +247,34 @@ public function verHistorico(){
     $elecciones = DB::table('eleccion')->get();
     return view('historico', ['elecciones' => $elecciones]);
 }
+public function verInformacion($id){
+    $eleccion = DB::table('eleccion')->where('id', $id)->first();
+    $eleccion_sis = DB::table('eleccion_sis')->where('id_eleccion', $id)->get();
+    $candidatos = DB::table('candidato')->where('id_eleccion', $id)->get();
+    $eleccion_cargo = DB::table('eleccion_cargo')->where('id_eleccion', $id)->get();
+    $eleccion_comite = DB::table('eleccion_comite')->where('id_eleccion', $id)->get();
+    $eleccion_jurados = DB::table('eleccion_jurados')->where('id_eleccion', $id)->get();
+    $eleccion_resultado_total = DB::table('eleccion_resultado_total')->where('id_eleccion', $id)->get();
+    $eleccion_votante_mesa = DB::table('eleccion_votante_mesa')->where('id_eleccion', $id)->get();
+    $frentes = DB::table('frentes')->where('id_eleccion', $id)->get();
+    $mesas = DB::table('mesas')->where('id_eleccion', $id)->get();
+
+    if ($eleccion) {
+        return view('informacion', [
+            'eleccion' => $eleccion,
+            'eleccion_sis' => $eleccion_sis,
+            'candidatos' => $candidatos,
+            'eleccion_cargo' => $eleccion_cargo,
+            'eleccion_comite' => $eleccion_comite,
+            'eleccion_jurados' => $eleccion_jurados,
+            'eleccion_resultado_total' => $eleccion_resultado_total,
+            'eleccion_votante_mesa' => $eleccion_votante_mesa,
+            'frentes' => $frentes,
+            'mesas' => $mesas,
+        ]);
+    } else {
+        return redirect('/historico')->with('error', 'Eleccion no encontrada');
+    }
+}
 
 }

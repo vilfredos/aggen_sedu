@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html>
+@extends('Home')
+
+@section('content')
 <head>
     <title>Historico de Elecciones</title>
 </head>
@@ -10,7 +11,8 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
+                    <th>TITULO</th>
+                    <th>Informe</th>
                     <!-- Añade aquí más columnas según los campos de tu tabla -->
                 </tr>
             </thead>
@@ -18,7 +20,10 @@
                 @foreach($elecciones as $eleccion)
                     <tr>
                         <td>{{ $eleccion->id }}</td>
-                        <td>{{ $eleccion->nombre }}</td>
+                        <td>{{ $eleccion->titulo }}</td>
+                        <button class="btn_comite">
+                            <i class="fa-solid fa-users"></i>
+                        </button>
                         <!-- Añade aquí más celdas según los campos de tu tabla -->
                     </tr>
                 @endforeach
@@ -28,4 +33,13 @@
         <p>No se encontraron elecciones.</p>
     @endif
 </body>
-</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".btn_informacion").click(function() {
+            var id = $(this).closest('tr').find('td:eq(0)').text();
+            window.location.href = '/informacion/' + id;
+        });
+    });
+</script>
+@endsection
