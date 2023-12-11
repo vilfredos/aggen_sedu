@@ -15,6 +15,8 @@ use App\Http\Controllers\ComiteController;
 use App\Http\Controllers\VotacionController;
 use App\Http\Controllers\pages\Backups;
 use App\Http\Controllers\ActivityLogController;
+use App\Mail\ContactanosMailable;
+use Illuminate\Support\Facades\Mail;
 
 
 
@@ -251,7 +253,9 @@ Route::get('/agregarInfo/{numeroMesa}', 'App\Http\Controllers\MesaController@agr
 Route::patch('/guardar-informacion/{numeroMesa}', 'App\Http\Controllers\MesaController@guardarInformacion')->name('guardarInformacion');
 Route::get('/ActaDeInicio/{numeroMesa}', 'App\Http\Controllers\MesaController@mostrarActaDeInicio');
 
+
 Route::get('/lista_jurados/{num_mesa}', 'App\Http\Controllers\JuradoController@ver_jurado');
+
 
 Route::get('/papeleta/{id_eleccion}', 'App\Http\Controllers\JuradoController@ver_papeleta');
 
@@ -269,3 +273,4 @@ Route::post('/acta_escrutino/{num_mesa}', 'App\Http\Controllers\VotosMesaControl
 Route::get('/listamesas/{id_eleccion}', 'App\Http\Controllers\MesaController@listamesas')->name('listamesas');
 Route::get('/tabla_votos/{id_eleccion}', 'App\Http\Controllers\MesaController@mostrarTablaDeVotos')->name('tabla_votos');
 Route::post('/actualizar-resultados','App\Http\Controllers\MesaController@actualizarResultados')->name('actualizarResultados');
+
