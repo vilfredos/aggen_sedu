@@ -22,11 +22,11 @@ body{
 
 .contH {
     background-color: #fff;
-    max-width: 600px;
+    max-width: 800px;
     width: 100%;
     margin-top: 10px;
     margin-left: 90px;
-    /*text-align: center;*/
+    text-align: center;
     border-radius: 20px;
     height: 170vh;
     padding: 30px;
@@ -34,20 +34,22 @@ body{
 
 .containerPrincipalH{
     width: 50%; 
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 20%;
+    
 
 }
 
 
 .TablaHistorico {
-    width: 95%;
+    width: 100%; /* Hacer la tabla ocupar el 100% del ancho disponible */
     border-collapse: collapse;
-    margin-left: 16px;
+    margin: 10px;
 }
 
 th, td {
     border: 1px solid #ddd;
+    padding: 12px; /* Ajustar el relleno según sea necesario */
+
     padding: 8px;
     background-color: #fff;
     text-align: center; 
@@ -77,4 +79,46 @@ th {
 
 .btn_informe_final:hover {
     transform: scale(1.1); 
+}
+
+/*historico Informacion*/
+
+.superiorHI {
+    padding-top: 0px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.tituloHI {
+
+    font-size: 34px; 
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000;
+    text-align: center;
+}
+
+.contHinf {
+    background-color: #fff;
+    max-width: 2000px;
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 90px;
+    /*text-align: center;*/
+    border-radius: 20px;
+    height: 350vh;
+    padding: 30px;
+}
+
+.containerPrincipalHinf{
+    width: 80%; 
+    margin-left:5%;
+    
+
+}
+
+.TablaInformacion {
+    width: auto; /* Hacer la tabla ocupar el 100% del ancho disponible */
+    border-collapse: collapse;
+    margin: 0 auto;
 }
