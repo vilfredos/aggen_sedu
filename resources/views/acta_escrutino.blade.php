@@ -11,8 +11,8 @@
         <div class="contenerdorPrincipalActa">
 
             <div class="form-containerActa">
-                <form action="{{ route('acta_escrutino', ['num_mesa' => $numeroMesa]) }}" method="post">
-                    @csrf
+            <form action="{{ route('acta_escrutino', ['num_mesa' => $numeroMesa]) }}" method="post" enctype="multipart/form-data">
+    @csrf
                             
                             
                             <div class="superiorActa">
@@ -47,6 +47,8 @@
                             <input type="text" id="total_votos" name="total_votos" readonly>
                             <br>
                             <br>
+                            <label for="documento_pdf">Adjuntar Acta en PDF:</label>
+            <input type="file" id="documento_pdf" name="documento_pdf" accept=".pdf">
                             <!-- Botón de enviar -->
                             <button type="submit">Guardar</button>
                 </form>
