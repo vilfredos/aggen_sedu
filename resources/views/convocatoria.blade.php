@@ -207,7 +207,6 @@ function verificarCamposSeccion3YHabilitar() {
     
     const tiposCheckbox = document.querySelectorAll('input[name="tipos[]"]:checked');
     const facultad = document.getElementById('facultad').value;
-    const carrera = document.getElementById('carrera').value;
 
     
     if (tiposCheckbox.length === 0 || !facultad ) {
