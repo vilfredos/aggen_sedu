@@ -34,7 +34,7 @@
                         <th>Facultad</th>
                         <th>Carrera</th>
                         <th>Carnet</th>
-                        <th>Tipo</th>
+                        
                         
                        
                     </tr>
@@ -47,7 +47,7 @@
                                 <td>{{ $item->facultad}}</td>
                                 <td>{{ $item->carrera}}</td>
                                 <td>{{ $item->ci}}</td>
-                                <td>{{ $item->tipo}}</td>
+                              
                                 
                                
                             </tr>

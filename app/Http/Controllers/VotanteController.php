@@ -40,9 +40,10 @@ class VotanteController extends Controller
     public function pdf()
     {
         
+        $estudiantes =Estudiante::all();
+        $docentes = Docente::all();
 
-
-        $votantes =Estudiante::all();
+        $votantes = $estudiantes->concat($docentes);
 
         $pdf = PDF::loadView('panel.poblacion.pdf', ['votantes' => $votantes])->setOptions(['defaultFont' => 'sans-serif']);
         //return $pdf->stream('votantes.pdf');

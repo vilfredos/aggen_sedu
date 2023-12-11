@@ -22,6 +22,7 @@
           </div>
         </div>
     </div>
+   
     <div class="d-md-flex justify-content-md-end">
         <form action="{{ route('poblacion.index')}}" method="GET">
             <div class="btn-group">
@@ -46,7 +47,7 @@
                 <tr>
                     <th scope="col">Código sis</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">email</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Carnet</th>
                     <th scope="col">Facultad</th>
                     <th scope="col">Carrera</th>
@@ -126,5 +127,6 @@
 
     <!-- Script -->
     <script src="{{ asset('js/poblacion.js') }}"></script>
+  
 </body>
 @endsection
