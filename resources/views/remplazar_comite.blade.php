@@ -13,7 +13,6 @@
         <div class="superiorM">
             <h1 class="tituloM">Formulario para reemplazar Miembro del Comite</h1>
         </div>
-        <h2>Formulario para remplazar Miembro del Comite</h2>
         <p>Se va a reemplazar al miembro del comité con SiS: {{ $sis }}</p>
         <form class="remplar_comite" action="/remplazar_comite" method="post" enctype="multipart/form-data">
         @csrf

@@ -12,7 +12,8 @@
 
 <body>
 
-    <div class="form-containerF">
+    <div class="containerPrincipalF">
+        <div class="contentFrente">
 
             @if ($errors->any())
             <div class="alert alert-danger">
@@ -27,7 +28,7 @@
             <!--h2 style="text-align:center;">Registrar frentes con sus candidatos</!--h2-->
 
             <div class="superiorF">
-                <h1 class="titulo">Registrar frentes con sus candidatos</h1>
+                <h1 class="titulof">Registrar frentes con sus candidatos</h1>
             </div>
             <form action="{{ route('frente.store') }}" method="post">
                 @csrf
@@ -98,5 +99,6 @@
 
     
     </div>
+</div>
 </body>
 @endsection

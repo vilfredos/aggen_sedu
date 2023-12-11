@@ -2,12 +2,19 @@
 
 @section('content')
 <head>
+    <link href="{{ asset('css/historicoResultados.css') }}" rel="stylesheet">   
+
     <title>Historico de Elecciones</title>
 </head>
 <body>
-    <h1>Historico de Elecciones</h1>
+
+<div class="containerPrincipalH">
+    <div class=contH>
+        <div class="superiorH">
+            <h1 class="tituloH">Historico de Elecciones</h1>
+        </div>
     @if($elecciones->count())
-        <table>
+        <table class="TablaHistorico">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -22,10 +29,11 @@
                     <tr>
                         <td>{{ $eleccion->id }}</td>
                         <td>{{ $eleccion->titulo }}</td>
-                        <td>por designar</td> 
-                        <td><button class="btn_informe_final">
-                            <i class="fa-solid fa-users"></i>
-                        </button></td>
+                        <td>
+                            <button class="btn_informe_final">
+                                <i class="fa-solid fa-users"></i>
+                            </button>
+                        </td>
                         <!-- Añade aquí más celdas según los campos de tu tabla -->
                     </tr>
                 @endforeach
@@ -34,6 +42,8 @@
     @else
         <p>No se encontraron elecciones.</p>
     @endif
+</div>
+</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
