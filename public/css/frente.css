@@ -1,10 +1,10 @@
-.superiorC{
+.superiorF{
     padding-top:10px;
     margin-top: 0px;
     align-items: center;
 }
 
-.titulo {
+.titulof{
     font-size: 34px; 
     font-weight: bold;
     margin-top: 15px;
@@ -25,61 +25,39 @@ p {
     line-height: 1.6;
 }
 
-.containerF{
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    justify-content: center;
-    height: 80vh; 
-
+.containerPrincipalF{
+    width: 50%; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contentFrente{
-    font-family: 'Arial', sans-serif;
-    /*background-color: #f4f4f4;*/
     background-color: #fff;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    max-width: 600px; 
-    width: 100%; 
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.superior {
+    max-width: 500px;
+    width: 100%;
     margin-top: 10px;
-    background: linear-gradient(to bottom, #CF2E2E, #003770);
+    margin-left: 90px;
+    border-radius: 20px;
+    height: 90vh;
+    padding: 30px;
 }
-
-.imagen-registro {
-    width: 200px; 
-    height: auto; 
-    object-fit: cover;
-    border-radius: 2%;
-}
-
 
 .botonRegistrar{
-    background-color: #4CAF50; 
+    display: inline-block;
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: #003777; 
+    transition: all 0.3s ease; 
     color: white;
-    border-radius: 12px;
-    padding: 10px 20px;
+    width: 100px; 
+    text-align: center;
     border: none;
-    font-size: 16px;
-    cursor: pointer;
-    width: 300px;
-    margin-left: 130px;
-
+    margin-left: 40%;
 
 
 }
 .botonRegistrar:hover {
-    background-color: #45a049;
     transform: scale(1.1); 
-    transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
 

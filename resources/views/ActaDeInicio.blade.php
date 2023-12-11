@@ -43,9 +43,30 @@
             font-size: 11px;
             font-family: 'Arial', sans-serif;
         }
+
+        .previsuzalizar{
+            display: inline-block;
+            padding: 10px; 
+            border-radius: 5px; 
+            background-color: #003777; 
+            transition: all 0.3s ease; 
+            color: white;
+            width: 220px; 
+            text-align: center;
+            border: none;
+            margin-left: 75%;
+
+        }
+        .previsuzalizar:hover {
+                transform: scale(1.1);
+        }
+
+        
     </style>
 </head>
 <body>
+<button onclick="previsualizar()" class="previsuzalizar">Previsualizar e Imprimir</button>
+
     <div id="printable-content">
     <div id="contenedor" style="display: flex; justify-content: space-between; align-items: center;">
     <img class="logo-umss" src="{{ asset('img/UMSS2.png') }}" alt="">
@@ -203,10 +224,13 @@
 <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;'><span style='font-family:"Arial",sans-serif;color:black;background:white;'>&nbsp;</span></p>
 <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;'><span style='font-family:"Arial",sans-serif;color:black;background:white;'>Observaciones&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;</span></p>
 <p style='margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;font-size:11.0pt;font-family:"Calibri",sans-serif;'><span style='font-family:"Arial",sans-serif;color:black;background:white;'>&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;</span></p>
+<br>
+<br>
+
+
 </div>
 
-    <button onclick="previsualizar()">Previsualizar e Imprimir</button>
-    <button type="button" onclick="asignarMesas()" style="margin-bottom: 80px;">Descargar Pdf</button>
+
     <script>
     function previsualizar() {
         var contenidoImprimible = document.getElementById('printable-content').outerHTML;
