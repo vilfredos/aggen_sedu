@@ -14,31 +14,30 @@
             <h1 class="tituloH">Historico de Elecciones</h1>
         </div>
     @if($elecciones->count())
-        <table class="TablaHistorico">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>TITULO</th>
-                    <th>Frente Ganador</th>                   
-                    <th>Informe</th>
-                    <!-- Añade aquí más columnas según los campos de tu tabla -->
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($elecciones as $eleccion)
-                    <tr>
-                        <td>{{ $eleccion->id }}</td>
-                        <td>{{ $eleccion->titulo }}</td>
-                        <td>
-                            <button class="btn_informe_final">
-                                <i class="fa-solid fa-users"></i>
-                            </button>
-                        </td>
-                        <!-- Añade aquí más celdas según los campos de tu tabla -->
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>TITULO</th>
+            <th>Frente Ganador</th>                   
+            <th>Informe</th>
+            <!-- Añade aquí más columnas según los campos de tu tabla -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($elecciones as $eleccion)
+            <tr>
+                <td>{{ $eleccion->id }}</td>
+                <td>{{ $eleccion->titulo }}</td>
+                <td>{{ $resultados->where('id_eleccion', $eleccion->id)->first()->sigla }}</td> 
+                <td><button class="btn_informe_final">
+                    <i class="fa-solid fa-users"></i>
+                </button></td>
+                <!-- Añade aquí más celdas según los campos de tu tabla -->
+            </tr>
+        @endforeach
+    </tbody>
+</table>
     @else
         <p>No se encontraron elecciones.</p>
     @endif
