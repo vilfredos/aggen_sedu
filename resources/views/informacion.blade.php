@@ -15,7 +15,7 @@
         <div class="superiorHI">
             <h1 class="tituloHI">Informe final de la eleccion {{ $eleccion->titulo }}</h1>
         </div>
-    <h1>Informe final de la eleccion {{ $eleccion->titulo }}</h1>
+
 
 
     <p>Esta elección inicio un {{ $eleccion->fecha_ini }} y termino un {{ $eleccion->ficha_fin }}
