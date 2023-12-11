@@ -259,6 +259,20 @@ public function verInformacion($id){
     $frentes = DB::table('frentes')->where('id_eleccion', $id)->get();
     $mesas = DB::table('mesas')->where('id_eleccion', $id)->get();
 
+    $votosblancos = DB::table('eleccion_votosblancos_mesa')->where('id_eleccion', $id)->get();
+    $votosfrente = DB::table('eleccion_votosfrente_mesa')
+                     ->select('sigla_frente', DB::raw('SUM(votos_frente) as total_votos'))
+                     ->where('id_eleccion', $id)
+                     ->groupBy('sigla_frente')
+                     ->get();    
+    $votosnulos = DB::table('eleccion_votosnulos_mesa')->where('id_eleccion', $id)->get();
+    $resultado = DB::table('eleccion_resultado_total')->where('id_eleccion', $id)->get();
+
+
+    $suma_votosblanco = $votosblancos->sum('votos_blancos'); // Asume que 'votos_frente' es el nombre de la columna que contiene los votos
+    $suma_votosnulo = $votosnulos->sum('votos_nulos'); // Asume que 'votos_frente' es el nombre de la columna que contiene los votos
+
+    //dd($eleccion_cargo);
     if ($eleccion) {
         return view('informacion', [
             'eleccion' => $eleccion,
@@ -271,9 +285,12 @@ public function verInformacion($id){
             'eleccion_votante_mesa' => $eleccion_votante_mesa,
             'frentes' => $frentes,
             'mesas' => $mesas,
+            'suma_votosnulo' => $suma_votosnulo,
+            'suma_votosblanco' => $suma_votosblanco,
+            'votosfrente' => $votosfrente,
         ]);
     } else {
-        return redirect('/historico')->with('error', 'Eleccion no encontrada');
+        return redirect('/informacion')->with('error', 'Eleccion no encontrada');
     }
 }
 

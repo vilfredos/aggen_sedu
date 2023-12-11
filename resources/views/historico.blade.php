@@ -12,6 +12,7 @@
                 <tr>
                     <th>ID</th>
                     <th>TITULO</th>
+                    <th>Frente Ganador</th>                   
                     <th>Informe</th>
                     <!-- Añade aquí más columnas según los campos de tu tabla -->
                 </tr>
@@ -21,9 +22,10 @@
                     <tr>
                         <td>{{ $eleccion->id }}</td>
                         <td>{{ $eleccion->titulo }}</td>
-                        <button class="btn_informe_final">
+                        <td>por designar</td> 
+                        <td><button class="btn_informe_final">
                             <i class="fa-solid fa-users"></i>
-                        </button>
+                        </button></td>
                         <!-- Añade aquí más celdas según los campos de tu tabla -->
                     </tr>
                 @endforeach
