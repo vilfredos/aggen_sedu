@@ -87,7 +87,6 @@
             <p id="error-message" style="color: red;"></p>
 
             </div>
-            <script src="{{ asset('js/frente.js') }}"></script>
 
         </formularioFrente>
     </div>

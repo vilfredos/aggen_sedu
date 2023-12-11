@@ -180,7 +180,7 @@ class ConvocatoriaController extends Controller
         /*asignar comite por facultad*/
         // Definir los cargos
         // Definir los cargos
-        $cargosDocentes = ['Docente Presidente', /*'Docente Vocal Titular',*/ 'Docente Vocal Titular', 'Docente Vocal Suplente', 'Docente Vocal Suplente', 'Docente Vocal Suplente'];
+        $cargosDocentes = ['Docente Presidente', 'Docente Vocal Titular', 'Docente Vocal Titular', 'Docente Vocal Suplente', 'Docente Vocal Suplente', 'Docente Vocal Suplente'];
         $cargosEstudiantes = ['Estudiante Vocal Titular', 'Estudiante Vocal Titular', 'Estudiante Vocal Suplente', 'Estudiante Vocal Suplente'];
 
         // Obtener las facultades
