@@ -33,7 +33,7 @@ body {
     flex-direction: column; 
     align-items: center;
     justify-content: center;
-    height: 80vh; /* Esto asegura que ocupe el 100% del alto de la ventana */
+    height: 80vh; 
 }
 
 .formularioInicio {
@@ -44,8 +44,8 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    max-width: 600px; /* Ajusta según sea necesario */
-    width: 100%; /* Para ocupar el 100% del ancho del contenedor */
+    max-width: 600px; 
+    width: 100%; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -59,15 +59,15 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    max-width: 600px; /* Ajusta según sea necesario */
-    width: 100%; /* Para ocupar el 100% del ancho del contenedor */
+    max-width: 600px; 
+    width: 100%; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-group .w-30 {
-    margin-right: 40px; /* Puedes ajustar este valor según tus necesidades */
+    margin-right: 40px; 
 }
 label {
     display: block;
@@ -85,7 +85,7 @@ input, select {
     border-radius: 4px;
 }
 .botonVerde{
-    background-color: #4CAF50; /* Puedes cambiar "green" por cualquier color que desees */
+    background-color: #4CAF50; 
     color: white;
     border-radius: 12px;
     padding: 10px 20px;

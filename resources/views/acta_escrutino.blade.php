@@ -7,38 +7,52 @@
 </head>
 
 <body>
-    <div class="form-containerActa">
-    <form action="{{ route('acta_escrutino', ['num_mesa' => $numeroMesa]) }}" method="post">
-    @csrf
+    <div class="container">
+        <div class="contenerdorPrincipalActa">
 
-            <div class="superior">
-                <h1 class="titulo">Acta de Escrutinio</h1>
-                <p>Mesa Nº {{ $numeroMesa }}</p> <!-- Mostrar el número de mesa -->
+            <div class="form-containerActa">
+                <form action="{{ route('acta_escrutino', ['num_mesa' => $numeroMesa]) }}" method="post">
+                    @csrf
+                            
+                            
+                            <div class="superiorActa">
+                                <h1 class="tituloActa">Acta de Escrutinio</h1>
+                            </div>
+                    
+                            <br>
+                            <p>Mesa Nº {{ $numeroMesa }}</p> <!-- Mostrar el número de mesa -->
+
+                            <!-- Obtener los frentes asociados a la elección -->
+                            @foreach($frentes as $frente)
+                                <div>
+                                    <label for="frente_{{ $frente->id_frente }}">{{ $frente->sigla_frente }}</label>
+                                    <input type="number" id="frente_{{ $frente->id_frente }}" name="votos_frentes[{{ $frente->id_frente }}]" min="0" step="1" oninput="calculateTotal()">
+                                </div>
+                            @endforeach
+
+
+                            <!-- Campo para mostrar el total de votos -->
+                            
+
+                            <!-- Resto de tus campos -->
+                            <label for="votos_blancos">Votos Blancos:</label><br>
+                            <input type="number" id="votos_blancos" name="votos_blancos" min="0" max="300" step="1" oninput="calculateTotal()"><br>
+                
+                            <br>
+                            <label for="votos_nulos">Votos Nulos:</label><br>
+                            <input type="number" id="votos_nulos" name="votos_nulos" min="0" max="300" step="1" oninput="calculateTotal()"><br>
+                            
+                            <br>
+                            <label for="total_votos">Total de Votos:</label><br>
+                            <input type="text" id="total_votos" name="total_votos" readonly>
+                            <br>
+                            <br>
+                            <!-- Botón de enviar -->
+                            <button type="submit">Guardar</button>
+                </form>
             </div>
-
-            <!-- Obtener los frentes asociados a la elección -->
-            @foreach($frentes as $frente)
-                <div>
-                    <label for="frente_{{ $frente->id_frente }}">{{ $frente->sigla_frente }}</label>
-                    <input type="number" id="frente_{{ $frente->id_frente }}" name="votos_frentes[{{ $frente->id_frente }}]" min="0" step="1" oninput="calculateTotal()">
-                </div>
-            @endforeach
-
-
-            <!-- Campo para mostrar el total de votos -->
-            
-
-            <!-- Resto de tus campos -->
-            <label for="votos_blancos">Votos Blancos:</label>
-            <input type="number" id="votos_blancos" name="votos_blancos" min="0" max="300" step="1" oninput="calculateTotal()"><br>
-
-            <label for="votos_nulos">Votos Nulos:</label>
-            <input type="number" id="votos_nulos" name="votos_nulos" min="0" max="300" step="1" oninput="calculateTotal()"><br>
-            <label for="total_votos">Total Votos:</label>
-            <input type="text" id="total_votos" name="total_votos" readonly>
-            <!-- Botón de enviar -->
-            <button type="submit">Guardar</button>
-        </form>
+        </div>
+    </div>
 
         <!-- Script para calcular el total -->
         <script>
@@ -57,7 +71,6 @@
         var totalVotos = votosBlancos + votosNulos + votosFrentes;
         document.getElementById('total_votos').value = totalVotos;
     }
-        </script>
-    </div>
+    </script>
 </body>
 @endsection

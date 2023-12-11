@@ -37,8 +37,8 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    max-width: 600px; /* Ajusta según sea necesario */
-    width: 100%; /* Para ocupar el 100% del ancho del contenedor */
+    max-width: 600px; 
+    width: 100%; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -49,14 +49,14 @@ body {
 
 .tituloSeccion2{
     color: #000;
-    font-size: 1.2em; /* Puedes ajustar el tamaño de la fuente según tus necesidades */
+    font-size: 1.2em; 
     font-weight: bold;
     
 }
 
 
 #seccion2 button {
-    margin-bottom: 20px; /* Puedes ajustar este valor según tus necesidades */
+    margin-bottom: 20px; 
 }
 
 
@@ -67,8 +67,8 @@ label {
 
 input, select {
 
-    width: 100%; /* Puedes cambiar el valor según sea necesario o usar un valor fijo como 300px */
-    max-width: 1000px; /* Ajusta el ancho máximo de los campos según sea necesario */
+    width: 100%; 
+    max-width: 1000px; 
     /*width: 100%;*/
     padding: 8px;
     margin-bottom: 16px;

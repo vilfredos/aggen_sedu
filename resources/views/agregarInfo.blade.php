@@ -3,26 +3,49 @@
 @section('content')
 
 <head>
+    <link href="{{ asset('css/agregarInfo.css') }}" rel="stylesheet">
+
     <title>Agregar Información de Mesa</title>
 </head>
 
 <body>
-<form id="formAgregarInfo" action="{{ route('guardarInformacion', ['numeroMesa' => isset($mesa) ? $mesa->numeroMesa : '']) }}" method="post">
-    @csrf
-    @method('patch') {{-- Utiliza el método PATCH para actualizar la información --}}
+    <div class=contAiPrincipal>
 
-    <div class="form-group">
-        <label for="recinto">Recinto</label>
-        <input type="text" name="recinto" class="form-control" placeholder="Ingrese el recinto" value="{{ isset($mesa) ? $mesa->recinto : '' }}">
+        <div class="contenedorAi">
+
+            <div class="superiorAi">
+                <h1 class="tituloAi">Agregar Información de Mesa</h1>
+            </div>
+            <form id="formAgregarInfo" action="{{ route('guardarInformacion', ['numeroMesa' => isset($mesa) ? $mesa->numeroMesa : '']) }}" method="post">
+                @csrf
+                @method('patch') {{-- Utiliza el método PATCH para actualizar la información --}}
+
+                <br>
+                <br>
+
+                <div class="form-group">
+                    <label for="recinto">Recinto:</label>
+                    <br>
+                    <br>
+                    <input type="text" name="recinto" class="form-control" placeholder="Ingrese el recinto" value="{{ isset($mesa) ? $mesa->recinto : '' }}">
+                </div>
+                <br>
+                <br>
+
+                <div class="form-group">
+                    <label for="aula">Aula:</label>
+                    <br>
+                    <br>
+                    <input type="text" name="aula" class="form-control" placeholder="Ingrese el aula" value="{{ isset($mesa) ? $mesa->aula : '' }}">
+                </div>
+                
+                <br>
+                <br>
+
+                <button type="submit" id="btnGuardar" class="btnguardar">Guardar</button>
+            </form>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label for="aula">Aula</label>
-        <input type="text" name="aula" class="form-control" placeholder="Ingrese el aula" value="{{ isset($mesa) ? $mesa->aula : '' }}">
-    </div>
-
-    <button type="submit" id="btnGuardar" class="btn btn-primary">Guardar</button>
-</form>
 <script>
     @if(isset($mesa))
         document.getElementById('btnGuardar').addEventListener('click', function () {
