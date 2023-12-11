@@ -65,8 +65,12 @@
                                 $totalNulos += $totalesNulos[$mesa->numeroMesa];
                                 $totalBlancos += $totalesBlancos[$mesa->numeroMesa];
                             @endphp
-                            <td><button class="mostrar-grafico-btn" data-tipo-grafico="circular" data-mesa="{{ $mesa->numeroMesa }}">Mostrar</button></td>
-                            <td><button class="mostrar-grafico-btn" data-tipo-grafico="barra" data-mesa="{{ $mesa->numeroMesa }}">Mostrar</button></td>
+                            <td><button class="mostrar-grafico-btn" data-tipo-grafico="circular" data-mesa="{{ $mesa->numeroMesa }}">
+                                <i class="fas fa-chart-pie"></i> <!-- Icono de gráfico circular -->
+                            </button></td>
+                            <td><button class="mostrar-grafico-btn" data-tipo-grafico="barra" data-mesa="{{ $mesa->numeroMesa }}">
+                                <i class="fas fa-chart-bar"></i> <!-- Icono de gráfico de barras -->
+                            </button></td>
                             <td>{{ $totalesNulos[$mesa->numeroMesa] + $totalesBlancos[$mesa->numeroMesa] + array_sum($votosFrentes[$mesa->numeroMesa]) }}</td>
                         </tr>
                     @endforeach
@@ -80,15 +84,19 @@
                         @foreach ($totalFrentes as $totalFrente)
                             <td>{{ $totalFrente }}</td>
                         @endforeach
-                        <td><button class="mostrar-grafico-btn" data-tipo-grafico="circular" data-mesa="Totales">Mostrar</button></td>
-                        <td><button class="mostrar-grafico-btn" data-tipo-grafico="barra" data-mesa="Totales">Mostrar</button></td>
+                        <td><button class="mostrar-grafico-btn" data-tipo-grafico="circular" data-mesa="Totales">
+                            <i class="fas fa-chart-pie"></i>
+                        </button></td>
+                        <td><button class="mostrar-grafico-btn" data-tipo-grafico="barra" data-mesa="Totales">
+                            <i class="fas fa-chart-bar"></i>
+                        </button></td>
                         <td>{{ $totalNulos + $totalBlancos + array_sum($totalFrentes) }}</td>
                     </tr>
                 </tbody>
             </table>
             <form method="post" action="{{ route('actualizarResultados') }}">
                 @csrf
-                <button type="submit">Actualizar Resultados</button>
+                <button class="actualizar-resultados" type="submit">Actualizar Resultados</button>
             </form>
             <canvas id="grafico" width="400" height="400"></canvas>
             <script>

@@ -275,3 +275,23 @@ th {
 .btn_remplazar_comite:hover {
     transform: scale(1.1); 
 }
+.mostrar-grafico-btn {
+    background-color: #3498db; /* Cambia el color de fondo según tus preferencias */
+    color: #fff; /* Cambia el color del texto según tus preferencias */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.mostrar-grafico-btn:hover {
+    background-color: #207dbb; /* Cambia el color de fondo al pasar el puntero sobre el botón */
+}
+.actualizar-resultados {
+    background-color: #FF0000; /* Fondo rojo */
+    color: #FFFFFF; /* Texto blanco */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.actualizar-resultados:hover {
+    background-color: #ff440073; /* Color de resaltado al pasar el mouse */
+}
