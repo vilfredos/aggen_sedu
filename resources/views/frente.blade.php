@@ -12,25 +12,23 @@
 
 <body>
 
-<div class="form-containerF">
+    <div class="form-containerF">
 
-    <form class="formularioFrente">
-
-        @if ($errors->any())
+            @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                    <li>{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
-        @endif
+            @endif
 
-        <!--h2 style="text-align:center;">Registrar frentes con sus candidatos</!--h2-->
+            <!--h2 style="text-align:center;">Registrar frentes con sus candidatos</!--h2-->
 
-        <div class="superiorF">
-            <h1 class="titulo">Registrar frentes con sus candidatos</h1>
-        </div>
+            <div class="superiorF">
+                <h1 class="titulo">Registrar frentes con sus candidatos</h1>
+            </div>
             <form action="{{ route('frente.store') }}" method="post">
                 @csrf
                 <label for="sis_representante">SIS Representante:</label>
@@ -86,9 +84,7 @@
             </form>
             <p id="error-message" style="color: red;"></p>
 
-            </div>
-
-        </formularioFrente>
+    
     </div>
 </body>
 @endsection
