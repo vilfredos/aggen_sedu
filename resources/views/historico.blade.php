@@ -21,7 +21,7 @@
                     <tr>
                         <td>{{ $eleccion->id }}</td>
                         <td>{{ $eleccion->titulo }}</td>
-                        <button class="btn_comite">
+                        <button class="btn_informe_final">
                             <i class="fa-solid fa-users"></i>
                         </button>
                         <!-- Añade aquí más celdas según los campos de tu tabla -->
@@ -36,7 +36,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        $(".btn_informacion").click(function() {
+        $(".btn_informe_final").click(function() {
             var id = $(this).closest('tr').find('td:eq(0)').text();
             window.location.href = '/informacion/' + id;
         });
