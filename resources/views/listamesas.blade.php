@@ -13,9 +13,9 @@
     <div class=contMesaPrincipal>
 
         <div class="contenerVPM">
-                    <div class="superiorVm">
-                        <h1 class="tituloVm">Listado de Mesas</h1>
-                    </div>
+            <div class="superiorVm">
+                <h1 class="tituloVm">Listado de Mesas</h1>
+            </div>
             <table class="miTablaMesa">
                 <thead>
                     <tr>
@@ -36,10 +36,10 @@
                     <td>{{ $mesa->numeroMesa }}</td>
                     <td>{{ $mesa->recinto }}</td>
                     <td>{{ $mesa->aula }}</td>
-                    
+
                     <td>
                         <a href="{{ route('agregarInfo', ['numeroMesa' => $mesa->numeroMesa]) }}" class="btnagregarInformacion">
-                            <i class="fa-solid fa-plus"></i> 
+                            <i class="fa-solid fa-plus"></i>
                         </a>
                     </td>
 
@@ -49,19 +49,19 @@
                             <i class="fa-solid fa-people-group"></i>
                         </button>
                     </td>
-                    
+
                     <td>
                         <button class="btn_jurados" data-id_eleccion="{{ $id_eleccion }}">
                             <i class="fa-solid fa-users-between-lines"></i>
                         </button>
                     </td>
-                    
+
                     <td>
                         <button class="btn_descargar_acta">
                             <i class="fa-solid fa-download"></i>
                         </button>
                     </td>
-                    
+
                     <td>
                         <a href="{{ route('acta_escrutino', ['num_mesa' => $mesa->numeroMesa]) }}" class="btn-RegistrarActa">
                             <i class="fa-regular fa-circle-check"></i>
@@ -82,21 +82,21 @@
             });
         });
         $(document).ready(function() {
-            $(".btn-votante_mesa").click(function() {
+            $(".btnPoblacionVotante").click(function() {
                 var num_mesa = $(this).closest('tr').find('td:eq(0)').text();
                 var id_eleccion = $(this).data('id_eleccion');
                 window.location.href = '/votante_mesa/' + num_mesa + '?eleccionId=' + id_eleccion;
             });
         });
-      
+
 
         $(document).ready(function() {
-    $(".btn_jurados").click(function() {
-        var num_mesa = $(this).closest('tr').find('td:eq(0)').text();
-        var id_eleccion = $(this).data('id_eleccion');
-        window.location.href = '/lista_jurados/' + num_mesa + '?eleccionId=' + id_eleccion;
-    });
-});
+            $(".btn_jurados").click(function() {
+                var num_mesa = $(this).closest('tr').find('td:eq(0)').text();
+                var id_eleccion = $(this).data('id_eleccion');
+                window.location.href = '/lista_jurados/' + num_mesa + '?eleccionId=' + id_eleccion;
+            });
+        });
 
         $(document).ready(function() {
             $(".btn_mesas").click(function() {
@@ -106,11 +106,11 @@
         });
         $(document).ready(function() {
             $(".btn_descargar_acta").click(function() {
-        var numeroMesa = $(this).closest('tr').find('td:eq(0)').text();
-            if (numeroMesa) {
-                window.location.href = '/ActaDeInicio/' + numeroMesa;
-            }
-        });
+                var numeroMesa = $(this).closest('tr').find('td:eq(0)').text();
+                if (numeroMesa) {
+                    window.location.href = '/ActaDeInicio/' + numeroMesa;
+                }
+            });
         });
     </script>
 </body>
