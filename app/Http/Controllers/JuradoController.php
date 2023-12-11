@@ -53,7 +53,7 @@ class JuradoController extends Controller
     {
         // Obtén todos los frentes para la elección dada
         $frentes = DB::table('frentes')->where('id_eleccion', $id_eleccion)->get();
-
+    
         // Itera sobre cada frente
         foreach ($frentes as $frente) {
             // Obtén todos los candidatos para el frente dado
@@ -61,7 +61,20 @@ class JuradoController extends Controller
                 ->where('id_eleccion', $id_eleccion)
                 ->where('id_frente', $frente->id_frente)
                 ->get();
-
+    
+            // Itera sobre cada candidato
+            foreach ($candidatos as $candidato) {
+                $sis = $candidato->sis_candidato; // Asume que 'sis' es el nombre de la columna que contiene el sis en la tabla candidato
+                $docente = DB::table('docentes')->where('sis', $sis)->first();
+                $estudiante = DB::table('estudiantes')->where('sis', $sis)->first();
+    
+                if ($docente) {
+                    $candidato->nombre = $docente->name; // Asume que 'name' es el nombre de la columna que contiene el nombre en la tabla docentes
+                } elseif ($estudiante) {
+                    $candidato->nombre = $estudiante->name; // Asume que 'name' es el nombre de la columna que contiene el nombre en la tabla estudiantes
+                }
+            }
+    
             // Añade los candidatos al frente
             $frente->candidatos = $candidatos;
         }

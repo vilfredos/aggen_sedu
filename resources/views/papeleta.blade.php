@@ -23,7 +23,7 @@
                                 <h3>{{ $frente->nombre_frente }}</h3>
                                 @foreach ($frente->candidatos as $candidato)
                                 <p>{{ $candidato->cargo_postular }}<br>
-                                {{ $candidato->sis_candidato }}</p>
+                                {{ $candidato->nombre }}</p>
                                 @endforeach
                                 <div class="vote-box"></div>
                             </div>
