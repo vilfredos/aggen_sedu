@@ -110,11 +110,11 @@ Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::get('/resultados', [JuradoController::class, 'store']);
+//Route::get('/resultados', [JuradoController::class, 'store']);
 
-Route::get('/resultados', function () {
+/*Route::get('/resultados', function () {
     return view('resultados');
-});
+});*/
 
 
 /*Route::get('/jurado_aleatorio', 'App\Http\Controllers\JuradoController@seleccionarJurados');

@@ -243,5 +243,9 @@ public function mostrarActaEscrutinio($numeroMesa) {
         'numeroMesa' => $numeroMesa,
     ]);
 }
+public function verHistorico(){
+    $elecciones = DB::table('eleccion')->get();
+    return view('historico', ['elecciones' => $elecciones]);
+}
 
 }
