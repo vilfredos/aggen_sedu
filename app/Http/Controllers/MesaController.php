@@ -196,7 +196,7 @@ public function guardarInformacion(Request $request, $numeroMesa)
 
     // Obtener la mesa correspondiente
     $mesa = Mesa::where('numeroMesa', $numeroMesa)->firstOrFail();
-
+    $eleccion = $mesa->eleccion;
     // Actualizar los campos recinto y aula
     $mesa->recinto = $request->input('recinto');
     $mesa->aula = $request->input('aula');
@@ -206,9 +206,9 @@ public function guardarInformacion(Request $request, $numeroMesa)
 
     // Puedes redirigir a una página de éxito o realizar alguna otra acción
    // Puedes redirigir a la vista de la información de la mesa
-    return redirect()->route('agregarInfo', ['numeroMesa' => $numeroMesa])->with('success', 'Información de la mesa actualizada exitosamente');
-
+   return redirect()->route('listamesas', ['id_eleccion' => $eleccion->id]);
 }
+
 
 public function mostrarActaDeInicio($numeroMesa) {
     // Obtener la mesa y su elección asociada
