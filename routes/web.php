@@ -254,8 +254,7 @@ Route::patch('/guardar-informacion/{numeroMesa}', 'App\Http\Controllers\MesaCont
 Route::get('/ActaDeInicio/{numeroMesa}', 'App\Http\Controllers\MesaController@mostrarActaDeInicio');
 
 
-Route::get('/lista_jurados/{num_mesa}', 'App\Http\Controllers\JuradoController@ver_jurado');
-
+Route::get('/lista_jurados/{num_mesa}', 'App\Http\Controllers\JuradoController@ver_jurado')->name('lista_jurados');
 
 Route::get('/papeleta/{id_eleccion}', 'App\Http\Controllers\JuradoController@ver_papeleta');
 

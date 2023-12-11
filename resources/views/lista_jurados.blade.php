@@ -55,7 +55,7 @@
 <script>
     $(document).ready(function() {
         $(".btn_remplazar_jurado").click(function() {
-            var sis = $(this).closest('tr').find('td:eq(3)').text();
+            var sis = $(this).closest('tr').find('td:eq(0)').text();
             window.location.href = '/remplazar_jurado/' + sis;
         });
     });
