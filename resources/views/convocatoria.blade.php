@@ -206,10 +206,9 @@ function verificarCamposSeccion2() {
 function verificarCamposSeccion3YHabilitar() {
     
     const tiposCheckbox = document.querySelectorAll('input[name="tipos[]"]:checked');
-    const facultad = document.getElementById('facultad').value;
 
     
-    if (tiposCheckbox.length === 0 || !facultad ) {
+    if (tiposCheckbox.length === 0) {
         mostrarAviso("Todos los campos deben estar llenos para registrar la elección.");
         return false; 
     } else {

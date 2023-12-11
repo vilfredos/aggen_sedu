@@ -48,7 +48,10 @@
                             <td>{{ $miembro->sis }}</td>
                             <td>{{ $miembro->gremio }}</td>
                             <td>{{ $miembro->cargo }}</td>
-                            <td><button class="btn_remplazar_comite" data-id_eleccion="{{ $id_eleccion }}">remplazar comite</button></td>
+                            <td><button class="btn_remplazar_comite" data-id_eleccion="{{ $id_eleccion }}">
+                                <span class="sr-only">Remplazar comite</span> 
+                                <i class="fa-solid fa-people-arrows"></i>
+                            </button></td>
 
                         </tr>
                         @endforeach
