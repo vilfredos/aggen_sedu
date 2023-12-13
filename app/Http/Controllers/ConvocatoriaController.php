@@ -100,6 +100,7 @@ class ConvocatoriaController extends Controller
                 'facultad' => $votante->facultad,
                 'carrera' => $votante->carrera,
                 'gremio' => 'estudiante', // Agrega esta línea
+                'email' => $votante->email,
             ]);
         }
 
@@ -110,6 +111,7 @@ class ConvocatoriaController extends Controller
                 'facultad' => $votante->facultad,
                 'carrera' => $votante->carrera,
                 'gremio' => 'docente', // Agrega esta línea
+                'email' => $votante->email,
             ]);
         }
         /*MESAS*/
