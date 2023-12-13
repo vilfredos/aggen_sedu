@@ -18,12 +18,14 @@
         @csrf
 
         <label for="menu">Razon de excusa:</label><br>
-        <select name="menu" id="menu">
-            <option value="opcion1" selected>enfermedad</option>
+        <select name="menu" id="menu" required>
+            <option value="opcion1">enfermedad</option>
             <option value="opcion2">estado de gravidez</option>
             <option value="opcion3">fuera mayor o caso fortuito</option>
             <option value="opcion4">dirigente o candidato de organizacion politica</option>
             <option value="opcion5">presenta servicios publicos o privados vitales</option>
+
+        
         </select>
         <br>
         <br>

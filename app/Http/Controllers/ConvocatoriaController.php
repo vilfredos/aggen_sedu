@@ -236,7 +236,7 @@ class ConvocatoriaController extends Controller
         // Itera sobre cada mesa
         foreach ($mesas as $mesa) {
             // Asigna los cargos a los docentes
-            $cargosDocentes = ['Presidente', 'Titular', 'Suplente', 'Suplente'];
+            $cargosDocentes = ['Presidente', 'Titular', 'Titular', 'Suplente', 'Suplente'];
             foreach ($cargosDocentes as $cargo) {
                 // Selecciona un docente al azar que no sea jurado en otra mesa y no pertenezca al comité
                 $docente = DB::table('eleccion_sis')
