@@ -45,7 +45,7 @@ class MesaController extends Controller
     }
 
     // Pasar las variables a la vista
-    return view('tablaDeVotos', compact('mesas', 'totalesNulos', 'totalesBlancos', 'votosFrentes', 'frentes'));
+    return view('tablaDeVotos', compact('mesas', 'totalesNulos', 'totalesBlancos', 'votosFrentes', 'frentes', 'idEleccion'));
 }
     /*
     public function ver_votantes($num_mesa)
@@ -226,47 +226,69 @@ public function mostrarActaDeInicio($numeroMesa) {
         'tituloEleccion' => $mesa->eleccion->titulo,
     ]);
 }
-public function actualizarResultados()
-    {
-        // Ejecutar la consulta
+public function actualizarResultados($idEleccionActual)
+{
+    try {
+        $ganadorExistente = DB::table('eleccion_resultado_total')
+            ->where('id_eleccion', $idEleccionActual)
+            ->exists();
+
+        // Si ya existe un ganador, mostrar un mensaje y redirigir
+        if ($ganadorExistente) {
+            return redirect()->route('votantes_por_mesa')->with('mensajeError', 'Ya existe un ganador para esta elección.');
+        }
+
+        // Ejecutar la nueva consulta para la elección actual
         $resultados = DB::select("
             SELECT
-                id_eleccion,
-                sigla_frente AS sigla,
-                id_frente,
-                sis_candidato,
-                cargo_postular
-            FROM (
+                epm.id_eleccion,
+                epm.sigla_frente AS sigla_frente_ganador,
+                SUM(
+                    CASE 
+                        WHEN row_num = 1 THEN
+                            CASE 
+                                WHEN epm.id_mesa = (SELECT MIN(id_mesa) FROM eleccion_votosfrente_mesa WHERE id_eleccion = epm.id_eleccion AND sigla_frente = epm.sigla_frente)
+                                THEN 0.5 * epm.votos_frente
+                                ELSE 0.5 * epm.votos_frente / (SELECT COUNT(DISTINCT id_mesa) FROM eleccion_votosfrente_mesa WHERE id_eleccion = epm.id_eleccion AND id_mesa != (SELECT MIN(id_mesa) FROM eleccion_votosfrente_mesa WHERE id_eleccion = epm.id_eleccion AND sigla_frente = epm.sigla_frente))
+                            END
+                    END
+                ) AS votos_ganadores_totales
+            FROM eleccion_votosfrente_mesa epm
+            JOIN (
                 SELECT
-                    ev.id_eleccion,
-                    ev.sigla_frente,
-                    f.id_frente,
-                    c.sis_candidato,
-                    c.cargo_postular,
-                    DENSE_RANK() OVER (PARTITION BY ev.id_eleccion ORDER BY SUM(ev.votos_frente) DESC) AS rnk
-                FROM eleccion_votosfrente_mesa ev
-                JOIN frentes f ON ev.sigla_frente = f.sigla_frente AND ev.id_eleccion = f.id_eleccion
-                JOIN candidato c ON f.id_frente = c.id_frente AND ev.id_eleccion = c.id_eleccion
-                GROUP BY ev.id_eleccion, ev.sigla_frente, f.id_frente, c.sis_candidato, c.cargo_postular
-            ) AS ranked
-            WHERE rnk = 1
-            ORDER BY id_eleccion, sigla_frente, id_frente, sis_candidato
-        ");
+                    id_eleccion,
+                    sigla_frente,
+                    ROW_NUMBER() OVER (PARTITION BY id_eleccion ORDER BY SUM(CASE WHEN id_mesa = (SELECT MIN(id_mesa) FROM eleccion_votosfrente_mesa WHERE id_eleccion = evm.id_eleccion) THEN 0.5 * votos_frente ELSE 0.5 * votos_frente / (SELECT COUNT(DISTINCT id_mesa) FROM eleccion_votosfrente_mesa WHERE id_eleccion = evm.id_eleccion AND id_mesa != (SELECT MIN(id_mesa) FROM eleccion_votosfrente_mesa WHERE id_eleccion = evm.id_eleccion)) END) DESC) AS row_num
+                FROM
+                    eleccion_votosfrente_mesa evm
+                GROUP BY
+                    id_eleccion, sigla_frente
+            ) MesaPonderada ON epm.id_eleccion = MesaPonderada.id_eleccion AND epm.sigla_frente = MesaPonderada.sigla_frente
+            WHERE
+                epm.id_eleccion = :id_eleccion_actual AND MesaPonderada.row_num = 1
+            GROUP BY
+                epm.id_eleccion, epm.sigla_frente
+            ORDER BY
+                epm.id_eleccion
+        ", ['id_eleccion_actual' => $idEleccionActual]);
 
-        // Insertar resultados en la tabla eleccion_resultado_total
+        // Insertar resultados en la tabla eleccion_resultado_total para la elección actual
         foreach ($resultados as $resultado) {
             DB::table('eleccion_resultado_total')->insert([
                 'id_eleccion' => $resultado->id_eleccion,
-                'sigla' => $resultado->sigla,
-                'id_frente' => $resultado->id_frente,
-                'sis_candidato' => $resultado->sis_candidato,
-                'cargo_postular' => $resultado->cargo_postular,
+                'sigla' => $resultado->sigla_frente_ganador,
+                // Agrega más columnas si es necesario
             ]);
         }
 
         // Redirigir a la vista original
-        return redirect()->route('votantes_por_mesa');
+        return redirect()->route('votantes_por_mesa')->with('mensaje', 'Resultados actualizados exitosamente.');
+    } catch (\Exception $e) {
+        // Loguear la excepción o manejarla de alguna manera
+        return redirect()->route('votantes_por_mesa')->with('mensajeError', 'Error al actualizar los resultados.');
     }
+}
+
 /*
 public function guardarAsignacion(Request $request)
 {

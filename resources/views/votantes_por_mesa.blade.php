@@ -4,6 +4,7 @@
 
 <head>
     <link href="{{ asset('css/votosPorMesa.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 @if (session('success'))
     <div class="alert alert-success">
@@ -121,4 +122,28 @@
     });
     btn_papeleta
 </script>
+@if(session('mensaje'))
+    <script>
+        Swal.fire({
+            title: 'Éxito',
+            text: '{{ session('mensaje') }}',
+            icon: 'success',
+            timer: 5000,
+            timerProgressBar: true,
+        });
+    </script>
+@endif
+
+@if(session('mensajeError'))
+    <script>
+        Swal.fire({
+            title: 'Error',
+            text: '{{ session('mensajeError') }}',
+            icon: 'error',
+            timer: 5000,
+            timerProgressBar: true,
+        });
+    </script>
+@endif
+
 @endsection
