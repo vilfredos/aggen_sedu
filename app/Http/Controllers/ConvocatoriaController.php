@@ -255,6 +255,7 @@ class ConvocatoriaController extends Controller
                     'sis' => $docente->sis,
                     'cargo' => $cargo,
                     'id_mesa' => $mesa->numeroMesa,
+                    'email' => $docente->email,
                 ]);
             }
 
@@ -280,6 +281,7 @@ class ConvocatoriaController extends Controller
                     'sis' => $estudiante->sis,
                     'cargo' => $cargo,
                     'id_mesa' => $mesa->numeroMesa,
+                    'email' => $estudiante->email,
                 ]);
             }
         }
