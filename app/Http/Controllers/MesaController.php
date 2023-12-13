@@ -229,6 +229,14 @@ public function mostrarActaDeInicio($numeroMesa) {
 public function actualizarResultados($idEleccionActual)
 {
     try {
+        $mesas = Mesa::where('id_eleccion', $idEleccionActual)->get();
+        $mesasSinActa = $this->verificarMesasSinActa($mesas);
+
+        // Si hay mesas sin acta de escrutinio, mostrar mensaje de error
+        if ($mesasSinActa) {
+            return redirect()->route('votantes_por_mesa')->with('mensajeError', 'Faltan mesas sin acta de escrutinio. Por favor, asegúrate de que todas las mesas hayan subido su acta de escrutinio');
+        }
+
         $ganadorExistente = DB::table('eleccion_resultado_total')
             ->where('id_eleccion', $idEleccionActual)
             ->exists();
@@ -287,6 +295,16 @@ public function actualizarResultados($idEleccionActual)
         // Loguear la excepción o manejarla de alguna manera
         return redirect()->route('votantes_por_mesa')->with('mensajeError', 'Error al actualizar los resultados.');
     }
+}
+private function verificarMesasSinActa($mesas)
+{
+    foreach ($mesas as $mesa) {
+        $actaExistente = VotosBlancosMesa::where('id_mesa', $mesa->numeroMesa)->exists();
+        if (!$actaExistente) {
+            return true; // Hay mesas sin acta de escrutinio
+        }
+    }
+    return false; // Todas las mesas tienen acta de escrutinio
 }
 
 /*
