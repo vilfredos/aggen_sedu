@@ -143,7 +143,7 @@ class ConvocatoriaController extends Controller
         /*asignacion mesas por estudiantes*/
         // ... código anterior ...
 
-        $capMaxVotantes = 28;
+        $capMaxVotantes = 25;
         $carreras = DB::table('eleccion_sis')
             ->where('gremio', 'estudiante')
             ->where('id_eleccion', $id_eleccion)
