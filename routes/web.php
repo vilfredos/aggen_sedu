@@ -64,7 +64,7 @@ Route::get('/cierreActa', function () {
     return view('cierreActa');
 });
 Route::get('/', function () {
-    return view('elecciones');
+    return view('inicio');
 });
 
 Route::get('/eleccion', function () {
