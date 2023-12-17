@@ -43,7 +43,7 @@
                             <td>{{ $jurado->id_mesa }}</td>
 
                             <td><button class="btn_remplazar_jurado">
-                                    <span class="sr-only">Remplazar comite</span>
+                                    <span class="sr-only">Remplazar Jurado</span>
                                     <i class="fa-solid fa-people-arrows"></i>
                                 </button></td>
                         </tr>
