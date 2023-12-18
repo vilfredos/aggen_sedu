@@ -210,7 +210,7 @@ th {
 }
 
 .mostrar-grafico-btn {
-    background-color: #3498db; /* Cambia el color de fondo según tus preferencias */
+    background-color: #003777; /* Cambia el color de fondo según tus preferencias */
     color: #fff; /* Cambia el color del texto según tus preferencias */
     padding: 10px 20px;
     border: none;
@@ -221,11 +221,27 @@ th {
     background-color: #207dbb; /* Cambia el color de fondo al pasar el puntero sobre el botón */
 }
 .actualizar-resultados {
-    background-color: #FF0000; /* Fondo rojo */
-    color: #FFFFFF; /* Texto blanco */
+    margin-top: 30px;
+
+
+    display: inline-block;
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: #EC0033; 
+    transition: all 0.3s ease; 
+    color: white;
+    width: 190px; 
+    text-align: center;
+    border: none;
+    /*
+    margin-top: 30px;
+    background-color: #FF0000; 
+    color: #FFFFFF; 
     transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
 }
 
 .actualizar-resultados:hover {
-    background-color: #ff440073; /* Color de resaltado al pasar el mouse */
+    transform: scale(1.1); 
+
+    /*background-color: #ff440073; /* Color de resaltado al pasar el mouse */
 }

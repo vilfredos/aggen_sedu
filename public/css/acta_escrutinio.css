@@ -6,7 +6,7 @@ body{
 }
 
 .form-containerActa {
-    background-color: #ffa420;
+    background-color: #fff;
     width: 50%;
     border-radius: 20px;
     padding: 20px;
@@ -59,6 +59,11 @@ body{
     margin-bottom: 10px;
     color: #000;
     text-align: center;
+}
+
+.form-containerActa label {
+    color: black; 
+    margin-bottom: 5px; 
 }
 
 button[type="submit"] {
