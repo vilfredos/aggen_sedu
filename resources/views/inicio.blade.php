@@ -2,7 +2,6 @@
 
 @section('content')
 <head>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link href="{{ asset('css/inicio.css') }}" rel="stylesheet">
     <style>
         .content-box {
