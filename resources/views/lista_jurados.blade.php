@@ -20,6 +20,7 @@
                 <div class="superiorJurados">
                     <h1 class="tituloJurados">Jurados Electorales</h1>
                 </div>
+
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -41,6 +42,7 @@
                             <td>{{ $jurado->ci }}</td>
                             <td>{{ $jurado->cargo }}</td>
                             <td>{{ $jurado->id_mesa }}</td>
+
 
                             <td><button class="btn_remplazar_jurado">
                                     <span class="sr-only">Remplazar Jurado</span>

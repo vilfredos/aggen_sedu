@@ -6,6 +6,7 @@ use App\Models\votos_mesa;
 use Illuminate\Http\Request;
 use App\Http\Requests\Storevotos_mesaRequest;
 use App\Http\Requests\Updatevotos_mesaRequest;
+use App\Mail\ContactanosMailable;
 use Illuminate\Support\Facades\Validator; // Importa la clase Validator aquí
 use App\Models\Mesa;
 use Illuminate\Support\Facades\DB;
@@ -14,8 +15,19 @@ use App\Models\VotosBlancosMesa;
 use App\Models\VotosFrenteMesa;
 use App\Models\VotosNulosMesa;
 use App\Models\EleccionActaMesa;
+use Illuminate\Support\Facades\Mail;
+use SendGrid\Mail\Mail as SendGridMail;
+
+
 class VotosMesaController extends Controller
 {
+    function __construct()
+    {
+       // $this->middleware('permission:ver-eleccion|crear-eleccion', ['only'=>['mostrarEleccion']]);
+        //$this->middleware('permission:crear-rol', ['only'=>['create','store']]);
+       // $this->middleware('permission:editar-rol', ['only'=>['edit','update']]);
+        //$this->middleware('permission:borra-rol', ['only'=>['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -300,6 +312,53 @@ public function verInformacion($id){
     } else {
         return redirect('/informacion')->with('error', 'Eleccion no encontrada');
     }
+}
+public function enviarCorreoJurados($num_mesa)
+{
+    $eleccionId = request()->query('eleccionId');
+
+    $datos = DB::table('eleccion_jurados')
+        ->where('id_eleccion', $eleccionId)
+        ->where('id_mesa', $num_mesa)
+        ->get();
+
+    foreach ($datos as $item) {
+        // Buscar al estudiante o docente por el número de SIS
+        $usuario = DB::table('estudiantes')->where('sis', $item->sis)->first();
+
+        if (!$usuario) {
+            $usuario = DB::table('docentes')->where('sis', $item->sis)->first();
+        }
+
+        if ($usuario) {
+            try {
+                // Enviar correo electrónico
+                $this->enviarCorreoJurado($usuario->email, $usuario->name);
+                // Devolver una respuesta para verificar el éxito
+                return response()->json(['success' => true]);
+            } catch (\Exception $e) {
+                // Capturar excepciones y devolver una respuesta de error
+                return response()->json(['success' => false, 'error' => $e->getMessage()]);
+            }
+        }
+    }
+
+    // Devolver una respuesta si no se envió ningún correo
+    return response()->json(['success' => false, 'error' => 'No se envió ningún correo.']);
+}
+
+
+/**
+ * Enviar correo electrónico al jurado.
+ *
+ * @param string $correo
+ * @param string $nombre
+ * @return void
+ */
+private function enviarCorreoJurado($correo, $nombre)
+{
+    // Aquí configuras los datos del correo y luego envías el correo
+    Mail::to($correo)->send(new ContactanosMailable($nombre));
 }
 
 }
