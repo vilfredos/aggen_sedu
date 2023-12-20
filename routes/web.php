@@ -15,11 +15,6 @@ use App\Http\Controllers\ComiteController;
 use App\Http\Controllers\VotacionController;
 use App\Http\Controllers\pages\Backups;
 use App\Http\Controllers\ActivityLogController;
-use App\Mail\ContactanosMailable;
-use Illuminate\Support\Facades\Mail;
-
-
-
 use App\Http\Controllers\VotosMesaController;
 
 /*
@@ -278,3 +273,5 @@ Route::post('/actualizar-resultados','App\Http\Controllers\MesaController@actual
 Route::get('/historico', [VotosMesaController::class, 'verHistorico']);
 Route::get('/informacion/{id}', [VotosMesaController::class, 'verInformacion']);
 
+
+Route::post('/enviarCorreoJurados/{id_eleccion}', 'App\Http\Controllers\VotosMesaController@enviarCorreoJurados')->name('enviarCorreoJurados');

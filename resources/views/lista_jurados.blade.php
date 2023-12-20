@@ -24,6 +24,7 @@
                             <tr>
                                 <th>SIS</th>
                                 <th>Nombre</th>
+                                <th>Correo</th>
                                 <th>Facultad</th>
                                 <th>CI</th>
                                 <th>Cargo</th>
@@ -36,6 +37,7 @@
                             <tr>
                                 <td>{{ $jurado->sis }}</td>
                                 <td>{{ $jurado->name }}</td>
+                                <td>{{ $jurado->email }}</td>
                                 <td>{{ $jurado->facultad }}</td>
                                 <td>{{ $jurado->ci }}</td>
                                 <td>{{ $jurado->cargo }}</td>
