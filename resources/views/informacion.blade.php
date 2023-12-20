@@ -4,16 +4,24 @@
 
 <head>
     <title>Información de Elecciones</title>
+    <link href="{{ asset('css/historicoResultados.css') }}" rel="stylesheet">   
+
 </head>
 
 <body>
-    <h1>Informe final de la eleccion {{ $eleccion->titulo }}</h1>
+
+<div class="containerPrincipalHinf">
+    <div class=contHinf>
+        <div class="superiorHI">
+            <h1 class="tituloHI">Informe final de la eleccion {{ $eleccion->titulo }}</h1>
+        </div>
+
 
 
     <p>Esta elección inicio un {{ $eleccion->fecha_ini }} y termino un {{ $eleccion->ficha_fin }}
         con la siguiente convocatoria {{-- insertar convocatoria --}}
         para elegir los siguientes cargos</p>
-    <table>
+    <table class="TablaInformacion">
         <thead>
             <tr>
                 <th>Cargo a postular</th>
@@ -27,11 +35,14 @@
             @endforeach
         </tbody>
     </table>
+    <br>
+    <br>
 
     {{-- traer poblacion votante --}}
 
-    Se postularon los siguientes frentes con sus candidatos
-    <table>
+    Se postularon los siguientes frentes con sus candidatos:
+    <br>
+    <table class="TablaInformacion">
         <thead>
             <tr>
                 <th>Frente</th>
@@ -61,9 +72,11 @@
             @endforeach
         </tbody>
     </table>
+    <br>
+    <br>
 
-    Votos totales
-    <table>
+    Votos totales:
+    <table class="TablaInformacion">
         <thead>
             <tr>
                 <th>Sigla Frente</th>
@@ -87,12 +100,14 @@
             </tr>
         </tbody>
     </table>
+    <br>
+    <br>
 
 
     {{-- Muestra comite --}}
-    se registro el siguiente comité
+    Se registro el siguiente comité:
 
-    <table>
+    <table class="TablaInformacion">
         <thead>
             <tr>
                 <th>Sis</th>
@@ -110,10 +125,12 @@
             @endforeach
         </tbody>
     </table>
+    <br>
+    <br>
 
 
-    Se registraron las siguientes mesas y jurados
-    <table>
+    Se registraron las siguientes mesas y jurados:
+    <table class="TablaInformacion">
         <thead>
             <tr>
                 <th>Número de mesa</th>
@@ -150,8 +167,10 @@
             @endforeach
         </tbody>
     </table>
-    Con los votantes asiganadas a una mesa
-    <table>
+    <br>
+    <br>
+    Con los votantes asiganadas a una mesa:
+    <table class="TablaInformacion">
         <thead>
             <tr>
                 <th>Sis del votante</th>
@@ -169,5 +188,7 @@
             @endforeach
         </tbody>
     </table>
+</div>
+</div>
 </body>
 @endsection

@@ -1,8 +1,20 @@
 @extends('Home')
 
 @section('content')
-    <div class="container">
-    <h2 style="text-align:center;">Votantes</h2>
+
+<head>
+    <link href="{{ asset('css/votosMesa.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+
+<div class=contvotosMesaPrincipal>
+
+    <div class="contenerVM">
+        
+        <div class="superiorVm">
+            <h1 class="tituloVm">Votantes</h1>
+        </div>
+    
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -28,4 +40,5 @@
             </tbody>
         </table>
     </div>
+</div>
 @endsection

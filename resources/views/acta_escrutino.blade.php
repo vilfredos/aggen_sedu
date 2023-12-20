@@ -97,7 +97,7 @@
                             }
                         }
                     </script>
-                    <button type="button" onclick="confirmarRegistro()">Guardar</button>
+                    <button type="button" onclick="confirmarRegistro()" style="margin-bottom: 80px;">Guardar</button>
                 </form>
             </div>
         </div>

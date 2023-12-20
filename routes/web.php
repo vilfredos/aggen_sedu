@@ -59,7 +59,7 @@ Route::get('/cierreActa', function () {
     return view('cierreActa');
 });
 Route::get('/', function () {
-    return view('elecciones');
+    return view('inicio');
 });
 
 Route::get('/eleccion', function () {
@@ -266,9 +266,9 @@ Route::post('/acta_escrutino/{num_mesa}', 'App\Http\Controllers\VotosMesaControl
 // Ejemplo en web.php o routes.php
 Route::get('/listamesas/{id_eleccion}', 'App\Http\Controllers\MesaController@listamesas')->name('listamesas');
 Route::get('/tabla_votos/{id_eleccion}', 'App\Http\Controllers\MesaController@mostrarTablaDeVotos')->name('tabla_votos');
-Route::post('/actualizar-resultados','App\Http\Controllers\MesaController@actualizarResultados')->name('actualizarResultados');
+//Route::post('/actualizar-resultados','App\Http\Controllers\MesaController@actualizarResultados')->name('actualizarResultados');
 
-
+Route::post('/actualizar-resultados/{id_eleccion}', 'App\Http\Controllers\MesaController@actualizarResultados')->name('actualizarResultados');
 
 Route::get('/historico', [VotosMesaController::class, 'verHistorico']);
 Route::get('/informacion/{id}', [VotosMesaController::class, 'verInformacion']);

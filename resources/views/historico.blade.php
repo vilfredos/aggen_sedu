@@ -14,13 +14,13 @@
             <h1 class="tituloH">Historico de Elecciones</h1>
         </div>
     @if($elecciones->count())
-    <table>
+    <table class="TablaHistorico">
     <thead>
         <tr>
             <th>ID</th>
             <th>TITULO</th>
-            <th>Frente Ganador</th>                   
-            <th>Informe</th>
+            <th>FRENTE GANADOR</th>                   
+            <th>INFORME</th>
             <!-- Añade aquí más columnas según los campos de tu tabla -->
         </tr>
     </thead>

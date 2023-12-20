@@ -28,7 +28,7 @@
     margin-left: 90px;
     text-align: center;
     border-radius: 20px;
-    height: 170vh;
+    height: 400vh;
 }
 
 .superiorVm {
@@ -107,10 +107,21 @@ th {
     border: none; 
 }
 
-.btn_comite {
-    font-size: 28px;
-    background-color: transparent; 
-    border: none; 
+.btn_comite, .btn_frente, .btn_mesas, .btn_papeleta {
+    display: inline-block;
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: #003777; 
+    transition: all 0.3s ease; 
+    color: white;
+    width: 70px; 
+    text-align: center;
+    border: none;
+    
+}
+
+.btn_comite:hover, .btn_frente:hover, .btn_mesas:hover, .btn_papeleta:hover {
+    transform: scale(1.1); 
 }
 
 .btn-secondary {
@@ -126,36 +137,6 @@ th {
     font-size: 34px;
     background-color: transparent; 
     border: none; 
-}
-
-.btn_mesas {
-    color: #6f6f6f; 
-    border: none; 
-    background-color: transparent; 
-}
-
-.btn_mesas .fa-person-booth {
-    font-size: 34px;
-    background-color: transparent; 
-    border: none; 
-}
-.btn_mesas:hover {
-    background-color: #0d6efd; 
-}
-
-.btn_frente {
-    color: #6f6f6f; 
-    border: none; 
-    background-color: transparent; 
-}
-
-.btn_frente .fa-users-viewfinder {
-    font-size: 34px;
-    background-color: transparent; 
-    border: none; 
-}
-.btn_frente:hover {
-    background-color: #0d6efd; 
 }
 
 .btnConvocatoria{
@@ -178,7 +159,7 @@ th {
 /*votones Listado de Mesas*/
 
 
-.btnagregarInformacion {
+.btnagregarInformacion, .btnPoblacionVotante, .btn_jurados, .btn_descargar_acta {
     display: inline-block;
     padding: 10px; 
     border-radius: 5px; 
@@ -189,60 +170,12 @@ th {
     text-align: center;
 }
 
-.btnagregarInformacion:hover {
+.btnagregarInformacion, .btnPoblacionVotante, .btn_jurados, .btn_descargar_acta:hover {
     transform: scale(1.1); 
 }
 
 
-.btnPoblacionVotante {
-    display: inline-block;
-    padding: 10px; 
-    border-radius: 5px; 
-    background-color: #003777; 
-    transition: all 0.3s ease; 
-    color: white;
-    width: 60px; 
-    text-align: center;
-    border: none;
-}
-
-.btnPoblacionVotante:hover {
-    transform: scale(1.1); 
-}
-
-.btn_jurados{
-    display: inline-block;
-    padding: 10px; 
-    border-radius: 5px; 
-    background-color: #003777; 
-    transition: all 0.3s ease; 
-    color: white;
-    width: 60px; 
-    text-align: center;
-    border: none;
-}
-
-.btn_jurados:hover {
-    transform: scale(1.1); 
-}
-
-.btn_descargar_acta{
-    display: inline-block;
-    padding: 10px; 
-    border-radius: 5px; 
-    background-color: #003777; 
-    transition: all 0.3s ease; 
-    color: white;
-    width: 60px; 
-    text-align: center;
-    border: none;
-}
-
-.btn_descargar_acta:hover {
-    transform: scale(1.1); 
-}
-
-.btn-RegistrarActa{
+.btn-RegistrarActa, .btn_VOTOS{
     display: inline-block;
     padding: 10px; 
     border-radius: 5px; 
@@ -254,7 +187,7 @@ th {
     border: none;
 }
 
-.btn-RegistrarActa:hover {
+.btn-RegistrarActa, .btn_VOTOS:hover {
     transform: scale(1.1); 
 }
 /*añadido*/
@@ -274,4 +207,41 @@ th {
 
 .btn_remplazar_comite:hover {
     transform: scale(1.1); 
+}
+
+.mostrar-grafico-btn {
+    background-color: #003777; /* Cambia el color de fondo según tus preferencias */
+    color: #fff; /* Cambia el color del texto según tus preferencias */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.mostrar-grafico-btn:hover {
+    background-color: #207dbb; /* Cambia el color de fondo al pasar el puntero sobre el botón */
+}
+.actualizar-resultados {
+    margin-top: 30px;
+
+
+    display: inline-block;
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: #EC0033; 
+    transition: all 0.3s ease; 
+    color: white;
+    width: 190px; 
+    text-align: center;
+    border: none;
+    /*
+    margin-top: 30px;
+    background-color: #FF0000; 
+    color: #FFFFFF; 
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.actualizar-resultados:hover {
+    transform: scale(1.1); 
+
+    /*background-color: #ff440073; /* Color de resaltado al pasar el mouse */
 }

@@ -100,6 +100,7 @@ class ConvocatoriaController extends Controller
                 'facultad' => $votante->facultad,
                 'carrera' => $votante->carrera,
                 'gremio' => 'estudiante', // Agrega esta línea
+                'email' => $votante->email,
             ]);
         }
 
@@ -110,6 +111,7 @@ class ConvocatoriaController extends Controller
                 'facultad' => $votante->facultad,
                 'carrera' => $votante->carrera,
                 'gremio' => 'docente', // Agrega esta línea
+                'email' => $votante->email,
             ]);
         }
         /*MESAS*/
@@ -141,7 +143,7 @@ class ConvocatoriaController extends Controller
         /*asignacion mesas por estudiantes*/
         // ... código anterior ...
 
-        $capMaxVotantes = 28;
+        $capMaxVotantes = 25;
         $carreras = DB::table('eleccion_sis')
             ->where('gremio', 'estudiante')
             ->where('id_eleccion', $id_eleccion)
@@ -234,7 +236,7 @@ class ConvocatoriaController extends Controller
         // Itera sobre cada mesa
         foreach ($mesas as $mesa) {
             // Asigna los cargos a los docentes
-            $cargosDocentes = ['Presidente', 'Titular', 'Suplente', 'Suplente'];
+            $cargosDocentes = ['Presidente', 'Titular', 'Titular', 'Suplente', 'Suplente'];
             foreach ($cargosDocentes as $cargo) {
                 // Selecciona un docente al azar que no sea jurado en otra mesa y no pertenezca al comité
                 $docente = DB::table('eleccion_sis')
@@ -255,6 +257,7 @@ class ConvocatoriaController extends Controller
                     'sis' => $docente->sis,
                     'cargo' => $cargo,
                     'id_mesa' => $mesa->numeroMesa,
+                    'email' => $docente->email,
                 ]);
             }
 
@@ -280,6 +283,7 @@ class ConvocatoriaController extends Controller
                     'sis' => $estudiante->sis,
                     'cargo' => $cargo,
                     'id_mesa' => $mesa->numeroMesa,
+                    'email' => $estudiante->email,
                 ]);
             }
         }

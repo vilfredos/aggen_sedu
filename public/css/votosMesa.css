@@ -1,0 +1,57 @@
+.superiorVm {
+    margin-top: 30px;
+    padding-top: 0px;
+    align-items: center;
+}
+
+.tituloVm {
+    margin-top: 30px;
+
+    font-size: 34px; 
+    font-weight: bold;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    color: #000;
+    text-align: center;
+
+
+}
+body{
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f1e4;
+    margin: 0;
+    padding: 0;
+}
+
+.contenerVM{
+    background-color: #fff;
+    max-width: 1100px;
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 90px;
+    text-align: center;
+    border-radius: 20px;
+    height: 400vh;
+}
+
+.table.table-striped {
+    /* Agrega tus estilos personalizados aquí */
+    width: 95%;
+    border-collapse: collapse;
+    margin-left: 30px;
+}
+
+.table.table-striped th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: hsl(251, 90%, 12%);
+    color: white;
+    text-align: center;
+}
+.table.table-striped th, .table.table-striped td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+
+}
