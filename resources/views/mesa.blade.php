@@ -3,7 +3,6 @@
 @section('content')
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Registro de Mesas</title>
     <link href="{{ asset('css/mesa.css') }}" rel="stylesheet">

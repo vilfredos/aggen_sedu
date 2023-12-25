@@ -237,10 +237,13 @@ public function mostrarEleccion()
     return view('votantes_por_mesa')->with('datos', $datos);
 }
 public function mostrarActaEscrutinio($numeroMesa) {
-    // Obtener la mesa por su número
-    $mesa = Mesa::where('numeroMesa', $numeroMesa)->first();
+    // Obtener la cantidad de votantes asociados a la mesa
+    $cantidadVotantes = DB::table('eleccion_votante_mesa')
+        ->where('id_mesa', $numeroMesa)
+        ->count();
 
     // Verificar si la mesa existe
+    $mesa = Mesa::where('numeroMesa', $numeroMesa)->first();
     if (!$mesa) {
         abort(404); // Puedes personalizar esto según tus necesidades
     }
@@ -256,9 +259,11 @@ public function mostrarActaEscrutinio($numeroMesa) {
     // Obtener los frentes asociados a la elección
     $frentes = Frente::where('id_eleccion', $eleccion->id)->get();
 
+    // Imprimir o registrar el valor de $cantidadVotantes
     return view('acta_escrutino', [
         'frentes' => $frentes,
         'numeroMesa' => $numeroMesa,
+        'cantidadVotantes' => $cantidadVotantes,
     ]);
 }
 public function verHistorico(){

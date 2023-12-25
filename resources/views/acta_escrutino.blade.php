@@ -41,7 +41,7 @@
                     @foreach($frentes as $frente)
                         <div>
                             <label for="frente_{{ $frente->id_frente }}">{{ $frente->sigla_frente }}</label>
-                            <input type="number" id="frente_{{ $frente->id_frente }}" name="votos_frentes[{{ $frente->id_frente }}]" min="0" step="1" oninput="calculateTotal()">
+                            <input type="number" id="frente_{{ $frente->id_frente }}" name="votos_frentes[{{ $frente->id_frente }}]" min="0" step="1" oninput="calculateTotal()" required>
                         </div>
                     @endforeach
 
@@ -49,21 +49,27 @@
 
                     <!-- Resto de tus campos -->
                     <label for="votos_blancos">Votos Blancos:</label><br>
-                    <input type="number" id="votos_blancos" name="votos_blancos" min="0" max="300" step="1" oninput="validateInput(this)" pattern="\d+"><br>
-                
+                    <input type="number" id="votos_blancos" name="votos_blancos" min="0" max="300" step="1" oninput="calculateTotal()" required><br>
                     <br>
                     <label for="votos_nulos">Votos Nulos:</label><br>
-                    <input type="number" id="votos_nulos" name="votos_nulos" min="0" max="300" step="1" oninput="validateInput(this)" pattern="\d+"><br>
-                            
+                    <input type="number" id="votos_nulos" name="votos_nulos" min="0" max="300" step="1" oninput="calculateTotal()" required><br>
+
                     <br>
                     <label for="total_votos">Total de Votos:</label><br>
                     <input type="text" id="total_votos" name="total_votos" readonly>
-                    <br>
+                    
+                    <!-- Mensaje de error para el total de votos -->
+                    <div id="error_total_votos" style="color: red; display: none;">
+                        El total de votos no puede ser mayor a la cantidad de votantes.
+                    </div>
+
                     <br>
                     <label for="documento_pdf">Adjuntar Acta en PDF:</label>
-                    <input type="file" id="documento_pdf" name="documento_pdf" accept=".pdf">
+                    <input type="file" id="documento_pdf" name="documento_pdf" accept=".pdf" required>
+                    
                     <script>
-                        function confirmarRegistro() {
+                        // Validación del formulario al enviar
+                        document.getElementById('formActa').addEventListener('submit', function (event) {
                             // Validar que los campos sean números enteros mayores o iguales a 0
                             var isValid = true;
 
@@ -81,23 +87,32 @@
                                 isValid = false;
                             }
 
-                            // Si todos los campos son válidos, enviar el formulario
-                            if (isValid) {
-                                document.getElementById('formActa').submit();
+                            // Validar que el archivo PDF esté adjunto
+                            var documentoPDF = document.getElementById('documento_pdf');
+                            if (!documentoPDF.files.length) {
+                                alert("Por favor, adjunte un documento PDF");
+                                isValid = false;
                             }
-                        }
 
-                        // Función para validar la entrada en tiempo real
-                        function validateInput(input) {
-                            var inputValue = input.value.trim();
-
-                            if (inputValue !== "" && !/^\d+$/.test(inputValue)) {
-                                alert("Por favor, ingrese solo números enteros mayores o iguales a 0");
-                                input.value = ""; // Limpiar el valor incorrecto
+                            // Validar que el total de votos no sea mayor a la cantidad de votantes
+                            var totalVotos = parseInt(document.getElementById('total_votos').value) || 0;
+                            var cantidadVotantes = {{ $cantidadVotantes }}; // Obtener la cantidad de votantes desde la vista
+                            
+                            if (totalVotos > cantidadVotantes) {
+                                document.getElementById('error_total_votos').style.display = 'block';
+                                isValid = false;
+                            } else {
+                                document.getElementById('error_total_votos').style.display = 'none';
                             }
-                        }
+
+                            // Si hay algún error, prevenir el envío del formulario
+                            if (!isValid) {
+                                event.preventDefault();
+                            }
+                        });
                     </script>
-                    <button type="button" onclick="confirmarRegistro()" style="margin-bottom: 80px;">Guardar</button>
+
+                    <button type="submit" style="margin-bottom: 80px;">Guardar</button>
                 </form>
             </div>
         </div>
@@ -119,6 +134,9 @@
             // Calcular el total y mostrarlo en el campo correspondiente
             var totalVotos = votosBlancos + votosNulos + votosFrentes;
             document.getElementById('total_votos').value = totalVotos;
+
+            // Ocultar el mensaje de error al recalcular el total
+            document.getElementById('error_total_votos').style.display = 'none';
         }
     </script>
 </body>
