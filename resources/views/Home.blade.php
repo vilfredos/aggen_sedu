@@ -86,8 +86,7 @@
 
 
     <div id="sidebar" class="sidebar">
-
-        <div class="app-title">
+<div class="app-title">
             <img class="logo-umss" src="{{ asset('img/logo-umss.png') }}" alt="">
 
             <div class="nombres">
@@ -106,37 +105,39 @@
                     </a>
                 </li>
                 @endif
-                <li class="item">
-                    <a href="{{ url('/inicio') }}">
-                        <i class="fa-solid fa-house" style="color: #ffffff;"></i><span class="nombres">Inicio</span>
-                    </a>
-                </li>
 
-                <li class="item">
-                    <a href="{{ url('/votantes_por_mesa') }}">
-                        <i class="fa-solid fa-user-check" style="color: #ffffff;"></i><span class="nombres">Eleccion</span>
-                    </a>
-                </li>
+                    <li class="item">
+                        <a  href="{{ url('/inicio') }}">
+                            <i class="fa-solid fa-house" style="color: #ffffff;"></i><span class="nombres" >Inicio</span>
+                        </a>   
+                    </li>
 
-                <li class="item">
-                    <a href="{{ url('/usuarios') }}">
-                        <i class="fa-solid fa-user" style="color: #ffffff;"></i><span class="nombres">Usuarios</span>
-                    </a>
-                </li>
+                    <li class="item"> 
+                        <a href="{{ url('/votantes_por_mesa') }}">
+                            <i class="fa-solid fa-user-check" style="color: #ffffff;"></i><span class="nombres">Eleccion</span>
+                        </a>
+                    </li>
+                
+                   {{-- <li class="item">
+                        <a href="{{ url('/usuarios') }}">
+                            <i class="fa-solid fa-user" style="color: #ffffff;"></i><span class="nombres">Usuarios</span>
+                        </a>
+                    </li>
+            
+                    <li class="item">
+                        <a href="{{ url('/roles') }}">
+                            <i class="fa-solid fa-user-shield" style="color: #ffffff;"></i><span class="nombres">Roles</span>
+                        </a>
+                    </li>
+--}}
+                    <li class="item">
+                        
+                        <a href="{{ url('/historico') }}">
+                            <i class="fa-solid fa-timeline"></i>                   
+                            <span class="nombres">Historico de Resultados</span>
+                        </a>
+                    </li>
 
-                <li class="item">
-                    <a href="{{ url('/roles') }}">
-                        <i class="fa-solid fa-user-shield" style="color: #ffffff;"></i><span class="nombres">Roles</span>
-                    </a>
-                </li>
-
-                <li class="item">
-
-                    <a href="{{ url('/historico') }}">
-                        <i class="fa-solid fa-timeline"></i>
-                        <span class="nombres">Historico de Resultados</span>
-                    </a>
-                </li>
 
                 <ul class="container">
 

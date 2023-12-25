@@ -23,7 +23,7 @@
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
-				<h3>Sign In</h3>
+				<h3>Iniciar Sesion</h3>
 				
 			</div>
 			<div class="card-body">
@@ -42,20 +42,16 @@
 						</div>
 						<input type="password" class="form-control" placeholder="password" name="password">
 					</div>
-					<div class="row align-items-center remember">
-						<input type="checkbox">Remember Me
-					</div>
+					
 					<div class="form-group">
 						<input type="submit" value="Login" class="btn float-right login_btn">
 					</div>
 				</form>
 			</div>
 			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="#">Sign Up</a>
-				</div>
+				
 				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
+					<a href="#">Olvidaste tu contraseña?</a>
 				</div>
 			</div>
 		</div>

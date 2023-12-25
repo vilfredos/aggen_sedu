@@ -5,7 +5,7 @@
 }
 
 .titulo {
-    font-size: 60px; 
+    font-size: 40px; 
     font-weight: bold;
     margin-top: 15px;
     margin-bottom: 25px;
@@ -36,13 +36,27 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    max-width: 600px; 
+    max-width: 700px; 
     width: 100%; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.row a {
+    text-decoration: none;
+}
+
+.card {
+    background-color: #152045;
+    color: #fff; /* Cambia el color al pasar el ratón sobre la tarjeta */
+}
+.card:hover {
+    background-color: #165a86; /* Cambia el color al pasar el ratón sobre la tarjeta */
+}
+.avatar-md{
+    font-size: 25px;
+}
 .panel {
     
     justify-content: center;
