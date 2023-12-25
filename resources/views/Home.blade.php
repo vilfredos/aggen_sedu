@@ -118,7 +118,7 @@
                         </a>
                     </li>
                 
-                    <li class="item">
+                   {{-- <li class="item">
                         <a href="{{ url('/usuarios') }}">
                             <i class="fa-solid fa-user" style="color: #ffffff;"></i><span class="nombres">Usuarios</span>
                         </a>
@@ -129,7 +129,7 @@
                             <i class="fa-solid fa-user-shield" style="color: #ffffff;"></i><span class="nombres">Roles</span>
                         </a>
                     </li>
-
+--}}
                     <li class="item">
                         
                         <a href="{{ url('/historico') }}">

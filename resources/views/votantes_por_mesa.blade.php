@@ -31,9 +31,8 @@
                     <th>Mesas</th>
                     <th>Papeleta</th>
                     <th>Resultados Totales</th>
-                    <th>Enviar Correo</th>
+               
                 </tr>
-            </thead>
             
             <tbody>
                 @foreach ($datos as $dato)
@@ -67,14 +66,14 @@
                             <i class="fa-solid fa-sheet-plastic"></i>
                         </button>
                     </td>
-                    <td>
+                    {{--<td>
                         <form action="{{ route('enviarCorreoJurados', ['id_eleccion' => $dato->id]) }}" method="post">
                             @csrf
                             <button type="submit" class="btn_enviar_correo">
                                 <i class="fa-solid fa-envelope"></i> Enviar Correo
                             </button>
                         </form>
-                    </td>
+                    </td>--}}
                 </tr>
                 
                 @endforeach
