@@ -107,7 +107,7 @@
                     <!--AGREGADO MIO-->
 
                     <div id="capacidadmaximavotantesmesa">
-                        <label  class="tituloSeccion3" for="CapacidadMaximaVotantesMesa">Capacidad votantes mesa</label><br>
+                        <label  class="tituloSeccion3" for="CapacidadMaximaVotantesMesa">Votantes por mesa</label><br>
                         <label for="cargo0">Votantes Mesa:</label><br>
                         <input type="text" id="votantesMesaMaximo0" name="VotantesMesa[]" required><br>
                     </div>
