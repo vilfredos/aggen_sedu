@@ -1,28 +1,17 @@
 <div class="container mb-5">
     <div class="d-flex align-items-end pt-4">
         <h5 class="mb-0">
-            Laravel Backup Panel
+              Panel Backup
+            
         </h5>
 
-        <button id="create-backup" class="btn btn-primary btn-sm ml-auto px-3">
-            Create Backup
-        </button>
+        <!-- Enlace con estilos de botón -->
+<a class="btn btn-primary btn-sm ml-auto px-3" href="#" id="create-backup-only-files" wire:click.prevent="">
+    Crear backup
+</a>
+
         <div class="dropdown ml-3">
-            <button class="btn btn-primary btn-sm dropdown-toggle px-3" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="0.7875rem" height="0.7875rem" viewBox="0 0 24 24"
-                     fill="currentColor">
-                    <path class="heroicon-ui" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
-                </svg>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#" id="create-backup-only-db" wire:click.prevent="">
-                    Create database backup
-                </a>
-                <a class="dropdown-item" href="#" id="create-backup-only-files" wire:click.prevent="">
-                    Create files backup
-                </a>
-            </div>
+          
         </div>
     </div>
 
