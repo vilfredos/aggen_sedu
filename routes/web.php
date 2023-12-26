@@ -275,3 +275,4 @@ Route::get('/informacion/{id}', [VotosMesaController::class, 'verInformacion']);
 
 
 Route::post('/enviarCorreoJurados/{id_eleccion}', 'App\Http\Controllers\VotosMesaController@enviarCorreoJurados')->name('enviarCorreoJurados');
+Route::delete('/eliminar-eleccion/{id}', 'App\Http\Controllers\VotosMesaController@eliminarEleccion')->name('eliminarEleccion');

@@ -31,7 +31,7 @@
                     <th>Mesas</th>
                     <th>Papeleta</th>
                     <th>Resultados Totales</th>
-               
+                    <th>Eliminar</th>
                 </tr>
             
             <tbody>
@@ -74,6 +74,15 @@
                             </button>
                         </form>
                     </td>--}}
+                    <td>
+                    <form action="{{ route('eliminarEleccion', ['id' => $dato->id]) }}" method="post">
+                        @csrf
+                        @method('delete') {{-- Agrega esta línea para indicar que es una solicitud de eliminación --}}
+                        <button type="submit" class="btn_eliminar" data-id="{{ $dato->id }}">
+                            <i class="fas fa-trash-alt"></i> 
+                        </button>
+                    </form>
+                    </td>
                 </tr>
                 
                 @endforeach
@@ -92,6 +101,26 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+    $(".btn_eliminar").click(function(event) {
+        event.preventDefault();
+        var id = $(this).data('id');
+
+        // Mostrar un cuadro de confirmación
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: 'Esta acción no se puede deshacer.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí, eliminarlo'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Si el usuario confirma, enviar el formulario
+                $(this).closest('form').submit();
+            }
+        });
+    });
     $(document).ready(function() {
         $(".btn_informacion").click(function() {
             var id = $(this).closest('tr').find('td:eq(0)').text();

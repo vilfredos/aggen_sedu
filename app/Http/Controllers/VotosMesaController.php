@@ -17,7 +17,7 @@ use App\Models\VotosNulosMesa;
 use App\Models\EleccionActaMesa;
 use Illuminate\Support\Facades\Mail;
 use SendGrid\Mail\Mail as SendGridMail;
-
+use App\Models\Eleccion;
 
 class VotosMesaController extends Controller
 {
@@ -364,6 +364,47 @@ private function enviarCorreoJurado($correo, $nombre)
 {
     // Aquí configuras los datos del correo y luego envías el correo
     Mail::to($correo)->send(new ContactanosMailable($nombre));
+}
+public function eliminarEleccion($id) {
+    // Realiza la lógica para eliminar la elección con el ID proporcionado
+    // Puedes utilizar Eloquent para hacer esto, por ejemplo:
+    // Elimina la elección y las filas relacionadas en otras tablas
+    Eleccion::find($id)->delete();
+    Mesa::where('id_eleccion', $id)->delete();
+
+    // Elimina votos blancos relacionados
+    VotosBlancosMesa::where('id_eleccion', $id)->delete();
+
+    // Elimina votos frente relacionados
+    VotosFrenteMesa::where('id_eleccion', $id)->delete();
+
+    // Elimina votos nulos relacionados
+    VotosNulosMesa::where('id_eleccion', $id)->delete();
+
+    // Elimina actas de elección relacionadas
+    EleccionActaMesa::where('id_eleccion', $id)->delete();
+    Frente::where('id_eleccion', $id)->delete();
+    DB::delete('DELETE FROM eleccion_jurados WHERE id_eleccion = ?', [$id]);
+     // Elimina filas relacionadas en eleccion_cargo
+     DB::table('eleccion_cargo')->where('id_eleccion', $id)->delete();
+
+     // Elimina filas relacionadas en eleccion_comite
+     DB::table('eleccion_comite')->where('id_eleccion', $id)->delete();
+ 
+     // Elimina filas relacionadas en eleccion_resultado_total
+     DB::table('eleccion_resultado_total')->where('id_eleccion', $id)->delete();
+ 
+     // Elimina filas relacionadas en eleccion_sis
+     DB::table('eleccion_sis')->where('id_eleccion', $id)->delete();
+ 
+     // Elimina filas relacionadas en eleccion_votante_mesa
+     DB::table('eleccion_votante_mesa')->where('id_eleccion', $id)->delete();
+ 
+     // Elimina filas relacionadas en candidato
+     DB::table('candidato')->where('id_eleccion', $id)->delete();
+
+    // Redirige a la página principal o donde desees después de eliminar
+    return redirect('/')->with('success', 'La elección fue eliminada correctamente.');
 }
 
 }
