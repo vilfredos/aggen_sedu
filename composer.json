@@ -22,10 +22,12 @@
         "maatwebsite/excel": "^3.1",
         "pavel-mironchik/laravel-backup-panel": "^2.2",
         "phpoffice/phpspreadsheet": "^1.29",
+        "schickling/backup": "^0.3.1",
         "sendgrid/sendgrid": "^8.1",
         "spatie/laravel-activitylog": "^3.17",
         "spatie/laravel-backup": "^6.16",
         "spatie/laravel-permission": "^5.11"
+        
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
