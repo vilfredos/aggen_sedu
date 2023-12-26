@@ -106,10 +106,8 @@
 
                     <!--AGREGADO MIO-->
 
-                    <div id="capacidadmaximavotantesmesa">
-                        <label  class="tituloSeccion3" for="CapacidadMaximaVotantesMesa">Votantes por mesa:</label><br>
-                        <input type="text" id="votantesMesaMaximo0" name="VotantesMesa[]" required><br>
-                    </div>
+                    <label for="capacidad_maxima">Capacidad Máxima por Mesa:</label>
+                    <input type="number" id="capacidad_maxima" name="capacidad_maxima" min="10" step="1" required>
 
 
 
@@ -120,7 +118,7 @@
 
                         <button type="button" onclick="verificarCamposSeccion3YHabilitar()">Verificar Campos</button>
 
-                        <button type="submit" id="btnRegistrarEleccion" disabled>Registrar Eleccion</button><br>
+                        <button type="submit" id="btnRegistrarEleccion" onclick="confirmarRegistro()" disabled>Registrar Eleccion</button><br>
 
                         <!--button type="submit">Registrar Eleccion</-button--><br>
 
@@ -215,32 +213,26 @@ function verificarCamposSeccion2() {
 }
 /*VERIFICACION SECCION 3 Y ENVIO DE DATOS SI RETORNA TRUE */
 function verificarCamposSeccion3YHabilitar() {
-    
     const tiposCheckbox = document.querySelectorAll('input[name="tipos[]"]:checked');
+    const capacidadMaximaInput = document.getElementById('capacidad_maxima');
+    const capacidadMaxima = parseInt(capacidadMaximaInput.value, 10);
 
-    
+    // Validar el campo de capacidad_maxima
+    if (isNaN(capacidadMaxima) || capacidadMaxima <= 10) {
+        mostrarAviso("La capacidad máxima debe ser un número entero mayor a 10.");
+        return false;
+    }
+
+    // Resto de la validación
     if (tiposCheckbox.length === 0) {
         mostrarAviso("Todos los campos deben estar llenos para registrar la elección.");
         return false; 
-    }
-
-    const votantesMesaInput = document.getElementById('votantesMesaMaximo0');
-    const votantesMesa = parseInt(votantesMesaInput.value);
-
-    if (isNaN(votantesMesa) || !Number.isInteger(votantesMesa) || votantesMesa <= 13) {
-        mostrarAviso("Por favor, ingrese solo numeros enteros mayor a 13 para la capacidad de votantes de la mesa.");
-        return false;
-    }
-    
-
-
-        mostrarAviso("Convocatoria realizada con exito puede proceder a Registrar Eleccion");
-
-      
+    } else {
+        mostrarAviso("Convocatoria realizada con éxito, puede proceder a Registrar Elección.");
         document.getElementById('btnRegistrarEleccion').removeAttribute('disabled');
         return true;
     }
-
+}
 
 
 
@@ -256,7 +248,15 @@ function mostrarAviso(mensaje) {
 function cerrarAviso() {
     document.getElementById('aviso-container').style.display = 'none';
 }
-
+function confirmarRegistro() {
+        if (verificarCamposSeccion3YHabilitar()) {
+            const confirmacion = confirm("¿Estás seguro de crear la elección?");
+            if (confirmacion) {
+                // Si el usuario confirma, envía el formulario
+                document.getElementById('form-seleccion').submit();
+            }
+        }
+    }
 
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
