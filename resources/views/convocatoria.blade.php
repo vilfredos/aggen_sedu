@@ -103,6 +103,19 @@
                     <select class="form-control" name="carrera" id="carrera">
                         <option value="">Seleccione una carrera</option>
                     </select>
+
+                    <!--AGREGADO MIO-->
+
+                    <div id="capacidadmaximavotantesmesa">
+                        <label  class="tituloSeccion3" for="CapacidadMaximaVotantesMesa">Capacidad votantes mesa</label><br>
+                        <label for="cargo0">Votantes Mesa:</label><br>
+                        <input type="text" id="votantesMesaMaximo0" name="VotantesMesa[]" required><br>
+                    </div>
+
+
+
+
+
                     </div>
                         <button type="button" onclick="anteriorSeccion('seccion3', 'seccion2')">Anterior</button>
 
@@ -210,14 +223,25 @@ function verificarCamposSeccion3YHabilitar() {
     if (tiposCheckbox.length === 0) {
         mostrarAviso("Todos los campos deben estar llenos para registrar la elección.");
         return false; 
-    } else {
+    }
+
+    const votantesMesaInput = document.getElementById('votantesMesaMaximo0');
+    const votantesMesa = parseInt(votantesMesaInput.value);
+
+    if (isNaN(votantesMesa) || votantesMesa <= 13) {
+        mostrarAviso("Por favor, ingrese un número entero mayor a 13 para la capacidad de votantes de la mesa.");
+        return false;
+    }
+    
+
+
         mostrarAviso("Convocatoria realizada con exito puede proceder a Registrar Eleccion");
 
       
         document.getElementById('btnRegistrarEleccion').removeAttribute('disabled');
         return true;
     }
-}
+
 
 
 
