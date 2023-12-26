@@ -228,8 +228,8 @@ function verificarCamposSeccion3YHabilitar() {
     const votantesMesaInput = document.getElementById('votantesMesaMaximo0');
     const votantesMesa = parseInt(votantesMesaInput.value);
 
-    if (isNaN(votantesMesa) || votantesMesa <= 13) {
-        mostrarAviso("Por favor, ingrese un número entero mayor a 13 para la capacidad de votantes de la mesa.");
+    if (isNaN(votantesMesa) || !Number.isInteger(votantesMesa) || votantesMesa <= 13) {
+        mostrarAviso("Por favor, ingrese solo numeros enteros mayor a 13 para la capacidad de votantes de la mesa.");
         return false;
     }
     
